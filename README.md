@@ -15,7 +15,7 @@
 
 </br>
 
-### 피그마 작업
+### 🎨 피그마 작업
 
 ### [링크 🔗](https://www.figma.com/design/wiSvWBt1ldrdNDoHLvzqGf/%EC%87%BC%ED%95%91%EB%AA%B0%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8?node-id=14-48&node-type=canvas&t=e4X4DnWNPG7ekbZ8-0)
 
@@ -25,13 +25,23 @@
 
 <div>
 
+#### Frontend
+
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=html,css,javascript,typescript,react,tailwind,threejs,nodejs,express,sequelize,mysql,vite&perline=6" />
+    <img src="https://skillicons.dev/icons?i=html,css,javascript,typescript,react" />  
+     <img width="50px" src="https://github.com/user-attachments/assets/d41b3c3b-6c38-4c65-836b-3ad59010b8a3">
+     <img src="https://skillicons.dev/icons?i=tailwind,vite" />
   </a>
+ <img width="50px" src="https://github.com/user-attachments/assets/c7f0f555-67a5-4f22-87ca-6f6de80c4509" />
+
+#### Backend
+
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=nodejs,express,sequelize,mysql,aws" />
+  </a>
+  <img width="70px" src="https://github.com/user-attachments/assets/e7e991bb-1ec4-4959-a4f1-ee8db979d034">
 
   <br>
-   
- <img width="50px" src="https://github.com/user-attachments/assets/c7f0f555-67a5-4f22-87ca-6f6de80c4509" />
 
 </div>
 
@@ -51,20 +61,41 @@
 
 ### 👥Team Member
 
-<table>
-  <tr align="center">
-    <th>Name</th>
-    <td>김지균 🐳</td>
+<table >
+  <tr align="center" >
+    <th >Name</th>
+    <td >김지균 🐳</td>
     <td>김혜빈 🐠</td>
     <td>반재영 🐡</td>
     <td>신명희 🐬</td>
   </tr>
-  <tr>
-    <th>Role</th>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+  <tr style="white-space: nowrap; font-size:13px">
+    <th >Role</th>
+    <td >
+    <div > ✅ 주문 페이지 - 주문, 결제</div>
+    <div>✅ 회원가입 및 로그인 </div>
+    <div>✅ 아이디/비밀번호 찾기</div>
+</td>
+<td >
+<div>✅ 상품 상세 페이지</div>
+<div>- 상품 정보, 3D, 리뷰</div>
+<div>✅ 장바구니</div>
+<div>- 장바구니 목록</div>
+</td>
+<td>
+<div>✅ 메인</div>
+<div>- 카테고리, 배너, Best 상품 목록 </div>
+
+<div>✅ 마이페이지</div>
+<div>- 회원정보 수정, 주문내역</div>
+<div>✅ 백엔드 설계</div>
+</td>
+<td>
+<div>✅ 상품 목록</div>
+<div>- 카테고리별 상품 목록</div>
+<div>✅ 백엔드 설계</div>
+</td>
+
   </tr>
   <tr>
     <th>GitHub</th>
