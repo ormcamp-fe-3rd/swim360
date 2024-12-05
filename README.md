@@ -27,7 +27,7 @@
 
 #### Frontend
 
-  <a href="https://skillicons.dev">
+  <a>
     <img src="https://skillicons.dev/icons?i=html,css,javascript,typescript,react" />  
      <img width="50px" src="https://github.com/user-attachments/assets/d41b3c3b-6c38-4c65-836b-3ad59010b8a3">
      <img src="https://skillicons.dev/icons?i=tailwind,vite" />
@@ -36,7 +36,7 @@
 
 #### Backend
 
-  <a href="https://skillicons.dev">
+  <a>
     <img src="https://skillicons.dev/icons?i=nodejs,express,sequelize,mysql,aws" />
   </a>
   <img width="70px" src="https://github.com/user-attachments/assets/e7e991bb-1ec4-4959-a4f1-ee8db979d034">
