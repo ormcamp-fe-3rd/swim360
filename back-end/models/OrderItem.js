@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize"); // 시퀄라이즈에 정의됨
 const { sequelize } = require("./db");
 // 모델
 
-//회원_id(fk), 상품_id(fk), 가격
+//주문_id(fk), 상품_id(fk),  가격
 const OrderItem = sequelize.define(
   "OrderItem",
   {
@@ -16,7 +16,7 @@ const OrderItem = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    user_id: {
+    order_id: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
