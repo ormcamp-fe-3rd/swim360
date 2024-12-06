@@ -16,7 +16,7 @@ const Review = sequelize.define(
       type: DataTypes.STRING(300),
       allowNull: false,
     },
-    image: {
+    imageUrl: {
       type: DataTypes.STRING,
       allowNull: true,
     },
