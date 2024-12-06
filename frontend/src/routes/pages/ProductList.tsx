@@ -1,4 +1,11 @@
 import ProductItem from "@/components/product-list/ProductItem";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 function ProductList() {
   const productDummyArray = [
@@ -15,8 +22,20 @@ function ProductList() {
   ];
 
   return (
-    <div>
-      <div className="ml-20 mr-20 flex">
+    <div className="ml-20 mr-20">
+      <div className="flex flex-col items-end">
+        <Select>
+          <SelectTrigger className="mb-2 w-[123px] rounded-[10px] border-[#000000] border-opacity-30">
+            <SelectValue placeholder="최신순" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="최신순">최신순</SelectItem>
+            <SelectItem value="판매순">판매순</SelectItem>
+            <SelectItem value="리뷰순">리뷰순</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+      <div className="flex">
         <ul>
           {sideMenuArray.map((sideMenu) => (
             <li key={sideMenu.text} className="px-[33px] py-[10px]">
@@ -24,7 +43,7 @@ function ProductList() {
                 {sideMenu.text}
               </button>
               <img
-                className="invisible peer-hover:visible peer-focus:visible"
+                className="invisible mr-4 peer-hover:visible peer-focus:visible"
                 src="/public/images/underline-menu.png"
               />
             </li>
