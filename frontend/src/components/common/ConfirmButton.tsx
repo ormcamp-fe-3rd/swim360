@@ -9,7 +9,7 @@ interface ConfirmButtonProps {
 
 function ConfirmButton({ text, width, font, iconUrl }: ConfirmButtonProps) {
   return (
-    <Button className={"rounded-4 px-[22px] " + "w-" + width + " " + font}>
+    <Button className={"rounded-4 py-[22px] " + "w-" + width + " " + font}>
       {iconUrl && <img className="h-6 w-6" src={iconUrl} alt={text} />}
       {text}
     </Button>
