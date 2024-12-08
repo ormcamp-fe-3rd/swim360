@@ -6,9 +6,13 @@ const { User } = require("../models");
 router.get("/", async (req, res) => {
   try {
     const users = await User.findAll();
-    res.json(users).send();
+    if (!users) {
+      console.log("No Users yet");
+    }
+    res.json(users);
   } catch (error) {
     console.log(error);
+    res.status(500).json({ error: error.message });
   }
 });
 
@@ -22,9 +26,10 @@ router.post("/", async (req, res, next) => {
     }
 
     const newUser = await User.create({ name, nickname, age });
-    res.json(newUser).send();
+    res.json(newUser);
   } catch (error) {
     console.log(error);
+    res.status(500).json({ error: error.message });
   }
 });
 
@@ -34,9 +39,10 @@ router.get("/:id", async (req, res) => {
     const userId = req.params.id;
 
     const user = await User.findOne({ where: { id: userId } });
-    res.send("특정 ID에 대한 유저 조회:" + userId);
+    res.json("특정 ID에 대한 유저 조회:" + user);
   } catch (error) {
     console.log(error);
+    res.status(500).json({ error: error.message });
   }
 });
 
@@ -52,7 +58,7 @@ router.put("/:id", async (req, res) => {
     // 유저 존재 여부 확인
     const user = await User.findOne({ where: { id: id } });
     if (!user) {
-      return res.send({ status: 404, message: "User not found" });
+      return res.json({ status: 404, message: "User not found" });
     }
 
     // 유저 있으면 수정
@@ -66,9 +72,10 @@ router.put("/:id", async (req, res) => {
     );
 
     const updatedUser = await User.findOne({ where: { id: id } });
-    res.send(updatedUser);
+    res.json(updatedUser);
   } catch (error) {
     console.log(error);
+    res.status(500).json({ error: error.message });
   }
 });
 

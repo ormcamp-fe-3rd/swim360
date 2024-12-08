@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize"); // 시퀄라이즈에 정의됨
-const { sequelize } = require("./db");
+const { sequelize } = require("../db.js");
 // 모델
 
 //이름, 상품_id(fk), 부모_id(fk)
@@ -22,13 +22,13 @@ const Category = sequelize.define(
     },
     parent_id: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
     },
   },
   {
     tableName: "CATEGORIES",
-    timestamps: true, // 키면 createdAt, updateAt 자동으로 저장됨
+    timestamps: true,
   }
 );
 
-module.exports = Category; // 다른 데서 써야하니까 export
+module.exports = Category;
