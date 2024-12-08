@@ -1,4 +1,3 @@
-import ConfirmButton from "@/components/common/ConfirmButton";
 
   function SelectedProduct(){
     return(
@@ -50,7 +49,11 @@ function DetailsSection(){
          <SelectedProduct />
          
          <div>
-            <p  className="w-[522px] text-end mt-10 mb-[10px]">총 상품 금액:000,000원</p>
+            <div className="flex w-[522px] mt-10 mb-[10px] justify-end">
+            <p  className="font-semibold text-[16px]">총 상품 금액: </p>
+            <p  className="font-semibold text-[16px]">000,000원</p>
+            </div>
+    
             <div className="w-[522px]">
                 <button className="w-[254px] h-[70px] text-black border-[1px] rounded-2xl mr-3">장바구니 담기</button>
                 <button className="w-[254px] h-[70px] bg-black text-white rounded-2xl">바로 구매</button>
