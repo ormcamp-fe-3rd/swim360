@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize"); // 시퀄라이즈에 정의됨
-const { sequelize } = require("./db");
+const { sequelize } = require("../db.js");
 // 모델
 
 //회원_id(fk), 상품_id(fk), 배송지, 금액, 주문상태
