@@ -1,10 +1,16 @@
 const { Sequelize } = require("sequelize");
+const config = require("./config/config");
 
-// Sequelize 연결 생성
-const sequelize = new Sequelize("", "", "", {
-  host: "",
-  dialect: "mysql",
-});
+const sequelize = new Sequelize(
+  config.database,
+  config.username,
+  config.password,
+  {
+    dialect: config.dialect,
+    host: config.host,
+    port: config.port,
+  }
+);
 
 const init = async () => {
   try {
