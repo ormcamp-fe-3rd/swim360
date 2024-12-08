@@ -3,6 +3,7 @@ import DetailsSection from "@/components/product/detailsSection";
 import DetailsTab from "@/components/product/detailsTabSection";
 import ReviewsTab from "@/components/product/reviewsTab";
 import QnasTab from "@/components/product/faqsTab";
+import ExchangeTab from "@/components/product/exchangeTab";
 
 function Product() {
   return (
@@ -14,6 +15,7 @@ function Product() {
     <DetailsTab/>
     <ReviewsTab/>
     <QnasTab/>
+    <ExchangeTab/>
     </div>
   );
 }

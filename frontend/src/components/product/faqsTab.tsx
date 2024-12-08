@@ -6,7 +6,7 @@ type QnaItem = {
 
   function Qnas({ number, title, author }: QnaItem) {
     return (
-      <div className="w-[1064px] h-12 flex justify-between items-center mx-auto border-b-2 border-[#D9D9D9]">
+      <div className="w-[1064px] h-12 flex justify-between items-center mx-auto border-b-2 border-[#D9D9D9] ">
         <p className="w-[74px] text-center">{number}</p>
         <p>{title}</p>
         <p className="w-[74px]">{author}</p>
@@ -30,12 +30,12 @@ function QnasTab(){
         { number: "1", title: "상품을 구매한 후 취소가 가능한가요?", author: "관리자" },
       ];
     return(
-        <>
+        <div className="mb-[140px]">
         <div className="flex mx-auto mb-8 w-[1064px]">
-        <p className="w-[300px] h-[44px] border-b-2 border-[#CCCCCC] text-[24px] font-extralight flex justify-center">상품상세정보</p>
-        <p className="w-[300px] h-[44px] border-b-2 border-[#CCCCCC  text-[24px] font-medium flex justify-center">상품후기(0)</p>
-        <p className="w-[300px] h-[44px] border-b-2 border-black text-[24px] font-extralight flex justify-center">자주하는 질문</p>
-        <p className="w-[300px] h-[44px] border-b-2 border-[#CCCCCC] text-[24px] font-extralight flex justify-center">교환/반품</p>
+        <a className="w-[300px] h-[44px] border-b-2 border-[#CCCCCC] text-[24px] font-extralight flex justify-center">상품상세정보</a>
+        <a className="w-[300px] h-[44px] border-b-2 border-[#CCCCCC]  text-[24px] font-extralight flex justify-center">상품후기(0)</a>
+        <a className="w-[300px] h-[44px] border-b-2 border-black text-[24px] font-medium  flex justify-center">자주하는 질문</a>
+        <a className="w-[300px] h-[44px] border-b-2 border-[#CCCCCC] text-[24px] font-extralight flex justify-center">교환/반품</a>
         </div>
         <div className="w-[1064px] h-12 bg-[#D3D3D3] border-b-2 flex justify-between items-center mx-auto ">
             <p className="w-[74px] text-center">번호</p>
@@ -48,7 +48,7 @@ function QnasTab(){
         ))}
         
 
-        </>
+        </div>
     )
 }
 export default QnasTab;
