@@ -2,6 +2,7 @@ import Photos from "@/components/product/PhotoSection";
 import DetailsSection from "@/components/product/detailsSection";
 import DetailsTab from "@/components/product/detailsTabSection";
 import ReviewsTab from "@/components/product/reviewsTab";
+import QnasTab from "@/components/product/faqsTab";
 
 function Product() {
   return (
@@ -12,6 +13,7 @@ function Product() {
     </div>
     <DetailsTab/>
     <ReviewsTab/>
+    <QnasTab/>
     </div>
   );
 }
