@@ -1,7 +1,3 @@
-const dotenv = require("dotenv");
-
-dotenv.config();
-
 const config = {
   database: process.env.DB_DATABASE,
   username: process.env.DB_USERNAME,
@@ -9,6 +5,7 @@ const config = {
   host: process.env.DB_HOSTNAME,
   port: process.env.DB_PORT,
   dialect: process.env.DB_DIALECT,
+  expressPort: process.env.EXPRESS_PORT,
 };
 
 module.exports = config;

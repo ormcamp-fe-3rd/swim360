@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const app = express();
 const db = require("./db");
@@ -12,8 +14,8 @@ const startServer = async () => {
 
   app.use(require("./routes"));
 
-  app.listen(config.port, () => {
-    console.log(`server listening on port${config.port}`);
+  app.listen(config.expressPort, () => {
+    console.log(`server listening on port${config.expressPort}`);
   });
 };
 
