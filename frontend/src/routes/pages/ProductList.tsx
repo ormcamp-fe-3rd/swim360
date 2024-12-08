@@ -1,3 +1,4 @@
+import PrimaryButton from "@/components/common/PrimaryButton";
 import ProductItem from "@/components/product-list/ProductItem";
 import {
   Select,
@@ -49,7 +50,7 @@ function ProductList() {
             </li>
           ))}
         </ul>
-        <div className="tablet:grid-cols-3 desktop:grid-cols-5 grid w-full grid-cols-1 gap-[19px]">
+        <div className="grid w-full grid-cols-1 gap-[19px] tablet:grid-cols-3 desktop:grid-cols-5">
           {productDummyArray.map((product, i) => (
             <ProductItem key={i} /> // 데이터 불러오면 [product.id로]
           ))}
