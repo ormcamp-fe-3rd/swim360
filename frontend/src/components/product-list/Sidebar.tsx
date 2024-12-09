@@ -22,7 +22,7 @@ function SideBar() {
           </button>
           <img
             className="invisible pr-6 peer-hover:visible peer-focus:visible"
-            src="/public/images/underline-menu.png"
+            src="/public/images/productlist/underline-menu.png"
           />
         </li>
       ))}
