@@ -1,9 +1,7 @@
-interface Props{
-  imgUrl: string
-  homeUrl: string
-}
+const imgUrl: string = "/images/common/logo.png";
+const homeUrl: string = "/";
 
-export default function MainLogo({imgUrl, homeUrl}: Props){
+export default function MainLogo(){
   return (
     <a href={homeUrl}>
       <img

@@ -4,16 +4,12 @@ import MainIconButton from "./MainIconButton";
 import MainLogo from "./MainLogo";
 import ScrollButton from "./ScrollButton";
 
-const imgUrl: string = "/images/common/logo.png";
-const homeUrl: string = "/";
-
-
 function Header() {
   return (
     <header className="flex justify-center">
-      <nav className="mt-6 flex h-[190px] w-full px-10 items-center justify-between desktop:w-[1440px]">
+      <nav className="mt-6 flex h-[190px] w-full items-center justify-between px-10 desktop:w-[1440px]">
         <HamburgerMenu />
-        <MainLogo imgUrl={imgUrl} homeUrl={homeUrl} />
+        <MainLogo />
         <CategoryBox />
         <MainIconButton />
       </nav>
