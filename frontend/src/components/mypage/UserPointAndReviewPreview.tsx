@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 
-interface UserActivityPreviewProps {
+interface UserPointAndReviewPreviewProps {
   reviewCount: number;
 }
 
-function UserActivityPreview({ reviewCount }: UserActivityPreviewProps) {
+function UserPointAndReviewPreview({
+  reviewCount,
+}: UserPointAndReviewPreviewProps) {
   return (
     <div className="flex h-[146px] w-full items-center justify-center border-[1px] border-[#000000] py-[30px]">
       <div className="flex w-full flex-col items-center text-xl font-semibold">
@@ -22,4 +24,4 @@ function UserActivityPreview({ reviewCount }: UserActivityPreviewProps) {
   );
 }
 
-export default UserActivityPreview;
+export default UserPointAndReviewPreview;

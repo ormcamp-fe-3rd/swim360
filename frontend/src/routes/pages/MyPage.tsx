@@ -1,16 +1,24 @@
 import OrderStatusPreview from "@/components/mypage/OrderStatusPreview";
 import RecentOrderPreview from "@/components/mypage/RecentOrderPreview";
-import UserActivityPreview from "@/components/mypage/UserActivityPreview";
 import UserInfoPreview from "@/components/mypage/UserInfoPreview";
+import UserPointAndReviewPreview from "@/components/mypage/UserPointAndReviewPreview";
 
 function MyPage() {
   return (
     <div>
-      <div>
-        <UserInfoPreview />
-        <UserActivityPreview />
+      <div className="flex">
+        <UserInfoPreview name={"먕먕"} />
+        <UserPointAndReviewPreview reviewCount={3} />
       </div>
-      <OrderStatusPreview />
+      <OrderStatusPreview
+        deliveryStateCounts={{
+          ORDER_COMPLETE: 12,
+          PAYMENT_COMPLETE: 22,
+          PREPARING: 12,
+          SHIPPTING: 15,
+          DELIVERED: 11,
+        }}
+      />
       <RecentOrderPreview />
     </div>
   );
