@@ -8,6 +8,7 @@ function MyPage() {
     user: {
       name: "먕먕",
     },
+    reviewCount: 3,
     orderStatsCount: {
       ORDER_COMPLETE: 12,
       PAYMENT_COMPLETE: 22,
@@ -85,7 +86,7 @@ function MyPage() {
     <div className="px-[82px]">
       <div className="mb-[69px] grid grid-cols-2 gap-[41px]">
         <UserInfoPreview name={userDummyData.user.name} />
-        <UserPointAndReviewPreview reviewCount={3} />
+        <UserPointAndReviewPreview reviewCount={userDummyData.reviewCount} />
       </div>
       <OrderStatusPreview deliveryStateCounts={userDummyData.orderStatsCount} />
       <RecentOrderPreview orders={userDummyData.orders} />
