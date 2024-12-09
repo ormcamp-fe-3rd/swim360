@@ -10,7 +10,7 @@ const homeUrl: string = "/";
 
 function Header() {
   return (
-    <header>
+    <header className="flex justify-center">
       <nav className="mt-6 flex h-[190px] w-full px-10 items-center justify-between desktop:w-[1440px]">
         <HamburgerMenu />
         <MainLogo imgUrl={imgUrl} homeUrl={homeUrl} />

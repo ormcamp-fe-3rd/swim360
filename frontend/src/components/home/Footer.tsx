@@ -1,6 +1,6 @@
 // const footerImg =  "./public/images/common/footer.png";
 const footerClass =
-  "w-screen h-[510px] pt-10 bg-[url('/images/common/footer.png')] bg-cover flex flex-col justify-around items-center";
+  "w-screen h-[510px] pt-10 bg-[url('/images/common/footer.png')] bg-cover flex flex-col justify-evenly items-center";
 
 export default function Footer(){
   return (
@@ -12,7 +12,7 @@ export default function Footer(){
             <li className="font-semibold">이용약관</li>
             <li className="font-semibold">개인정보처리방침</li>
           </ul>
-          <div className="mb-10 flex w-full justify-between px-10 tablet:w-[565px]">
+          <div className="flex w-full justify-between px-10 tablet:w-[565px]">
             <div>
               <p className="font-semibold">CALL CENTER</p>
               <p className="text-xs tablet:text-base">
