@@ -79,6 +79,37 @@ function MyPage() {
           },
         ],
       },
+      {
+        id: 20203033333,
+        createdAt: "2024-12-09T10:30:15.000Z",
+        price: 50000,
+        orderItems: [
+          {
+            id: 0,
+            name: "best 강습용 여자 수영복2",
+            size: "M",
+            imageUrl: "/public/images/mypage/sample-1.png",
+            quantity: 2,
+            discountedPrice: 30000,
+          },
+          {
+            id: 1,
+            name: "best 강습용 남자 수영복2",
+            size: "XL",
+            imageUrl: "/public/images/mypage/sample-3.png",
+            quantity: 1,
+            discountedPrice: 30000,
+          },
+          {
+            id: 2,
+            name: "best 강습용 어린이 수영복2",
+            size: "S",
+            imageUrl: "/public/images/mypage/sample-2.png",
+            quantity: 1,
+            discountedPrice: 10000,
+          },
+        ],
+      },
     ],
   };
 
