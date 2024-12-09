@@ -21,7 +21,7 @@ function SideBar() {
             {sideMenu.name}
           </button>
           <img
-            className="invisible mr-4 peer-hover:visible peer-focus:visible"
+            className="invisible pr-6 peer-hover:visible peer-focus:visible"
             src="/public/images/underline-menu.png"
           />
         </li>

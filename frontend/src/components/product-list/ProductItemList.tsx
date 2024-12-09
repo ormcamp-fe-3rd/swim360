@@ -2,13 +2,68 @@ import ProductItem from "@/components/product-list/ProductItem";
 
 function ProductItemList() {
   const productDummyArray = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+    {
+      name: "여성 수영복 1",
+      imgUrl: "/public/images/productlist/sample-1.png",
+      price: 10000,
+      discountedPrice: 5000,
+      salesVolume: 50,
+    },
+    {
+      name: "여성 수영복 1",
+      imgUrl: "/public/images/productlist/sample-1.png",
+      price: 10000,
+      discountedPrice: 5000,
+      salesVolume: 50,
+    },
+    {
+      name: "여성 수영복 1",
+      imgUrl: "/public/images/productlist/sample-1.png",
+      price: 10000,
+      discountedPrice: 5000,
+      salesVolume: 50,
+    },
+    {
+      name: "여성 수영복 1",
+      imgUrl: "/public/images/productlist/sample-1.png",
+      price: 10000,
+      discountedPrice: 5000,
+      salesVolume: 50,
+    },
+    {
+      name: "여성 수영복 1",
+      imgUrl: "/public/images/productlist/sample-1.png",
+      price: 10000,
+      discountedPrice: 5000,
+      salesVolume: 50,
+    },
+    {
+      name: "여성 수영복 1",
+      imgUrl: "/public/images/productlist/sample-1.png",
+      price: 10000,
+      discountedPrice: 5000,
+      salesVolume: 50,
+    },
+    {
+      name: "여성 수영복 1",
+      imgUrl: "/public/images/productlist/sample-1.png",
+      price: 10000,
+      discountedPrice: 5000,
+      salesVolume: 50,
+    },
+    {
+      name: "여성 수영복 1",
+      imgUrl: "/public/images/productlist/sample-1.png",
+      price: 10000,
+      discountedPrice: 5000,
+      salesVolume: 50,
+    },
   ];
 
   return (
-    <div className="grid w-full grid-cols-1 gap-[19px] tablet:grid-cols-3 desktop:grid-cols-5">
+    <div className="grid w-full grid-cols-1 gap-[19px] tablet:grid-cols-3 desktop:grid-cols-4">
       {productDummyArray.map((product, i) => (
-        <ProductItem key={i} /> // 데이터 불러오면 [product.id로]
+        <ProductItem {...product} key={i} /> // 데이터 불러오면 [product.id로]
       ))}
     </div>
   );
