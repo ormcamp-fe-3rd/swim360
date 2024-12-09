@@ -1,22 +1,22 @@
-import { Category } from "@/types/categories"
+import { Category } from "@/types/categories";
 
-import CategoryList from "./CategoryList"
+import CategoryList from "./CategoryList";
 
 const categoryNames: Category[] = [
   {
     id: 1,
     name: "WOMAN",
-    productId: 1
+    productId: 1,
   },
   {
     id: 2,
     name: "MAN",
-    productId: 2
+    productId: 2,
   },
   {
     id: 3,
     name: "ACC",
-    productId: 3
+    productId: 3,
   },
   // {
   //   id: 4,
@@ -48,14 +48,14 @@ const categoryNames: Category[] = [
   //   productId: 8,
   //   parentId: 3
   // }
-]
+];
 
-export default function CategoryBox(){
+export default function CategoryBox() {
   return (
     <ul className="flex gap-[52px]">
-      {categoryNames.map((category)=>(
-        <CategoryList key={category.id} category={category}/>
+      {categoryNames.map((category) => (
+        <CategoryList key={category.id} category={category} />
       ))}
     </ul>
-  )
+  );
 }

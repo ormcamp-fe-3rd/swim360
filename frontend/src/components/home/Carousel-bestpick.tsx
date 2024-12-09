@@ -10,28 +10,26 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-const banners = [
+const bestpicks = [
   {
     id: 1,
-    img: "",
+    img: ""
   },
   {
     id: 2,
-    img: "",
+    img: ""
   },
   {
     id: 3,
-    img: "",
+    img: ""
   },
   {
     id: 4,
-    img: "",
-  },
-  {
-    id: 5,
-    img: "",
-  },
-];
+    img: ""
+  }
+]
+
+
 export function CarouselPlugin() {
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: true }),
@@ -39,25 +37,22 @@ export function CarouselPlugin() {
 
   return (
     <Carousel
-      opts={{align: "start", loop: true}}
+      opts={{ align: "start", loop: true }}
       plugins={[plugin.current]}
-      className="w-full max-w-[1440px]"
+      className="w-full max-w-xs"
       onClick={plugin.current.stop}
-      // onMouseEnter={plugin.current.stop}
-      // onMouseLeave={plugin.current.reset}
     >
       <CarouselContent>
-        {banners.map((banner) => ( 
-          <CarouselItem key={banner.id} className="basis-1/2">
-            <div className="px-5 py-[86px]">
+        {bestpicks.map((pick) => (
+          <CarouselItem key={pick.id}>
+            <div className="p-1">
               <Card>
-                <CardContent className="flex h-[705px] items-center justify-center over">
-                  <img src={banner.img} alt=""/>
+                <CardContent className="flex aspect-square items-center justify-center p-6">
+                  <img src={pick.img} alt="" />
                 </CardContent>
               </Card>
             </div>
           </CarouselItem>
-          
         ))}
       </CarouselContent>
       <CarouselPrevious />

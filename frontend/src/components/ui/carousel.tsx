@@ -217,7 +217,7 @@ const CarouselPrevious = React.forwardRef<
       {/* <ArrowLeft className="h-4 w-4" /> */}
       <img
         className="absolute h-[70px] w-[70px]"
-        src="./public/images/home/button-left.png"
+        src="/public/images/home/button-left.png"
         alt="previous button"
       />
       <span className="sr-only">Previous slide</span>
@@ -251,7 +251,7 @@ const CarouselNext = React.forwardRef<
       {/* <ArrowRight className="h-4 w-4" /> */}
       <img
         className="h-[70px] w-[70px] absolute"
-        src="./public/images/home/button-right.png"
+        src="/public/images/home/button-right.png"
         alt="next button"
       />
       <span className="sr-only">Next slide</span>
