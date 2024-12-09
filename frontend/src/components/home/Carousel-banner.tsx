@@ -13,7 +13,7 @@ import {
 const banners = [
   {
     id: 1,
-    img: "",
+    img: "/images/home/banner-1.png",
   },
   {
     id: 2,
@@ -39,29 +39,30 @@ export function CarouselPlugin() {
 
   return (
     <Carousel
-      opts={{align: "start", loop: true}}
+      opts={{ align: "start", loop: true }}
       plugins={[plugin.current]}
-      className="w-full max-w-[1440px]"
+      className="px-5 h-[705px] my-[86px] w-full max-w-[1440px] relative"
       onClick={plugin.current.stop}
       // onMouseEnter={plugin.current.stop}
       // onMouseLeave={plugin.current.reset}
     >
       <CarouselContent>
-        {banners.map((banner) => ( 
+        {banners.map((banner) => (
           <CarouselItem key={banner.id} className="basis-1/2">
-            <div className="px-5 py-[86px]">
+            <div className="">
               <Card>
-                <CardContent className="flex h-[705px] items-center justify-center">
-                  <img src={banner.img} alt=""/>
+                <CardContent className="flex items-center justify-center">
+                  <img className="h-full" src={banner.img} alt="" />
                 </CardContent>
               </Card>
             </div>
           </CarouselItem>
-          
         ))}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
+      <div className="flex items-center justify-between absolute top-[327px] gap-[1188px]">
+        <CarouselPrevious />
+        <CarouselNext />
+      </div>
     </Carousel>
   );
 }

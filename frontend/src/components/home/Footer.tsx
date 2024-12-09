@@ -1,6 +1,6 @@
 // const footerImg =  "./public/images/common/footer.png";
 const footerClass =
-  "w-screen h-[510px]  bg-[url('./public/images/common/footer.png')] bg-cover flex flex-col justify-end items-center gap-[100px]";
+  "w-screen h-[510px]  bg-[url('/images/common/footer.png')] bg-cover flex flex-col justify-end items-center gap-[100px]";
 
 export default function Footer(){
   return (
