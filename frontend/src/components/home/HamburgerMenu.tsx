@@ -12,6 +12,7 @@ export default function HamburgerMenu(){
           alt=""
         />
       </button>
+      {/* TODO: backdrop 효과 추가 */}
       <div className={`absolute ${isOpen ? "block" : "hidden"} -translate-x-10 top-20 z-10`}>
         <div className="h-[370px] w-screen bg-white">
           <ul className="flex h-full flex-col items-center">
