@@ -1,5 +1,8 @@
 import ReviewStar from "./reviewsStar";
+import ReviewPopup from "./ReviewPopup";
+
 import { PaginationDemo } from "../common/Paginaionm";
+
 
 
 function Reviews(){
@@ -45,8 +48,11 @@ function ReviewsTab(){
           </div>
 
           <div className="w-[1064px] flex justify-end mt-8 mb-2">
-          <button className="bg-black w-[164px] h-[50px] rounded-xl text-white text-[24px] flex items-center justify-center gap-2 "><img src="/public/images/icon-reviews.png"/>후기 등록</button>
+          <button id="ReviewButton" className=" bg-black w-[164px] h-[50px] rounded-xl text-white text-[24px] flex items-center justify-center gap-2 "><img src="/public/images/icon-reviews.png"/>후기 등록</button>
           </div>
+          
+          <ReviewPopup/>
+         
 
           <Reviews/>
           <Reviews/>
