@@ -36,7 +36,10 @@ function RecentOrderPreview({ orders }: RecentOrderPreviewProps) {
 
       <div className="h-[759px] overflow-y-scroll">
         {orders.map((order) => (
-          <div className="grid w-full grid-flow-col grid-cols-[0.5fr_1fr_1fr_0.5fr] border-b border-black pt-3">
+          <div
+            key={order.id}
+            className="grid w-full grid-flow-col grid-cols-[0.5fr_1fr_1fr_0.5fr] border-b border-black pt-3"
+          >
             <div className="flex flex-col items-center justify-center hover:underline">
               <div>주문번호</div>
               <div>{order.id}</div>
@@ -46,7 +49,10 @@ function RecentOrderPreview({ orders }: RecentOrderPreviewProps) {
             </div>
             <div className="flex flex-col">
               {order.orderItems.map((orderItem) => (
-                <div className="grid grid-cols-3 items-center gap-4">
+                <div
+                  key={orderItem.id + "name"}
+                  className="grid grid-cols-3 items-center gap-4"
+                >
                   <div className="col-span-3 flex">
                     <div className="h-[209px] w-[153px] pb-3">
                       <img
@@ -69,7 +75,10 @@ function RecentOrderPreview({ orders }: RecentOrderPreviewProps) {
             </div>
             <div className={`grid grid-row-${order.orderItems.length}`}>
               {order.orderItems.map((orderItem) => (
-                <div className="flex items-center justify-center">
+                <div
+                  key={orderItem.id + "quantity"}
+                  className="flex items-center justify-center"
+                >
                   {orderItem.quantity}
                 </div>
               ))}

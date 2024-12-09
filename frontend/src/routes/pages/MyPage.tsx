@@ -80,7 +80,7 @@ function MyPage() {
         ],
       },
       {
-        id: 20203033333,
+        id: 20203,
         createdAt: "2024-12-09T10:30:15.000Z",
         price: 50000,
         orderItems: [
