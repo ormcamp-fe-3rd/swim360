@@ -6,7 +6,7 @@ import UserPointAndReviewPreview from "@/components/mypage/UserPointAndReviewPre
 function MyPage() {
   return (
     <div>
-      <div className="flex">
+      <div className="grid grid-cols-2">
         <UserInfoPreview name={"먕먕"} />
         <UserPointAndReviewPreview reviewCount={3} />
       </div>
