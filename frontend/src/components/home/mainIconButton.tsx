@@ -1,23 +1,42 @@
 import { goToLinkClick, goToLinkKeyboard } from "@/utils/goToLink";
 
-interface Props {
-  imgUrl: string;
-  name: string;
-  url: string;
-}
+const myPageIcon = {
+  imgUrl: "/images/common/icon-mypage.png",
+  name: "마이페이지",
+  url: "/mypage",
+};
 
-export default function MainIconButton({ imgUrl, name, url }: Props) {
+const cartIcon = {
+  imgUrl: "/images/common/icon-cart.png",
+  name: "장바구니",
+  url: "/cart",
+};
+
+export default function MainIconButton() {
   return (
-    <button>
-      <img
-        className="h-8 w-8"
-        src={imgUrl}
-        alt={name}
-        role="link"
-        tabIndex={0}
-        onClick={() => goToLinkClick(url)}
-        onKeyDown={(event) => goToLinkKeyboard(event, url)}
-      />
-    </button>
+    <div className="flex tablet:w-[190px] justify-around">
+      <button>
+        <img
+          className="h-8 w-8 hidden tablet:block"
+          src={myPageIcon.imgUrl}
+          alt={myPageIcon.name}
+          role="link"
+          tabIndex={0}
+          onClick={() => goToLinkClick(myPageIcon.url)}
+          onKeyDown={(event) => goToLinkKeyboard(event, myPageIcon.url)}
+        />
+      </button>
+      <button>
+        <img
+          className="h-8 w-8"
+          src={cartIcon.imgUrl}
+          alt={cartIcon.name}
+          role="link"
+          tabIndex={0}
+          onClick={() => goToLinkClick(cartIcon.url)}
+          onKeyDown={(event) => goToLinkKeyboard(event, cartIcon.url)}
+        />
+      </button>
+    </div>
   );
 }

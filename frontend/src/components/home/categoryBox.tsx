@@ -52,7 +52,7 @@ const categoryNames: Category[] = [
 
 export default function CategoryBox() {
   return (
-    <ul className="flex gap-[52px]">
+    <ul className=" gap-[52px] hidden tablet:flex">
       {categoryNames.map((category) => (
         <CategoryList key={category.id} category={category} />
       ))}
