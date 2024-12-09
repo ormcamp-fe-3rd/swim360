@@ -12,27 +12,27 @@ function DetailsTab(){
         <div className="flex flex-wrap w-[1064px] mx-auto gap-[12px]">
             
           <div className="flex flex-col justify-center items-center content-center mx-auto w-[342px] h-[240px] gap-8">
-            <img className="w-[90px] h-[100px] " src="/public/images/icon_fabric_1.png"/>
+            <img className="w-[90px] h-[100px] " src="/public/images/product/icon-fabric-1.png"/>
             <p>맑은 물에 충분히 헹궈 가볍게 세탁</p>
           </div>
           <div className="flex flex-col justify-center items-center content-center mx-auto w-[342px] h-[240px gap-12">
-            <img className="w-[132px] h-[66px] mt-[22px] md-[22px]" src="/public/images/icon_fabric_2.png"/>
+            <img className="w-[132px] h-[66px] mt-[22px] md-[22px]" src="/public/images/product/icon-fabric-2.png"/>
             <p>맑은 물에 충분히 헹궈 가볍게 세탁</p>
           </div>
           <div className="flex flex-col justify-center items-center content-center mx-auto w-[342px] h-[240px] gap-8">
-            <img className="w-[100px] h-[100px] " src="/public/images/icon_fabric_3.png"/>
+            <img className="w-[100px] h-[100px] " src="/public/images/product/icon-fabric-3.png"/>
             <p>맑은 물에 충분히 헹궈 가볍게 세탁</p>
           </div>
           <div className="flex flex-col justify-center items-center content-center mx-auto w-[342px] h-[240px]  gap-8">
-            <img className="w-[100px] h-[100px] " src="/public/images/icon_fabric_4.png"/>
+            <img className="w-[100px] h-[100px] " src="/public/images/product/icon-fabric-4.png"/>
             <p>맑은 물에 충분히 헹궈 가볍게 세탁</p>
           </div>
           <div className="flex flex-col justify-center items-center content-center mx-auto w-[342px] h-[240px]  gap-8">
-            <img className="w-[100px] h-[100px] " src="/public/images/icon_fabric_5.png"/>
+            <img className="w-[100px] h-[100px] " src="/public/images/product/icon-fabric-5.png"/>
             <p>맑은 물에 충분히 헹궈 가볍게 세탁</p>
           </div>
           <div className="flex flex-col justify-center items-center content-center mx-auto w-[342px] h-[240px]  gap-8">
-            <img className="w-[100px] h-[94px] " src="/public/images/icon_fabric_6.png"/>
+            <img className="w-[100px] h-[94px] " src="/public/images/product/icon-fabric-6.png"/>
             <p>맑은 물에 충분히 헹궈 가볍게 세탁</p>
           </div>
 

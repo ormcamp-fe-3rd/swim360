@@ -15,7 +15,7 @@ type ReviewStarProps = {
       <div className="flex gap-2">
         {[...Array(5)].map((_, i) => (
           <div key={i} className={styles.container}>
-            <img className={styles.image} src="/public/images/review-star-none.png" alt="Review Star" />
+            <img className={styles.image} src="/public/images/product/review-star-none.png" alt="Review Star" />
           </div>
           
         ))}

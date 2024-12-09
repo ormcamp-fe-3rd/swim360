@@ -1,5 +1,5 @@
 import ReviewStar from "./reviewsStar";
-import { PaginationDemo } from "../common/paginaionm";
+import { PaginationDemo } from "../common/Paginaionm";
 
 
 function Reviews(){

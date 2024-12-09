@@ -1,13 +1,13 @@
 
-  function SelectedProduct(){
+  function DetailsSelected(){
     return(
         <>
         <div className="w-[522px] h-[50px] bg-[#EDEDED] flex items-center justify-between mb-1 p-4">
         <p>사이즈</p>
         <div className="flex justify-between items-center w-fit border-black border-[1px] rounded-[12px] px-4 gap-3">
-            <img className="w-6" src="/public/images/icon-minus.png"/>
+            <img className="w-6" src="/public/images/product/icon-minus.png"/>
             <p className="w-5 text-center"> 2 </p>
-            <img className="w-6" src="/public/images/icon-add.png"/>
+            <img className="w-6" src="/public/images/product/icon-add.png"/>
         </div>
         <p>000,000원</p>
         </div>
@@ -15,7 +15,7 @@
     )
 }
 
-function DetailsSection(){
+function Details(){
     return(
         <>
         <div className="w-[522px] h-auto flex-col">
@@ -46,7 +46,7 @@ function DetailsSection(){
          </div>
          </div>
 
-         <SelectedProduct />
+         <DetailsSelected />
          
          <div>
             <div className="flex w-[522px] mt-10 mb-[10px] justify-end">
@@ -63,7 +63,7 @@ function DetailsSection(){
         </>
     );
 }
-export default DetailsSection;
+export default Details;
 
 
 

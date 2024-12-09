@@ -71,7 +71,7 @@ const PaginationPrevious = ({
     {...props}
   >
 <img
-      src="/public/images/btn-previous.png" // 이미지 경로
+      src="/public/images/common/btn-previous.png" // 이미지 경로
       alt="Previous"
       className="h-8 w-8" // 이미지 크기
     />
@@ -91,7 +91,7 @@ const PaginationNext = ({
     {...props}
   >
 <img
-      src="/public/images/btn-next.png" // 이미지 경로
+      src="/public/images/common/btn-next.png" // 이미지 경로
       alt="Previous"
       className="h-8 w-8" // 이미지 크기
     />
