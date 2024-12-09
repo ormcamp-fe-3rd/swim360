@@ -9,28 +9,12 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Product } from "@/types/products";
 
-const bestpicks = [
-  {
-    id: 1,
-    img: ""
-  },
-  {
-    id: 2,
-    img: ""
-  },
-  {
-    id: 3,
-    img: ""
-  },
-  {
-    id: 4,
-    img: ""
-  }
-]
+const bestpicks: Product[] = []
 
 
-export function CarouselPlugin() {
+export function CarouselBestPick() {
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: true }),
   );
@@ -39,16 +23,16 @@ export function CarouselPlugin() {
     <Carousel
       opts={{ align: "start", loop: true }}
       plugins={[plugin.current]}
-      className="w-full max-w-xs"
+      className="w-[738px] h-[768px]"
       onClick={plugin.current.stop}
     >
       <CarouselContent>
-        {bestpicks.map((pick) => (
-          <CarouselItem key={pick.id}>
+        {bestpicks.map((product) => (
+          <CarouselItem key={product.id}>
             <div className="p-1">
               <Card>
-                <CardContent className="flex aspect-square items-center justify-center p-6">
-                  <img src={pick.img} alt="" />
+                <CardContent className="flex items-center justify-center">
+                  <img src={product.imageUrl} alt="" />
                 </CardContent>
               </Card>
             </div>

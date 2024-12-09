@@ -51,7 +51,7 @@ export function CarouselPlugin() {
           <CarouselItem key={banner.id} className="basis-1/2">
             <div className="px-5 py-[86px]">
               <Card>
-                <CardContent className="flex h-[705px] items-center justify-center over">
+                <CardContent className="flex h-[705px] items-center justify-center">
                   <img src={banner.img} alt=""/>
                 </CardContent>
               </Card>
