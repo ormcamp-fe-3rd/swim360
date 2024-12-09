@@ -29,3 +29,5 @@ function SideBar() {
     </ul>
   );
 }
+
+export default SideBar;
