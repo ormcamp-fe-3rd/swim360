@@ -1,4 +1,4 @@
-import BackgroundImg from "@/components/home/backgroundImg";
+import BackgroundImg from "@/components/home/BackgroundImg";
 import HomeBody from "@/components/home/homeBody";
 import NavigationMenu from "@/components/home/navigationMenu";
 

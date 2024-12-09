@@ -15,8 +15,8 @@ export default function MainIconButton({ imgUrl, name, url }: Props) {
         alt={name}
         role="link"
         tabIndex={0}
-        onClick={()=> goToLinkClick(url)}
-        onKeyDown={(event)=> goToLinkKeyboard(event, url)}
+        onClick={() => goToLinkClick(url)}
+        onKeyDown={(event) => goToLinkKeyboard(event, url)}
       />
     </button>
   );

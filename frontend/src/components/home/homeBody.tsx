@@ -1,9 +1,12 @@
-import { CarouselPlugin } from "./carousel-infinite";
+import { CarouselPlugin } from "./Carousel-banner";
+import Footer from "./Footer";
+
 
 export default function HomeBody() {
   return (
-    <div className="absolute top-[100lvh] flex h-full w-full flex-col items-center bg-white">
+    <div className="mt-[100lvh] flex h-full w-full flex-col items-center bg-white">
       <CarouselPlugin />
+      <Footer />
     </div>
   );
 }

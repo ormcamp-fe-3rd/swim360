@@ -1,4 +1,4 @@
-const imgUrl = "/images/main-background.png";
+const imgUrl = "/images/home/main-background.png";
 
 export default function BackgroundImg() {
   return (

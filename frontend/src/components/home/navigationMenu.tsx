@@ -2,19 +2,19 @@ import CategoryBox from "./categoryBox";
 import MainIconButton from "./mainIconButton";
 import MainLogo from "./mainLogo";
 
-const imgUrl :string = "/images/logo.png"
+const imgUrl: string = "/images/common/logo.png";
 const homeUrl :string = "/"
 
 const myPageIcon = {
-  imgUrl : "/images/icon-mypage.png",
+  imgUrl : "/images/common/icon-mypage.png",
   name : "마이페이지",
   url: "/"
 };
 
 const cartIcon = {
-  imgUrl: "/images/icon-cart.png",
+  imgUrl: "/images/common/icon-cart.png",
   name: "장바구니",
-  url: "/"
+  url: "/",
 };
 
 function NavigationMenu() {
@@ -28,7 +28,11 @@ function NavigationMenu() {
           name={myPageIcon.name}
           url={myPageIcon.url}
         />
-        <MainIconButton imgUrl={cartIcon.imgUrl} name={cartIcon.name} url={cartIcon.url}/>
+        <MainIconButton 
+          imgUrl={cartIcon.imgUrl} 
+          name={cartIcon.name} 
+          url={cartIcon.url}
+        />
       </div>
     </nav>
   );
