@@ -5,8 +5,8 @@ import UserPointAndReviewPreview from "@/components/mypage/UserPointAndReviewPre
 
 function MyPage() {
   return (
-    <div>
-      <div className="grid grid-cols-2">
+    <div className="px-[82px]">
+      <div className="mb-[69px] grid grid-cols-2 gap-[41px]">
         <UserInfoPreview name={"먕먕"} />
         <UserPointAndReviewPreview reviewCount={3} />
       </div>
@@ -15,7 +15,7 @@ function MyPage() {
           ORDER_COMPLETE: 12,
           PAYMENT_COMPLETE: 22,
           PREPARING: 12,
-          SHIPPTING: 15,
+          SHIPPING: 15,
           DELIVERED: 11,
         }}
       />
