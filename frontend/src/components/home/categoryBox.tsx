@@ -1,6 +1,6 @@
 import { Category } from "@/types/categories"
 
-import CategoryList from "./categoryList"
+import CategoryList from "./CategoryList"
 
 const categoryNames: Category[] = [
   {

@@ -1,6 +1,6 @@
-import CategoryBox from "./categoryBox";
-import MainIconButton from "./mainIconButton";
-import MainLogo from "./mainLogo";
+import CategoryBox from "./CategoryBox";
+import MainIconButton from "./MainIconButton";
+import MainLogo from "./MainLogo";
 
 const imgUrl: string = "/images/common/logo.png";
 const homeUrl :string = "/"
