@@ -1,10 +1,10 @@
 import ConfirmButton from "@/components/common/ConfirmButton.tsx";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-function FindIdPage() {
+function FindIdPwdPage() {
     return <div className="w-[620px] mx-auto">
         <Tabs defaultValue="find-id" className="w-[603px]">
-            <TabsList className="gap-2.5">
+            <TabsList className="gap-2.5 pb-2.5">
                 <TabsTrigger value="find-id" className="w-[300px]">아이디 찾기</TabsTrigger>
                 <TabsTrigger value="find-password" className="w-[300px]">비밀번호 찾기</TabsTrigger>
             </TabsList>
@@ -44,4 +44,4 @@ function FindIdPage() {
     </div>
 }
 
-export default FindIdPage;
+export default FindIdPwdPage;
