@@ -1,10 +1,10 @@
-import BackgroundImg from "@/components/home/BackgroundImg";
+import BackgroundVideo from "@/components/home/BackgroundVideo";
 import HomeBody from "@/components/home/HomeBody";
 
 function Home() {
   return (
     <>
-      <BackgroundImg />
+      <BackgroundVideo />
       <HomeBody />
     </>
   );
