@@ -17,22 +17,22 @@ const banners = [
   },
   {
     id: 2,
-    img: "",
+    img: "/images/home/banner-1.png",
   },
   {
     id: 3,
-    img: "",
+    img: "/images/home/banner-1.png",
   },
   {
     id: 4,
-    img: "",
+    img: "/images/home/banner-1.png",
   },
   {
     id: 5,
-    img: "",
+    img: "/images/home/banner-1.png",
   },
 ];
-export function CarouselPlugin() {
+export function CarouselBanner() {
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: true }),
   );
@@ -41,7 +41,7 @@ export function CarouselPlugin() {
     <Carousel
       opts={{ align: "start", loop: true }}
       plugins={[plugin.current]}
-      className="px-5 h-[705px] my-[86px] w-full max-w-[1440px] relative"
+      className="relative my-[86px] h-fit desktop:h-[705px] w-full desktop:w-[1440px]"
       onClick={plugin.current.stop}
       // onMouseEnter={plugin.current.stop}
       // onMouseLeave={plugin.current.reset}
@@ -52,14 +52,14 @@ export function CarouselPlugin() {
             <div className="">
               <Card>
                 <CardContent className="flex items-center justify-center">
-                  <img className="h-full" src={banner.img} alt="" />
+                  <img className="object-contain" src={banner.img} alt="" />
                 </CardContent>
               </Card>
             </div>
           </CarouselItem>
         ))}
       </CarouselContent>
-      <div className="flex items-center justify-between absolute top-[327px] gap-[1188px]">
+      <div className="absolute top-1/2 flex items-center justify-between w-full">
         <CarouselPrevious />
         <CarouselNext />
       </div>
