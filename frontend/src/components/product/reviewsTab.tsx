@@ -35,10 +35,10 @@ function ReviewsTab(){
         <div className="w-[1064px] mx-auto">
 
             <div className="flex mx-auto mb-8 w-[1064px]">
-                <p className="w-[300px] h-[44px] border-b-2 border-[#CCCCCC] text-[24px] font-extralight flex justify-center">상품상세정보</p>
-                <p className="w-[300px] h-[44px] border-b-2 border-black  text-[24px] font-medium flex justify-center">상품후기(0)</p>
-                <p className="w-[300px] h-[44px] border-b-2 border-[#CCCCCC] text-[24px] font-extralight flex justify-center">자주하는 질문</p>
-                <p className="w-[300px] h-[44px] border-b-2 border-[#CCCCCC] text-[24px] font-extralight flex justify-center">교환/반품</p>
+                <a href="#detailsTab" className="w-[300px] h-[44px] border-b-2 border-[#CCCCCC] text-[24px] font-extralight flex justify-center">상품상세정보</a>
+                <a href="#reviewsTab" id="reviewsTab" className="w-[300px] h-[44px] border-b-2 border-black  text-[24px] font-medium flex justify-center">상품후기(0)</a>
+                <a href="#qnasTab" className="w-[300px] h-[44px] border-b-2 border-[#CCCCCC] text-[24px] font-extralight flex justify-center">자주하는 질문</a>
+                <a href="#exchangeTab" className="w-[300px] h-[44px] border-b-2 border-[#CCCCCC] text-[24px] font-extralight flex justify-center">교환/반품</a>
           </div>
 
           <div className="w-[1064px] h-[250px] bg-[#f6f9ff] flex flex-col mx-auto items-center justify-center">

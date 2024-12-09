@@ -3,22 +3,22 @@ function ExchangeTab() {
       <div>
         {/* Tab Section */}
         <div className="flex mx-auto mb-8 w-[1064px]">
-          <p className="w-[300px] h-[44px] border-b-2 border-[#CCCCCC] text-[24px] font-extralight flex justify-center">
+          <a href="#detailsTab" className="w-[300px] h-[44px] border-b-2 border-[#CCCCCC] text-[24px] font-extralight flex justify-center">
             상품상세정보
-          </p>
-          <p className="w-[300px] h-[44px] border-b-2 border-[#CCCCCC] text-[24px] font-extralight flex justify-center">
+          </a>
+          <a href="#reviewsTab" className="w-[300px] h-[44px] border-b-2 border-[#CCCCCC] text-[24px] font-extralight flex justify-center">
             상품후기(0)
-          </p>
-          <p className="w-[300px] h-[44px] border-b-2 border-[#CCCCCC] text-[24px] font-extralight flex justify-center">
+          </a>
+          <a href="#qnasTab" className="w-[300px] h-[44px] border-b-2 border-[#CCCCCC] text-[24px] font-extralight flex justify-center">
             자주하는 질문
-          </p>
-          <p className="w-[300px] h-[44px] border-b-2 border-black text-[24px] font-medium flex justify-center">
+          </a>
+          <a href="#exchangeTab" id="exchangeTab" className=" w-[300px] h-[44px] border-b-2 border-black text-[24px] font-medium flex justify-center">
             교환/반품
-          </p>
+          </a>
         </div>
   
         {/* Content Section */}
-        <div className="w-[1064px] mx-auto mb-[252px]">
+        <div className="w-[1064px] mx-auto">
           <h3 className="font-bold text-lg mt-4">상품결제정보</h3>
           <ul className="list-disc pl-6">
             <li>교환결제의 경우 안심을 위해 카드사에서 확인전화를 드릴 수도 있습니다.</li>
