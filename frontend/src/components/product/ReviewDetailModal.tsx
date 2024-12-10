@@ -1,9 +1,7 @@
-import Reviews from "./Reviews"
-
 import { Card } from "../ui/card"
 import { CardContent } from "../ui/card"
-
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel";
+import Reviews from "./Reviews"
 
 
 

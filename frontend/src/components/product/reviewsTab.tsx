@@ -1,9 +1,8 @@
+import { PaginationDemo } from "../common/Paginaion";
+import ReviewDetailModal from "./ReviewDetailModal";
+import Reviews from "./Reviews";
 import ReviewStar from "./ReviewsStar";
 import ReviewPopup from "./ReviewWriteModal";
-import ReviewDetailModal from "./ReviewDetailModal";
-
-import { PaginationDemo } from "../common/Paginaion";
-import Reviews from "./Reviews";
 
 
 

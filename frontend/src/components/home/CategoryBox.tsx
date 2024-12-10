@@ -1,117 +1,77 @@
 import { Category } from "@/types/categories";
 
+import CategoryHoberBox from "./CategoryHoberBox";
 import CategoryList from "./CategoryList";
+import CategoryUnderLine from "./CategoryUnderline";
 
-const categoryNames: Category[] = [
+
+const womanCategory: Category[] = [
   {
     id: 1,
-    name: "WOMAN",
-    productId: 1,
+    name: "one-piece",
+    productId: 4,
+    parentId: 1
   },
   {
     id: 2,
-    name: "MAN",
-    productId: 2,
+    name: "full-body",
+    productId: 5,
+    parentId: 1
+  }
+]
+const manCategory: Category[] = [
+  {
+    id: 1,
+    name: "mid-length",
+    productId: 5,
+    parentId: 2,
+  },
+  {
+    id: 2,
+    name: "square-cut",
+    productId: 6,
+    parentId: 2,
+  },
+];
+const accCategory: Category[] = [
+  {
+    id: 1,
+    name: "bag",
+    productId: 6,
+    parentId: 3
+  },
+  {
+    id: 2,
+    name: "towel",
+    productId: 7,
+    parentId: 3
   },
   {
     id: 3,
-    name: "ACC",
-    productId: 3,
-  },
-];
+    name: "fins",
+    productId: 8,
+    parentId: 3
+  }
+]
 
 export default function CategoryBox() {
   return (
     <>
       <ul className="hidden gap-28 tablet:flex">
         <li className="group text-3xl font-bold">
-          <a href="/productlist" className="flex justify-center">
-            WOMAN
-          </a>
-          <img
-            className="invisible pr-6 group-hover:visible group-focus:visible pl-5"
-            src="/public/images/productlist/underline-menu.png"
-          />
-          <div className="absolute mt-2 flex h-[142px] items-center gap-5 rounded-xl bg-white px-4 py-3 opacity-0 shadow-lg group-hover:opacity-100">
-            <a href="/productlist/onepiece">
-              <img
-                src="/images/home/icon-onepiece.png"
-                alt="원피스"
-                className="rounded-xl hover:bg-gray-100"
-              />
-              <p className="pt-2 text-center text-xs font-normal">one-piece</p>
-            </a>
-            <div className="h-16 w-[1px] bg-gray-200"></div>
-            <a href="/productlist/fullbody">
-              <img
-                src="/images/home/icon-fullbody.png"
-                alt="반전신"
-                className="rounded-xl hover:bg-gray-100"
-              />
-              <p className="pt-2 text-center text-xs font-normal">full-body</p>
-            </a>
-          </div>
+          <CategoryList name="WOMAN"/>
+          <CategoryUnderLine />
+          <CategoryHoberBox categories={womanCategory} />
         </li>
         <li className="group text-3xl font-bold">
-          <a href="/productlist" className="flex justify-center">MAN</a>
-          <img
-            className="invisible pr-6 group-hover:visible group-focus:visible pl-5"
-            src="/public/images/productlist/underline-menu.png"
-          />
-          <div className="absolute mt-2 flex h-[142px] items-center gap-5 rounded-xl bg-white px-4 py-3 opacity-0 shadow-lg group-hover:opacity-100">
-            <a href="/productlist/onepiece">
-              <img
-                src="/images/home/icon-midlength.png"
-                alt="원피스"
-                className="rounded-xl hover:bg-gray-100"
-              />
-              <p className="pt-2 text-center text-xs font-normal">mid-length</p>
-            </a>
-            <div className="h-16 w-[1px] bg-gray-200"></div>
-            <a href="/productlist/fullbody">
-              <img
-                src="/images/home/icon-squarecut.png"
-                alt="반전신"
-                className="rounded-xl hover:bg-gray-100"
-              />
-              <p className="pt-2 text-center text-xs font-normal">square-cut</p>
-            </a>
-          </div>
+          <CategoryList name="MAN"/>
+          <CategoryUnderLine />
+          <CategoryHoberBox categories={manCategory} />
         </li>
         <li className="group text-3xl font-bold">
-          <a href="/productlist" className="flex justify-center">ACC</a>
-          <img
-            className="invisible pr-6 group-hover:visible group-focus:visible pl-5"
-            src="/public/images/productlist/underline-menu.png"
-          />
-          <div className="absolute mt-2 flex h-[142px] items-center gap-5 rounded-xl bg-white px-4 py-3 opacity-0 shadow-lg group-hover:opacity-100">
-            <a href="/productlist/onepiece">
-              <img
-                src="/images/home/icon-bag.png"
-                alt="원피스"
-                className="rounded-xl hover:bg-gray-100"
-              />
-              <p className="pt-2 text-center text-xs font-normal">bag</p>
-            </a>
-            <div className="h-16 w-[1px] bg-gray-200"></div>
-            <a href="/productlist/fullbody">
-              <img
-                src="/images/home/icon-towel.png"
-                alt="반전신"
-                className="rounded-xl hover:bg-gray-100"
-              />
-              <p className="pt-2 text-center text-xs font-normal">towel</p>
-            </a>
-            <div className="h-16 w-[1px] bg-gray-200"></div>
-            <a href="/productlist/fullbody">
-              <img
-                src="/images/home/icon-fin.png"
-                alt="반전신"
-                className="rounded-xl hover:bg-gray-100"
-              />
-              <p className="pt-2 text-center text-xs font-normal">fins</p>
-            </a>
-          </div>
+          <CategoryList name="ACC" />
+          <CategoryUnderLine />
+          <CategoryHoberBox categories={accCategory} />
         </li>
       </ul>
     </>
