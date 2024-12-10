@@ -1,14 +1,14 @@
 import Autoplay from "embla-carousel-autoplay";
 import * as React from "react";
 
-import { Card, CardContent } from "@/components/ui/card-main";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel-main";
+} from "@/components/ui/carousel";
 import { Product } from "@/types/products";
 
 const bestpicks: Product[] = [
