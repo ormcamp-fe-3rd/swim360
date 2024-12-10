@@ -6,8 +6,8 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
+  CarouselNextCustomBlack,
+  CarouselPreviousCustomBlack,
 } from "@/components/ui/carousel";
 
 const banners = [
@@ -43,15 +43,13 @@ export function CarouselBanner() {
       plugins={[plugin.current]}
       className="relative my-[86px] h-fit w-full desktop:h-[705px] desktop:w-[1440px]"
       onClick={plugin.current.stop}
-      // onMouseEnter={plugin.current.stop}
-      // onMouseLeave={plugin.current.reset}
     >
       <CarouselContent>
         {banners.map((banner) => (
           <CarouselItem key={banner.id} className="basis-1/2">
             <div className="">
-              <Card>
-                <CardContent className="flex items-center justify-center">
+              <Card className="rounded-none border-none shadow-none">
+                <CardContent className="flex items-center justify-center p-5">
                   <img className="object-contain" src={banner.img} alt="" />
                 </CardContent>
               </Card>
@@ -60,8 +58,8 @@ export function CarouselBanner() {
         ))}
       </CarouselContent>
       <div className="absolute top-1/2 flex w-full items-center justify-between">
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselPreviousCustomBlack />
+        <CarouselNextCustomBlack />
       </div>
     </Carousel>
   );

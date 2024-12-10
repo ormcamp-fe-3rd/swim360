@@ -54,7 +54,7 @@ export function CarouselBestPick() {
         {bestpicks.map((product) => (
           <CarouselItem key={product.id}>
             <div>
-              <Card>
+              <Card className="rounded-none border-none shadow-none">
                 <CardContent className="h-full w-full">
                   <img
                     className="h-full w-full object-contain"
