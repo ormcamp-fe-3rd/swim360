@@ -1,14 +1,14 @@
 import Autoplay from "embla-carousel-autoplay";
 import * as React from "react";
 
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card-main";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel";
+} from "@/components/ui/carousel-main";
 
 const banners = [
   {
@@ -41,7 +41,7 @@ export function CarouselBanner() {
     <Carousel
       opts={{ align: "start", loop: true }}
       plugins={[plugin.current]}
-      className="relative my-[86px] h-fit desktop:h-[705px] w-full desktop:w-[1440px]"
+      className="relative my-[86px] h-fit w-full desktop:h-[705px] desktop:w-[1440px]"
       onClick={plugin.current.stop}
       // onMouseEnter={plugin.current.stop}
       // onMouseLeave={plugin.current.reset}
@@ -59,7 +59,7 @@ export function CarouselBanner() {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <div className="absolute top-1/2 flex items-center justify-between w-full">
+      <div className="absolute top-1/2 flex w-full items-center justify-between">
         <CarouselPrevious />
         <CarouselNext />
       </div>
