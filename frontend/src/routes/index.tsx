@@ -6,6 +6,7 @@ import Product from "./pages/Product";
 import Home from "./pages/HomPage";
 
 import ProductList from "./pages/ProductList";
+import MyPage from "./pages/MyPage";
 
 
 const router = createBrowserRouter([
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
     path: "/joinpage",
     element: <JoinPage />,
   },
+  { path: "/mypage", element: <MyPage /> },
 ]);
 
 export default function Router() {
