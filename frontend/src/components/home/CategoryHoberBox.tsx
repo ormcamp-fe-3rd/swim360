@@ -8,7 +8,7 @@ interface Props{
 
 export default function CategoryHoberBox({ categories }: Props) {
   return (
-    <div className="absolute mt-2 flex h-[142px] items-center gap-5 rounded-xl bg-white px-4 py-3 opacity-0 shadow-lg group-hover:opacity-100">
+    <div className="absolute mt-2 h-[142px] items-center gap-5 rounded-xl bg-white px-4 py-3 hidden shadow-lg group-hover:flex">
       {categories.map((category) => (
         <CategoryHoberList key={category.id}
           name={category.name}
