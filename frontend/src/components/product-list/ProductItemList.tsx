@@ -4,6 +4,7 @@ function ProductItemList() {
   const productDummyArray = [
     {
       id: 0,
+      brandName: "barrel",
       name: "여성 수영복 1",
       imgUrl: "/public/images/productlist/sample-1.png",
       price: 10000,
@@ -12,6 +13,7 @@ function ProductItemList() {
     },
     {
       id: 1,
+      brandName: "barrel",
       name: "여성 수영복 1",
       imgUrl: "/public/images/productlist/sample-1.png",
       price: 10000,
@@ -20,6 +22,7 @@ function ProductItemList() {
     },
     {
       id: 2,
+      brandName: "barrel",
       name: "여성 수영복 1",
       imgUrl: "/public/images/productlist/sample-1.png",
       price: 10000,
@@ -28,6 +31,7 @@ function ProductItemList() {
     },
     {
       id: 3,
+      brandName: "barrel",
       name: "여성 수영복 1",
       imgUrl: "/public/images/productlist/sample-1.png",
       price: 10000,
@@ -36,6 +40,7 @@ function ProductItemList() {
     },
     {
       id: 4,
+      brandName: "barrel",
       name: "여성 수영복 1",
       imgUrl: "/public/images/productlist/sample-1.png",
       price: 10000,
@@ -44,6 +49,7 @@ function ProductItemList() {
     },
     {
       id: 5,
+      brandName: "barrel",
       name: "여성 수영복 1",
       imgUrl: "/public/images/productlist/sample-1.png",
       price: 10000,
@@ -52,6 +58,7 @@ function ProductItemList() {
     },
     {
       id: 6,
+      brandName: "barrel",
       name: "여성 수영복 1",
       imgUrl: "/public/images/productlist/sample-1.png",
       price: 10000,
@@ -60,6 +67,7 @@ function ProductItemList() {
     },
     {
       id: 7,
+      brandName: "barrel",
       name: "여성 수영복 1",
       imgUrl: "/public/images/productlist/sample-1.png",
       price: 10000,

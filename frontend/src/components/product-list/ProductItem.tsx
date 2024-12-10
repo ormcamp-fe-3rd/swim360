@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 interface ProductItemProps {
   id: number;
+  brandName: string;
   name: string;
   price: number;
   discountedPrice: number;
@@ -11,6 +12,7 @@ interface ProductItemProps {
 
 function ProductItem({
   id,
+  brandName,
   name,
   price,
   discountedPrice,
@@ -26,7 +28,7 @@ function ProductItem({
           alt={name}
         />
         <div>
-          <div className="mb-3 py-[6.5px] font-semibold">브랜드명</div>
+          <div className="mb-3 py-[6.5px] font-semibold">{brandName}</div>
           <div className="mb-3 text-[14px]">{name}</div>
           <div className="flex justify-between">
             <div className="flex items-center">
