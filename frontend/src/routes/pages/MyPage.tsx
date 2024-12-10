@@ -20,7 +20,7 @@ function MyPage() {
       {
         id: 2020301023102,
         createdAt: "2024-12-10T10:30:15.000Z",
-        price: 50000,
+        price: 70000,
         orderItems: [
           {
             id: 0,
@@ -82,11 +82,11 @@ function MyPage() {
       {
         id: 20203,
         createdAt: "2024-12-09T10:30:15.000Z",
-        price: 50000,
+        price: 80000,
         orderItems: [
           {
             id: 0,
-            name: "best 강습용 여자 수영복2",
+            name: "best 강습용 여자 수영복3",
             size: "M",
             imageUrl: "/public/images/mypage/sample-1.png",
             quantity: 2,
@@ -94,7 +94,7 @@ function MyPage() {
           },
           {
             id: 1,
-            name: "best 강습용 남자 수영복2",
+            name: "best 강습용 남자 수영복3",
             size: "XL",
             imageUrl: "/public/images/mypage/sample-3.png",
             quantity: 1,
@@ -102,7 +102,7 @@ function MyPage() {
           },
           {
             id: 2,
-            name: "best 강습용 어린이 수영복2",
+            name: "best 강습용 어린이 수영복3",
             size: "S",
             imageUrl: "/public/images/mypage/sample-2.png",
             quantity: 1,
@@ -114,8 +114,8 @@ function MyPage() {
   };
 
   return (
-    <div className="px-[82px]">
-      <div className="mb-[69px] grid grid-cols-2 gap-[41px]">
+    <div className="px-7 tablet:px-[82px]">
+      <div className="mb-[41px] grid grid-cols-1 gap-[41px] tablet:mb-[69px] tablet:grid-cols-2">
         <UserInfoPreview name={userDummyData.user.name} />
         <UserPointAndReviewPreview reviewCount={userDummyData.reviewCount} />
       </div>

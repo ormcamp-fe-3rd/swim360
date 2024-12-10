@@ -23,13 +23,15 @@ interface RecentOrderPreviewProps {
 function RecentOrderPreview({ orders }: RecentOrderPreviewProps) {
   return (
     <div className="w-full">
-      <div className="flex w-full items-center justify-start py-[14.8px]">
-        <div className="mr-[10.36px] text-2xl font-semibold">
+      <div className="flex w-full items-center justify-start border-b border-black py-[14.8px]">
+        <div className="mr-[10.36px] text-xl font-semibold tablet:text-2xl">
           최근 주문 내역
         </div>
-        <div className="text-[17px]">6개월 이내 주문만 조회 가능합니다.</div>
+        <div className="text-sm tablet:text-[17px]">
+          6개월 이내 주문만 조회 가능합니다.
+        </div>
       </div>
-      <div className="grid w-full grid-flow-col grid-cols-[0.3fr_1fr_0.3fr_0.3fr] border-y border-black text-center">
+      <div className="hidden w-full grid-flow-col grid-cols-[0.5fr_1fr_0.3fr_0.3fr] border-b border-black text-center tablet:grid tablet:grid-cols-[0.3fr_1fr_0.3fr_0.3fr]">
         <div>주문 정보</div>
         <div>상품 정보</div>
         <div>수량</div>
@@ -40,10 +42,10 @@ function RecentOrderPreview({ orders }: RecentOrderPreviewProps) {
         {orders.map((order) => (
           <div
             key={order.id}
-            className="grid w-full grid-flow-col grid-cols-[0.3fr_1fr_0.3fr_0.3fr] border-b border-gray-400 last:border-none"
+            className="grid w-full grid-flow-col grid-cols-1 border-b border-gray-400 last:border-none tablet:grid-cols-[0.3fr_1fr_0.3fr_0.3fr]"
           >
             <Link
-              className="flex flex-col items-center justify-center hover:underline"
+              className="hidden flex-col items-center justify-center hover:underline tablet:flex"
               to={`/order-detail/${order.id}`}
             >
               <div className="text-center">
@@ -55,33 +57,53 @@ function RecentOrderPreview({ orders }: RecentOrderPreviewProps) {
               </div>
             </Link>
 
-            <div className="flex flex-col bg-[#fafafa] pb-3">
-              {order.orderItems.map((orderItem) => (
-                <div
-                  key={orderItem.id + "name"}
-                  className="grid grid-cols-3 items-center gap-4"
-                >
-                  <div className="col-span-3 flex">
-                    <div className="ml-3 max-h-[209px] max-w-[153px] pt-3">
-                      <img
-                        className="h-full w-full object-cover"
-                        src={orderItem.imageUrl}
-                        alt={orderItem.name}
-                      />
-                    </div>
-                    <div className="m-[13px] flex flex-col justify-center">
-                      <div className="text-md mb-3 font-semibold">
-                        {orderItem.name}
+            <div>
+              <Link to={`/order-detail/${order.id}`}>
+                <div className="flex w-full items-center justify-between bg-[#fafafa] p-4 tablet:hidden">
+                  <div>
+                    {new Date(order.createdAt).toLocaleDateString()} 주문
+                  </div>
+                  <div className="flex items-center">
+                    <div className="ml-4">자세히 보기</div>
+                  </div>
+                </div>
+              </Link>
+              <div className="flex flex-col pb-3 tablet:bg-[#fafafa]">
+                {order.orderItems.map((orderItem) => (
+                  <div
+                    key={orderItem.id + "name"}
+                    className="grid grid-cols-3 items-center gap-4"
+                  >
+                    <div className="col-span-3 flex">
+                      <div className="ml-3 max-h-[209px] max-w-[153px] pt-3">
+                        <img
+                          className="h-full w-full object-cover"
+                          src={orderItem.imageUrl}
+                          alt={orderItem.name}
+                        />
                       </div>
-                      <div className="text-[#8c8b8b]">
-                        사이즈: {orderItem.size}
+                      <div className="m-[13px] flex flex-col justify-center">
+                        <div className="text-md mb-3 font-semibold">
+                          {orderItem.name}
+                        </div>
+                        <div className="flex text-[#8c8b8b]">
+                          <div>사이즈: {orderItem.size}</div>
+                          <div className="block tablet:hidden">
+                            , {orderItem.quantity}개
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
+                ))}
+                <div className="flex justify-end p-2 text-lg font-semibold tablet:hidden">
+                  결제 금액: 총 {order.price}원
                 </div>
-              ))}
+              </div>
             </div>
-            <div className={`grid grid-row-${order.orderItems.length}`}>
+            <div
+              className={`hidden tablet:grid grid-row-${order.orderItems.length}`}
+            >
               {order.orderItems.map((orderItem) => (
                 <div
                   key={orderItem.id + "quantity"}
@@ -91,8 +113,8 @@ function RecentOrderPreview({ orders }: RecentOrderPreviewProps) {
                 </div>
               ))}
             </div>
-            <div className="flex flex-col items-center justify-center bg-[#fafafa]">
-              <div className="text-xl font-semibold"> 총 {order.price}원</div>
+            <div className="hidden flex-col items-center justify-center bg-[#fafafa] tablet:flex">
+              <div className="text-lg font-semibold"> 총 {order.price}원</div>
             </div>
           </div>
         ))}
