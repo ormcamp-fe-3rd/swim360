@@ -1,13 +1,13 @@
 import Autoplay from "embla-carousel-autoplay";
 import * as React from "react";
 
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card-main";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNextCustomBlack,
-  CarouselPreviousCustomBlack,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel";
 
 const banners = [
@@ -57,9 +57,9 @@ export function CarouselBanner() {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <div className="absolute top-1/2 flex w-full items-center justify-between">
-        <CarouselPreviousCustomBlack />
-        <CarouselNextCustomBlack />
+      <div className="absolute top-1/2 flex items-center justify-between w-full">
+        <CarouselPrevious />
+        <CarouselNext />
       </div>
     </Carousel>
   );
