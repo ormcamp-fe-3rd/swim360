@@ -15,7 +15,7 @@ const startServer = async () => {
   app.use(require("./routes"));
 
   app.listen(config.expressPort, () => {
-    console.log(`server listening on port${config.expressPort}`);
+    console.log(`server listening on port ${config.expressPort}`);
   });
 };
 
