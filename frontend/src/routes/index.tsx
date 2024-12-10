@@ -1,5 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import PointAndReviewList from "@/components/mypage/PointAndReviewList";
+
 import Home from "./pages/HomPage";
 import JoinPage from "./pages/JoinPage";
 import Login from "./pages/LoginPage";
@@ -35,6 +37,10 @@ const router = createBrowserRouter([
   },
   { path: "/mypage/edit",
     element: <MyPageEdit />
+  },
+  {
+    path: "/mypage/details",
+    element: <PointAndReviewList />
   }
 ]);
 
