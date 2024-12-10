@@ -8,11 +8,11 @@ interface Props{
 
 export default function CategoryHoberBox({ categories }: Props) {
   return (
-    <div className="absolute mt-2 h-[142px] items-center gap-5 rounded-xl bg-white px-4 py-3 hidden shadow-lg group-hover:flex">
+    <div className="absolute h-[142px] items-center gap-5 rounded-xl bg-white px-4 py-3 invisible flex shadow-lg  group-hover:visible">
       {categories.map((category) => (
-        <CategoryHoberList key={category.id}
+        <CategoryHoberList key={category.productId}
           name={category.name}
-          url={"/" + category.name}
+          url={"/productlist"}
           alt={category.name}
           img={"/images/home/icon-" + category.name + ".png"}
         />

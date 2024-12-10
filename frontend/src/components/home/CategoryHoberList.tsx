@@ -3,7 +3,7 @@ interface Props{
   name: string,
   img: string,
   alt: string,
-  url: string
+  url: string,
 }
 
 

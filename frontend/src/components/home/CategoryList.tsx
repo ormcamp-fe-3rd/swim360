@@ -4,8 +4,8 @@ interface Props{
 
 export default function CategoryList({ name }: Props) {
   return (
-    <a href="/productlist" className="flex justify-center">
+    <div className="flex justify-center">
       {name}
-    </a>
+    </div>
   );
 }

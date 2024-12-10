@@ -1,8 +1,8 @@
-export default function CategoryUnderLine(){
+export default function CategoryUnderLine( {isVisible} : {isVisible : boolean}){
   return (
     <img
-      className="invisible pl-5 pr-6 group-hover:visible group-focus:visible"
-      src="/public/images/productlist/underline-menu.png"
+      className={`pl-5 pr-6 group-hover:visible group-focus:visible ${isVisible ? "visible": "invisible"}`}
+      src="images/productlist/underline-menu.png"
     />
   );
 }
