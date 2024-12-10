@@ -20,7 +20,7 @@ function ProductItem({
   return (
     <Link to={`/product/${id}`}>
       <div className="my-[10px]">
-        <img className="mb-2 h-[400px] object-cover" src={imgUrl} alt={name} />
+        <img className="mb-2 max-h-[400px] object-cover h-full w-full" src={imgUrl} alt={name} />
         <div>
           <div className="mb-3 py-[6.5px] font-semibold">브랜드명</div>
           <div className="mb-3 text-[14px]">{name}</div>
