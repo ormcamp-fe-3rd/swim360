@@ -1,4 +1,4 @@
-import ConfirmButton from "@/components/common/ConfirmButton.tsx";
+import PrimaryButton from "@/components/common/PrimaryButton";
 
 function Login() {
     return <div className="w-[600px] mx-auto">
@@ -11,7 +11,8 @@ function Login() {
             <input type="checkbox" name="" id="" />
             <span className="ml-2">아이디 저장</span>
         </label>
-        <ConfirmButton text="로그인" width="full" font="my-10"/>
+        {/* <ConfirmButton text="로그인" width="full" font="my-10"/> */}
+        <PrimaryButton>로그인</PrimaryButton>
         <ul className="text-center">
             <li className="inline-block">아이디 찾기</li>
             <li className="inline-block mx-7">비밀번호 찾기</li>

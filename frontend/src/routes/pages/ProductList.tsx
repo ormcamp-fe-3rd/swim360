@@ -1,6 +1,6 @@
 import ProductItemList from "@/components/product-list/ProductItemList";
-import SortSelect from "@/components/product-list/SortSelect";
 import SideBar from "@/components/product-list/Sidebar";
+import SortSelect from "@/components/product-list/SortSelect";
 
 function ProductList() {
   return (

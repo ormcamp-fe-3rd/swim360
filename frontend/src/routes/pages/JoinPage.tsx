@@ -1,4 +1,4 @@
-import ConfirmButton from "@/components/common/ConfirmButton.tsx";
+import PrimaryButton from "@/components/common/PrimaryButton";
 
 function JoinPage() {
   return <div className="w-[836px] mx-auto">
@@ -33,7 +33,8 @@ function JoinPage() {
     </form>
     <div className="gap-2.5">
             <button className="w-[418px] border text-black bg-white">취소</button>
-            <ConfirmButton text="확인" width="418" font="my-10"/>
+            {/* <ConfirmButton text="확인" width="418" font="my-10"/> */}
+            <PrimaryButton>확인</PrimaryButton>
         </div>
   
   </div>;

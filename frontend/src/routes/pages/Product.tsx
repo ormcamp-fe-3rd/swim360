@@ -1,9 +1,9 @@
-import Photos from "@/components/product/Photos";
 import DetailsSection from "@/components/product/Details";
 import DetailsTab from "@/components/product/DetailsTab";
-import ReviewsTab from "@/components/product/reviewsTab";
-import QnasTab from "@/components/product/QnasTab";
 import ExchangeTab from "@/components/product/exchangeTab";
+import Photos from "@/components/product/Photos";
+import QnasTab from "@/components/product/QnasTab";
+import ReviewsTab from "@/components/product/reviewsTab";
 
 function Product() {
   return (
