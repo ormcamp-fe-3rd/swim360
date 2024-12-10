@@ -1,14 +1,14 @@
 import Autoplay from "embla-carousel-autoplay";
 import * as React from "react";
 
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card-main";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel";
+} from "@/components/ui/carousel-main";
 import { Product } from "@/types/products";
 
 const bestpicks: Product[] = [
@@ -47,7 +47,7 @@ export function CarouselBestPick() {
     <Carousel
       opts={{ align: "start", loop: true }}
       plugins={[plugin.current]}
-      className="relative w-2/3 h-full"
+      className="relative h-full w-2/3"
       onClick={plugin.current.stop}
     >
       <CarouselContent>
@@ -56,7 +56,11 @@ export function CarouselBestPick() {
             <div>
               <Card>
                 <CardContent className="h-full w-full">
-                  <img className="h-full w-full object-contain" src={product.imageUrl} alt="" />
+                  <img
+                    className="h-full w-full object-contain"
+                    src={product.imageUrl}
+                    alt=""
+                  />
                 </CardContent>
               </Card>
             </div>
