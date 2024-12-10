@@ -14,14 +14,17 @@ function SideBar() {
   ];
 
   return (
-    <ul>
+    <ul className="mb-8 mr-2 mt-10 flex justify-center gap-3 tablet:flex-col tablet:justify-start">
       {sideMenuArray.map((sideMenu) => (
-        <li key={sideMenu.name} className="px-[33px] py-[10px]">
-          <button className="peer text-nowrap text-[26px] font-medium first:cursor-pointer hover:font-semibold focus:font-semibold">
+        <li
+          key={sideMenu.name}
+          className="flex max-w-fit flex-col justify-center"
+        >
+          <button className="peer flex justify-center text-nowrap text-[26px] font-medium first:cursor-pointer hover:font-semibold focus:font-semibold">
             {sideMenu.name}
           </button>
           <img
-            className="invisible pr-6 peer-hover:visible peer-focus:visible"
+            className="invisible peer-hover:visible peer-focus:visible"
             src="/public/images/productlist/underline-menu.png"
           />
         </li>

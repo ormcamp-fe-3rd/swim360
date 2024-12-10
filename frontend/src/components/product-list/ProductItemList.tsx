@@ -77,7 +77,7 @@ function ProductItemList() {
   ];
 
   return (
-    <div className="grid w-full grid-cols-1 gap-[19px] tablet:grid-cols-3 desktop:grid-cols-4">
+    <div className="grid w-full grid-cols-1 gap-[19px] tablet:grid-cols-4">
       {productDummyArray.map((product, i) => (
         <ProductItem key={product.id} {...product} /> // 데이터 불러오면 [product.id로]
       ))}
