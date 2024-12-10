@@ -7,6 +7,7 @@ import FindPwdPage from "./pages/FindPwdPage";
 import Home from "./pages/Home";
 import JoinPage from "./pages/JoinPage";
 import LoginPage from "./pages/LoginPage";
+import PayMentOrderPage from "./pages/PayMentOrderPage";
 import ProductList from "./pages/ProductList";
 
 const router = createBrowserRouter([
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
   {
     path: "/findpwdpage",
     element: <FindPwdPage />,
+  },
+  {
+    path: "/paymentorderpage",
+    element: <PayMentOrderPage />,
   },
 ]);
 
