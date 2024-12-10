@@ -29,18 +29,18 @@ function RecentOrderPreview({ orders }: RecentOrderPreviewProps) {
         </div>
         <div className="text-[17px]">6개월 이내 주문만 조회 가능합니다.</div>
       </div>
-      <div className="grid w-full grid-flow-col grid-cols-[0.5fr_1fr_1fr_0.5fr] gap-2 border-y border-black text-center">
+      <div className="grid w-full grid-flow-col grid-cols-[0.3fr_1fr_0.3fr_0.3fr] border-y border-black text-center">
         <div>주문 정보</div>
         <div>상품 정보</div>
         <div>수량</div>
         <div>가격</div>
       </div>
 
-      <div className="h-[759px] overflow-y-scroll">
+      <div className="max-h-[759px] overflow-y-scroll border-b border-black [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 [&::-webkit-scrollbar-track]:bg-gray-100 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 [&::-webkit-scrollbar]:w-2">
         {orders.map((order) => (
           <div
             key={order.id}
-            className="grid w-full grid-flow-col grid-cols-[0.5fr_1fr_1fr_0.5fr] border-b border-black pt-3"
+            className="grid w-full grid-flow-col grid-cols-[0.3fr_1fr_0.3fr_0.3fr] border-b border-gray-400 last:border-none"
           >
             <Link
               className="flex flex-col items-center justify-center hover:underline"
@@ -55,14 +55,14 @@ function RecentOrderPreview({ orders }: RecentOrderPreviewProps) {
               </div>
             </Link>
 
-            <div className="flex flex-col">
+            <div className="flex flex-col bg-[#fafafa] pb-3">
               {order.orderItems.map((orderItem) => (
                 <div
                   key={orderItem.id + "name"}
                   className="grid grid-cols-3 items-center gap-4"
                 >
                   <div className="col-span-3 flex">
-                    <div className="h-[209px] w-[153px] pb-3">
+                    <div className="ml-3 max-h-[209px] max-w-[153px] pt-3">
                       <img
                         className="h-full w-full object-cover"
                         src={orderItem.imageUrl}
@@ -91,8 +91,8 @@ function RecentOrderPreview({ orders }: RecentOrderPreviewProps) {
                 </div>
               ))}
             </div>
-            <div className="flex flex-col items-center justify-center">
-              <div className="text-xl"> 총 {order.price}원</div>
+            <div className="flex flex-col items-center justify-center bg-[#fafafa]">
+              <div className="text-xl font-semibold"> 총 {order.price}원</div>
             </div>
           </div>
         ))}
