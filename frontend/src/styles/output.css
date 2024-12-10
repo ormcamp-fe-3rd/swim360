@@ -623,6 +623,9 @@ video {
   width: 2.25rem;
 }
 
+.w-full {
+  width: 100%;
+  
 .w-\[1064px\] {
   width: 1064px;
 }
@@ -642,6 +645,7 @@ video {
 
 .flex-col {
   flex-direction: column;
+
 }
 
 .items-center {
@@ -797,6 +801,15 @@ video {
   line-height: 1rem;
 }
 
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+
 .font-bold {
   font-weight: 700;
 }
@@ -823,6 +836,11 @@ video {
 .text-gray-900 {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity, 1));
+}
+
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity, 1));
 }
 
 .underline-offset-4 {
