@@ -31,7 +31,7 @@ function RecentOrderPreview({ orders }: RecentOrderPreviewProps) {
           6개월 이내 주문만 조회 가능합니다.
         </div>
       </div>
-      <div className="hidden w-full grid-flow-col grid-cols-[0.5fr_1fr_0.3fr_0.3fr] border-b border-black text-center tablet:grid tablet:grid-cols-[0.3fr_1fr_0.3fr_0.3fr]">
+      <div className="hidden w-full grid-flow-col grid-cols-[0.5fr_1fr_0.3fr_0.3fr] border-b border-black p-4 text-center tablet:grid tablet:grid-cols-[0.3fr_1fr_0.3fr_0.3fr]">
         <div>주문 정보</div>
         <div>상품 정보</div>
         <div>수량</div>
