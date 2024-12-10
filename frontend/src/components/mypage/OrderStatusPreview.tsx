@@ -27,7 +27,7 @@ function OrderStatusPreview({ deliveryStateCounts }: OrderStatusPreviewProps) {
   ];
 
   return (
-    <Link to="/order">
+    <Link to="/orderlist">
       <div className="mb-[69px] flex h-[146px] border-[1px] border-[#000000]">
         {deliveryStatusArray.map((dStatus, i) => (
           <div

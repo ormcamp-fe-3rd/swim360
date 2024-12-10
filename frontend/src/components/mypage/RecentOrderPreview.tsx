@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 interface OrderItem {
   id: number;
   name: string;
@@ -40,13 +42,19 @@ function RecentOrderPreview({ orders }: RecentOrderPreviewProps) {
             key={order.id}
             className="grid w-full grid-flow-col grid-cols-[0.5fr_1fr_1fr_0.5fr] border-b border-black pt-3"
           >
-            <div className="flex flex-col items-center justify-center hover:underline">
-              <div>주문번호</div>
-              <div>{order.id}</div>
-              <div className="text-[#8c8b8b]">
-                {new Date(order.createdAt).toLocaleDateString()}
+            <Link
+              className="flex flex-col items-center justify-center hover:underline"
+              to={`/order-detail/${order.id}`}
+            >
+              <div className="text-center">
+                <div>주문번호</div>
+                <div>{order.id}</div>
+                <div className="text-[#8c8b8b]">
+                  {new Date(order.createdAt).toLocaleDateString()}
+                </div>
               </div>
-            </div>
+            </Link>
+
             <div className="flex flex-col">
               {order.orderItems.map((orderItem) => (
                 <div
@@ -84,10 +92,7 @@ function RecentOrderPreview({ orders }: RecentOrderPreviewProps) {
               ))}
             </div>
             <div className="flex flex-col items-center justify-center">
-              <div className="mb-3 text-[18px] text-[#8c8b8b] line-through">
-                {order.price}원
-              </div>
-              <div className="text-xl"> {order.price}원</div>
+              <div className="text-xl"> 총 {order.price}원</div>
             </div>
           </div>
         ))}
