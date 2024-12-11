@@ -47,16 +47,20 @@ export function CarouselBestPick() {
     <Carousel
       opts={{ align: "start", loop: true }}
       plugins={[plugin.current]}
-      className="relative w-2/3 h-full"
+      className="relative h-full tablet:w-2/3 w-full"
       onClick={plugin.current.stop}
     >
       <CarouselContent>
         {bestpicks.map((product) => (
           <CarouselItem key={product.id}>
             <div>
-              <Card>
+              <Card className="rounded-none border-none shadow-none">
                 <CardContent className="h-full w-full">
-                  <img className="h-full w-full object-contain" src={product.imageUrl} alt="" />
+                  <img
+                    className="h-full w-full object-contain"
+                    src={product.imageUrl}
+                    alt=""
+                  />
                 </CardContent>
               </Card>
             </div>

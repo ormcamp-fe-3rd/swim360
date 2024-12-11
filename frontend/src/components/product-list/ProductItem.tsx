@@ -21,6 +21,7 @@ function ProductItem({
 }: ProductItemProps) {
   return (
     <Link to={`/product/${id}`}>
+
       <div className="grid h-full w-full grid-rows-[2fr_0.5fr]">
         <div className="h-full w-full overflow-hidden">
           <img className="h-full w-full object-cover" src={imgUrl} alt={name} />

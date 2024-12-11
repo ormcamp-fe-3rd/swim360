@@ -1,9 +1,11 @@
-import { Category } from "@/types/categories";
-
 interface Props{
-  category: Category
+  name: string
 }
 
-export default function CategoryList({ category }: Props) {
-  return <li className="text-3xl font-bold">{category.name}</li>;
+export default function CategoryList({ name }: Props) {
+  return (
+    <div className="flex justify-center">
+      {name}
+    </div>
+  );
 }

@@ -24,6 +24,7 @@ const router = createBrowserRouter([
   { path: "/mypage", element: <MyPage /> },
   { path: "/changepwdcompletionpage", element: <ChangePwdCompletionPage /> },
   { path: "/paymentcompletionpage", element: <PayMentCompletionPage /> },
+
 ]);
 
 export default function Router() {
