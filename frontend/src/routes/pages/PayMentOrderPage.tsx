@@ -1,4 +1,4 @@
-import ConfirmButton from "@/components/common/ConfirmButton";
+import PrimaryButton from "@/components/common/PrimaryButton";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -63,7 +63,9 @@ function PayMentOrderPage() {
                   id="address"
                   className="mr-1 w-[350px] border-none bg-slate-100 p-2.5"
                 />
-                <ConfirmButton text={"주소검색"} width={"100px"} />
+                <div className="w-[100px]">
+                  <PrimaryButton>주소검색</PrimaryButton>
+                </div>
               </div>
               <input
                 type="text"
@@ -127,7 +129,9 @@ function PayMentOrderPage() {
                   type="text"
                   className="mr-5 w-[450px] bg-slate-100 p-2.5"
                 />
-                <ConfirmButton text={"전액사용"} width={"129"} />
+                <div className="w-[129px]">
+                  <PrimaryButton>전액사용</PrimaryButton>
+                </div>
               </div>
             </div>
           </div>
@@ -193,7 +197,7 @@ function PayMentOrderPage() {
               <span className="inline-block w-[20px] pl-1">원</span>
             </div>
           </div>
-          <ConfirmButton text={"주소검색"} width={"full"} />
+          <PrimaryButton>주소검색</PrimaryButton>
         </div>
       </div>
     </div>
