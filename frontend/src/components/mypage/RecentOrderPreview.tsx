@@ -44,10 +44,7 @@ function RecentOrderPreview({ orders }: RecentOrderPreviewProps) {
             key={order.id}
             className="grid w-full grid-flow-col grid-cols-1 border-b border-gray-400 last:border-none tablet:grid-cols-[0.3fr_1fr_0.3fr_0.3fr]"
           >
-            <Link
-              className="hidden flex-col items-center justify-center hover:underline tablet:flex"
-              to={`/order-detail/${order.id}`}
-            >
+            <div className="hidden cursor-pointer flex-col items-center justify-center hover:underline tablet:flex">
               <div className="text-center">
                 <div>주문번호</div>
                 <div>{order.id}</div>
@@ -55,20 +52,16 @@ function RecentOrderPreview({ orders }: RecentOrderPreviewProps) {
                   {new Date(order.createdAt).toLocaleDateString()}
                 </div>
               </div>
-            </Link>
+            </div>
 
             <div>
-              <Link to={`/order-detail/${order.id}`}>
-                <div className="flex w-full items-center justify-between bg-[#fafafa] p-4 tablet:hidden">
-                  <div>
-                    {new Date(order.createdAt).toLocaleDateString()} 주문
-                  </div>
-                  <div className="flex items-center">
-                    <div className="ml-4">자세히 보기</div>
-                  </div>
+              <div className="flex w-full cursor-pointer items-center justify-between bg-[#fafafa] p-4 tablet:hidden">
+                <div>{new Date(order.createdAt).toLocaleDateString()} 주문</div>
+                <div className="flex items-center">
+                  <div className="ml-4">자세히 보기</div>
                 </div>
-              </Link>
-              <div className="flex flex-col pb-3 tablet:bg-[#fafafa]">
+              </div>
+              <div className="flex flex-col pb-3 tablet:bg-[#f0efef]">
                 {order.orderItems.map((orderItem) => (
                   <div
                     key={orderItem.id + "name"}
@@ -113,7 +106,7 @@ function RecentOrderPreview({ orders }: RecentOrderPreviewProps) {
                 </div>
               ))}
             </div>
-            <div className="hidden flex-col items-center justify-center bg-[#fafafa] tablet:flex">
+            <div className="hidden flex-col items-center justify-center bg-[#f0efef] tablet:flex">
               <div className="text-lg font-semibold"> 총 {order.price}원</div>
             </div>
           </div>
