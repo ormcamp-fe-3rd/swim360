@@ -1,5 +1,5 @@
 import ReviewStar from "./ReviewsStar";
-import ReviewPopup from "./ReviewWriteModal";
+import ReviewWriteModal from "./ReviewWriteModal";
 import ReviewDetailModal from "./ReviewDetailModal";
 
 import { PaginationDemo } from "../common/Paginaion";
@@ -59,7 +59,7 @@ function ReviewsTab() {
         </div>
 
         <div className="hidden">
-          <ReviewPopup />
+          <ReviewWriteModal />
         </div>
 
         <div className="hidden">
