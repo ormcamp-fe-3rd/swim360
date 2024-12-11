@@ -8,7 +8,10 @@ import JoinCompletionPage from "./pages/JoinCompletionPage";
 import PayMentCompletionPage from "./pages/PayMentCompletionPage";
 import MyPage from "./pages/MyPage";
 import Product from "./pages/Product";
-import ProductList from "./pages/ProductList";
+import Home from "./pages/HomPage";
+import ProductListPage from "./pages/ProductListPage";
+import MyPage from "./pages/MyPage";
+
 
 const router = createBrowserRouter([
 
