@@ -1,14 +1,17 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import ChangePwdCompletionPage from "./pages/ChangePwdCompletionPage";
 import Home from "./pages/HomPage";
-import JoinCompletionPage from "./pages/JoinCompletionPage";
 import JoinPage from "./pages/JoinPage";
-import LoginPage from "./pages/LoginPage";
+import Login from "./pages/LoginPage";
+import JoinCompletionPage from "./pages/JoinCompletionPage";
+
 import MyPage from "./pages/MyPage";
 import Product from "./pages/Product";
 import ProductList from "./pages/ProductList";
 
 const router = createBrowserRouter([
+
   { path: "/", element: <Home /> },
   { path: "/productlist", element: <ProductList /> },
   { path: "/product", element: <Product /> },
@@ -16,6 +19,7 @@ const router = createBrowserRouter([
   { path: "/joinpage", element: <JoinPage /> },
   { path: "/joincompletionpage", element: <JoinCompletionPage /> },
   { path: "/mypage", element: <MyPage /> },
+  { path: "/changepwdcompletionpage", element: <ChangePwdCompletionPage /> },
 ]);
 
 export default function Router() {
