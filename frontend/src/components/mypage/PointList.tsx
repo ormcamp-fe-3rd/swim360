@@ -44,9 +44,9 @@ export default function PointList() {
         <div className="grid grid-cols-3 pb-4">
           <div></div>
           <div></div>
-          <div className="text-right pr-4">현재 포인트 300</div>
+          <div className="pr-4 text-right">현재 포인트 300</div>
         </div>
-        <Table>
+        <Table className="w-full table-auto md:table-fixed">
           <TableHeader>
             <TableRow className="bg-gray-50">
               <TableHead className="w-1/3 text-center text-xl font-semibold">
