@@ -19,7 +19,7 @@ function Qnas({ number, title, author }: QnaItem) {
         collapsible
         className="mx-auto flex h-auto w-full max-w-[1064px] items-center justify-between border-b-2"
       >
-        <AccordionItem>
+        <AccordionItem value="item-1">
           <AccordionTrigger className="mx-auto flex w-full justify-center">
             <p className="w-[74px] text-center">{number}</p>
             <p>{title}</p>
