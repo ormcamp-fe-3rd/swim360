@@ -1,12 +1,12 @@
 function Photos() {
   return (
-    <div className="w-[522px]">
+    <div className="h=auto w-full max-w-[522px]">
       <img
-        className="mb-4 h-[600px] w-[522px] overflow-hidden object-cover"
+        className="mb-4 h-[600px] w-full max-w-[522px] overflow-hidden object-cover"
         src="/public/images/product/swimsuit-front.jpg"
       ></img>
 
-      <div className="flex w-[520px] gap-5">
+      <div className="tablet:none flex w-full max-w-[522px] gap-5">
         <img
           className="h-[120px] w-[88px] overflow-hidden rounded object-cover"
           src="/public/images/product/swimsuit-front.jpg"

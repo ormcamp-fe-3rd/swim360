@@ -18,9 +18,9 @@ function Qnas({ number, title, author, answer }: QnaItem) {
       <Accordion type="single" collapsible className="w-[1064px]">
         <AccordionItem value="item-1">
           <AccordionTrigger className="">
-            <p className="w-full pl-7 text-start">{number}</p>
-            <p className="w-full text-center">{title}</p>
-            <p className="w-full pr-6 text-end">{author}</p>
+            <p className="w-[74px] pl-7 text-start">{number}</p>
+            <p className="flex-2 w-full">{title}</p>
+            <p className="mr-6 w-[74px] text-end">{author}</p>
           </AccordionTrigger>
           <AccordionContent className="text-center">
             <div className="flex h-auto items-center justify-center py-2">
@@ -122,26 +122,26 @@ function QnasTab() {
       <div className="mx-auto mb-8 mt-[140px] flex w-full max-w-[1064px]">
         <a
           href="#detailsTab"
-          className="flex h-[44px] w-[266px] justify-center border-b-2 border-[#CCCCCC] text-[24px] font-extralight"
+          className="flex h-[44px] w-[266px] flex-wrap items-center justify-center border-b-2 border-[#CCCCCC] text-sm font-extralight sm:text-[24px]"
         >
           상품상세정보
         </a>
         <a
           href="#reviewsTab"
-          className="flex h-[44px] w-[266px] justify-center border-b-2 border-[#CCCCCC] text-[24px] font-extralight"
+          className="flex h-[44px] w-[266px] flex-wrap items-center justify-center border-b-2 border-[#CCCCCC] text-sm font-extralight sm:text-[24px]"
         >
           상품후기(0)
         </a>
         <a
           href="#qnasTab"
           id="qnasTab"
-          className="flex h-[44px] w-[266px] justify-center border-b-2 border-black text-[24px] font-medium"
+          className="flex h-[44px] w-[266px] flex-wrap items-center justify-center border-b-2 border-black text-base font-medium sm:text-[24px]"
         >
           자주하는 질문
         </a>
         <a
           href="#exchangeTab"
-          className="flex h-[44px] w-[266px] justify-center border-b-2 border-[#CCCCCC] text-[24px] font-extralight"
+          className="flex h-[44px] w-[266px] flex-wrap items-center justify-center border-b-2 border-[#CCCCCC] text-sm font-extralight sm:text-[24px]"
         >
           교환/반품
         </a>

@@ -7,7 +7,7 @@ import ReviewsTab from "@/components/product/reviewsTab";
 
 function Product() {
   return (
-    <div className="mt-10 flex flex-col justify-center">
+    <div className="flex flex-col justify-center px-4">
       <div className="mx-auto flex w-full flex-wrap items-start justify-center gap-5">
         <Photos />
         <DetailsSection />
