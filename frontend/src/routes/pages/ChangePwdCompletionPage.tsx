@@ -4,7 +4,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 function JoinCompletionPage() {
   return (
     <div className="mx-auto w-[836px]">
-      <Tabs defaultValue="find-id" className="w-[603px]">
+      <Tabs defaultValue="find-id" className="mx-auto w-[603px]">
         <TabsList className="gap-2.5 pb-2.5">
           <TabsTrigger value="find-id" className="w-[300px]">
             아이디 찾기
