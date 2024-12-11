@@ -1,3 +1,10 @@
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../ui/accordion";
+
 type QnaItem = {
   number: string;
   title: string;
@@ -6,10 +13,23 @@ type QnaItem = {
 
 function Qnas({ number, title, author }: QnaItem) {
   return (
-    <div className="mx-auto flex h-12 w-full max-w-[1064px] items-center justify-between border-b-2 border-[#D9D9D9]">
-      <p className="w-[74px] text-center">{number}</p>
-      <p>{title}</p>
-      <p className="w-[74px]">{author}</p>
+    <div>
+      <Accordion
+        type="single"
+        collapsible
+        className="mx-auto flex h-auto w-full max-w-[1064px] items-center justify-between border-b-2"
+      >
+        <AccordionItem>
+          <AccordionTrigger className="mx-auto flex w-full justify-center">
+            <p className="w-[74px] text-center">{number}</p>
+            <p>{title}</p>
+            <p className="w-[74px]">{author}</p>
+          </AccordionTrigger>
+          <AccordionContent>
+            Yes. It adheres to the WAI-ARIA design pattern.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
     </div>
   );
 }

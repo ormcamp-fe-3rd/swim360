@@ -3,9 +3,19 @@ import ReviewWriteModal from "./ReviewWriteModal";
 import ReviewDetailModal from "./ReviewDetailModal";
 
 import { PaginationDemo } from "../common/Paginaion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../ui/accordion";
+import { useState, useCallback } from "react";
+
 import Reviews from "./Reviews";
 
 function ReviewsTab() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
       <div className="mx-auto mb-8 mt-16 flex w-full justify-center">
@@ -36,7 +46,7 @@ function ReviewsTab() {
         </a>
       </div>
 
-      <div className="mx-auto flex w-full flex-col items-center justify-center">
+      <div className="mx-auto flex w-full max-w-[1064px] flex-col items-center justify-center">
         <div className="mx-auto flex h-[250px] w-full max-w-[1064px] flex-col items-center justify-center bg-[#f6f9ff]">
           <p className="h-16">사용자 총 평점</p>
           <ReviewStar />
@@ -50,16 +60,13 @@ function ReviewsTab() {
           <div className="mb-2 mt-8 flex w-full max-w-[1064px] justify-end">
             <button
               id="ReviewButton"
+              onClick={() => setIsOpen(true)}
               className="flex h-[50px] w-[164px] items-center justify-center gap-2 rounded-xl bg-black text-[24px] text-white"
             >
               <img src="/public/images/icon-reviews.png" />
               후기 등록
             </button>
           </div>
-        </div>
-
-        <div className="hidden">
-          <ReviewWriteModal />
         </div>
 
         <div className="hidden">
