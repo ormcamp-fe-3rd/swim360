@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import AgreesPage from "./pages/AgreesPage";
+import ChangePwdCompletionPage from "./pages/ChangePwdCompletionPage";
 import Home from "./pages/HomPage";
 import JoinCompletionPage from "./pages/JoinCompletionPage";
 import JoinPage from "./pages/JoinPage";
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/joincompletionpage",
     element: <JoinCompletionPage />,
+  },
+  {
+    path: "/changepwdcompletionpage",
+    element: <ChangePwdCompletionPage />,
   },
   {
     path: "/loginpage",
