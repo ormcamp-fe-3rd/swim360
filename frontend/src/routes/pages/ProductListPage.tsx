@@ -5,13 +5,11 @@ import SortSelect from "@/components/product-list/SortSelect";
 function ProductListPage() {
   return (
     <div className="p-4">
-      <div className="">
-        <div className="flex flex-col tablet:flex-row">
-          <SideBar />
-          <div>
-            <SortSelect />
-            <ProductItemList />
-          </div>
+      <div className="flex flex-col tablet:flex-row">
+        <SideBar />
+        <div>
+          <SortSelect />
+          <ProductItemList />
         </div>
       </div>
     </div>

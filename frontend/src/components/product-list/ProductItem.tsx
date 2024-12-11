@@ -21,8 +21,10 @@ function ProductItem({
 }: ProductItemProps) {
   return (
     <Link to={`/product/${id}`}>
-      <div className="my-[10px]">
-        <img className="h-full w-full" src={imgUrl} alt={name} />
+      <div className="grid h-full w-full grid-rows-[2fr_0.5fr]">
+        <div className="h-full w-full overflow-hidden">
+          <img className="h-full w-full object-cover" src={imgUrl} alt={name} />
+        </div>
         <div>
           <div className="mb-3 py-[6.5px] font-semibold">{brandName}</div>
           <div className="mb-3 text-[14px]">{name}</div>
