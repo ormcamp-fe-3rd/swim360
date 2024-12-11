@@ -23,11 +23,6 @@ const reviews = [
     product: "후그 말랑 수경케이스",
     content: "색상 고민하다가 민트로 했는데 맘에 들어요",
   },
-  {
-    date: "2024.12.20.",
-    product: "나이키 솔리드 패스트백 탄탄이",
-    content: "선물줬는데 좋아해요",
-  },
 ];
 
 export default function ReviewList() {
@@ -43,7 +38,7 @@ export default function ReviewList() {
         <div className="grid grid-cols-3 pb-4">
           <div></div>
           <div></div>
-          <div className="pr-4 text-right">총 4건</div>
+          <div className="pr-4 text-right">총 3건</div>
         </div>
         <Table className="w-full md:table-fixed">
           <TableHeader>

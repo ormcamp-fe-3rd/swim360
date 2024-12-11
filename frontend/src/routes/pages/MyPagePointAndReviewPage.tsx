@@ -1,4 +1,4 @@
-import PointAndReviewTab from "@/components/mypage/PointAndReviewTab";
+import PointAndReviewTab from "@/components/mypage/PointAndReview";
 
 export default function MyPageDetails() {
   return (

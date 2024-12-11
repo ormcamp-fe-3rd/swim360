@@ -6,12 +6,13 @@ import JoinCompletionPage from "./pages/JoinCompletionPage";
 import JoinPage from "./pages/JoinPage";
 import LoginPage from "./pages/LoginPage";
 import MyPage from "./pages/MyPage";
-import MyPageEdit from "./pages/MyPageEdit";
 import MyPagePointAndReviewPage from "./pages/MyPagePointAndReviewPage";
 import PayMentCompletionPage from "./pages/PayMentCompletionPage";
 import PayMentOrderPage from "./pages/PayMentOrderPage";
 import Product from "./pages/Product";
 import ProductListPage from "./pages/ProductListPage";
+import UserEditPage from "./pages/UserEditPage";
+import UserPage from "./pages/UserPage";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
@@ -21,7 +22,8 @@ const router = createBrowserRouter([
   { path: "/joinpage", element: <JoinPage /> },
   { path: "/joincompletionpage", element: <JoinCompletionPage /> },
   { path: "/mypage", element: <MyPage /> },
-  { path: "/user", element: <MyPageEdit />},
+  { path: "/user", element: <UserPage />},
+  { path: "/user/edit", element: <UserEditPage />},
   { path: "/points-and-reviews", element: <MyPagePointAndReviewPage />},
   { path: "/changepwdcompletionpage", element: <ChangePwdCompletionPage /> },
   { path: "/paymentcompletionpage", element: <PayMentCompletionPage /> },
