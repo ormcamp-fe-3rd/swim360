@@ -22,11 +22,7 @@ function ProductItem({
   return (
     <Link to={`/product/${id}`}>
       <div className="my-[10px]">
-        <img
-          className="mb-2 h-[400px] w-full object-cover"
-          src={imgUrl}
-          alt={name}
-        />
+        <img className="h-full w-full" src={imgUrl} alt={name} />
         <div>
           <div className="mb-3 py-[6.5px] font-semibold">{brandName}</div>
           <div className="mb-3 text-[14px]">{name}</div>

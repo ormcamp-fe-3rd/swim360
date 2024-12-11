@@ -14,12 +14,12 @@ function SideBar() {
   ];
 
   return (
-    <div className="h-full tablet:relative">
-      <ul className="top-2 mb-8 mr-2 mt-10 flex justify-center gap-3 tablet:sticky tablet:flex-col tablet:justify-start">
+    <div className="">
+      <ul className="top-2 z-10 mb-8 mr-2 mt-10 flex justify-center gap-3 tablet:sticky tablet:flex-col tablet:justify-start">
         {sideMenuArray.map((sideMenu) => (
           <li
             key={sideMenu.name}
-            className="flex max-w-fit flex-col justify-center"
+            className="flex flex-col justify-center px-[36.5px] py-[10px]"
           >
             <button className="peer flex justify-center text-nowrap text-[26px] font-medium first:cursor-pointer hover:font-semibold focus:font-semibold">
               {sideMenu.name}

@@ -4,12 +4,14 @@ import SortSelect from "@/components/product-list/SortSelect";
 
 function ProductListPage() {
   return (
-    <div className="px-4 tablet:px-20">
-      <div className="tablet:grid tablet:grid-cols-[0.1fr_0.9fr]">
-        <SideBar />
-        <div>
-          <SortSelect />
-          <ProductItemList />
+    <div className="p-4">
+      <div className="">
+        <div className="flex flex-col tablet:flex-row">
+          <SideBar />
+          <div>
+            <SortSelect />
+            <ProductItemList />
+          </div>
         </div>
       </div>
     </div>
