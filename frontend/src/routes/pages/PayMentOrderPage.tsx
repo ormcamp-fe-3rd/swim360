@@ -56,7 +56,7 @@ function PayMentOrderPage() {
           <div className="h-22 mb-1 flex w-[600px] border-b border-black p-2.5">
             <span className="inline-block w-[120px]">배송지</span>
             <div className="mb-1">
-              <div className="mb-1">
+              <div className="mb-1 flex">
                 <input
                   type="text"
                   name="address"
@@ -124,7 +124,7 @@ function PayMentOrderPage() {
                   <span className="inline-block w-[80px] pl-1">포인트</span>
                 </div>
               </div>
-              <div>
+              <div className="flex">
                 <input
                   type="text"
                   className="mr-5 w-[450px] bg-slate-100 p-2.5"
@@ -197,7 +197,7 @@ function PayMentOrderPage() {
               <span className="inline-block w-[20px] pl-1">원</span>
             </div>
           </div>
-          <PrimaryButton>주소검색</PrimaryButton>
+          <PrimaryButton>바로구매</PrimaryButton>
         </div>
       </div>
     </div>
