@@ -9,24 +9,24 @@ import {
 
 const points = [
   {
-    date: "2024.03.11.",
-    name: "회원가입 적립",
-    amount: "+1,000",
-  },
-  {
-    date: "2024.05.29.",
+    date: "2024.12.20.",
     name: "구매 사용",
-    amount: "-800",
+    amount: "-450",
   },
   {
     date: "2024.07.02.",
     name: "구매 적립",
-    amount: "+1,250",
+    amount: "+500",
   },
   {
-    date: "2024.12.20.",
-    name: "이벤트 적립",
-    amount: "+500",
+    date: "2024.05.29.",
+    name: "구매 사용",
+    amount: "-750",
+  },
+  {
+    date: "2024.03.11.",
+    name: "회원가입 적립",
+    amount: "+1,000",
   },
 ];
 
@@ -41,16 +41,21 @@ export default function PointList() {
           </div>
           <div className="text-[17px]">6개월 이내 내역만 조회 가능합니다.</div>
         </div>
-        <Table className="mt-10">
+        <div className="grid grid-cols-3 pb-4">
+          <div></div>
+          <div></div>
+          <div className="text-right pr-4">현재 포인트 300</div>
+        </div>
+        <Table>
           <TableHeader>
             <TableRow className="bg-gray-50">
-              <TableHead className="text-center text-xl font-semibold w-1/3" >
+              <TableHead className="w-1/3 text-center text-xl font-semibold">
                 날짜
               </TableHead>
-              <TableHead className="text-center text-xl font-semibold w-1/3">
+              <TableHead className="w-1/3 text-center text-xl font-semibold">
                 내용
               </TableHead>
-              <TableHead className="text-center text-xl font-semibold w-1/3">
+              <TableHead className="w-1/3 text-center text-xl font-semibold">
                 적립/사용 포인트
               </TableHead>
             </TableRow>

@@ -6,6 +6,7 @@ import JoinCompletionPage from "./pages/JoinCompletionPage";
 import JoinPage from "./pages/JoinPage";
 import LoginPage from "./pages/LoginPage";
 import MyPage from "./pages/MyPage";
+import MyPageEdit from "./pages/MyPageEdit";
 import MyPagePointAndReviewPage from "./pages/MyPagePointAndReviewPage";
 import PayMentCompletionPage from "./pages/PayMentCompletionPage";
 import PayMentOrderPage from "./pages/PayMentOrderPage";
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
   { path: "/joinpage", element: <JoinPage /> },
   { path: "/joincompletionpage", element: <JoinCompletionPage /> },
   { path: "/mypage", element: <MyPage /> },
+  { path: "/user", element: <MyPageEdit />},
   { path: "/points-and-reviews", element: <MyPagePointAndReviewPage />},
   { path: "/changepwdcompletionpage", element: <ChangePwdCompletionPage /> },
   { path: "/paymentcompletionpage", element: <PayMentCompletionPage /> },
