@@ -1,35 +1,20 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import JoinPage from "./pages/JoinPage";
-import Login from "./pages/LoginPage";
-import Product from "./pages/Product";
 import Home from "./pages/HomPage";
-
-import ProductList from "./pages/ProductList";
+import JoinCompletionPage from "./pages/JoinCompletionPage";
+import JoinPage from "./pages/JoinPage";
+import LoginPage from "./pages/LoginPage";
 import MyPage from "./pages/MyPage";
-
+import Product from "./pages/Product";
+import ProductList from "./pages/ProductList";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/productlist",
-    element: <ProductList />,
-  },  
-  {
-    path: "/product",
-    element: <Product />,
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/joinpage",
-    element: <JoinPage />,
-  },
+  { path: "/", element: <Home /> },
+  { path: "/productlist", element: <ProductList /> },
+  { path: "/product", element: <Product /> },
+  { path: "/loginpage", element: <LoginPage /> },
+  { path: "/joinpage", element: <JoinPage /> },
+  { path: "/joincompletionpage", element: <JoinCompletionPage /> },
   { path: "/mypage", element: <MyPage /> },
 ]);
 
