@@ -1,14 +1,15 @@
-import ConfirmButton from "@/components/common/ConfirmButton";
+import ProductItemList from "@/components/product-list/ProductItemList";
+import SideBar from "@/components/product-list/Sidebar";
+import SortSelect from "@/components/product-list/SortSelect";
 
 function ProductList() {
   return (
-    <div>
-      <ConfirmButton
-        text="확인"
-        width="full"
-        font="text-xl"
-        iconUrl="/public/images/icon-reviews.png"
-      />
+    <div className="ml-20 mr-20">
+      <SortSelect />
+      <div className="flex">
+        <SideBar />
+        <ProductItemList />
+      </div>
     </div>
   );
 }

@@ -1,8 +1,8 @@
 const { Sequelize } = require("sequelize");
 
 // Sequelize 연결 생성
-const sequelize = new Sequelize("board_2", "admin", "testpassword!#", {
-  host: "orm-camp-frontend-3rd.c9aowuoc4o5u.ap-northeast-2.rds.amazonaws.com",
+const sequelize = new Sequelize("", "", "", {
+  host: "",
   dialect: "mysql",
 });
 
