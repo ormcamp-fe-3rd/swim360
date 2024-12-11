@@ -1,7 +1,6 @@
 import Autoplay from "embla-carousel-autoplay";
 import * as React from "react";
 
-import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
@@ -9,6 +8,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+
+import { Card, CardContent } from "../ui/card";
 
 const banners = [
   {
@@ -41,17 +42,15 @@ export function CarouselBanner() {
     <Carousel
       opts={{ align: "start", loop: true }}
       plugins={[plugin.current]}
-      className="relative my-[86px] h-fit desktop:h-[705px] w-full desktop:w-[1440px]"
+      className="relative my-[86px] h-fit w-full desktop:h-[705px] desktop:w-[1440px]"
       onClick={plugin.current.stop}
-      // onMouseEnter={plugin.current.stop}
-      // onMouseLeave={plugin.current.reset}
     >
       <CarouselContent>
         {banners.map((banner) => (
           <CarouselItem key={banner.id} className="basis-1/2">
             <div className="">
-              <Card>
-                <CardContent className="flex items-center justify-center">
+              <Card className="rounded-none border-none shadow-none">
+                <CardContent className="flex items-center justify-center p-5">
                   <img className="object-contain" src={banner.img} alt="" />
                 </CardContent>
               </Card>

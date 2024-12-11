@@ -1,61 +1,82 @@
+// import { useState } from "react";
+
 import { Category } from "@/types/categories";
 
+import CategoryHoberBox from "./CategoryHoberBox";
 import CategoryList from "./CategoryList";
+import CategoryUnderLine from "./CategoryUnderline";
 
-const categoryNames: Category[] = [
+
+const categories: Category[] = [
   {
-    id: 1,
     name: "WOMAN",
     productId: 1,
   },
   {
-    id: 2,
     name: "MAN",
     productId: 2,
   },
   {
-    id: 3,
     name: "ACC",
     productId: 3,
   },
-  // {
-  //   id: 4,
-  //   name: "원피스",
-  //   productId: 4,
-  //   parentId: 1
-  // },
-  // {
-  //   id: 5,
-  //   name: "반전신",
-  //   productId: 5,
-  //   parentId: 1
-  // },
-  // {
-  //   id: 6,
-  //   name: "5부",
-  //   productId: 6,
-  //   parentId: 2
-  // },
-  // {
-  //   id: 7,
-  //   name: "사각",
-  //   productId: 7,
-  //   parentId: 2
-  // },
-  // {
-  //   id: 8,
-  //   name: "수모",
-  //   productId: 8,
-  //   parentId: 3
-  // }
+  {
+    name: "one-piece",
+    productId: 4,
+    parentId: 1,
+  },
+  {
+    name: "full-body",
+    productId: 5,
+    parentId: 1,
+  },
+  {
+    name: "mid-length",
+    productId: 6,
+    parentId: 2,
+  },
+  {
+    name: "square-cut",
+    productId: 7,
+    parentId: 2,
+  },
+  {
+    name: "bag",
+    productId: 8,
+    parentId: 3,
+  },
+  {
+    name: "towel",
+    productId: 9,
+    parentId: 3,
+  },
+  {
+    name: "fins",
+    productId: 10,
+    parentId: 3,
+  },
 ];
 
 export default function CategoryBox() {
+  //FIXME: 페이지 이동시 state 유지 X, useContext 적용필요
+  // const [activeCategory, setActiveCategory] = useState("")
+
   return (
-    <ul className=" gap-[52px] hidden tablet:flex">
-      {categoryNames.map((category) => (
-        <CategoryList key={category.id} category={category} />
-      ))}
-    </ul>
+    <>
+      <ul className="hidden gap-28 tablet:flex">
+        {categories.slice(0, 3).map((category) => (
+          <li 
+          key={category.productId} 
+          className="group text-3xl font-bold" 
+          // onClick={() => setActiveCategory(category.name)}
+          >
+            <CategoryList name={category.name} />
+            {/* <CategoryUnderLine isVisible={activeCategory === category.name} /> */}
+            <CategoryUnderLine isVisible={false}/>
+            <CategoryHoberBox categories={categories.filter((sub)=> sub.parentId === category.productId)} />
+          </li>
+        ))}
+      </ul>
+    </>
   );
 }
