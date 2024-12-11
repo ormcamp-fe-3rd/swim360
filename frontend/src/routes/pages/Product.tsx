@@ -8,14 +8,14 @@ import ReviewsTab from "@/components/product/reviewsTab";
 function Product() {
   return (
     <div>
-    <div className="flex w-[1064px] items-start mx-auto gap-5">
-      <Photos/>
-      <DetailsSection/>
-    </div>
-    <DetailsTab/>
-    <ReviewsTab/>
-    <QnasTab/>
-    <ExchangeTab/>
+      <div className="mx-auto flex w-full flex-wrap items-start justify-center gap-5">
+        <Photos />
+        <DetailsSection />
+      </div>
+      <DetailsTab />
+      <ReviewsTab />
+      <QnasTab />
+      <ExchangeTab />
     </div>
   );
 }
