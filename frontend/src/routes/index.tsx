@@ -11,6 +11,7 @@ import Product from "./pages/Product";
 import Home from "./pages/HomPage";
 import ProductListPage from "./pages/ProductListPage";
 import MyPage from "./pages/MyPage";
+import PayMentOrderPage from "./pages/PayMentOrderPage";
 
 
 const router = createBrowserRouter([
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
   { path: "/mypage", element: <MyPage /> },
   { path: "/changepwdcompletionpage", element: <ChangePwdCompletionPage /> },
   { path: "/paymentcompletionpage", element: <PayMentCompletionPage /> },
+  { path: "/paymentorderpage", element: <PayMentOrderPage />, },
 
 ]);
 
