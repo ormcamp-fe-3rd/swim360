@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import AgreesPage from "./pages/AgreesPage";
 import Home from "./pages/HomPage";
+import JoinCompletionPage from "./pages/JoinCompletionPage";
 import JoinPage from "./pages/JoinPage";
 import LoginPage from "./pages/LoginPage";
 import MyPage from "./pages/MyPage";
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/product",
     element: <Product />,
+  },
+  {
+    path: "/joincompletionpage",
+    element: <JoinCompletionPage />,
   },
   {
     path: "/loginpage",
