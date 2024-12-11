@@ -30,6 +30,9 @@ function Reviews({ size = "large" }: ReviewsType) {
               입어봤는데도 색상이 전혀 바래지 않았습니다. 디자인도 세련돼서 정말
               마음에 들어요. 강력 추천합니다!
             </p>
+            <div className="h-40 w-40 overflow-hidden bg-black object-cover">
+              <img src="/public/images/product/swimsuit-back.jpg"></img>
+            </div>
           </div>
         </div>
         <div className="flex justify-start gap-2 text-[12px] font-medium text-[#B0B0B0]">

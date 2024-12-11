@@ -3,14 +3,8 @@ import ReviewWriteModal from "./ReviewWriteModal";
 import ReviewDetailModal from "./ReviewDetailModal";
 
 import { PaginationDemo } from "../common/Paginaion";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "../ui/accordion";
-import { useState, useCallback } from "react";
 
+import { useState, useCallback } from "react";
 
 import Reviews from "./Reviews";
 
