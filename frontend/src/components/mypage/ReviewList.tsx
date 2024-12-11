@@ -40,7 +40,7 @@ export default function ReviewList() {
           <div></div>
           <div className="pr-4 text-right">총 3건</div>
         </div>
-        <Table className="w-full md:table-fixed">
+        <Table className="w-full md:table-fixed table-auto">
           <TableHeader>
             <TableRow className="bg-gray-50">
               <TableHead className="w-1/3 text-center text-xl font-semibold">
@@ -49,7 +49,7 @@ export default function ReviewList() {
               <TableHead className="w-1/3 text-center text-xl font-semibold">
                 리뷰 상품
               </TableHead>
-              <TableHead className="w-1/3 text-center text-xl font-semibold">
+              <TableHead className="w-1/3 text-center text-xl font-semibold hidden tablet:table-cell">
                 리뷰 내용
               </TableHead>
             </TableRow>
@@ -63,7 +63,7 @@ export default function ReviewList() {
                 <TableCell className="text-center text-base">
                   {review.product}
                 </TableCell>
-                <TableCell className="overflow-hidden text-ellipsis whitespace-nowrap text-center text-base">
+                <TableCell className="overflow-hidden text-ellipsis whitespace-nowrap text-center text-base hidden tablet:table-cell">
                   {review.content}
                 </TableCell>
               </TableRow>
