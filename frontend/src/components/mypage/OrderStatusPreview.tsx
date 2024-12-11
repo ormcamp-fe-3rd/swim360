@@ -27,19 +27,23 @@ function OrderStatusPreview({ deliveryStateCounts }: OrderStatusPreviewProps) {
   ];
 
   return (
-    <Link to="/order">
+    <Link to="/orderlist">
       <div className="mb-[69px] flex h-[146px] border-[1px] border-[#000000]">
         {deliveryStatusArray.map((dStatus, i) => (
           <div
             key={dStatus.label}
             className="flex w-full items-center text-center"
           >
-            <div className="w-full text-nowrap px-[17px] text-xl font-semibold">
-              <div> {deliveryStateCounts[dStatus.status]}</div>
-              <div>{dStatus.label}</div>
+            <div className="w-full tablet:px-[17px]">
+              <div className="text-xl font-semibold tablet:text-xl">
+                {deliveryStateCounts[dStatus.status]}
+              </div>
+              <div className="text-nowrap text-[12px] font-semibold tablet:text-xl">
+                {dStatus.label}
+              </div>
             </div>
 
-            <div className="text-xl font-semibold">
+            <div className="text-[10px] font-semibold tablet:text-xl">
               {i !== deliveryStatusArray.length - 1 && ">"}
             </div>
           </div>

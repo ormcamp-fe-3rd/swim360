@@ -2,7 +2,7 @@
 const footerClass =
   "w-full h-[510px] pt-10 bg-[url('/images/common/footer.png')] bg-cover flex flex-col justify-evenly items-center";
 
-export default function Footer(){
+export default function Footer() {
   return (
     <footer>
       <div className="h-96 w-full bg-white pt-[268px]">
