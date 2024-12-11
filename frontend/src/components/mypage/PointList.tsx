@@ -43,7 +43,7 @@ export default function PointList() {
         </div>
         <Table className="mt-10">
           <TableHeader>
-            <TableRow>
+            <TableRow className="bg-gray-50">
               <TableHead className="text-center text-xl font-semibold w-1/3" >
                 날짜
               </TableHead>

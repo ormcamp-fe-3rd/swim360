@@ -11,7 +11,7 @@ const reviews = [
   {
     date: "2024.03.11.",
     product: "르망고 펠리스 나비다",
-    content: "솔직히 기대 별로 안했는데 ..",
+    content: "최근에 이 사각 수영복을 구매했는데, 정말 만족스럽습니다! 핏이 딱 좋아요—몸에 딱 맞으면서도 답답하지 않습니다. 소재는 내구성이 있으면서도 편안하고, 물놀이 후에도 금방 마르더라고요. 몇 번입어봤는데도 색상이 전혀 바래지 않았습니다. 디자인도 세련돼서 정말 마음에 들어요. 강력 추천합니다!",
   },
   {
     date: "2024.05.29.",
@@ -42,7 +42,7 @@ export default function ReviewList() {
         </div>
         <Table className="mt-10 w-full md:table-fixed">
           <TableHeader>
-            <TableRow>
+            <TableRow className="bg-gray-50">
               <TableHead className="text-center text-xl font-semibold w-1/3">
                 날짜
               </TableHead>
@@ -63,11 +63,8 @@ export default function ReviewList() {
                 <TableCell className="text-center text-base">
                   {review.product}
                 </TableCell>
-                <TableCell className="text-center text-base text-ellipsis">
-                  <div className="text-ellipsis">
+                <TableCell className="text-center text-base text-ellipsis whitespace-nowrap overflow-hidden">
                   {review.content}
-
-                  </div>
                 </TableCell>
               </TableRow>
             ))}
