@@ -12,7 +12,7 @@ function UserPointAndReviewPreview({
       <div className="flex h-[146px] w-full items-center justify-center border-[1px] border-[#000000] py-[30px]">
         <div className="flex w-full flex-col items-center text-xl font-semibold">
           <div className="mb-11">포인트</div>
-          <div>150p</div>
+          <div>300p</div>
         </div>
 
         <div className="flex w-full flex-col items-center text-xl font-semibold">

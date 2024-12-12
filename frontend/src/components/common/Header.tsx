@@ -1,8 +1,8 @@
-import CategoryBox from "./CategoryBox";
-import HamburgerMenu from "./HamburgerMenu";
-import MainIconButton from "./MainIconButton";
-import MainLogo from "./MainLogo";
-import ScrollButton from "./ScrollButton";
+import CategoryBox from "../home/CategoryBox";
+import HamburgerMenu from "../home/HamburgerMenu";
+import MainIconButton from "../home/MainIconButton";
+import MainLogo from "../home/MainLogo";
+import ScrollButton from "../home/ScrollButton";
 
 function Header() {
   return (
