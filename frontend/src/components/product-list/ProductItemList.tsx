@@ -79,8 +79,8 @@ function ProductItemList() {
   return (
     <div className="grid grid-cols-1 gap-[19px] tablet:grid-cols-4">
       {productDummyArray.map((product) => (
-        <div className="max-h-[500px]">
-          <ProductItem key={product.id} {...product} />
+        <div key={product.id} className="max-h-[500px]">
+          <ProductItem {...product} />
         </div>
       ))}
     </div>
