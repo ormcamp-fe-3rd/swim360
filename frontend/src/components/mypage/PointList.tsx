@@ -35,11 +35,11 @@ export default function PointList() {
   return (
     <>
       <div className="ml-0 mt-40 w-full">
-        <div className="flex w-full items-center justify-start py-[14.8px]">
-          <div className="mr-[10.36px] text-2xl font-semibold">
+        <div className="flex flex-col tablet:flex-row w-full tablet:items-center justify-start py-[14.8px]">
+          <div className="mr-[10.36px] text-left text-2xl font-semibold">
             최근 포인트 내역
           </div>
-          <div className="text-[17px]">6개월 이내 내역만 조회 가능합니다.</div>
+          <div className="text-[17px] text-left">6개월 이내 내역만 조회 가능합니다.</div>
         </div>
         <div className="grid grid-cols-3 pb-4">
           <div></div>

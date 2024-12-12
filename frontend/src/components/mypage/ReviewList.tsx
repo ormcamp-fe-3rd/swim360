@@ -29,18 +29,20 @@ export default function ReviewList() {
   return (
     <>
       <div className="ml-0 mt-40 w-full">
-        <div className="flex w-full items-center justify-start py-[14.8px]">
-          <div className="mr-[10.36px] text-2xl font-semibold">
+        <div className="flex w-full flex-col justify-start py-[14.8px] tablet:flex-row tablet:items-center">
+          <div className="mr-[10.36px] text-left text-2xl font-semibold">
             최근 리뷰 내역
           </div>
-          <div className="text-[17px]">6개월 이내 내역만 조회 가능합니다.</div>
+          <div className="text-left text-[17px]">
+            6개월 이내 내역만 조회 가능합니다.
+          </div>
         </div>
         <div className="grid grid-cols-3 pb-4">
           <div></div>
           <div></div>
           <div className="pr-4 text-right">총 3건</div>
         </div>
-        <Table className="w-full md:table-fixed table-auto">
+        <Table className="w-full table-auto md:table-fixed">
           <TableHeader>
             <TableRow className="bg-gray-50">
               <TableHead className="w-1/3 text-center text-xl font-semibold">
@@ -49,7 +51,7 @@ export default function ReviewList() {
               <TableHead className="w-1/3 text-center text-xl font-semibold">
                 리뷰 상품
               </TableHead>
-              <TableHead className="w-1/3 text-center text-xl font-semibold hidden tablet:table-cell">
+              <TableHead className="hidden w-1/3 text-center text-xl font-semibold tablet:table-cell">
                 리뷰 내용
               </TableHead>
             </TableRow>
@@ -63,7 +65,7 @@ export default function ReviewList() {
                 <TableCell className="text-center text-base">
                   {review.product}
                 </TableCell>
-                <TableCell className="overflow-hidden text-ellipsis whitespace-nowrap text-center text-base hidden tablet:table-cell">
+                <TableCell className="hidden overflow-hidden text-ellipsis whitespace-nowrap text-center text-base tablet:table-cell">
                   {review.content}
                 </TableCell>
               </TableRow>
