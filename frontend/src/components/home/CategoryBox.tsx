@@ -64,7 +64,7 @@ export default function CategoryBox() {
 
   return (
     <>
-      <ul className="hidden gap-28 tablet:flex">
+      <ul className="hidden tablet:flex w-full max-w-[500px] tablet:justify-between">
         {categories.slice(0, 3).map((category) => (
           <li key={category.productId} className="group text-3xl font-bold" onClick={()=> setActiveCategory(category.name)}>
             <CategoryList

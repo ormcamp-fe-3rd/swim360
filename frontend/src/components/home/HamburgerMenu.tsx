@@ -1,3 +1,5 @@
+import HamburgerMenuList from "./HamburgerMenuList";
+
 interface Prop {
   isOpen: boolean;
   toggleMenu: () => void;
@@ -17,21 +19,14 @@ export default function HamburgerMenu({ isOpen, toggleMenu }: Prop) {
       </button>
       <div
         className={`${isOpen ? "block" : "hidden"} fixed inset-0 top-[190px] z-10 backdrop-brightness-50`}
+        onClick={toggleMenu}
       >
         <div className="h-full w-full">
           <ul className="flex h-[420px] flex-col items-center bg-white">
-            <li className="flex h-1/4 w-full items-center justify-center font-semibold shadow-sm">
-              WOMAN
-            </li>
-            <li className="flex h-1/4 w-full items-center justify-center font-semibold shadow-sm">
-              MAN
-            </li>
-            <li className="flex h-1/4 w-full items-center justify-center font-semibold shadow-sm">
-              ACC
-            </li>
-            <li className="flex h-1/4 w-full items-center justify-center font-semibold shadow-sm">
-              MY PAGE
-            </li>
+            <HamburgerMenuList url="/category_list/one-piece" >WOMAN</HamburgerMenuList>
+            <HamburgerMenuList url="/product_list/mid-length">MAN</HamburgerMenuList>
+            <HamburgerMenuList url="/category_list/bag">ACC</HamburgerMenuList>
+            <HamburgerMenuList url="/mypage">MY PAGE</HamburgerMenuList>
           </ul>
         </div>
       </div>
