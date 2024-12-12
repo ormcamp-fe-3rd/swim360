@@ -23,7 +23,7 @@ function ReviewsTab() {
         <a
           href="#reviewsTab"
           id="reviewsTab"
-          className="ext-base flex h-[44px] w-[266px] flex-wrap items-center justify-center border-b-2 border-black font-medium sm:text-[24px]"
+          className="flex h-[44px] w-[266px] flex-wrap items-center justify-center border-b-2 border-black text-base font-medium sm:text-[24px]"
         >
           상품후기(0)
         </a>
