@@ -13,7 +13,10 @@ function PossessionPoint() {
           </div>
         </div>
         <div className="flex w-full">
-          <input type="text" className="mr-5 w-3/4 bg-slate-100 p-2.5" />
+          <input
+            type="text"
+            className="mr-5 w-3/4 rounded-sm bg-slate-100 p-2.5"
+          />
           <div className="w-1/4">
             <PrimaryButton>전액사용</PrimaryButton>
           </div>

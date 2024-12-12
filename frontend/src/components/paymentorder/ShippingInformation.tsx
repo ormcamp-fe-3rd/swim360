@@ -10,7 +10,7 @@ function ShippingInformation() {
           type="text"
           name="orderername"
           id="orderername"
-          className="w-full border-none bg-slate-100 p-2.5"
+          className="w-full rounded-sm border-none bg-slate-100 p-2.5"
         />
       </div>
       <div className="h-22 mb-1 flex w-full border-b border-black p-2.5">
@@ -19,7 +19,7 @@ function ShippingInformation() {
           type="text"
           name="recipientname"
           id="recipientname"
-          className="w-full border-none bg-slate-100 p-2.5"
+          className="w-full rounded-sm border-none bg-slate-100 p-2.5"
         />
       </div>
       <div className="h-22 mb-1 flex w-full border-b border-black p-2.5">
@@ -30,7 +30,7 @@ function ShippingInformation() {
               type="text"
               name="address"
               id="address"
-              className="mr-1 flex-grow border-none bg-slate-100 p-2.5"
+              className="mr-1 flex-grow rounded-sm border-none bg-slate-100 p-2.5"
             />
             <div className="w-1/5">
               <PrimaryButton>주소검색</PrimaryButton>
@@ -40,7 +40,7 @@ function ShippingInformation() {
             type="text"
             name="detailaddress"
             id="detailaddress"
-            className="w-full border-none bg-slate-100 p-2.5"
+            className="w-full rounded-sm border-none bg-slate-100 p-2.5"
             placeholder="상세 주소를 입력해주세요."
           />
         </div>
@@ -51,7 +51,7 @@ function ShippingInformation() {
           type="text"
           name="phonenumber"
           id="phonenumber"
-          className="w-full border-none bg-slate-100 py-2.5"
+          className="w-full rounded-sm border-none bg-slate-100 py-2.5"
         />
       </div>
     </div>
