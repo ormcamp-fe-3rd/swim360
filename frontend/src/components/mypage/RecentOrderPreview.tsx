@@ -22,8 +22,8 @@ interface RecentOrderPreviewProps {
 
 function RecentOrderPreview({ orders }: RecentOrderPreviewProps) {
   return (
-    <div className="w-full">
-      <div className="flex w-full items-center justify-start border-b border-black py-[14.8px]">
+    <div className="relative w-full">
+      <div className="sticky flex w-full items-center justify-start py-[14.8px]">
         <div className="mr-[10.36px] text-xl font-semibold tablet:text-2xl">
           최근 주문 내역
         </div>
@@ -31,22 +31,22 @@ function RecentOrderPreview({ orders }: RecentOrderPreviewProps) {
           6개월 이내 주문만 조회 가능합니다.
         </div>
       </div>
-      <div className="hidden w-full grid-flow-col grid-cols-[0.5fr_1fr_0.3fr_0.3fr] border-b border-black p-4 text-center tablet:grid tablet:grid-cols-[0.3fr_1fr_0.3fr_0.3fr]">
+      <div className="hidden w-full grid-flow-col grid-cols-[0.5fr_1fr_0.3fr_0.3fr] border-b border-[#E5E7EB] bg-[#F9FAFB] p-4 text-center text-xl font-semibold text-[#6B7280] tablet:grid tablet:grid-cols-[0.3fr_1fr_0.3fr_0.3fr]">
         <div>주문 정보</div>
         <div>상품 정보</div>
         <div>수량</div>
         <div>가격</div>
       </div>
 
-      <div className="max-h-[759px] overflow-y-scroll border-b border-black [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 [&::-webkit-scrollbar-track]:bg-gray-100 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 [&::-webkit-scrollbar]:w-2">
+      <div className="border-b border-[#E5E7EB] font-semibold tablet:max-h-[759px] tablet:overflow-y-scroll [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 [&::-webkit-scrollbar-track]:bg-gray-100 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 [&::-webkit-scrollbar]:w-2">
         {orders.map((order) => (
           <div
             key={order.id}
-            className="grid w-full grid-flow-col grid-cols-1 border-b border-gray-400 last:border-none tablet:grid-cols-[0.3fr_1fr_0.3fr_0.3fr]"
+            className="grid w-full grid-flow-col grid-cols-1 border-b border-[#E5E7EB] last:border-none tablet:grid-cols-[0.3fr_1fr_0.3fr_0.3fr]"
           >
-            <div className="hidden flex-col items-center justify-center tablet:flex">
+            <div className="hidden flex-col items-center justify-center text-lg tablet:flex">
               <div className="text-center">
-                <div>주문번호</div>
+                <div className="">주문 번호</div>
                 <div>{order.id}</div>
                 <div className="text-[#8c8b8b]">
                   {new Date(order.createdAt).toLocaleDateString()}
@@ -55,11 +55,11 @@ function RecentOrderPreview({ orders }: RecentOrderPreviewProps) {
             </div>
 
             <div>
-              <div className="flex w-full items-center justify-between bg-[#fafafa] p-4 tablet:hidden">
+              <div className="flex w-full items-center justify-between border-b border-[#E5E7EB] bg-[#F9FAFB] p-4 tablet:hidden">
                 <div>{new Date(order.createdAt).toLocaleDateString()} 주문</div>
                 <div className="flex items-center"></div>
               </div>
-              <div className="flex flex-col pb-3 tablet:bg-[#f0efef]">
+              <div className="flex flex-col pb-3">
                 {order.orderItems.map((orderItem) => (
                   <div
                     key={orderItem.id + "name"}
@@ -74,7 +74,7 @@ function RecentOrderPreview({ orders }: RecentOrderPreviewProps) {
                         />
                       </div>
                       <div className="m-[13px] flex flex-col justify-center">
-                        <div className="text-md mb-3 font-semibold">
+                        <div className="text-md mb-3 text-lg font-semibold">
                           {orderItem.name}
                         </div>
                         <div className="flex text-[#8c8b8b]">
@@ -104,7 +104,7 @@ function RecentOrderPreview({ orders }: RecentOrderPreviewProps) {
                 </div>
               ))}
             </div>
-            <div className="hidden flex-col items-center justify-center bg-[#f0efef] tablet:flex">
+            <div className="hidden flex-col items-center justify-center tablet:flex">
               <div className="text-lg font-semibold"> 총 {order.price}원</div>
             </div>
           </div>
