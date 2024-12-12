@@ -24,6 +24,10 @@ function LoginPage() {
         <input type="checkbox" name="" id="" />
         <span className="ml-2">아이디 저장</span>
       </label>
+<<<<<<< HEAD
+=======
+      {/* <ConfirmButton text="로그인" width="full" font="my-10"/> */}
+>>>>>>> d38d77e4f3f4714e36f6b3ad5ac89dbfc1719a0d
       <PrimaryButton>로그인</PrimaryButton>
       <ul className="text-center">
         <li className="inline-block">아이디 찾기</li>

@@ -5,18 +5,18 @@ import Photos from "@/components/product/Photos";
 import QnasTab from "@/components/product/QnasTab";
 import ReviewsTab from "@/components/product/reviewsTab";
 
-function Product() {
+function ProductDetailPage() {
   return (
-    <div>
-    <div className="flex w-[1064px] items-start mx-auto gap-5">
-      <Photos/>
-      <DetailsSection/>
-    </div>
-    <DetailsTab/>
-    <ReviewsTab/>
-    <QnasTab/>
-    <ExchangeTab/>
+    <div className="flex flex-col justify-center px-4">
+      <div className="mx-auto flex w-full flex-wrap items-start justify-center gap-5">
+        <Photos />
+        <DetailsSection />
+      </div>
+      <DetailsTab />
+      <ReviewsTab />
+      <QnasTab />
+      <ExchangeTab />
     </div>
   );
 }
-export default Product;
+export default ProductDetailPage;

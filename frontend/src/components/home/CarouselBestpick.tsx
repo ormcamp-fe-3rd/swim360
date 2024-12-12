@@ -1,40 +1,50 @@
 import Autoplay from "embla-carousel-autoplay";
 import * as React from "react";
 
-import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel";
-import { Product } from "@/types/products";
+} from "@/components/ui/carousel-origin";
 
-const bestpicks: Product[] = [
+const bestpicks = [
+  {
+    id: 0,
+    brandName: "barrel",
+    name: "여성 수영복 1",
+    imageUrl: "/public/images/productlist/sample-1.png",
+    price: 10000,
+    discountedPrice: 5000,
+    salesVolume: 50,
+  },
   {
     id: 1,
-    name: "test",
-    price: 1,
-    discountedPrice: 0,
-    size: "s",
-    imageUrl: "/images/home/banner-1.png",
-    salesVolume: 1,
-    stock: 10,
-    categoryId: 1,
-    discountId: 2,
+    brandName: "barrel",
+    name: "여성 수영복 1",
+    imageUrl: "/public/images/productlist/sample-1.png",
+    price: 10000,
+    discountedPrice: 5000,
+    salesVolume: 50,
   },
   {
     id: 2,
-    name: "test",
-    price: 1,
-    discountedPrice: 0,
-    size: "s",
-    imageUrl: "/images/home/banner-1.png",
-    salesVolume: 1,
-    stock: 10,
-    categoryId: 1,
-    discountId: 2,
+    brandName: "barrel",
+    name: "여성 수영복 1",
+    imageUrl: "/public/images/productlist/sample-1.png",
+    price: 10000,
+    discountedPrice: 5000,
+    salesVolume: 50,
+  },
+  {
+    id: 3,
+    brandName: "barrel",
+    name: "여성 수영복 1",
+    imageUrl: "/public/images/productlist/sample-1.png",
+    price: 10000,
+    discountedPrice: 5000,
+    salesVolume: 50,
   },
 ];
 
@@ -47,18 +57,14 @@ export function CarouselBestPick() {
     <Carousel
       opts={{ align: "start", loop: true }}
       plugins={[plugin.current]}
-      className="relative w-2/3 h-full"
+      className="relative h-full w-full pt-0 tablet:pt-20 desktop:pt-0"
       onClick={plugin.current.stop}
     >
       <CarouselContent>
         {bestpicks.map((product) => (
-          <CarouselItem key={product.id}>
-            <div>
-              <Card>
-                <CardContent className="h-full w-full">
-                  <img className="h-full w-full object-contain" src={product.imageUrl} alt="" />
-                </CardContent>
-              </Card>
+          <CarouselItem key={product.id} className="flex justify-center items-center">
+            <div className="rounded-none border-none shadow-none">
+              <img src={product.imageUrl} alt={product.name} />
             </div>
           </CarouselItem>
         ))}

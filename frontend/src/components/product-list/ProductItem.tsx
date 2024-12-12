@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 interface ProductItemProps {
   id: number;
+  brandName: string;
   name: string;
   price: number;
   discountedPrice: number;
@@ -11,6 +12,7 @@ interface ProductItemProps {
 
 function ProductItem({
   id,
+  brandName,
   name,
   price,
   discountedPrice,
@@ -19,10 +21,13 @@ function ProductItem({
 }: ProductItemProps) {
   return (
     <Link to={`/product/${id}`}>
-      <div className="my-[10px]">
-        <img className="mb-2 h-[400px] object-cover" src={imgUrl} alt={name} />
+
+      <div className="grid h-full w-full grid-rows-[2fr_0.5fr]">
+        <div className="h-full w-full overflow-hidden">
+          <img className="h-full w-full object-cover" src={imgUrl} alt={name} />
+        </div>
         <div>
-          <div className="mb-3 py-[6.5px] font-semibold">브랜드명</div>
+          <div className="mb-3 py-[6.5px] font-semibold">{brandName}</div>
           <div className="mb-3 text-[14px]">{name}</div>
           <div className="flex justify-between">
             <div className="flex items-center">
