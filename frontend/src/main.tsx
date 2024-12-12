@@ -3,14 +3,11 @@ import "./styles/index.css";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
-import Footer from "./components/home/Footer";
-import Header from "./components/home/Header";
-import Router from "./routes";
+import { RouterProvider } from "react-router-dom";
+import router from "./routes";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <Header />
-    <Router />
-    <Footer />
+    <RouterProvider router={router} />
   </StrictMode>,
 );
