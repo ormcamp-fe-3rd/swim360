@@ -1,18 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import ChangePwdCompletionPage from "./pages/ChangePwdCompletionPage";
+import App from "@/App";
 
+import ChangePwdCompletionPage from "./pages/ChangePwdCompletionPage";
+import Home from "./pages/HomePage";
+import JoinCompletionPage from "./pages/JoinCompletionPage";
 import JoinPage from "./pages/JoinPage";
 import LoginPage from "./pages/LoginPage";
-import JoinCompletionPage from "./pages/JoinCompletionPage";
-import PayMentCompletionPage from "./pages/PayMentCompletionPage";
 import MyPage from "./pages/MyPage";
-
+import PayMentCompletionPage from "./pages/PayMentCompletionPage";
+import PayMentOrderPage from "./pages/PayMentOrderPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import ProductListPage from "./pages/ProductListPage";
-import PayMentOrderPage from "./pages/PayMentOrderPage";
-import App from "@/App";
-import Home from "./pages/HomePage";
 
 const router = createBrowserRouter([
   {
