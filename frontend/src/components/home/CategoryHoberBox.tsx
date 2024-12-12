@@ -12,7 +12,6 @@ export default function CategoryHoberBox({ categories }: Props) {
       {categories.map((category) => (
         <CategoryHoberList key={category.productId}
           name={category.name}
-          url={"/productlist"}
           alt={category.name}
           img={"/images/home/icon-" + category.name + ".png"}
         />
