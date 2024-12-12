@@ -1,5 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 
+import App from "@/App";
+
+import CartPage from "./pages/CartPage";
 import ChangePwdCompletionPage from "./pages/ChangePwdCompletionPage";
 
 import ErrorPage from "./pages/ErrorPage";
@@ -43,7 +46,7 @@ const router = createBrowserRouter([
       },
       { path: "/paymentcompletionpage", element: <PayMentCompletionPage /> },
       { path: "/paymentorderpage", element: <PayMentOrderPage /> },
-      { path: "*", element: <ErrorPage /> },
+      { path: "/cart", element: <CartPage />}
     ],
   },
 ]);
