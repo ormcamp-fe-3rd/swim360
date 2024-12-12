@@ -1,9 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import ChangePwdCompletionPage from "./pages/ChangePwdCompletionPage";
-import Home from "./pages/HomPage";
-
-
+import Home from "./pages/HomePage";
 import JoinCompletionPage from "./pages/JoinCompletionPage";
 import JoinPage from "./pages/JoinPage";
 import LoginPage from "./pages/LoginPage";
@@ -13,10 +11,8 @@ import PayMentCompletionPage from "./pages/PayMentCompletionPage";
 import PayMentOrderPage from "./pages/PayMentOrderPage";
 import Product from "./pages/Product";
 import ProductListPage from "./pages/ProductListPage";
-import PayMentOrderPage from "./pages/PayMentOrderPage";
 import UserEditPage from "./pages/UserEditPage";
 import UserPage from "./pages/UserPage";
-import PayMentOrderPage from "./pages/PayMentOrderPage";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
