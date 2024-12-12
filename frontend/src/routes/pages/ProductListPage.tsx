@@ -5,7 +5,7 @@ import SortSelect from "@/components/product-list/SortSelect";
 function ProductListPage() {
   return (
     <div className="p-4">
-      <div className="flex flex-col tablet:flex-row">
+      <div className="flex flex-col justify-center tablet:flex-row">
         <SideBar />
         <div>
           <SortSelect />
