@@ -57,7 +57,7 @@ export function CarouselBestPick() {
     <Carousel
       opts={{ align: "start", loop: true }}
       plugins={[plugin.current]}
-      className="relative h-full w-full "
+      className="relative h-full w-full pt-0 tablet:pt-20 desktop:pt-0"
       onClick={plugin.current.stop}
     >
       <CarouselContent>
