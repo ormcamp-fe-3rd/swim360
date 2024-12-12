@@ -35,10 +35,10 @@ function OrderStatusPreview({ deliveryStateCounts }: OrderStatusPreviewProps) {
             className="flex w-full items-center text-center"
           >
             <div className="w-full tablet:px-[17px]">
-              <div className="text-xl font-semibold tablet:text-xl">
+              <div className="text-xl font-semibold tablet:text-lg">
                 {deliveryStateCounts[dStatus.status]}
               </div>
-              <div className="text-nowrap text-[12px] font-semibold tablet:text-xl">
+              <div className="tablet:text-md text-nowrap text-[12px] font-semibold desktop:text-xl">
                 {dStatus.label}
               </div>
             </div>
