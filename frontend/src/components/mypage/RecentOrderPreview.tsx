@@ -44,7 +44,7 @@ function RecentOrderPreview({ orders }: RecentOrderPreviewProps) {
             key={order.id}
             className="grid w-full grid-flow-col grid-cols-1 border-b border-[#E5E7EB] last:border-none tablet:grid-cols-[0.3fr_1fr_0.3fr_0.3fr]"
           >
-            <div className="hidden flex-col items-center justify-center text-lg tablet:flex">
+            <div className="hidden min-w-[150px] flex-col items-center justify-center text-lg tablet:flex">
               <div className="text-center">
                 <div className="">주문 번호</div>
                 <div>{order.id}</div>
