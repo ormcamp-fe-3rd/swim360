@@ -13,6 +13,7 @@ import Product from "./pages/Product";
 import ProductListPage from "./pages/ProductListPage";
 import UserEditPage from "./pages/UserEditPage";
 import UserPage from "./pages/UserPage";
+import PayMentOrderPage from "./pages/PayMentOrderPage";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
