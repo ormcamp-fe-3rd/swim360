@@ -9,7 +9,7 @@ import MyPage from "./pages/MyPage";
 import MyPagePointAndReviewPage from "./pages/MyPagePointAndReviewPage";
 import PayMentCompletionPage from "./pages/PayMentCompletionPage";
 import PayMentOrderPage from "./pages/PayMentOrderPage";
-import Product from "./pages/Product";
+import Product from "./pages/ProductDetailPage";
 import ProductListPage from "./pages/ProductListPage";
 import UserEditPage from "./pages/UserEditPage";
 import UserPage from "./pages/UserPage";
