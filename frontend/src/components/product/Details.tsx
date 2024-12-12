@@ -1,7 +1,7 @@
 function DetailsSelected() {
   return (
     <>
-      <div className="mb-1 flex h-[50px] w-[522px] items-center justify-between bg-[#EDEDED] p-4">
+      <div className="mb-1 flex h-[50px] w-full max-w-[522px] items-center justify-between bg-[#EDEDED] p-4">
         <p>사이즈</p>
         <div className="flex w-fit items-center justify-between gap-3 rounded-[12px] border-[1px] border-black px-4">
           <img className="w-6" src="/public/images/product/icon-minus.png" />
@@ -17,7 +17,7 @@ function DetailsSelected() {
 function Details() {
   return (
     <>
-      <div className="h-auto w-[522px] flex-col">
+      <div className="h-auto w-full max-w-[522px] flex-col">
         <p className="text-[18px] font-semibold">제품명</p>
         <p className="text-[14px] font-extralight">제품 상세 내용</p>
         <div className="flex gap-[10px]">
@@ -34,7 +34,7 @@ function Details() {
           <p className="text-[14px] text-[#B0B0B0]">000,000원</p>
         </div>
 
-        <div className="mb-5 h-[88px] w-[522px] flex-col justify-between border-t-[1px] border-black pt-5">
+        <div className="mb-5 h-[88px] w-full max-w-[522px] flex-col justify-between border-t-[1px] border-black pt-5">
           <p className="mb-2 text-[16px]">사이즈</p>
           <div className="mb-5 flex gap-1">
             <button className="flex h-[40px] w-[60px] items-center justify-center gap-3 rounded-xl border-[1px] border-black hover:bg-black hover:text-white">
@@ -58,16 +58,16 @@ function Details() {
         <DetailsSelected />
 
         <div>
-          <div className="mb-[10px] mt-10 flex w-[522px] justify-end">
+          <div className="mb-[10px] mt-10 flex w-full max-w-[522px] justify-end">
             <p className="text-[16px] font-semibold">총 상품 금액: </p>
             <p className="text-[16px] font-semibold">000,000원</p>
           </div>
 
-          <div className="w-[522px]">
-            <button className="mr-3 h-[70px] w-[254px] rounded-2xl border-[1px] text-black">
+          <div className="h-auto w-full max-w-[522px]">
+            <button className="mr-3 mt-4 h-[70px] w-full rounded-2xl border-[1px] text-black">
               장바구니 담기
             </button>
-            <button className="h-[70px] w-[254px] rounded-2xl bg-black text-white">
+            <button className="my-2 h-[70px] w-full rounded-2xl bg-black text-white">
               바로 구매
             </button>
           </div>

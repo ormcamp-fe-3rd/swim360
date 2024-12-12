@@ -2,6 +2,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import ChangePwdCompletionPage from "./pages/ChangePwdCompletionPage";
 import Home from "./pages/HomPage";
+import JoinPage from "./pages/JoinPage";
+import LoginPage from "./pages/LoginPage";
 import JoinCompletionPage from "./pages/JoinCompletionPage";
 import JoinPage from "./pages/JoinPage";
 import LoginPage from "./pages/LoginPage";
@@ -10,10 +12,10 @@ import PayMentCompletionPage from "./pages/PayMentCompletionPage";
 import PayMentOrderPage from "./pages/PayMentOrderPage";
 import Product from "./pages/Product";
 import ProductListPage from "./pages/ProductListPage";
+import PayMentOrderPage from "./pages/PayMentOrderPage";
 
 
 const router = createBrowserRouter([
-
   { path: "/", element: <Home /> },
   { path: "/productlist", element: <ProductListPage /> },
   { path: "/product", element: <Product /> },
@@ -23,8 +25,7 @@ const router = createBrowserRouter([
   { path: "/mypage", element: <MyPage /> },
   { path: "/changepwdcompletionpage", element: <ChangePwdCompletionPage /> },
   { path: "/paymentcompletionpage", element: <PayMentCompletionPage /> },
-  { path: "/paymentorderpage", element: <PayMentOrderPage />, },
-
+  { path: "/paymentorderpage", element: <PayMentOrderPage /> },
 ]);
 
 export default function Router() {
