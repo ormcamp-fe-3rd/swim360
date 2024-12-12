@@ -6,7 +6,7 @@ interface UserInfoPreviewProps {
 
 function UserInfoPreview({ name }: UserInfoPreviewProps) {
   return (
-    <Link to="/user" role="link">
+    <Link to="/mypage/auth_pw" role="link">
       <div className="flex h-[146px] items-center justify-between border-[1px] border-[#000000] px-5">
         <div className="text-xl font-semibold tablet:text-xl">{name}</div>
         <img
