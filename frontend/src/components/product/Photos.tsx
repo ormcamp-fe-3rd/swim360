@@ -1,6 +1,6 @@
 function Photos() {
   return (
-    <div className="h=auto w-full max-w-[522px]">
+    <div className="h-auto w-full max-w-[522px]">
       <img
         className="mb-4 h-[600px] w-full max-w-[522px] overflow-hidden object-cover"
         src="/public/images/product/swimsuit-front.jpg"
