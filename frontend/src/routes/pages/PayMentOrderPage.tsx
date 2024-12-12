@@ -56,11 +56,7 @@ function PayMentOrderPage() {
           <div className="h-22 mb-1 flex w-[600px] border-b border-black p-2.5">
             <span className="inline-block w-[120px]">배송지</span>
             <div className="mb-1">
-<<<<<<< HEAD
-              <div className="mb-1">
-=======
               <div className="mb-1 flex">
->>>>>>> d38d77e4f3f4714e36f6b3ad5ac89dbfc1719a0d
                 <input
                   type="text"
                   name="address"
@@ -128,11 +124,7 @@ function PayMentOrderPage() {
                   <span className="inline-block w-[80px] pl-1">포인트</span>
                 </div>
               </div>
-<<<<<<< HEAD
-              <div>
-=======
               <div className="flex">
->>>>>>> d38d77e4f3f4714e36f6b3ad5ac89dbfc1719a0d
                 <input
                   type="text"
                   className="mr-5 w-[450px] bg-slate-100 p-2.5"
@@ -205,11 +197,7 @@ function PayMentOrderPage() {
               <span className="inline-block w-[20px] pl-1">원</span>
             </div>
           </div>
-<<<<<<< HEAD
-          <PrimaryButton>주소검색</PrimaryButton>
-=======
           <PrimaryButton>바로구매</PrimaryButton>
->>>>>>> d38d77e4f3f4714e36f6b3ad5ac89dbfc1719a0d
         </div>
       </div>
     </div>
