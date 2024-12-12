@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Textarea } from "../ui/textarea";
 import ReviewStar from "./ReviewsStar";
+import { Link } from "react-router-dom";
 
 interface ReviewModalProps {
   onClickToggleModal: () => void;
@@ -58,16 +59,18 @@ function ReviewWriteModal({ onClickToggleModal }: ReviewModalProps) {
             <p className="w-[200px] border-b-2 border-black py-4 text-center">
               후기작성
             </p>
-            <button
-              onClick={onClickToggleModal}
-              className="absolute right-4 top-4 h-8 w-8"
-            >
-              <img
-                className="h-8 w-8"
-                src="/public/images/common/btn-close.png"
-                alt="close"
-              />
-            </button>
+            <Link to="/product/${product.id}">
+              <button
+                onClick={onClickToggleModal}
+                className="absolute right-4 top-4 h-8 w-8"
+              >
+                <img
+                  className="h-8 w-8"
+                  src="/public/images/common/btn-close.png"
+                  alt="close"
+                />
+              </button>
+            </Link>
           </div>
           <ReviewStar size="large" />
           <div className="w-full">

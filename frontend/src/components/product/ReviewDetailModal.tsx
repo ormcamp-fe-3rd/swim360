@@ -1,5 +1,6 @@
 import React from "react";
 import Reviews from "./Reviews";
+import { Link } from "react-router-dom";
 
 import {
   Carousel,
@@ -25,21 +26,21 @@ function ReviewDetailModal({ onClickToggleModal2 }: ReviewModalProps2) {
               <CarouselContent>
                 <CarouselItem>
                   <img
-                    className="h-auto w-auto max-w-full object-contain"
+                    className="h-auto w-auto max-w-full rounded-l-xl object-contain"
                     src="/public/images/product/swimsuit-front2.jpg"
                     alt="review-image"
                   />
                 </CarouselItem>
                 <CarouselItem>
                   <img
-                    className="h-auto w-auto max-w-full object-contain"
+                    className="h-auto w-auto max-w-full rounded-l-xl object-contain"
                     src="/public/images/product/swimsuit-back.jpg"
                     alt="review-image"
                   />
                 </CarouselItem>
                 <CarouselItem>
                   <img
-                    className="h-auto w-auto max-w-full object-contain"
+                    className="h-auto w-auto max-w-full rounded-l-xl object-contain"
                     src="/public/images/product/swimsuit-front.jpg"
                     alt="review-image"
                   />
@@ -55,16 +56,18 @@ function ReviewDetailModal({ onClickToggleModal2 }: ReviewModalProps2) {
               <p className="w-full border-b-2 border-black text-center text-sm sm:text-lg lg:text-xl">
                 후기작성
               </p>
-              <button
-                onClick={onClickToggleModal2}
-                className="absolute right-4 top-4 sm:right-6 sm:top-6"
-              >
-                <img
-                  className="h-6 w-6 bg-slate-50 sm:h-8 sm:w-8"
-                  src="/public/images/common/btn-close.png"
-                  alt="close"
-                />
-              </button>
+              <Link to="/product/${product.id}">
+                <button
+                  onClick={onClickToggleModal2}
+                  className="absolute right-4 top-4 sm:right-6 sm:top-6"
+                >
+                  <img
+                    className="h-6 w-6 bg-slate-50 sm:h-8 sm:w-8"
+                    src="/public/images/common/btn-close.png"
+                    alt="close"
+                  />
+                </button>
+              </Link>
             </div>
 
             {/* Reviews Component */}

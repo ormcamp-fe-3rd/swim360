@@ -4,6 +4,7 @@ import ReviewDetailModal from "./ReviewDetailModal";
 import { PaginationDemo } from "../common/Paginaion";
 import { useState } from "react";
 import Reviews from "./Reviews";
+import { Link } from "react-router-dom";
 
 function ReviewsTab() {
   const [isOpenModal, setOpenModal] = useState(false);
@@ -58,19 +59,20 @@ function ReviewsTab() {
             <p>/5</p>
           </div>
         </div>
-
-        <div className="mx-auto flex w-full justify-center">
-          <div className="mb-2 mt-8 flex w-full max-w-[1064px] justify-end">
-            <button
-              id="ReviewButton"
-              className="flex h-[50px] w-[164px] items-center justify-center gap-2 rounded-xl bg-black text-[24px] text-white"
-              onClick={onClickToggleModal}
-            >
-              <img src="/public/images/icon-reviews.png" />
-              후기 등록
-            </button>
+        <Link to="/product/review" className="w-full">
+          <div className="mx-auto flex w-full justify-center">
+            <div className="mb-2 mt-8 flex w-full max-w-[1064px] justify-end">
+              <button
+                id="ReviewButton"
+                className="flex h-[50px] w-[164px] items-center justify-center gap-2 rounded-xl bg-black text-[24px] text-white"
+                onClick={onClickToggleModal}
+              >
+                <img src="/public/images/icon-reviews.png" />
+                후기 등록
+              </button>
+            </div>
           </div>
-        </div>
+        </Link>
 
         {/* 모달이 열리면 ReviewWriteModal 컴포넌트를 렌더링 */}
         {isOpenModal && (
@@ -83,14 +85,26 @@ function ReviewsTab() {
 
         <div
           onClick={onClickToggleModal2}
-          className="mx-auto flex w-full max-w-[1064px] flex-wrap justify-center"
+          className="mx-auto flex w-full max-w-[1064px] flex-wrap items-center justify-center"
         >
-          <Reviews />
-          <Reviews />
-          <Reviews />
-          <Reviews />
-          <Reviews />
-          <Reviews />
+          <div onClick={onClickToggleModal2} className="hover:bg-slate-100">
+            <Reviews />
+          </div>
+          <div onClick={onClickToggleModal2} className="hover:bg-slate-100">
+            <Reviews />
+          </div>
+          <div onClick={onClickToggleModal2} className="hover:bg-slate-100">
+            <Reviews />
+          </div>
+          <div onClick={onClickToggleModal2} className="hover:bg-slate-100">
+            <Reviews />
+          </div>
+          <div onClick={onClickToggleModal2} className="hover:bg-slate-100">
+            <Reviews />
+          </div>
+          <div onClick={onClickToggleModal2} className="hover:bg-slate-100">
+            <Reviews />
+          </div>
         </div>
 
         <div className="mt-9">
