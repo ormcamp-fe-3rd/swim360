@@ -5,7 +5,7 @@ import Photos from "@/components/product/Photos";
 import QnasTab from "@/components/product/QnasTab";
 import ReviewsTab from "@/components/product/reviewsTab";
 
-function Product() {
+function ProductDetailPage() {
   return (
     <div className="flex flex-col justify-center px-4">
       <div className="mx-auto flex w-full flex-wrap items-start justify-center gap-5">
@@ -19,4 +19,4 @@ function Product() {
     </div>
   );
 }
-export default Product;
+export default ProductDetailPage;
