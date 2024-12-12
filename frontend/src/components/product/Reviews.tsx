@@ -7,7 +7,7 @@ type ReviewsType = {
 function Reviews({ size = "large" }: ReviewsType) {
   // sizeStyles로 동적 클래스 적용
   const sizeStyles = {
-    small: "w-[500px] min-h-[200px]",
+    small: "w-full min-h-[200px]",
     large: "w-[1064px] min-h-[196px] ",
   };
 
