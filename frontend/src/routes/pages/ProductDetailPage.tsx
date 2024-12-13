@@ -4,6 +4,7 @@ import ExchangeTab from "@/components/product/exchangeTab";
 import Photos from "@/components/product/Photos";
 import QnasTab from "@/components/product/QnasTab";
 import ReviewsTab from "@/components/product/reviewsTab";
+import { Link } from "react-router-dom";
 
 function ProductDetailPage() {
   return (

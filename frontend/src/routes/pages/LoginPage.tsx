@@ -2,8 +2,10 @@ import PrimaryButton from "@/components/common/PrimaryButton";
 
 function LoginPage() {
   return (
-    <div className="mx-auto w-[600px]">
-      <p className="border-b p-2.5 text-center font-bold">로그인</p>
+    <div className="mx-auto w-full max-w-[600px] px-4">
+      <p className="border-b border-black p-2.5 text-center font-bold">
+        로그인
+      </p>
       <div className="p-2.5">
         <input
           type="text"
@@ -20,12 +22,19 @@ function LoginPage() {
           placeholder="비밀번호"
         />
       </div>
-      <label htmlFor="" className="ml-4">
-        <input type="checkbox" name="" id="" />
-        <span className="ml-2">아이디 저장</span>
+      <label className="my-4 ml-4 inline-block">
+        <input
+          type="checkbox"
+          className="sm:h-[22px] sm:w-[22px]"
+          name="id-Memories"
+          id="id-Memories"
+        />
+        <span className="ml-2 align-text-bottom sm:text-[20px]">
+          아이디 저장
+        </span>
       </label>
       <PrimaryButton>로그인</PrimaryButton>
-      <ul className="text-center">
+      <ul className="mt-4 grid gap-4 text-center sm:flex sm:justify-center">
         <li className="inline-block">아이디 찾기</li>
         <li className="mx-7 inline-block">비밀번호 찾기</li>
         <li className="inline-block">회원가입</li>

@@ -1,15 +1,24 @@
 import ReviewStar from "./ReviewsStar";
 import ReviewWriteModal from "./ReviewWriteModal";
 import ReviewDetailModal from "./ReviewDetailModal";
-
 import { PaginationDemo } from "../common/Paginaion";
-
-import { useState, useCallback } from "react";
-
+import { useState } from "react";
 import Reviews from "./Reviews";
+import { Link } from "react-router-dom";
 
 function ReviewsTab() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenModal, setOpenModal] = useState(false);
+  const [isOpenModal2, setOpenModal2] = useState(false);
+
+  const onClickToggleModal = () => {
+    setOpenModal(!isOpenModal);
+    console.log("실행됨됨");
+  };
+
+  const onClickToggleModal2 = () => {
+    setOpenModal2(!isOpenModal2);
+    console.log("실행됨됨");
+  };
 
   return (
     <>
@@ -50,31 +59,52 @@ function ReviewsTab() {
             <p>/5</p>
           </div>
         </div>
-
-        <div className="mx-auto flex w-full justify-center">
-          <div className="mb-2 mt-8 flex w-full max-w-[1064px] justify-end">
-            <button
-              id="ReviewButton"
-              onClick={() => setIsOpen(true)}
-              className="flex h-[50px] w-[164px] items-center justify-center gap-2 rounded-xl bg-black text-[24px] text-white"
-            >
-              <img src="/public/images/icon-reviews.png" />
-              후기 등록
-            </button>
+        <Link to="/product/review" className="w-full">
+          <div className="mx-auto flex w-full justify-center">
+            <div className="mb-2 mt-8 flex w-full max-w-[1064px] justify-end">
+              <button
+                id="ReviewButton"
+                className="flex h-[50px] w-[164px] items-center justify-center gap-2 rounded-xl bg-black text-[24px] text-white"
+                onClick={onClickToggleModal}
+              >
+                <img src="/public/images/icon-reviews.png" />
+                후기 등록
+              </button>
+            </div>
           </div>
-        </div>
+        </Link>
 
-        <div className="hidden">
-          <ReviewDetailModal />
-        </div>
+        {/* 모달이 열리면 ReviewWriteModal 컴포넌트를 렌더링 */}
+        {isOpenModal && (
+          <ReviewWriteModal onClickToggleModal={onClickToggleModal} />
+        )}
 
-        <div className="mx-auto flex w-full max-w-[1064px] flex-wrap justify-center">
-          <Reviews />
-          <Reviews />
-          <Reviews />
-          <Reviews />
-          <Reviews />
-          <Reviews />
+        {isOpenModal2 && (
+          <ReviewDetailModal onClickToggleModal2={onClickToggleModal2} />
+        )}
+
+        <div
+          onClick={onClickToggleModal2}
+          className="mx-auto flex w-full max-w-[1064px] flex-wrap items-center justify-center"
+        >
+          <div onClick={onClickToggleModal2} className="hover:bg-slate-100">
+            <Reviews />
+          </div>
+          <div onClick={onClickToggleModal2} className="hover:bg-slate-100">
+            <Reviews />
+          </div>
+          <div onClick={onClickToggleModal2} className="hover:bg-slate-100">
+            <Reviews />
+          </div>
+          <div onClick={onClickToggleModal2} className="hover:bg-slate-100">
+            <Reviews />
+          </div>
+          <div onClick={onClickToggleModal2} className="hover:bg-slate-100">
+            <Reviews />
+          </div>
+          <div onClick={onClickToggleModal2} className="hover:bg-slate-100">
+            <Reviews />
+          </div>
         </div>
 
         <div className="mt-9">
