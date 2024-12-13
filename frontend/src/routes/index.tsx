@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 
 import App from "@/App";
 
+import CartPage from "./pages/CartPage";
 import ChangePwdCompletionPage from "./pages/ChangePwdCompletionPage";
 import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/HomePage";
@@ -42,6 +43,7 @@ const router = createBrowserRouter([
       },
       { path: "/paymentcompletionpage", element: <PayMentCompletionPage /> },
       { path: "/paymentorderpage", element: <PayMentOrderPage /> },
+      { path: "/cart", element: <CartPage />},
       { path: "*", element: <ErrorPage /> },
     ],
   },

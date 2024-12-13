@@ -7,7 +7,7 @@ export default function Cart() {
     <>
       <div className="mx-auto w-[90%] max-w-[1440px]">
         <BreadcrumbCustom name="장바구니" />
-        <div className="middle:flex grid min-w-[475px] flex-wrap gap-0">
+        <div className="middle:flex grid w-full flex-wrap gap-0">
           <form action="#" className="middle:w-2/3 mb-10">
             <CartProductList />
           </form>
