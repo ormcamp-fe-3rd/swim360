@@ -1,8 +1,8 @@
 import PointAndReviewTab from "@/components/mypage/PointAndReview";
 
-export default function MyPageDetails() {
+export default function PointAndReview() {
   return (
-    <div className="mx-auto w-full px-2 tablet:px-20 tablet:max-w-[1440px]">
+    <div className="mx-auto w-full px-2 tablet:max-w-[1440px] tablet:px-20">
       <PointAndReviewTab />
     </div>
   );

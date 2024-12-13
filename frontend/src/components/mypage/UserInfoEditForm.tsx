@@ -1,6 +1,7 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
+import { Link } from "react-router-dom";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
@@ -163,12 +164,16 @@ export default function ProfileForm() {
             )}
           />
           <div className="mt-10 flex w-full gap-2">
+            <Link to="/mypage" className="w-full">
             <Button className="h-[70px] w-full rounded-xl text-base bg-white text-black hover:bg-gray-100" type="submit">
               취소
             </Button>
+            </Link>
+            <Link to="/mypage" className="w-full">
             <Button className="h-[70px] w-full rounded-xl text-base" type="submit">
               확인
             </Button>
+            </Link>
           </div>
         </form>
       </Form>
