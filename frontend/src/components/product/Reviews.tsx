@@ -7,19 +7,19 @@ type ReviewsType = {
 function Reviews({ size = "large" }: ReviewsType) {
   // sizeStyles로 동적 클래스 적용
   const sizeStyles = {
-    small: "w-[500px] min-h-[200px]",
+    small: "w-full min-h-[200px]",
     large: "w-[1064px] min-h-[196px] ",
   };
 
   return (
     <div
-      className={`container ${sizeStyles[size]} my-2 flex items-center border-b`}
+      className={`container ${sizeStyles[size]} flex items-center border-b py-2`}
     >
       <div className="flex flex-col">
         <ReviewStar size="small" />
         <div className="flex justify-between">
           <div className="flex flex-col gap-2">
-            <div className="mt-2 flex text-[18px] font-medium">
+            <div className="flex pt-2 text-[18px] font-medium">
               <p>사이즈:</p>
               <p> 000 </p>
             </div>
@@ -30,12 +30,12 @@ function Reviews({ size = "large" }: ReviewsType) {
               입어봤는데도 색상이 전혀 바래지 않았습니다. 디자인도 세련돼서 정말
               마음에 들어요. 강력 추천합니다!
             </p>
-            <div className="mb-2 h-40 w-40 overflow-hidden bg-black object-cover">
+            <div className="h-40 w-40 overflow-hidden bg-black object-cover pb-2">
               <img src="/public/images/product/swimsuit-back.jpg"></img>
             </div>
           </div>
         </div>
-        <div className="mb-2 flex justify-start gap-2 text-[12px] font-medium text-[#B0B0B0]">
+        <div className="flex justify-start gap-2 pb-2 text-[12px] font-medium text-[#B0B0B0]">
           <p>김**</p>
           <p>| 2000.00.00</p>
         </div>

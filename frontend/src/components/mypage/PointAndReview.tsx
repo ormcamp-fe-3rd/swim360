@@ -12,7 +12,7 @@ export default function PointAndReviewTab() {
     <div className="h-screen">
       <div className="my-10 w-full">
         <Tabs defaultValue="my-points" className="h-20">
-          <TabsListCustom className="h-full w-full gap-3 tablet:w-[600px] mx-auto">
+          <TabsListCustom className="h-full w-full tablet:w-[600px] mx-auto">
             <TabsTriggerCustom
               value="my-points"
               className={`h-full w-1/2 ${tab === "point" ? "border-black" : ""}`}

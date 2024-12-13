@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
+
 import PrimaryButton from "../common/PrimaryButton";
 
-export default function UserEditVeri() {
+export default function UserEditAuth() {
   return (
     <div className="mx-auto flex w-[600px] flex-col gap-[42px]">
       <p className="border-b border-black p-2.5 text-center text-xl font-semibold">
@@ -15,11 +17,11 @@ export default function UserEditVeri() {
           placeholder="비밀번호"
         />
       </div>
-      <a href="/user/edit">
-      <PrimaryButton className="h-[70px] w-full rounded-xl text-base font-semibold">
-        확인
-      </PrimaryButton>
-      </a>
+      <Link to="/mypage/edit">
+        <PrimaryButton className="h-[70px] w-full rounded-xl text-base font-semibold">
+          확인
+        </PrimaryButton>
+      </Link>
     </div>
   );
 }
