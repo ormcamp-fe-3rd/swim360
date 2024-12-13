@@ -14,18 +14,18 @@ const Textarea = React.forwardRef<
   };
 
   return (
-    <div className="relative w-full">
+    <div className="relative">
       <textarea
         className={cn(
-          "resize-none flex min-h-[320px] w-full rounded-md border border-gray-200 bg-transparent px-3 py-2 text-base shadow-sm placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:cursor-not-allowed disabled:opacity-50 md:text-base dark:border-gray-800 dark:placeholder:text-gray-400 dark:focus-visible:ring-gray-300",
-          className
+          "flex resize-none rounded-md border border-gray-200 bg-transparent px-3 py-2 text-base shadow-sm placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-800 dark:placeholder:text-gray-400 dark:focus-visible:ring-gray-300 md:text-base",
+          className,
         )}
         maxLength={maxLength}
         ref={ref}
         onChange={handleChange}
         {...props}
       />
-      <div className="absolute bottom-3 right-3 text-sm text-gray-500 pointer-events-none">
+      <div className="pointer-events-none absolute bottom-3 right-3 text-sm text-gray-500">
         {charCount}/{maxLength}
       </div>
     </div>
