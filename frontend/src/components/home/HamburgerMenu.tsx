@@ -23,9 +23,9 @@ export default function HamburgerMenu({ isOpen, toggleMenu }: Prop) {
       >
         <div className="h-full w-full">
           <ul className="flex h-[420px] flex-col items-center bg-white">
-            <HamburgerMenuList url="/category_list/one-piece" >WOMAN</HamburgerMenuList>
+            <HamburgerMenuList url="/product_list/one-piece">WOMAN</HamburgerMenuList>
             <HamburgerMenuList url="/product_list/mid-length">MAN</HamburgerMenuList>
-            <HamburgerMenuList url="/category_list/bag">ACC</HamburgerMenuList>
+            <HamburgerMenuList url="/product_list/bag">ACC</HamburgerMenuList>
             <HamburgerMenuList url="/mypage">MY PAGE</HamburgerMenuList>
           </ul>
         </div>
