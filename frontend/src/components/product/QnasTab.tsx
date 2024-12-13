@@ -17,9 +17,9 @@ function Qnas({ number, title, author, answer }: QnaItem) {
     <div className="flex justify-center">
       <Accordion type="single" collapsible className="w-[1064px]">
         <AccordionItem value="item-1">
-          <AccordionTrigger className="">
+          <AccordionTrigger className="flex">
             <p className="w-[74px] pl-7 text-start">{number}</p>
-            <p className="flex-2 w-full">{title}</p>
+            <p className="flex-2 mx-auto w-full text-center">{title}</p>
             <p className="mr-6 w-[74px] text-end">{author}</p>
           </AccordionTrigger>
           <AccordionContent className="text-center">
