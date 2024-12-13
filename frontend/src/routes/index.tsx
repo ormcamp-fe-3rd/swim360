@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "@/App";
 
 import ChangePwdCompletionPage from "./pages/ChangePwdCompletionPage";
+import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/HomePage";
 import JoinCompletionPage from "./pages/JoinCompletionPage";
 import JoinPage from "./pages/JoinPage";
@@ -19,6 +20,7 @@ import PayMentOrderPage from "./pages/PayMentOrderPage";
 import App from "@/App";
 import Home from "./pages/HomePage";
 import path from "path";
+
 
 
 const router = createBrowserRouter([
@@ -46,6 +48,7 @@ const router = createBrowserRouter([
       },
       { path: "/paymentcompletionpage", element: <PayMentCompletionPage /> },
       { path: "/paymentorderpage", element: <PayMentOrderPage /> },
+      { path: "*", element: < ErrorPage/>}
     ],
   },
 ]);

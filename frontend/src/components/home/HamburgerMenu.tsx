@@ -1,33 +1,32 @@
-import { useState } from "react"
+import HamburgerMenuList from "./HamburgerMenuList";
 
-export default function HamburgerMenu(){
-  const[isOpen, setIsOpen] = useState(false)
-  
+interface Prop {
+  isOpen: boolean;
+  toggleMenu: () => void;
+}
+
+export default function HamburgerMenu({ isOpen, toggleMenu }: Prop) {
+  // const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="relative tablet:hidden">
-      <button onClick={() => setIsOpen(!isOpen)}>
+      <button onClick={toggleMenu}>
         <img
           className="h-6 w-6"
           src="/images/home/button-hamburger.png"
-          alt=""
+          alt="햄버거 메뉴"
         />
       </button>
-      {/* TODO: backdrop 효과 추가 */}
-      <div className={`absolute ${isOpen ? "block" : "hidden"} -translate-x-10 top-20 z-10`}>
-        <div className="h-[370px] w-screen bg-white">
-          <ul className="flex h-full flex-col items-center">
-            <li className="flex h-1/4 w-full items-center justify-center font-semibold shadow-sm">
-              WOMAN
-            </li>
-            <li className="flex h-1/4 w-full items-center justify-center font-semibold">
-              MAN
-            </li>
-            <li className="flex h-1/4 w-full items-center justify-center font-semibold">
-              ACC
-            </li>
-            <li className="flex h-1/4 w-full items-center justify-center font-semibold">
-              MY PAGE
-            </li>
+      <div
+        className={`${isOpen ? "block" : "hidden"} fixed inset-0 top-[190px] z-10 backdrop-brightness-50`}
+        onClick={toggleMenu}
+      >
+        <div className="h-full w-full">
+          <ul className="flex h-[420px] flex-col items-center bg-white">
+            <HamburgerMenuList url="/category_list/one-piece" >WOMAN</HamburgerMenuList>
+            <HamburgerMenuList url="/product_list/mid-length">MAN</HamburgerMenuList>
+            <HamburgerMenuList url="/category_list/bag">ACC</HamburgerMenuList>
+            <HamburgerMenuList url="/mypage">MY PAGE</HamburgerMenuList>
           </ul>
         </div>
       </div>
