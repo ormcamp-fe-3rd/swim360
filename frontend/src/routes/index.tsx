@@ -3,12 +3,14 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "@/App";
 
 import ChangePwdCompletionPage from "./pages/ChangePwdCompletionPage";
+
 import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/HomePage";
 import JoinCompletionPage from "./pages/JoinCompletionPage";
 import JoinPage from "./pages/JoinPage";
 import LoginPage from "./pages/LoginPage";
 import MyPage from "./pages/MyPage";
+
 import MyPageAuthPw from "./pages/MyPageAuthPwPage";
 import MyPageEdit from "./pages/MyPageEditPage";
 import PayMentCompletionPage from "./pages/PayMentCompletionPage";
@@ -20,7 +22,6 @@ import PayMentOrderPage from "./pages/PayMentOrderPage";
 import App from "@/App";
 import Home from "./pages/HomePage";
 import path from "path";
-
 
 
 const router = createBrowserRouter([
