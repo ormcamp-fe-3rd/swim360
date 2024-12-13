@@ -1,4 +1,4 @@
-import { goToLinkClick, goToLinkKeyboard } from "@/utils/goToLink";
+import { Link } from "react-router-dom";
 
 const myPageIcon = {
   imgUrl: "/images/common/icon-mypage.png",
@@ -16,26 +16,26 @@ export default function MainIconButton() {
   return (
     <div className="flex tablet:w-[190px] justify-around">
       <button>
+        <Link to={myPageIcon.url}>
         <img
           className="h-8 w-8 hidden tablet:block"
           src={myPageIcon.imgUrl}
           alt={myPageIcon.name}
           role="link"
           tabIndex={0}
-          onClick={() => goToLinkClick(myPageIcon.url)}
-          onKeyDown={(event) => goToLinkKeyboard(event, myPageIcon.url)}
-        />
+          />
+          </Link>
       </button>
       <button>
+        <Link to={cartIcon.url}>
         <img
           className="h-8 w-8"
           src={cartIcon.imgUrl}
           alt={cartIcon.name}
           role="link"
           tabIndex={0}
-          onClick={() => goToLinkClick(cartIcon.url)}
-          onKeyDown={(event) => goToLinkKeyboard(event, cartIcon.url)}
-        />
+          />
+        </Link>
       </button>
     </div>
   );
