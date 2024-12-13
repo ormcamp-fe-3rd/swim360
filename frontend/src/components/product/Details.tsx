@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function DetailsSelected() {
   return (
     <>
@@ -64,12 +66,16 @@ function Details() {
           </div>
 
           <div className="h-auto w-full max-w-[522px]">
-            <button className="mr-3 mt-4 h-[70px] w-full rounded-2xl border-[1px] text-black">
-              장바구니 담기
-            </button>
-            <button className="my-2 h-[70px] w-full rounded-2xl bg-black text-white">
-              바로 구매
-            </button>
+            <Link to="/cart" className="w-full">
+              <button className="mr-3 mt-4 h-[70px] w-full rounded-2xl border-[1px] text-black">
+                장바구니 담기
+              </button>
+            </Link>
+            <Link to="/order" className="w-full">
+              <button className="my-2 h-[70px] w-full rounded-2xl bg-black text-white">
+                바로 구매
+              </button>
+            </Link>
           </div>
         </div>
       </div>
