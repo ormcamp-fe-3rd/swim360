@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 interface OrderItem {
   id: number;
   name: string;
@@ -62,8 +60,8 @@ function RecentOrderPreview({ orders }: RecentOrderPreviewProps) {
               <div className="flex flex-col pb-3">
                 {order.orderItems.map((orderItem) => (
                   <div
-                    key={orderItem.id + "name"}
-                    className="grid grid-cols-3 items-center gap-4"
+                    key={orderItem.id}
+                    className="flex flex-col items-start gap-4"
                   >
                     <div className="col-span-3 flex">
                       <div className="ml-3 max-h-[209px] max-w-[153px] pt-3">
@@ -92,13 +90,11 @@ function RecentOrderPreview({ orders }: RecentOrderPreviewProps) {
                 </div>
               </div>
             </div>
-            <div
-              className={`hidden tablet:grid grid-row-${order.orderItems.length}`}
-            >
+            <div className={`hidden tablet:flex tablet:flex-col`}>
               {order.orderItems.map((orderItem) => (
                 <div
-                  key={orderItem.id + "quantity"}
-                  className="flex items-center justify-center"
+                  key={orderItem.id}
+                  className="flex grow items-center justify-center"
                 >
                   {orderItem.quantity}
                 </div>
