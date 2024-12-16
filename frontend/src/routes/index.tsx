@@ -18,6 +18,7 @@ import PointAndReview from "./pages/PointAndReviewPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import ProductListPage from "./pages/ProductListPage";
 
+
 const router = createBrowserRouter([
   {
     path: "/",
