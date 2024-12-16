@@ -52,8 +52,8 @@ export default function PointList({ points }: Prop) {
           <TableBody>
             {points.map((point) => (
               <TableRow key={point.date} className="h-20">
-                {Object.values(point).map((value) => (
-                  <TableCell className="text-center text-base">
+                {Object.values(point).map((value, index) => (
+                  <TableCell key={index} className="text-center text-base">
                     {value}
                   </TableCell>
                 ))}

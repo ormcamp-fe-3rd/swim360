@@ -44,8 +44,8 @@ export default function ReviewList({reviews}: Prop) {
           <TableBody>
             {reviews.map((review) => (
               <TableRow key={review.date} className="h-20">
-                {Object.values(review).map((value) => (
-                  <TableCell className="hidden overflow-hidden text-ellipsis whitespace-nowrap text-center text-base tablet:table-cell">
+                {Object.values(review).map((value, index) => (
+                  <TableCell key={index} className="hidden overflow-hidden text-ellipsis whitespace-nowrap text-center text-base tablet:table-cell">
                     {value}
                   </TableCell>
                 ))}
