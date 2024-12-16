@@ -1,5 +1,4 @@
 import ProductItem from "@/components/product-list/ProductItem";
-import { Link } from "react-router-dom";
 import productsData from "@/mocks/products.json";
 import { ProductItemData, ProductsData, SortOption } from "@/types/products";
 
