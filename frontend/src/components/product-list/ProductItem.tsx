@@ -11,9 +11,6 @@ function ProductItem({
   discountedPrice,
   discountPercentage,
   imgUrl,
-  createdAt,
-  reviewCount,
-  salesVolume,
 }: ProductItemProps) {
   return (
     <Link to={`/product/${id}`}>
@@ -33,9 +30,6 @@ function ProductItem({
               {discountPercentage}%
             </div>
           </div>
-          <div>등록 날짜: {new Date(createdAt).toLocaleDateString()}</div>
-          <div>리뷰: {reviewCount}</div>
-          <div>판매수: {salesVolume}</div>
         </div>
       </div>
     </Link>
