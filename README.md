@@ -15,6 +15,22 @@
 
 </br>
 
+### 🧑‍💻 실행 방법
+
+#### frontend
+
+```
+ cd frontend
+ npm run dev
+```
+
+#### backend
+
+```
+  cd backend
+  node --env-file=.env.local app.js
+```
+
 ### 🎨 피그마 작업
 
 ### [링크 🔗](https://www.figma.com/design/wiSvWBt1ldrdNDoHLvzqGf/%EC%87%BC%ED%95%91%EB%AA%B0%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8?node-id=14-48&node-type=canvas&t=e4X4DnWNPG7ekbZ8-0)
@@ -36,10 +52,11 @@
 
 #### Backend
 
-  <a>
+ <a>
     <img src="https://skillicons.dev/icons?i=nodejs,express,sequelize,mysql,aws" />
   </a>
   <img width="70px" src="https://github.com/user-attachments/assets/e7e991bb-1ec4-4959-a4f1-ee8db979d034">
+ <img width="55px" src="https://github.com/user-attachments/assets/0ecde664-6d6a-4628-96ff-715e9a42f671" />
 
   <br>
 

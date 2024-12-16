@@ -1,28 +1,53 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 
-import AgreesPage from "./pages/AgreesPage";
-import Home from "./pages/Home";
-import ProductList from "./pages/ProductList";
+import App from "@/App";
+
+import CartPage from "./pages/CartPage";
+import ChangePwdCompletionPage from "./pages/ChangePwdCompletionPage";
+import ErrorPage from "./pages/ErrorPage";
+import Home from "./pages/HomePage";
+import JoinCompletionPage from "./pages/JoinCompletionPage";
+import JoinPage from "./pages/JoinPage";
+import LoginPage from "./pages/LoginPage";
+import MyPage from "./pages/MyPage";
+import MyPageAuthPw from "./pages/MyPageAuthPwPage";
+import MyPageEdit from "./pages/MyPageEditPage";
+import PayMentCompletionPage from "./pages/PayMentCompletionPage";
+import PayMentOrderPage from "./pages/PayMentOrderPage";
+import PointAndReview from "./pages/PointAndReviewPage";
+import ProductDetailPage from "./pages/ProductDetailPage";
+import ProductListPage from "./pages/ProductListPage";
+
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <App />,
+    children: [
+      { path: "/", element: <Home /> },
+      { path: "/product_list/:name", element: <ProductListPage /> },
+      {
+        path: "/product/:id",
+        element: <ProductDetailPage />,
+      },
+      { path: "/review/:id", element: <ProductDetailPage /> },
+      { path: "/loginpage", element: <LoginPage /> },
+      { path: "/joinpage", element: <JoinPage /> },
+      { path: "/joincompletionpage", element: <JoinCompletionPage /> },
+      { path: "/mypage", element: <MyPage /> },
+      { path: "/mypage/auth_pw", element: <MyPageAuthPw /> },
+      { path: "/mypage/edit", element: <MyPageEdit /> },
+      { path: "/mypage/point_and_review", element: <PointAndReview /> },
+      {
+        path: "/changepwdcompletionpage",
+        element: <ChangePwdCompletionPage />,
+      },
+      { path: "/paymentcompletionpage", element: <PayMentCompletionPage /> },
+      { path: "/paymentorderpage", element: <PayMentOrderPage /> },
+      { path: "/cart", element: <CartPage />},
+      { path: "*", element: <ErrorPage /> },
+    ],
   },
-  {
-    path: "/products",
-    element: <ProductList />,
-  },
-  {
-    path: "/AgreesPage",
-    element: <AgreesPage />,
-<<<<<<< HEAD
-  }
-=======
-  },
->>>>>>> 7f5d3cc (rename:파일이름 변경(Join > AgreesPage))
 ]);
 
-export default function Router() {
-  return <RouterProvider router={router} />;
-}
+export default router;
