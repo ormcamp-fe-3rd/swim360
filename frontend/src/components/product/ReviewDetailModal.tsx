@@ -16,7 +16,7 @@ interface ReviewModalProps2 {
 
 function ReviewDetailModal({ onClickToggleModal2 }: ReviewModalProps2) {
   return (
-    <>
+ 
       <div className="fixed left-1/2 top-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2 transform sm:max-w-[600px] md:max-w-[800px] lg:max-w-[1024px]">
         <div className="flex flex-col sm:flex-row">
           {/* Carousel Section */}
@@ -84,7 +84,7 @@ function ReviewDetailModal({ onClickToggleModal2 }: ReviewModalProps2) {
       {/* Background Overlay */}
       <div className="fixed left-0 top-0 h-full w-full bg-black bg-opacity-55"></div>
     </>
-  );
+  )
 }
 
 export default ReviewDetailModal;
