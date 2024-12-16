@@ -5,20 +5,22 @@ import {
   AccordionTrigger,
 } from "../ui/accordion";
 
+import ProductTab from "./Tap";
+
 type QnaItem = {
-  number: string;
+  numbers: number;
   title: string;
   author: string;
   answer: string;
 };
 
-function Qnas({ number, title, author, answer }: QnaItem) {
+function Qnas({ numbers, title, author, answer }: QnaItem) {
   return (
     <div className="flex justify-center">
       <Accordion type="single" collapsible className="w-[1064px]">
         <AccordionItem value="item-1">
           <AccordionTrigger className="flex">
-            <p className="w-[74px] pl-7 text-start">{number}</p>
+            <p className="w-[74px] pl-7 text-start">{numbers}</p>
             <p className="flex-2 mx-auto w-full text-center">{title}</p>
             <p className="mr-6 w-[74px] text-end">{author}</p>
           </AccordionTrigger>
@@ -118,34 +120,9 @@ function QnasTab() {
     },
   ];
   return (
-    <div className="mb-[140px]">
-      <div className="mx-auto mb-8 mt-[140px] flex w-full max-w-[1064px]">
-        <a
-          href="#detailsTab"
-          className="flex h-[44px] w-[266px] flex-wrap items-center justify-center border-b-2 border-[#CCCCCC] text-sm font-extralight sm:text-[24px]"
-        >
-          상품상세정보
-        </a>
-        <a
-          href="#reviewsTab"
-          className="flex h-[44px] w-[266px] flex-wrap items-center justify-center border-b-2 border-[#CCCCCC] text-sm font-extralight sm:text-[24px]"
-        >
-          상품후기(0)
-        </a>
-        <a
-          href="#qnasTab"
-          id="qnasTab"
-          className="flex h-[44px] w-[266px] flex-wrap items-center justify-center border-b-2 border-black text-base font-medium sm:text-[24px]"
-        >
-          자주하는 질문
-        </a>
-        <a
-          href="#exchangeTab"
-          className="flex h-[44px] w-[266px] flex-wrap items-center justify-center border-b-2 border-[#CCCCCC] text-sm font-extralight sm:text-[24px]"
-        >
-          교환/반품
-        </a>
-      </div>
+    <div className="mb-[140px]" id="qnasTab">
+      <ProductTab activeCategory="qnasTab" />
+
       <div className="mx-auto flex h-12 w-full max-w-[1064px] items-center justify-between border-b-2 bg-[#D3D3D3]">
         <p className="w-[74px] text-center">번호</p>
         <p>제목</p>
@@ -155,7 +132,7 @@ function QnasTab() {
       {QnaItems.map((item) => (
         <Qnas
           key={item.number}
-          number={item.number}
+          numbers={item.number}
           title={item.title}
           author={item.author}
           answer={item.answer}

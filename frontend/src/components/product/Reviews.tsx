@@ -1,4 +1,4 @@
-import ReviewStar from "./ReviewsStar";
+import ReviewStar from "./ReviewStar";
 
 type ReviewsType = {
   size?: "small" | "large"; // 크기 옵션
