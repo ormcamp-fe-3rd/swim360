@@ -7,44 +7,33 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-const points = [
-  {
-    date: "2024.12.20.",
-    name: "구매 사용",
-    amount: "-450",
-  },
-  {
-    date: "2024.07.02.",
-    name: "구매 적립",
-    amount: "+500",
-  },
-  {
-    date: "2024.05.29.",
-    name: "구매 사용",
-    amount: "-750",
-  },
-  {
-    date: "2024.03.11.",
-    name: "회원가입 적립",
-    amount: "+1,000",
-  },
-];
+import { point } from "./Points";
 
+interface Prop {
+  points: point[];
+}
 
-export default function PointList() {
+export default function PointList({ points }: Prop) {
+  function getTotalPoint(points: point[]): number {
+    let totalPoint: number = 0;
+    points.map((point) => (totalPoint += point.amount));
+    return totalPoint;
+  }
+
   return (
-    <>
-      <div className="ml-0 mt-40 w-full">
-        <div className="flex flex-col tablet:flex-row w-full tablet:items-center justify-start py-[14.8px]">
+      <div className="w-full">
+        <div className="flex w-full flex-col justify-start py-[14.8px] tablet:flex-row tablet:items-center">
           <div className="mr-[10.36px] text-left text-2xl font-semibold">
             최근 포인트 내역
           </div>
-          <div className="text-[17px] text-left">6개월 이내 내역만 조회 가능합니다.</div>
+          <div className="text-left text-[17px]">
+            6개월 이내 내역만 조회 가능합니다.
+          </div>
         </div>
-        <div className="grid grid-cols-3 pb-4">
-          <div></div>
-          <div></div>
-          <div className="pr-4 text-right">현재 포인트 300</div>
+        <div className="flex justify-end pb-4">
+          <div className="pr-4 text-right">
+            현재 포인트 {getTotalPoint(points)}
+          </div>
         </div>
         <Table className="w-full table-auto md:table-fixed">
           <TableHeader>
@@ -63,20 +52,15 @@ export default function PointList() {
           <TableBody>
             {points.map((point) => (
               <TableRow key={point.date} className="h-20">
-                <TableCell className="text-center text-base">
-                  {point.date}
-                </TableCell>
-                <TableCell className="text-center text-base">
-                  {point.name}
-                </TableCell>
-                <TableCell className="text-center text-base">
-                  {point.amount}
-                </TableCell>
+                {Object.values(point).map((value) => (
+                  <TableCell className="text-center text-base">
+                    {value}
+                  </TableCell>
+                ))}
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </div>
-    </>
   );
 }

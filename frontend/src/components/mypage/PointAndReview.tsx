@@ -2,10 +2,16 @@ import { useState } from "react";
 
 import { cn } from "@/lib/utils";
 
-import { Tabs, TabsContent, TabsListCustom, TabsTriggerCustom } from "../ui/tabs";
+import {
+  Tabs,
+  TabsContent,
+  TabsListCustom,
+  TabsTriggerCustom,
+} from "../ui/tabs";
 import PointList from "./PointList";
+import { points } from "./Points";
 import ReviewList from "./ReviewList";
-
+import {reviews} from "./Reviews";
 
 export default function PointAndReviewTab() {
   const [tab, setTab] = useState(true);
@@ -17,7 +23,7 @@ export default function PointAndReviewTab() {
           <TabsListCustom className="mx-auto h-full w-full tablet:w-[600px]">
             <TabsTriggerCustom
               value="my-points"
-              className={cn("h-full w-1/2", { "border-black": tab})}
+              className={cn("h-full w-1/2", { "border-black": tab })}
               onClick={() => setTab(true)}
             >
               포인트 내역
@@ -30,11 +36,11 @@ export default function PointAndReviewTab() {
               리뷰 내역
             </TabsTriggerCustom>
           </TabsListCustom>
-          <TabsContent value="my-points">
-            <PointList />
+          <TabsContent value="my-points" className="mt-40">
+            <PointList points={points} />
           </TabsContent>
-          <TabsContent value="my-reviews">
-            <ReviewList />
+          <TabsContent value="my-reviews" className="mt-40">
+            <ReviewList reviews={reviews}/>
           </TabsContent>
         </Tabs>
       </div>
