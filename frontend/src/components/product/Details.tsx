@@ -1,3 +1,4 @@
+import useCart from "@/hooks/useCart";
 import { Link } from "react-router-dom";
 
 function DetailsSelected() {
@@ -17,6 +18,7 @@ function DetailsSelected() {
 }
 
 function Details() {
+  const { updateCartCount } = useCart();
   return (
     <>
       <div className="h-auto w-full max-w-[522px] flex-col">
@@ -67,7 +69,10 @@ function Details() {
 
           <div className="h-auto w-full max-w-[522px]">
             <Link to="/cart" className="w-full">
-              <button className="mr-3 mt-4 h-[70px] w-full rounded-2xl border-[1px] text-black">
+              <button
+                onClick={updateCartCount}
+                className="mr-3 mt-4 h-[70px] w-full rounded-2xl border-[1px] text-black"
+              >
                 장바구니 담기
               </button>
             </Link>
