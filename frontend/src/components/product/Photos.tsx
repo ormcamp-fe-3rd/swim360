@@ -1,6 +1,3 @@
-import { Type } from "lucide-react";
-import { string } from "zod";
-
 function Photos() {
   return (
     <div className="h-auto w-full max-w-[522px]">
