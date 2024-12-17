@@ -10,10 +10,10 @@ import {
 } from "../ui/carousel";
 
 interface ReviewModalProps2 {
-  onClickToggleModal2: () => void;
+  onClickToggleDetailModal: () => void;
 }
 
-function ReviewDetailModal({ onClickToggleModal2 }: ReviewModalProps2) {
+function ReviewDetailModal({ onClickToggleDetailModal }: ReviewModalProps2) {
   return (
     <>
       <div className="fixed left-1/2 top-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2 transform sm:max-w-[600px] md:max-w-[800px] lg:max-w-[1024px]">
@@ -57,7 +57,7 @@ function ReviewDetailModal({ onClickToggleModal2 }: ReviewModalProps2) {
               </p>
               <Link to="/product/${product.id}">
                 <button
-                  onClick={onClickToggleModal2}
+                  onClick={onClickToggleDetailModal}
                   className="absolute right-4 top-4 sm:right-6 sm:top-6"
                 >
                   <img

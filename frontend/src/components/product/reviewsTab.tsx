@@ -13,12 +13,10 @@ function ReviewsTab() {
 
   const onClickToggleModal = () => {
     setOpenModal(!isOpenModal);
-    console.log("실행됨됨");
   };
 
-  const onClickToggleModal2 = () => {
+  const onClickToggleDetailModal = () => {
     setOpenModal2(!isOpenModal2);
-    console.log("실행됨됨");
   };
 
   return (
@@ -56,29 +54,49 @@ function ReviewsTab() {
         )}
 
         {isOpenModal2 && (
-          <ReviewDetailModal onClickToggleModal2={onClickToggleModal2} />
+          <ReviewDetailModal
+            onClickToggleDetailModal={onClickToggleDetailModal}
+          />
         )}
 
         <div
-          onClick={onClickToggleModal2}
+          onClick={onClickToggleDetailModal}
           className="mx-auto flex w-full max-w-[1064px] flex-wrap items-center justify-center"
         >
-          <div onClick={onClickToggleModal2} className="hover:bg-slate-100">
+          <div
+            onClick={onClickToggleDetailModal}
+            className="hover:bg-slate-100"
+          >
             <Reviews />
           </div>
-          <div onClick={onClickToggleModal2} className="hover:bg-slate-100">
+          <div
+            onClick={onClickToggleDetailModal}
+            className="hover:bg-slate-100"
+          >
             <Reviews />
           </div>
-          <div onClick={onClickToggleModal2} className="hover:bg-slate-100">
+          <div
+            onClick={onClickToggleDetailModal}
+            className="hover:bg-slate-100"
+          >
             <Reviews />
           </div>
-          <div onClick={onClickToggleModal2} className="hover:bg-slate-100">
+          <div
+            onClick={onClickToggleDetailModal}
+            className="hover:bg-slate-100"
+          >
             <Reviews />
           </div>
-          <div onClick={onClickToggleModal2} className="hover:bg-slate-100">
+          <div
+            onClick={onClickToggleDetailModal}
+            className="hover:bg-slate-100"
+          >
             <Reviews />
           </div>
-          <div onClick={onClickToggleModal2} className="hover:bg-slate-100">
+          <div
+            onClick={onClickToggleDetailModal}
+            className="hover:bg-slate-100"
+          >
             <Reviews />
           </div>
         </div>
