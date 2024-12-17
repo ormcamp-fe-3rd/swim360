@@ -10,13 +10,14 @@ import JoinCompletionPage from "./pages/JoinCompletionPage";
 import JoinPage from "./pages/JoinPage";
 import LoginPage from "./pages/LoginPage";
 import MyPage from "./pages/MyPage";
-import MyPageAuthPw from "./pages/MyPageAuthPwPage";
-import MyPageEdit from "./pages/MyPageEditPage";
+import MyPageEditPage from "./pages/MyPageEditPage";
 import PayMentCompletionPage from "./pages/PayMentCompletionPage";
 import PayMentOrderPage from "./pages/PayMentOrderPage";
-import PointAndReview from "./pages/PointAndReviewPage";
+import PointAndReviewPage from "./pages/PointAndReviewPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import ProductListPage from "./pages/ProductListPage";
+import UserVerificationPage from "./pages/UserVerificationPage";
+
 
 const router = createBrowserRouter([
   {
@@ -34,9 +35,9 @@ const router = createBrowserRouter([
       { path: "/joinpage", element: <JoinPage /> },
       { path: "/joincompletionpage", element: <JoinCompletionPage /> },
       { path: "/mypage", element: <MyPage /> },
-      { path: "/mypage/auth_pw", element: <MyPageAuthPw /> },
-      { path: "/mypage/edit", element: <MyPageEdit /> },
-      { path: "/mypage/point_and_review", element: <PointAndReview /> },
+      { path: "/mypage/auth_pw", element: <UserVerificationPage /> },
+      { path: "/mypage/edit", element: <MyPageEditPage /> },
+      { path: "/mypage/point_and_review", element: <PointAndReviewPage /> },
       {
         path: "/changepwdcompletionpage",
         element: <ChangePwdCompletionPage />,

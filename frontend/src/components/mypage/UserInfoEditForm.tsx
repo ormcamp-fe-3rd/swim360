@@ -1,6 +1,6 @@
 "use client";
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { z } from "zod";
 
@@ -20,20 +20,20 @@ const formSchema = z.object({
   username: z.string().min(2).max(50),
 });
 
-export default function ProfileForm() {
+export default function UserInfoEditForm() {
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: ""
+      username: "",
     },
-  })
+  });
 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values)
+    console.log(values);
   }
 
   return (
@@ -165,14 +165,20 @@ export default function ProfileForm() {
           />
           <div className="mt-10 flex w-full gap-2">
             <Link to="/mypage" className="w-full">
-            <Button className="h-[70px] w-full rounded-xl text-base bg-white text-black hover:bg-gray-100" type="submit">
-              취소
-            </Button>
+              <Button
+                className="h-[70px] w-full rounded-xl bg-white text-base text-black hover:bg-gray-100"
+                type="submit"
+              >
+                취소
+              </Button>
             </Link>
             <Link to="/mypage" className="w-full">
-            <Button className="h-[70px] w-full rounded-xl text-base" type="submit">
-              확인
-            </Button>
+              <Button
+                className="h-[70px] w-full rounded-xl text-base"
+                type="submit"
+              >
+                확인
+              </Button>
             </Link>
           </div>
         </form>

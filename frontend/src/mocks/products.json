@@ -1,0 +1,100 @@
+{
+  "products": [
+    {
+      "id": 0,
+      "brandName": "barrel",
+      "name": "여성 수영복 1",
+      "imgUrl": "/public/images/productlist/sample-1.png",
+      "price": 10000,
+      "salesVolume": 8,
+      "discountedPrice": 5000,
+      "discountPercentage": 50,
+      "createdAt": "2024-12-10T10:30:15.000Z",
+      "reviewCount": 3
+    },
+    {
+      "id": 1,
+      "brandName": "barrel",
+      "name": "여성 수영복 1",
+      "imgUrl": "/public/images/productlist/sample-1.png",
+      "price": 10000,
+      "salesVolume": 7,
+      "discountedPrice": 5000,
+      "discountPercentage": 50,
+      "createdAt": "2024-12-11T10:30:15.000Z",
+      "reviewCount": 5
+    },
+    {
+      "id": 2,
+      "brandName": "barrel",
+      "name": "여성 수영복 1",
+      "imgUrl": "/public/images/productlist/sample-1.png",
+      "price": 10000,
+      "salesVolume": 6,
+      "discountedPrice": 5000,
+      "discountPercentage": 50,
+      "createdAt": "2024-12-12T10:30:15.000Z",
+      "reviewCount": 1
+    },
+    {
+      "id": 3,
+      "brandName": "barrel",
+      "name": "여성 수영복 1",
+      "imgUrl": "/public/images/productlist/sample-1.png",
+      "price": 10000,
+      "salesVolume": 5,
+      "discountedPrice": 5000,
+      "discountPercentage": 50,
+      "createdAt": "2024-12-13T10:30:15.000Z",
+      "reviewCount": 2
+    },
+    {
+      "id": 4,
+      "brandName": "barrel",
+      "name": "여성 수영복 1",
+      "imgUrl": "/public/images/productlist/sample-1.png",
+      "price": 10000,
+      "salesVolume": 4,
+      "discountedPrice": 5000,
+      "discountPercentage": 50,
+      "createdAt": "2024-12-14T10:30:15.000Z",
+      "reviewCount": 3
+    },
+    {
+      "id": 5,
+      "brandName": "barrel",
+      "name": "여성 수영복 1",
+      "imgUrl": "/public/images/productlist/sample-1.png",
+      "price": 10000,
+      "salesVolume": 3,
+      "discountedPrice": 5000,
+      "discountPercentage": 50,
+      "createdAt": "2024-12-15T10:30:15.000Z",
+      "reviewCount": 4
+    },
+    {
+      "id": 6,
+      "brandName": "barrel",
+      "name": "여성 수영복 1",
+      "imgUrl": "/public/images/productlist/sample-2.png",
+      "price": 10000,
+      "salesVolume": 2,
+      "discountedPrice": 5000,
+      "discountPercentage": 50,
+      "createdAt": "2024-12-16T10:30:15.000Z",
+      "reviewCount": 0
+    },
+    {
+      "id": 7,
+      "brandName": "barrel",
+      "name": "여성 수영복 1",
+      "imgUrl": "/public/images/productlist/sample-2.png",
+      "price": 10000,
+      "salesVolume": 1,
+      "discountedPrice": 5000,
+      "discountPercentage": 50,
+      "createdAt": "2024-12-17T10:30:15.000Z",
+      "reviewCount": 0
+    }
+  ]
+}

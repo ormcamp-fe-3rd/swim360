@@ -10,9 +10,9 @@ interface Props{
 
 export default function CartProduct({product}: Props){
   return (<>
-  <div className="flex px-2.5">
+  <div className="flex p-2.5">
     <Checkbox className="mt-2.5"/>
-    <div className="flex justify-between border-b p-2.5 items-center">
+    <div className="flex justify-between border-b items-center pl-2.5 w-full">
       <img src={product.imageUrl} alt="이미지" className="w-1/6" />
       <div className="w-1/3">
         <p>{product.brandName}</p> 
