@@ -16,6 +16,11 @@ const OrderItem = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    quantity: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 1,
+    },
     order_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -25,6 +30,7 @@ const OrderItem = sequelize.define(
       allowNull: false,
     },
   },
+
   {
     tableName: "ORDERITEMS",
     timestamps: true, // 키면 createdAt, updateAt 자동으로 저장됨
