@@ -14,8 +14,8 @@ import JoinPage from "./pages/JoinPage";
 import LoginPage from "./pages/LoginPage";
 import MyPage from "./pages/MyPage";
 import MyPageEditPage from "./pages/MyPageEditPage";
-import PayMentCompletionPage from "./pages/PayMentCompletionPage";
 import PayMentOrderPage from "./pages/PayMentOrderPage";
+import PayMentPage from "./pages/PayMentPage";
 import PointAndReviewPage from "./pages/PointAndReviewPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import ProductListPage from "./pages/ProductListPage";
@@ -45,7 +45,7 @@ const router = createBrowserRouter([
         path: "/changepwdcompletionpage",
         element: <ChangePwdCompletionPage />,
       },
-      { path: "/paymentcompletionpage", element: <PayMentCompletionPage /> },
+      { path: "/paymentpage", element: <PayMentPage /> },
       { path: "/paymentorderpage", element: <PayMentOrderPage /> },
       { path: "/cart", element: <CartPage /> },
       { path: "*", element: <ErrorPage /> },

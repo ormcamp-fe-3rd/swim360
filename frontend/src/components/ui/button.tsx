@@ -20,6 +20,7 @@ const buttonVariants = cva(
         ghost:
           "hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-gray-50",
         link: "text-gray-900 underline-offset-4 hover:underline dark:text-gray-50",
+        defaultCustom: "border border-black bg-white text-black",
       },
       size: {
         default: "h-9 px-4 py-2",
@@ -29,7 +30,7 @@ const buttonVariants = cva(
       },
     },
     defaultVariants: {
-      variant: "default",
+      variant: "defaultCustom",
       size: "default",
     },
   },

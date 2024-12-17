@@ -1,19 +1,19 @@
 import { Button } from "../ui/button";
 
-interface PrimaryButtonProps {
+interface CustomButtonProps {
   children: React.ReactNode;
   className?: string;
   onClick?: () => void;
 }
 
-function PrimaryButton({
+function CustomButton({
   children,
   onClick,
   className = "",
-}: PrimaryButtonProps) {
+}: CustomButtonProps) {
   return (
     <Button
-      variant="default"
+      variant="defaultCustom"
       className={`rounded-4 w-full py-[22px] ${className}`}
       onClick={onClick}
     >
@@ -22,4 +22,4 @@ function PrimaryButton({
   );
 }
 
-export default PrimaryButton;
+export default CustomButton;

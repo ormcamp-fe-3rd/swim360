@@ -15,7 +15,7 @@ function LoginPage() {
           placeholder="아이디"
         />
         <input
-          type="text"
+          type="password"
           className="w-full rounded border p-2.5"
           name="password"
           id="password"
@@ -26,8 +26,8 @@ function LoginPage() {
         <input
           type="checkbox"
           className="sm:h-[22px] sm:w-[22px]"
-          name="id-Memories"
-          id="id-Memories"
+          name="idMemories"
+          id="idMemories"
         />
         <span className="ml-2 align-text-bottom sm:text-[20px]">
           아이디 저장

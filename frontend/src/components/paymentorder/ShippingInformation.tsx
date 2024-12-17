@@ -8,8 +8,8 @@ function ShippingInformation() {
         <span className="inline-block w-1/4">주문인</span>
         <input
           type="text"
-          name="orderername"
-          id="orderername"
+          name="ordererName"
+          id="ordererName"
           className="w-full rounded-sm border-none bg-slate-100 p-2.5"
         />
       </div>
@@ -17,8 +17,8 @@ function ShippingInformation() {
         <span className="inline-block w-1/4">받으시는분</span>
         <input
           type="text"
-          name="recipientname"
-          id="recipientname"
+          name="recipientName"
+          id="recipientName"
           className="w-full rounded-sm border-none bg-slate-100 p-2.5"
         />
       </div>
@@ -38,8 +38,8 @@ function ShippingInformation() {
           </div>
           <input
             type="text"
-            name="detailaddress"
-            id="detailaddress"
+            name="detailAddress"
+            id="detailAddress"
             className="w-full rounded-sm border-none bg-slate-100 p-2.5"
             placeholder="상세 주소를 입력해주세요."
           />
@@ -48,9 +48,9 @@ function ShippingInformation() {
       <div className="h-22 flex w-full border-b border-black p-2.5">
         <span className="inline-block w-1/4">휴대전화번호</span>
         <input
-          type="text"
-          name="phonenumber"
-          id="phonenumber"
+          type="tel"
+          name="phoneNumber"
+          id="phoneNumber"
           className="w-full rounded-sm border-none bg-slate-100 py-2.5"
         />
       </div>

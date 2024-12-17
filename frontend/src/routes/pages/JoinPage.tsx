@@ -1,4 +1,5 @@
 import PrimaryButton from "@/components/common/PrimaryButton";
+import CustomButton from "@/components/join/CustomButton";
 import InputField from "@/components/join/InputField";
 
 function JoinPage() {
@@ -8,7 +9,12 @@ function JoinPage() {
       <form action="#">
         <InputField label="이름" name="name" id="name" />
         <InputField label="연락처" name="phonenum" id="phonenum" />
-        <InputField label="이메일 아이디" name="emailid" id="emailid" />
+        <InputField
+          type="email"
+          label="이메일 아이디"
+          name="emailid"
+          id="emailid"
+        />
         <InputField
           label="비밀번호 변경"
           name="password"
@@ -25,12 +31,8 @@ function JoinPage() {
         />
       </form>
       <div className="mt-4 flex justify-around gap-2.5">
-        <button className="w-1/2 rounded-md border border-black bg-white text-black">
-          취소
-        </button>
-        <div className="w-1/2">
-          <PrimaryButton>확인</PrimaryButton>
-        </div>
+        <CustomButton className="w-1/2">취소</CustomButton>
+        <PrimaryButton className="w-1/2">확인</PrimaryButton>
       </div>
     </div>
   );
