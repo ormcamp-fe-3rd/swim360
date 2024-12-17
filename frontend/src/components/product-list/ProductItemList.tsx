@@ -1,5 +1,7 @@
 import ProductItem from "@/components/product-list/ProductItem";
+
 import { Link } from "react-router-dom";
+
 import productsData from "@/mocks/products.json";
 import { ProductItemData, ProductsData, SortOption } from "@/types/products";
 
@@ -28,15 +30,14 @@ function ProductItemList({ sortOption }: ProductItemListProps) {
   };
 
   return (
-    <Link to="/product" className="full">
-      <div className="grid grid-cols-1 gap-[19px] tablet:grid-cols-4">
-        {sortedProducts(products, sortOption).map((product) => (
-          <div key={product.id} className="max-h-[500px]">
-            <ProductItem {...product} />
-          </div>
-        ))}
-      </div>
-    </Link>
+    <div className="grid grid-cols-1 gap-[19px] tablet:grid-cols-4">
+      {sortedProducts(products, sortOption).map((product) => (
+        <div key={product.id} className="max-h-[500px]">
+          <ProductItem {...product} />
+        </div>
+      ))}
+    </div>
+
   );
 }
 
