@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize"); // 시퀄라이즈에 정의됨
-const { sequelize } = require("./db");
+const { sequelize } = require("../db.js");
 // 모델
 
 //이름, 이메일아이디, 연락처, 비밀번호, 주소
@@ -29,8 +29,8 @@ const User = sequelize.define(
       allowNull: false,
     },
     adress: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      type: DataTypes.STRING(255),
+      allowNull: true,
     },
   },
   {

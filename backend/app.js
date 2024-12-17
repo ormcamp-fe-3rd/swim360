@@ -1,7 +1,11 @@
+require("dotenv").config();
+const cors = require("cors");
+
 const express = require("express");
 const app = express();
 const db = require("./db");
 const models = require("./models");
+const config = require("./config/config");
 
 const startServer = async () => {
   await db.init();
@@ -11,8 +15,15 @@ const startServer = async () => {
 
   app.use(require("./routes"));
 
-  app.listen(3000, () => {
-    console.log("server listening on port 3000");
+  app.use(
+    cors({
+      origin: "http://localhost:5173",
+      credentials: true,
+    })
+  );
+
+  app.listen(config.expressPort, () => {
+    console.log(`server listening on port ${config.expressPort}`);
   });
 };
 

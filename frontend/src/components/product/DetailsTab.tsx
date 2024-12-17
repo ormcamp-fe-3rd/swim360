@@ -1,32 +1,10 @@
+import ProductTab from "./Tap";
+
 function DetailsTab() {
   return (
     <div>
-      <div className="mx-auto mb-8 mt-16 flex max-h-[44px] w-full justify-center">
-        <a
-          href="#detailsTab"
-          id="detailsTab"
-          className="flex h-[44px] w-[266px] flex-wrap items-center justify-center border-b-2 border-black text-base font-medium sm:text-[24px]"
-        >
-          상품상세정보
-        </a>
-        <a
-          href="#reviewsTab"
-          className="flex h-[44px] w-[266px] flex-wrap items-center justify-center border-b-2 border-[#CCCCCC] text-sm font-extralight sm:text-[24px]"
-        >
-          상품후기(0)
-        </a>
-        <a
-          href="#qnasTab"
-          className="flex h-[44px] w-[266px] flex-wrap items-center justify-center border-b-2 border-[#CCCCCC] text-sm font-extralight sm:text-[24px]"
-        >
-          자주하는 질문
-        </a>
-        <a
-          href="#exchangeTab"
-          className="flex h-[44px] w-[266px] flex-wrap items-center justify-center border-b-2 border-[#CCCCCC] text-sm font-extralight sm:text-[24px]"
-        >
-          교환/반품
-        </a>
+      <div id="detailsTab">
+        <ProductTab activeCategory="detailsTab" />
       </div>
       <div className="mx-auto h-[824px] w-full max-w-[1064px] rounded-[20px] bg-black"></div>
 

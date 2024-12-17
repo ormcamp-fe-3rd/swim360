@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Textarea } from "../ui/textarea";
-import ReviewStar from "./ReviewsStar";
+import ReviewStar from "./ReviewStar";
 import { Link } from "react-router-dom";
 
 interface ReviewModalProps {

@@ -5,18 +5,31 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { SortOption } from "@/types/products";
 
-function SortSelect() {
+interface SortSelectProps {
+  onSortOptionChange: (sortOption: SortOption) => void;
+}
+
+const SORT_OPTIONS = [
+  { value: "latest", name: "최신순" },
+  { value: "sale", name: "판매순" },
+  { value: "review", name: "리뷰순" },
+];
+
+function SortSelect({ onSortOptionChange }: SortSelectProps) {
   return (
     <div className="flex flex-col items-end">
-      <Select>
+      <Select onValueChange={onSortOptionChange}>
         <SelectTrigger className="mb-2 w-[123px] rounded-[10px] border-[#000000] border-opacity-30">
-          <SelectValue placeholder="최신순" />
+          <SelectValue placeholder={SORT_OPTIONS[0].name} />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="최신순">최신순</SelectItem>
-          <SelectItem value="판매순">판매순</SelectItem>
-          <SelectItem value="리뷰순">리뷰순</SelectItem>
+          {SORT_OPTIONS.map((option) => (
+            <SelectItem key={option.name} value={option.value}>
+              {option.name}
+            </SelectItem>
+          ))}
         </SelectContent>
       </Select>
     </div>

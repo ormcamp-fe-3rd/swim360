@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize"); // 시퀄라이즈에 정의됨
-const { sequelize } = require("./db");
+const { sequelize } = require("../db.js");
 // 모델
 
 //회원_id(fk), 상품_id(fk), 배송지, 금액, 주문상태
@@ -13,7 +13,7 @@ const Order = sequelize.define(
       allowNull: false,
     },
     adress: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(255),
       allowNull: false,
     },
     price: {
@@ -21,7 +21,7 @@ const Order = sequelize.define(
       allowNull: false,
     },
     orderStatus: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(255),
       allowNull: false,
     },
     user_id: {
