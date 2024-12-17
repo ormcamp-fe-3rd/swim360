@@ -5,6 +5,8 @@ import App from "@/App";
 import AgreesPage from "./pages/AgreesPage";
 import ChangePwdCompletionPage from "./pages/ChangePwdCompletionPage";
 import ErrorPage from "./pages/ErrorPage";
+import FindIdPage from "./pages/FindIdPage";
+import FindIdPwdPage from "./pages/FindIdPwdPage";
 import Home from "./pages/HomePage";
 import JoinCompletionPage from "./pages/JoinCompletionPage";
 import JoinPage from "./pages/JoinPage";
@@ -30,6 +32,8 @@ const router = createBrowserRouter([
         element: <ProductDetailPage />,
       },
       { path: "/review/:id", element: <ProductDetailPage /> },
+      { path: "/findidpwdpage", element: <FindIdPwdPage /> },
+      { path: "/findidpage", element: <FindIdPage /> },
       { path: "/loginpage", element: <LoginPage /> },
       { path: "/joinpage", element: <JoinPage /> },
       { path: "/joincompletionpage", element: <JoinCompletionPage /> },

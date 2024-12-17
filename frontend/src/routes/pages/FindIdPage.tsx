@@ -1,19 +1,15 @@
+import { useNavigate } from "react-router-dom";
+
 import PrimaryButton from "@/components/common/PrimaryButton";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import FindIdPwdTab from "@/components/login/FindIdPwdTab";
 
 function FindIdPage() {
+  const navigate = useNavigate();
+
   return (
     <div className="mx-auto w-[620px]">
-      <Tabs defaultValue="find-id" className="w-[603px]">
-        <TabsList className="gap-2.5 pb-2.5">
-          <TabsTrigger value="find-id" className="w-[300px]">
-            아이디 찾기
-          </TabsTrigger>
-          <TabsTrigger value="find-password" className="w-[300px]">
-            비밀번호 찾기
-          </TabsTrigger>
-        </TabsList>
-        <TabsContent value="find-id">
+      <FindIdPwdTab
+        idContent={
           <div className="gap-2.5 text-center">
             <b className="m-2.5 mt-10 block">
               찾으시는 아이디는 아래와 같습니다.
@@ -26,10 +22,13 @@ function FindIdPage() {
               placeholder="kim123"
             />
           </div>
-        </TabsContent>
-      </Tabs>
-
-      <PrimaryButton>확인</PrimaryButton>
+        }
+        pwContent={<></>}
+        onPwClick={() => navigate("/FindIdPwdPage")}
+      />
+      <div className="mx-auto w-[98%]">
+        <PrimaryButton>확인</PrimaryButton>
+      </div>
     </div>
   );
 }
