@@ -5,14 +5,12 @@ import HamburgerMenu from "../home/HamburgerMenu";
 import MainIconButton from "../home/MainIconButton";
 import MainLogo from "../home/MainLogo";
 import ScrollButton from "../home/ScrollButton";
-import { getCategories } from "@/services/category";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  getCategories();
   return (
     <header
       className={`w-full justify-center ${isOpen ? "fixed z-10 bg-white" : "flex bg-none"}`}
