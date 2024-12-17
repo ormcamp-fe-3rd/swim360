@@ -13,11 +13,11 @@ const Product = sequelize.define(
       allowNull: false,
     },
     brandName: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(255),
       allowNull: false,
     },
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(255),
       allowNull: false,
     },
     price: {
@@ -29,18 +29,14 @@ const Product = sequelize.define(
       allowNull: false,
     },
     size: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(255),
       allowNull: false,
     },
     imageUrl: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(255),
       allowNull: false,
     },
     salesVolume: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    stock: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },

@@ -13,7 +13,7 @@ const Order = sequelize.define(
       allowNull: false,
     },
     adress: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(255),
       allowNull: false,
     },
     price: {
@@ -21,7 +21,7 @@ const Order = sequelize.define(
       allowNull: false,
     },
     orderStatus: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(255),
       allowNull: false,
     },
     user_id: {
