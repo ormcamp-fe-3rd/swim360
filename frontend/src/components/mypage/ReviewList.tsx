@@ -7,28 +7,15 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-const reviews = [
-  {
-    date: "2024.03.11.",
-    product: "르망고 펠리스 나비다",
-    content: "최근에 이 사각 수영복을 구매했는데, 정말 만족스럽습니다! 핏이 딱 좋아요—몸에 딱 맞으면서도 답답하지 않습니다. 소재는 내구성이 있으면서도 편안하고, 물놀이 후에도 금방 마르더라고요. 몇 번입어봤는데도 색상이 전혀 바래지 않았습니다. 디자인도 세련돼서 정말 마음에 들어요. 강력 추천합니다!",
-  },
-  {
-    date: "2024.05.29.",
-    product: "졸린 슬리피 베어 실리콘수모",
-    content: "너무 귀여워요",
-  },
-  {
-    date: "2024.07.02.",
-    product: "후그 말랑 수경케이스",
-    content: "색상 고민하다가 민트로 했는데 맘에 들어요",
-  },
-];
+import { review } from "./Reviews";
 
-export default function ReviewList() {
+interface Prop {
+  reviews: review[];
+}
+
+export default function ReviewList({reviews}: Prop) {
   return (
-    <>
-      <div className="ml-0 mt-40 w-full">
+      <div className="w-full">
         <div className="flex w-full flex-col justify-start py-[14.8px] tablet:flex-row tablet:items-center">
           <div className="mr-[10.36px] text-left text-2xl font-semibold">
             최근 리뷰 내역
@@ -37,10 +24,8 @@ export default function ReviewList() {
             6개월 이내 내역만 조회 가능합니다.
           </div>
         </div>
-        <div className="grid grid-cols-3 pb-4">
-          <div></div>
-          <div></div>
-          <div className="pr-4 text-right">총 3건</div>
+        <div className="flex justify-end pb-4">
+          <div className="pr-4 text-right">총 {reviews.length}건</div>
         </div>
         <Table className="w-full table-auto md:table-fixed">
           <TableHeader>
@@ -59,20 +44,15 @@ export default function ReviewList() {
           <TableBody>
             {reviews.map((review) => (
               <TableRow key={review.date} className="h-20">
-                <TableCell className="text-center text-base">
-                  {review.date}
-                </TableCell>
-                <TableCell className="text-center text-base">
-                  {review.product}
-                </TableCell>
-                <TableCell className="hidden overflow-hidden text-ellipsis whitespace-nowrap text-center text-base tablet:table-cell">
-                  {review.content}
-                </TableCell>
+                {Object.values(review).map((value, index) => (
+                  <TableCell key={index} className="hidden overflow-hidden text-ellipsis whitespace-nowrap text-center text-base tablet:table-cell">
+                    {value}
+                  </TableCell>
+                ))}
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </div>
-    </>
   );
 }

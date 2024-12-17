@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import PrimaryButton from "../common/PrimaryButton";
 
-export default function UserEditAuth() {
+export default function UserVerification() {
   return (
     <div className="mx-auto flex w-[600px] flex-col gap-[42px]">
       <p className="border-b border-black p-2.5 text-center text-xl font-semibold">
