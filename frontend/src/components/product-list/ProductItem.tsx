@@ -1,14 +1,7 @@
+import { ProductItemData } from "@/types/products";
 import { Link } from "react-router-dom";
 
-interface ProductItemProps {
-  id: number;
-  brandName: string;
-  name: string;
-  price: number;
-  discountedPrice: number;
-  salesVolume: number;
-  imgUrl: string;
-}
+type ProductItemProps = ProductItemData;
 
 function ProductItem({
   id,
@@ -16,12 +9,11 @@ function ProductItem({
   name,
   price,
   discountedPrice,
-  salesVolume,
+  discountPercentage,
   imgUrl,
 }: ProductItemProps) {
   return (
     <Link to={`/product/${id}`}>
-
       <div className="grid h-full w-full grid-rows-[2fr_0.5fr]">
         <div className="h-full w-full overflow-hidden">
           <img className="h-full w-full object-cover" src={imgUrl} alt={name} />
@@ -34,7 +26,9 @@ function ProductItem({
               <div className="mr-[5px] font-semibold">{discountedPrice}원</div>
               <div className="text-[14px] line-through">{price}원</div>
             </div>
-            <div className="font-semibold text-[#ED1818]">{salesVolume}%</div>
+            <div className="font-semibold text-[#ED1818]">
+              {discountPercentage}%
+            </div>
           </div>
         </div>
       </div>
