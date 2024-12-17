@@ -5,21 +5,6 @@ import { PaginationDemo } from "../common/Paginaion";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import ProductTab from "./Tap";
-import reviews from "../../mocks/reviews.json";
-import { Reviewe } from "@/types/reviews";
-import { User } from "../../types/users";
-
-interface Reviews {
-  id?: number;
-  content: string;
-  imageUrl: string;
-  rating: number;
-  productId: number;
-  userId: number;
-  updatedAt: string;
-}
-
-type CombinedReviewType = User & Reviews;
 
 function ReviewsTab() {
   const [isOpenModal, setOpenModal] = useState(false);
@@ -58,14 +43,17 @@ function ReviewsTab() {
                 <img src="/public/images/icon-reviews.png" />
                 후기 등록
               </button>
-              <reviews></reviews>
             </div>
           </div>
         </Link>
 
         {/* 모달이 열리면 ReviewWriteModal 컴포넌트를 렌더링 */}
         {isOpenModal && (
-          <ReviewWriteModal onClickToggleModal={onClickToggleModal} />
+          <ReviewWriteModal
+            onClickToggleModal={onClickToggleModal}
+            size={undefined}
+            imageUrl={undefined}
+          />
         )}
 
         {isOpenModal2 && (

@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Textarea } from "../ui/textarea";
 import ReviewStar from "./ReviewStar";
 import { Link } from "react-router-dom";
-import { Product } from "@/types/products";
 
 import {
   Select,
@@ -14,38 +13,9 @@ import {
 
 interface ReviewModalProps {
   onClickToggleModal: () => void;
-  size: Product;
 }
 
-function InputImg({
-  imageUrl,
-  onClickPhotoDelet,
-  size,
-}: {
-  onClickPhotoDelet: () => void;
-} & Product) {
-  return (
-    <div className="relative h-[100px] w-[100px]">
-      <img
-        className="h-full w-full object-cover"
-        src={imageUrl[0]}
-        alt="uploaded-img"
-      />
-      <button
-        className="absolute right-2 top-2 z-10"
-        onClick={onClickPhotoDelet}
-      >
-        <img
-          className="h-5 w-5"
-          src="/public/images/common/btn-close.png"
-          alt="close"
-        />
-      </button>
-    </div>
-  );
-}
-
-function ReviewWriteModal({ onClickToggleModal, size }: ReviewModalProps) {
+function ReviewWriteModal({ onClickToggleModal }: ReviewModalProps) {
   const [photos, setPhotos] = useState<string[]>([]); // 사진 URL 배열로 상태 관리
 
   const handleAddPhoto = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,10 +25,6 @@ function ReviewWriteModal({ onClickToggleModal, size }: ReviewModalProps) {
       );
       setPhotos((prevPhotos) => [...prevPhotos, ...newPhotos].slice(1, 5)); // 최대 5개 제한
     }
-  };
-
-  const handleDeletePhoto = (index: number) => {
-    setPhotos((prevPhotos) => prevPhotos.filter((_, i) => i !== index));
   };
 
   return (
@@ -89,9 +55,9 @@ function ReviewWriteModal({ onClickToggleModal, size }: ReviewModalProps) {
                 <SelectValue placeholder="select size" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="sdfs">24</SelectItem>
-                <SelectItem value="dark">26</SelectItem>
-                <SelectItem value="system">28</SelectItem>
+                <SelectItem value={"a"}>24</SelectItem>
+                <SelectItem value={"b"}>26</SelectItem>
+                <SelectItem value={"c"}>28</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -109,13 +75,6 @@ function ReviewWriteModal({ onClickToggleModal, size }: ReviewModalProps) {
                 />
               </label>
             )}
-            {photos.map((photo, index) => (
-              <InputImg
-                key={index}
-                src={photo}
-                onClickPhotoDelet={() => handleDeletePhoto(index)}
-              />
-            ))}
           </div>
 
           <input
