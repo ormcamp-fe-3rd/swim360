@@ -1,4 +1,5 @@
 require("dotenv").config();
+const cors = require("cors");
 
 const express = require("express");
 const app = express();
@@ -13,6 +14,13 @@ const startServer = async () => {
   app.use(express.json());
 
   app.use(require("./routes"));
+
+  app.use(
+    cors({
+      origin: "http://localhost:5173",
+      credentials: true,
+    })
+  );
 
   app.listen(config.expressPort, () => {
     console.log(`server listening on port ${config.expressPort}`);
