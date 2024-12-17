@@ -1,10 +1,11 @@
-import ReviewStar from "./ReviewsStar";
+import ReviewStar from "./ReviewStar";
 import ReviewWriteModal from "./ReviewWriteModal";
 import ReviewDetailModal from "./ReviewDetailModal";
 import { PaginationDemo } from "../common/Paginaion";
 import { useState } from "react";
 import Reviews from "./Reviews";
 import { Link } from "react-router-dom";
+import ProductTab from "./Tap";
 
 function ReviewsTab() {
   const [isOpenModal, setOpenModal] = useState(false);
@@ -22,34 +23,9 @@ function ReviewsTab() {
 
   return (
     <>
-      <div className="mx-auto mb-8 mt-16 flex w-full justify-center">
-        <a
-          href="#detailsTab"
-          className="flex h-[44px] w-[266px] flex-wrap items-center justify-center border-b-2 border-[#CCCCCC] text-sm font-extralight sm:text-[24px]"
-        >
-          상품상세정보
-        </a>
-        <a
-          href="#reviewsTab"
-          id="reviewsTab"
-          className="flex h-[44px] w-[266px] flex-wrap items-center justify-center border-b-2 border-black text-base font-medium sm:text-[24px]"
-        >
-          상품후기(0)
-        </a>
-        <a
-          href="#qnasTab"
-          className="flex h-[44px] w-[266px] flex-wrap items-center justify-center border-b-2 border-[#CCCCCC] text-sm font-extralight sm:text-[24px]"
-        >
-          자주하는 질문
-        </a>
-        <a
-          href="#exchangeTab"
-          className="flex h-[44px] w-[266px] flex-wrap items-center justify-center border-b-2 border-[#CCCCCC] text-sm font-extralight sm:text-[24px]"
-        >
-          교환/반품
-        </a>
+      <div id="reviewsTab">
+        <ProductTab activeCategory="reviewsTab" />
       </div>
-
       <div className="mx-auto flex w-full max-w-[1064px] flex-col items-center justify-center">
         <div className="mx-auto flex h-[250px] w-full max-w-[1064px] flex-col items-center justify-center bg-[#f6f9ff]">
           <p className="h-16">사용자 총 평점</p>
@@ -60,8 +36,8 @@ function ReviewsTab() {
           </div>
         </div>
         <Link to="/product/review" className="w-full">
-          <div className="mx-auto flex w-full justify-center">
-            <div className="mb-2 mt-8 flex w-full max-w-[1064px] justify-end">
+          <div className="mx-auto flex h-auto w-full justify-center">
+            <div className="mb-2 mt-8 flex h-auto w-full max-w-[1064px] justify-end">
               <button
                 id="ReviewButton"
                 className="flex h-[50px] w-[164px] items-center justify-center gap-2 rounded-xl bg-black text-[24px] text-white"
