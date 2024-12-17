@@ -2,23 +2,33 @@ import { useState } from "react";
 import { Textarea } from "../ui/textarea";
 import ReviewStar from "./ReviewStar";
 import { Link } from "react-router-dom";
+import { Product } from "@/types/products";
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 
 interface ReviewModalProps {
   onClickToggleModal: () => void;
+  size: Product;
 }
 
 function InputImg({
-  src,
+  imageUrl,
   onClickPhotoDelet,
+  size,
 }: {
-  src: string;
   onClickPhotoDelet: () => void;
-}) {
+} & Product) {
   return (
     <div className="relative h-[100px] w-[100px]">
       <img
         className="h-full w-full object-cover"
-        src={src}
+        src={imageUrl[0]}
         alt="uploaded-img"
       />
       <button
@@ -35,7 +45,7 @@ function InputImg({
   );
 }
 
-function ReviewWriteModal({ onClickToggleModal }: ReviewModalProps) {
+function ReviewWriteModal({ onClickToggleModal, size }: ReviewModalProps) {
   const [photos, setPhotos] = useState<string[]>([]); // 사진 URL 배열로 상태 관리
 
   const handleAddPhoto = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,7 +53,7 @@ function ReviewWriteModal({ onClickToggleModal }: ReviewModalProps) {
       const newPhotos = Array.from(event.target.files).map((file) =>
         URL.createObjectURL(file),
       );
-      setPhotos((prevPhotos) => [...prevPhotos, ...newPhotos].slice(0, 5)); // 최대 5개 제한
+      setPhotos((prevPhotos) => [...prevPhotos, ...newPhotos].slice(1, 5)); // 최대 5개 제한
     }
   };
 
@@ -73,6 +83,18 @@ function ReviewWriteModal({ onClickToggleModal }: ReviewModalProps) {
             </Link>
           </div>
           <ReviewStar size="large" />
+          <div className="felx justify-end">
+            <Select>
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="select size" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="sdfs">24</SelectItem>
+                <SelectItem value="dark">26</SelectItem>
+                <SelectItem value="system">28</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
           <div className="w-full">
             <Textarea className="mx-auto mt-4 h-[400px] max-h-[400px] w-full" />
           </div>

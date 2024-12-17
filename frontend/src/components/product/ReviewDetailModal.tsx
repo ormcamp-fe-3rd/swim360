@@ -1,4 +1,4 @@
-import Reviews from "./Reviews";
+import Reviews from "./Review";
 import { Link } from "react-router-dom";
 
 import {

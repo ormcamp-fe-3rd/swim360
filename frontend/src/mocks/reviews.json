@@ -1,0 +1,16 @@
+{
+  "reviews": [
+    {
+      "name": "어피치치치",
+      "content": "이 제품 정말 좋아요! 디자인도 예쁘고 사용하기 편해요. 강력히 추천합니다.",
+      "imageUrl": "/public/images/product/review-image.jpg",
+      "updatedAt": "10.10.10"
+    },
+    {
+      "name": "펭귄덕후",
+      "content": "배송도 빠르고 품질도 기대 이상이에요! 다음에도 꼭 구매하고 싶어요. 너무 만족합니다!",
+      "imageUrl": "/public/images/product/review-image2.jpg",
+      "updatedAt": "2024.12.01"
+    }
+  ]
+}

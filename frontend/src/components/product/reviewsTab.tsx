@@ -3,9 +3,23 @@ import ReviewWriteModal from "./ReviewWriteModal";
 import ReviewDetailModal from "./ReviewDetailModal";
 import { PaginationDemo } from "../common/Paginaion";
 import { useState } from "react";
-import Reviews from "./Reviews";
 import { Link } from "react-router-dom";
 import ProductTab from "./Tap";
+import reviews from "../../mocks/reviews.json";
+import { Reviewe } from "@/types/reviews";
+import { User } from "../../types/users";
+
+interface Reviews {
+  id?: number;
+  content: string;
+  imageUrl: string;
+  rating: number;
+  productId: number;
+  userId: number;
+  updatedAt: string;
+}
+
+type CombinedReviewType = User & Reviews;
 
 function ReviewsTab() {
   const [isOpenModal, setOpenModal] = useState(false);
@@ -44,6 +58,7 @@ function ReviewsTab() {
                 <img src="/public/images/icon-reviews.png" />
                 후기 등록
               </button>
+              <reviews></reviews>
             </div>
           </div>
         </Link>
@@ -66,39 +81,7 @@ function ReviewsTab() {
           <div
             onClick={onClickToggleDetailModal}
             className="hover:bg-slate-100"
-          >
-            <Reviews />
-          </div>
-          <div
-            onClick={onClickToggleDetailModal}
-            className="hover:bg-slate-100"
-          >
-            <Reviews />
-          </div>
-          <div
-            onClick={onClickToggleDetailModal}
-            className="hover:bg-slate-100"
-          >
-            <Reviews />
-          </div>
-          <div
-            onClick={onClickToggleDetailModal}
-            className="hover:bg-slate-100"
-          >
-            <Reviews />
-          </div>
-          <div
-            onClick={onClickToggleDetailModal}
-            className="hover:bg-slate-100"
-          >
-            <Reviews />
-          </div>
-          <div
-            onClick={onClickToggleDetailModal}
-            className="hover:bg-slate-100"
-          >
-            <Reviews />
-          </div>
+          ></div>
         </div>
 
         <div className="mt-9">
