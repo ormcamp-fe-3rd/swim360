@@ -9,13 +9,13 @@ const Discount = require("./Discount");
 
 const syncAll = async () => {
   await User.sync();
+  await Discount.sync();
   await Category.sync();
   await Product.sync();
   await Order.sync();
   await Cart.sync();
   await OrderItem.sync();
   await Review.sync();
-  await Discount.sync();
 };
 
 User.hasMany(Review, { foreignKey: "user_id" });

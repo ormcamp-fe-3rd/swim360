@@ -16,10 +16,6 @@ const Category = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    product_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
     parent_id: {
       type: DataTypes.INTEGER,
       allowNull: true,
