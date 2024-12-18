@@ -23,7 +23,7 @@ export default function MainIconButton() {
   return (
     <div className="flex justify-around tablet:w-[190px]">
       <button>
-        <Link to={isLogin ? "/mypage/" + id : "/login"}>
+        <Link to={isLogin ? "/mypage/"+id : "/login"}>
           <img
             className="hidden h-8 w-8 tablet:block"
             src={myPageIcon.imgUrl}
