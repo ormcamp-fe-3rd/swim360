@@ -1,5 +1,8 @@
-import useCart from "@/hooks/useCart";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+
+import { IsLoginContext } from "@/contexts/IsLoginContext";
+import useCart from "@/hooks/useCart";
 
 const myPageIcon = {
   imgUrl: "/images/common/icon-mypage.png",
@@ -10,16 +13,17 @@ const myPageIcon = {
 const cartIcon = {
   imgUrl: "/images/common/icon-cart.png",
   name: "장바구니",
-  url: "/cart",
 };
 
 export default function MainIconButton() {
   const { cartCount } = useCart();
+  const isLogin = useContext(IsLoginContext);
+  const id = sessionStorage.getItem("id");
 
   return (
     <div className="flex justify-around tablet:w-[190px]">
       <button>
-        <Link to={myPageIcon.url}>
+        <Link to={isLogin ? "/mypage/" + id : "/login"}>
           <img
             className="hidden h-8 w-8 tablet:block"
             src={myPageIcon.imgUrl}
@@ -31,7 +35,7 @@ export default function MainIconButton() {
       </button>
 
       <button className="relative">
-        <Link to={cartIcon.url}>
+        <Link to="/cart">
           {cartCount > 0 && (
             <div className="absolute left-5 flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-sm text-white">
               {cartCount}
