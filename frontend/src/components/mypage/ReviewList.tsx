@@ -6,15 +6,17 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { ReviewUserData } from "@/types/reviews";
+import { MyReview } from "@/types/users";
 
 interface Prop {
-  reviews: ReviewUserData[];
+  reviews: MyReview[];
 }
 
 export default function ReviewList({ reviews }: Prop) {
   const cellStyle =
     "text-center text-base overflow-hidden text-ellipsis whitespace-nowrap";
+
+  
 
   return (
     <div className="w-full">

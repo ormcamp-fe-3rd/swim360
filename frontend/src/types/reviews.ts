@@ -12,9 +12,4 @@ export interface ReviewsData {
 
 export type CombinedReviewType = User & ReviewsData;
 
-export interface ReviewUserData {
-  // id: Reviews['id'];
-  content: ReviewsData["content"];
-  productName: string;
-  date: string;
-}
+

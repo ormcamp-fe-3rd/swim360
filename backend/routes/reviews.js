@@ -15,10 +15,6 @@ router.get("/user/:id", async(req, res) => {
       where: { user_id: userId},
     });
 
-    if (!reviews || reviews.length === 0) {
-      return res.status(200).json({ message: "작성된 리뷰가 없습니다." });
-    }
-
     res.status(200).json(reviews)
   }catch(error){
     console.log(error);

@@ -40,7 +40,7 @@ const router = createBrowserRouter([
       { path: "/mypage", element: <MyPage /> },
       { path: "/agreespage", element: <AgreesPage /> },
       { path: "/mypage/edit", element: <MyPageEditPage /> },
-      { path: "/mypage/point_and_review", element: <PointAndReviewPage /> },
+      { path: "/mypage/:id/point_and_review", element: <PointAndReviewPage /> },
       {
         path: "/changepwdcompletionpage",
         element: <ChangePwdCompletionPage />,
