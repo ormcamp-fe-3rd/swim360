@@ -29,7 +29,10 @@ function SideBar({
                   subCategory.id,
                 )
               }
-              className="peer flex justify-center text-nowrap text-[26px] font-medium first:cursor-pointer hover:font-semibold focus:font-semibold"
+              className={
+                "peer flex justify-center text-nowrap text-[26px] font-medium first:cursor-pointer hover:font-semibold focus:font-semibold " +
+                `${subCategory.id === currentCategoryId ? "font-semibold" : "font-base"}`
+              }
             >
               {subCategory.name}
             </button>
