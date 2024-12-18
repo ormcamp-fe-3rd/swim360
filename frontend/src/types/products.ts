@@ -2,11 +2,11 @@ export interface Product {
   id?: number;
   brandName: string;
   name: string;
-  imageUrl: string;
+  imageUrl: string[];
   price: number;
   salesVolume: number; //
   discountedPrice: number;
-  size: string;
+  sizes: string[];
   stock: number;
   categoryId: number;
   discountId: number;

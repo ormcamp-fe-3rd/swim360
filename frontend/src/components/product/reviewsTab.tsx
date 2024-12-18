@@ -3,7 +3,6 @@ import ReviewWriteModal from "./ReviewWriteModal";
 import ReviewDetailModal from "./ReviewDetailModal";
 import { PaginationDemo } from "../common/Paginaion";
 import { useState } from "react";
-import Reviews from "./Reviews";
 import { Link } from "react-router-dom";
 import ProductTab from "./Tap";
 
@@ -13,12 +12,10 @@ function ReviewsTab() {
 
   const onClickToggleModal = () => {
     setOpenModal(!isOpenModal);
-    console.log("실행됨됨");
   };
 
-  const onClickToggleModal2 = () => {
+  const onClickToggleDetailModal = () => {
     setOpenModal2(!isOpenModal2);
-    console.log("실행됨됨");
   };
 
   return (
@@ -52,35 +49,27 @@ function ReviewsTab() {
 
         {/* 모달이 열리면 ReviewWriteModal 컴포넌트를 렌더링 */}
         {isOpenModal && (
-          <ReviewWriteModal onClickToggleModal={onClickToggleModal} />
+          <ReviewWriteModal
+            onClickToggleModal={onClickToggleModal}
+            size={undefined}
+            imageUrl={undefined}
+          />
         )}
 
         {isOpenModal2 && (
-          <ReviewDetailModal onClickToggleModal2={onClickToggleModal2} />
+          <ReviewDetailModal
+            onClickToggleDetailModal={onClickToggleDetailModal}
+          />
         )}
 
         <div
-          onClick={onClickToggleModal2}
+          onClick={onClickToggleDetailModal}
           className="mx-auto flex w-full max-w-[1064px] flex-wrap items-center justify-center"
         >
-          <div onClick={onClickToggleModal2} className="hover:bg-slate-100">
-            <Reviews />
-          </div>
-          <div onClick={onClickToggleModal2} className="hover:bg-slate-100">
-            <Reviews />
-          </div>
-          <div onClick={onClickToggleModal2} className="hover:bg-slate-100">
-            <Reviews />
-          </div>
-          <div onClick={onClickToggleModal2} className="hover:bg-slate-100">
-            <Reviews />
-          </div>
-          <div onClick={onClickToggleModal2} className="hover:bg-slate-100">
-            <Reviews />
-          </div>
-          <div onClick={onClickToggleModal2} className="hover:bg-slate-100">
-            <Reviews />
-          </div>
+          <div
+            onClick={onClickToggleDetailModal}
+            className="hover:bg-slate-100"
+          ></div>
         </div>
 
         <div className="mt-9">

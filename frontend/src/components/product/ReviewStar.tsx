@@ -26,7 +26,7 @@ function ReviewStar({ size = "large" }: ReviewStarProps) {
           <img
             className={styles.image}
             src="/public/images/product/review-star-none.png"
-            alt="Review Star"
+            alt="리뷰 별점 확인, 입력용"
           />
         </div>
       ))}

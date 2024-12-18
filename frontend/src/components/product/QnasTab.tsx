@@ -120,7 +120,7 @@ function QnasTab() {
     },
   ];
   return (
-    <div className="mb-[140px]" id="exchangeTab">
+    <div className="mb-[140px]" id="qnasTab">
       <ProductTab activeCategory="qnasTab" />
 
       <div className="mx-auto flex h-12 w-full max-w-[1064px] items-center justify-between border-b-2 bg-[#D3D3D3]">
