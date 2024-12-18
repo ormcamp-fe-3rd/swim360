@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { CartContext } from "@/contexts/CartContext";
 import { getCartCount, updateCartData } from "@/services/cart";
 
@@ -23,7 +23,7 @@ function useCart() {
 
   const { cartCount, setCartCount } = context;
 
-  const handleCartCountGet = async () => {
+  const handleCartCountFetch = async () => {
     try {
       const dbCartCount = await getCartCount(user.userId);
       setCartCount(dbCartCount);
@@ -47,7 +47,7 @@ function useCart() {
   };
 
   useEffect(() => {
-    handleCartCountGet();
+    handleCartCountFetch();
   }, [cartCount]);
 
   return { cartCount, handleCartUpdate };
