@@ -1,37 +1,35 @@
 import PrimaryButton from "@/components/common/PrimaryButton";
 
-function TotalPrice() {
+import PriceRow from "./PriceRow";
+
+interface TotalPriceProps {
+  totalProductPrice: number;
+  point: number;
+  shippingFee: number;
+  totalPayment: number;
+}
+
+function TotalPrice({
+  totalProductPrice,
+  point,
+  shippingFee,
+  totalPayment,
+}: TotalPriceProps) {
+  const handleBuyClick = () => {
+    alert("바로구매 버튼이 클릭되었습니다!");
+  };
+
   return (
     <div className="w-full p-4 middle:w-1/3">
-      <div className="flex justify-between p-1">
-        <span className="inline-block w-2/3">총 상품 금액</span>
-        <div className="flex">
-          <span className="inline-block w-1/2 text-right">0</span>
-          <span className="inline-block w-1/2 pl-1">원</span>
-        </div>
-      </div>
-      <div className="flex justify-between p-1">
-        <span className="inline-block w-2/3">포인트</span>
-        <div className="flex">
-          <span className="inline-block w-1/2 text-right">-0</span>
-          <span className="inline-block w-1/2 pl-1">원</span>
-        </div>
-      </div>
-      <div className="flex justify-between p-1">
-        <span className="inline-block w-2/3">배송비</span>
-        <div className="flex">
-          <span className="inline-block w-1/2 text-right">0</span>
-          <span className="inline-block w-1/2 pl-1">원</span>
-        </div>
-      </div>
-      <div className="flex justify-between border-t border-black p-1">
-        <span className="inline-block w-2/3">총 결제금액</span>
-        <div className="flex">
-          <span className="inline-block w-1/2 text-right">0</span>
-          <span className="inline-block w-1/2 pl-1">원</span>
-        </div>
-      </div>
-      <PrimaryButton>바로구매</PrimaryButton>
+      <PriceRow label="총 상품 금액" value={totalProductPrice} />
+      <PriceRow label="포인트" value={point} isNegative={true} />
+      <PriceRow label="배송비" value={shippingFee} />
+      <PriceRow
+        label="총 결제금액"
+        value={totalPayment}
+        className="border-t border-black font-bold"
+      />
+      <PrimaryButton onClick={handleBuyClick}>바로구매</PrimaryButton>
     </div>
   );
 }
