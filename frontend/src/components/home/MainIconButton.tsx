@@ -33,7 +33,7 @@ export default function MainIconButton() {
       <button className="relative">
         <Link to={cartIcon.url}>
           {cartCount > 0 && (
-            <div className="absolute left-5 flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-sm text-white">
+            <div className="absolute left-5 flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-xs text-white">
               {cartCount}
             </div>
           )}
