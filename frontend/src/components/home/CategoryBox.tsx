@@ -1,88 +1,48 @@
 // import { useState } from "react";
 
-import { useState } from "react";
-
 import { Category } from "@/types/categories";
-
 import CategoryHoberBox from "./CategoryHoberBox";
-import CategoryList from "./CategoryList";
 import CategoryUnderLine from "./CategoryUnderline";
-
-
-const categories: Category[] = [
-  {
-    name: "WOMAN",
-    productId: 1,
-  },
-  {
-    name: "MAN",
-    productId: 2,
-  },
-  {
-    name: "ACC",
-    productId: 3,
-  },
-  {
-    name: "one-piece",
-    productId: 4,
-    parentId: 1,
-  },
-  {
-    name: "full-body",
-    productId: 5,
-    parentId: 1,
-  },
-  {
-    name: "mid-length",
-    productId: 6,
-    parentId: 2,
-  },
-  {
-    name: "square-cut",
-    productId: 7,
-    parentId: 2,
-  },
-  {
-    name: "bag",
-    productId: 8,
-    parentId: 3,
-  },
-  {
-    name: "towel",
-    productId: 9,
-    parentId: 3,
-  },
-  {
-    name: "fins",
-    productId: 10,
-    parentId: 3,
-  },
-];
+import useCategory from "@/hooks/useCategory";
+import { Link } from "react-router-dom";
 
 export default function CategoryBox() {
-  const[activeCategory, setActiveCategory] = useState("")
+  const { categories, currentCategoryId, handleCurrentCategoryChange } =
+    useCategory();
+
+  const parentCategory = categories.filter(
+    (category) => category.parent_id === null,
+  );
 
   return (
-    <>
-      <ul className="hidden tablet:flex w-full max-w-[500px] tablet:justify-between">
-        {categories.slice(0, 3).map((category) => (
-          <li key={category.productId} className="group text-3xl font-bold" onClick={()=> setActiveCategory(category.name)}>
-            <CategoryList
-              name={category.name}
-              categories={categories.filter(
-                (sub) => sub.parentId === category.productId,
-              )}
-            />
-            <CategoryUnderLine isVisible={activeCategory === category.name} />
-            {/* <CategoryUnderLine isVisible={false} /> */}
+    <ul className="hidden w-full max-w-[500px] tablet:flex tablet:justify-between">
+      {parentCategory.map((category: Category) => {
+        const childCategory = categories.find(
+          (item) => item.parent_id === category.id,
+        ) as Category;
+
+        return (
+          <li key={category.name} className="group text-3xl font-bold">
+            <Link
+              onClick={() =>
+                handleCurrentCategoryChange(category.id, childCategory.id)
+              }
+              to={"/product_list/" + category.name}
+            >
+              <div className="flex justify-center">
+                {category.name.toUpperCase()}
+              </div>
+            </Link>
+            <CategoryUnderLine isVisible={currentCategoryId === category.id} />
             <CategoryHoberBox
+              handleCurrentCategoryChange={handleCurrentCategoryChange}
               categories={categories.filter(
-                (sub) => sub.parentId === category.productId,
+                (sub) => sub.parent_id === category.id,
               )}
             />
           </li>
-        ))}
-      </ul>
-    </>
+        );
+      })}
+    </ul>
   );
 }
