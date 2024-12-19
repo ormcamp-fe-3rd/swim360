@@ -29,9 +29,9 @@ export function Selected({ selectedSize }: SelectedProps) {
   const totalPrice = count * (product?.discountedPrice || 0);
 
   return (
-    <div className="mb-1 flex h-[50px] w-full min-w-[522px] items-center justify-between bg-[#EDEDED] p-4">
-      <p>{selectedSize}</p> {/* 사이즈 표시 */}
-      <div className="flex w-fit items-center justify-between gap-3 rounded-[12px] border-[1px] border-black px-4">
+    <div className="items-between mb-1 flex h-[50px] w-full min-w-[522px] justify-between bg-[#EDEDED] p-4">
+      <p className="w-[174px]">{selectedSize}</p> {/* 사이즈 표시 */}
+      <div className="flex h-[20px] w-fit items-center justify-between gap-3 rounded-[12px] border-[1px] border-black px-4">
         <button onClick={decreaseCount}>
           <img className="w-6" src="/public/images/product/icon-minus.png" />
         </button>
@@ -40,7 +40,8 @@ export function Selected({ selectedSize }: SelectedProps) {
           <img className="w-6" src="/public/images/product/icon-add.png" />
         </button>
       </div>
-      <p>{totalPrice}원</p> {/* 총 가격 표시 */}
+      <p className="flex w-[174px] justify-end">{totalPrice}원</p>{" "}
+      {/* 총 가격 표시 */}
     </div>
   );
 }
