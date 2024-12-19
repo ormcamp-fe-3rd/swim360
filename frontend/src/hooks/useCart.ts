@@ -36,10 +36,9 @@ function useCart() {
   const handleCartUpdate = async () => {
     const prevCount = cartCount;
 
-    setCartCount((prev) => prev + cartItem.quantity);
-
     try {
       await updateCartData(cartItem);
+      setCartCount((prev) => prev + cartItem.quantity);
     } catch (err) {
       setCartCount(prevCount);
       console.log(err);
