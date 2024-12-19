@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 import { cn } from "@/lib/utils";
+import { getReview } from "@/services/user";
+import { MyReview } from "@/types/users";
 
 import {
   Tabs,
@@ -11,10 +14,22 @@ import {
 import PointList from "./PointList";
 import { points } from "./Points";
 import ReviewList from "./ReviewList";
-import {reviews} from "./Reviews";
 
 export default function PointAndReviewTab() {
   const [tab, setTab] = useState(true);
+  const [reviews, setReviews] = useState<MyReview[]>([]);
+  const {id} = useParams();
+
+  useEffect(() => {
+    async function fetchReviews() {
+      const myReview = await getReview(`${id}`);
+      if (myReview) {
+        setReviews(myReview);
+      }
+    }
+
+    fetchReviews();
+  }, []);
 
   return (
     <div className="h-screen">
@@ -40,7 +55,7 @@ export default function PointAndReviewTab() {
             <PointList points={points} />
           </TabsContent>
           <TabsContent value="my-reviews" className="mt-40">
-            <ReviewList reviews={reviews}/>
+            <ReviewList reviews={reviews} />
           </TabsContent>
         </Tabs>
       </div>

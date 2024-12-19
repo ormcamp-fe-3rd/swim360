@@ -1,12 +1,13 @@
 import { User } from "./users";
-export interface ReviewsData {
+export interface Reviews {
   id?: number;
   content: string;
   imageUrl: string;
   rating: number;
-  productId: number;
-  userId: number;
+  product_id: number;
+  user_id: number;
   updatedAt: string;
+  createdAt: string;
 }
 
-export type CombinedReviewType = User & ReviewsData;
+export type CombinedReviewType = User & Reviews;
