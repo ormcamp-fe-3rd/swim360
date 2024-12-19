@@ -2,21 +2,20 @@ import ProductItemList from "@/components/product-list/ProductItemList";
 import SideBar from "@/components/product-list/Sidebar";
 import SortSelect from "@/components/product-list/SortSelect";
 import useCategory from "@/hooks/useCategory";
-import useProduct from "@/hooks/useProduct";
+import useProducts from "@/hooks/useProducts";
 
 function ProductListPage() {
   const {
-    categories,
+    getChildCategories,
     currentCategoryId,
     currentParentCategoryId,
     handleCurrentCategoryChange,
   } = useCategory();
-  const { handleSortOptionChange, sortOption } = useProduct();
+
+  const { handleSortOptionChange, sortOption, sortedProducts } = useProducts();
 
   const sideBarProps = {
-    subCategories: categories.filter(
-      (sub) => sub.parent_id === currentParentCategoryId,
-    ),
+    childCategories: getChildCategories(currentParentCategoryId),
     handleCurrentCategoryChange,
     currentCategoryId,
   };
@@ -26,7 +25,7 @@ function ProductListPage() {
   };
 
   const productItemListProps = {
-    sortOption,
+    sortedProducts: sortedProducts(sortOption),
   };
 
   return (

@@ -3,7 +3,7 @@ import { getProducts } from "@/services/product";
 import { ProductItemData, SortOption } from "@/types/products";
 import { useContext, useEffect, useState } from "react";
 
-function useProduct() {
+function useProducts() {
   const categoryContext = useContext(CategoryContext);
 
   if (!categoryContext) {
@@ -50,4 +50,4 @@ function useProduct() {
   return { products, sortOption, handleSortOptionChange, sortedProducts };
 }
 
-export default useProduct;
+export default useProducts;
