@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 
-import { IsLoginContext } from "@/contexts/IsLoginContext";
+import { UserIdContext } from "@/contexts/UserContext";
 import useCart from "@/hooks/useCart";
 
 const myPageIcon = {
@@ -17,13 +17,12 @@ const cartIcon = {
 
 export default function MainIconButton() {
   const { cartCount } = useCart();
-  const isLogin = useContext(IsLoginContext);
-  const id = sessionStorage.getItem("id");
+  const userId = useContext(UserIdContext);
 
   return (
     <div className="flex justify-around tablet:w-[190px]">
       <button>
-        <Link to={isLogin ? "/mypage/"+id : "/login"}>
+        <Link to={userId ? `/mypage/${userId}` : "/login"}>
           <img
             className="hidden h-8 w-8 tablet:block"
             src={myPageIcon.imgUrl}

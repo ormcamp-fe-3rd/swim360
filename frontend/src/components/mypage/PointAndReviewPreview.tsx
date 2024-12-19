@@ -1,23 +1,33 @@
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+
+import { UserIdContext } from "@/contexts/UserContext";
+import { getReview } from "@/services/user";
+import { MyReview } from "@/types/users";
 
 import PointAndReviewItem from "./PointAndReviewItem";
 
-interface PointAndReviewPreviewProps {
-  points: number;
-  reviewCount: number;
-}
+function PointAndReviewPreview() {
+  const userId = useContext(UserIdContext);
+  const [reviews, setReviews] = useState<MyReview[]>([]);
 
-function PointAndReviewPreview({
-  points,
-  reviewCount,
-}: PointAndReviewPreviewProps) {
-  const id = sessionStorage.getItem("id");
-  
+  useEffect(() => {
+    async function fetchReviews() {
+      if (!userId) return;
+      const myReview = await getReview(userId);
+      if (myReview) {
+        setReviews(myReview);
+      }
+    }
+
+    fetchReviews();
+  }, []);
+
   return (
-    <Link to={`/mypage/${id}/point_and_review`}>
+    <Link to={`/mypage/${userId}/point_and_review`} state={{reviews: reviews}}>
       <div className="flex h-[146px] w-full items-center justify-center border border-black py-[30px]">
-        <PointAndReviewItem label="포인트" value={points} unit="p" />
-        <PointAndReviewItem label="리뷰" value={reviewCount} unit="건" />
+        <PointAndReviewItem label="포인트" value={300} unit="p" />
+        <PointAndReviewItem label="리뷰" value={reviews.length} unit="건" />
       </div>
     </Link>
   );

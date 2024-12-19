@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { Product } from "@/types/products";
 import { Reviews } from "@/types/reviews";
-import { MyReview } from "@/types/users";
+import { MyReview, User } from "@/types/users";
 
 export async function getReview(userId: string) {
   try {
@@ -38,6 +38,18 @@ async function getProductName(
       `http://localhost:3000/products/${productId}`,
     );
     return response.data.name;
+  } catch (error) {
+    console.log(error);
+    return "";
+  }
+}
+
+export async function getUser(userId: string) {
+  try {
+    const response = await axios.get<User>(
+      `http://localhost:3000/users/${userId}`,
+    );
+    return response.data;
   } catch (error) {
     console.log(error);
     return "";

@@ -1,35 +1,22 @@
+import { useContext } from "react";
+
 import LogoutButton from "@/components/mypage/LogoutButton";
-import OrderStatusPreview from "@/components/mypage/OrderStatusPreview";
 import PointAndReviewPreview from "@/components/mypage/PointAndReviewPreview";
-import RecentOrderPreview from "@/components/mypage/RecentOrderPreview";
 import UserInfoPreview from "@/components/mypage/UserInfoPreview";
-import myPageMainData from "@/mocks/mypage.json";
+import { UserIdContext } from "@/contexts/UserContext";
 
 function MyPage() {
-  const { orders, orderStatusCount, user } = myPageMainData;
-  const { points, reviewCount } = user;
-
-  const orderStatusPreProps = {
-    orderStatusCount,
-  };
-
-  const userPointAndReviewPreProps = {
-    points,
-    reviewCount,
-  };
-
-  const recentOrderPreProps = {
-    orders,
-  };
+  const userId = useContext(UserIdContext);
+  if (!userId) return <h1>로그인 정보가 정확하지 않습니다.</h1>;
 
   return (
     <div className="px-7 tablet:px-[82px]">
       <div className="mb-[41px] grid grid-cols-1 gap-[41px] tablet:mb-[69px] tablet:mt-[71px] tablet:grid-cols-2">
-        <UserInfoPreview name={user.name} />
-        <PointAndReviewPreview {...userPointAndReviewPreProps} />
+        <UserInfoPreview />
+        <PointAndReviewPreview />
       </div>
-      <OrderStatusPreview {...orderStatusPreProps} />
-      <RecentOrderPreview {...recentOrderPreProps} />
+      {/* <OrderStatusPreview {...orderStatusPreProps} />
+      <RecentOrderPreview {...recentOrderPreProps} /> */}
       <LogoutButton />
     </div>
   );
