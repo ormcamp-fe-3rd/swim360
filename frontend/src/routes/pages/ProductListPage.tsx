@@ -1,28 +1,37 @@
 import ProductItemList from "@/components/product-list/ProductItemList";
 import SideBar from "@/components/product-list/Sidebar";
 import SortSelect from "@/components/product-list/SortSelect";
-import { SortOption } from "@/types/products";
-import { useState } from "react";
+import useCategory from "@/hooks/useCategory";
+import useProducts from "@/hooks/useProducts";
 
 function ProductListPage() {
-  const [sortOption, setsortOption] = useState<SortOption>("latest");
+  const {
+    getChildCategories,
+    currentCategoryId,
+    currentParentCategoryId,
+    handleCurrentCategoryChange,
+  } = useCategory();
 
-  const onSortOptionChange = (sortOption: SortOption) => {
-    setsortOption(sortOption);
+  const { handleSortOptionChange, sortOption, sortedProducts } = useProducts();
+
+  const sideBarProps = {
+    childCategories: getChildCategories(currentParentCategoryId),
+    handleCurrentCategoryChange,
+    currentCategoryId,
   };
 
   const sortSelectProps = {
-    onSortOptionChange,
+    handleSortOptionChange,
   };
 
   const productItemListProps = {
-    sortOption,
+    sortedProducts: sortedProducts(sortOption),
   };
 
   return (
     <div className="p-4">
       <div className="flex flex-col justify-center tablet:flex-row">
-        <SideBar />
+        <SideBar {...sideBarProps} />
         <div>
           <SortSelect {...sortSelectProps} />
           <ProductItemList {...productItemListProps} />

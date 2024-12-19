@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize"); // 시퀄라이즈에 정의됨
 const { sequelize } = require("../db.js");
 // 모델
 
-//이름, 상품_id(fk), 부모_id(fk)
+//이름,  부모_id(fk)
 const Category = sequelize.define(
   "Category",
   {

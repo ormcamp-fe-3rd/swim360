@@ -8,7 +8,7 @@ import {
 import { SortOption } from "@/types/products";
 
 interface SortSelectProps {
-  onSortOptionChange: (sortOption: SortOption) => void;
+  handleSortOptionChange: (sortOption: SortOption) => void;
 }
 
 const SORT_OPTIONS = [
@@ -17,10 +17,10 @@ const SORT_OPTIONS = [
   { value: "review", name: "리뷰순" },
 ];
 
-function SortSelect({ onSortOptionChange }: SortSelectProps) {
+function SortSelect({ handleSortOptionChange }: SortSelectProps) {
   return (
     <div className="flex flex-col items-end">
-      <Select onValueChange={onSortOptionChange}>
+      <Select onValueChange={handleSortOptionChange}>
         <SelectTrigger className="mb-2 w-[123px] rounded-[10px] border-[#000000] border-opacity-30">
           <SelectValue placeholder={SORT_OPTIONS[0].name} />
         </SelectTrigger>

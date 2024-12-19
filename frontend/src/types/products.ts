@@ -1,30 +1,23 @@
 export interface Product {
-  id?: number;
+  id: number;
   brandName: string;
   name: string;
-  imageUrl: string[];
+  imageUrl: string;
   price: number;
   salesVolume: number; //
   discountedPrice: number;
   sizes: string[];
   stock: number;
-  categoryId: number;
-  discountId: number;
+  category_id: number;
+  discount_id: number;
   createdAt: string;
 }
 
 export type SortOption = "latest" | "sale" | "review";
 
-export interface ProductItemData {
-  id: number;
-  brandName: string;
-  name: string;
-  imgUrl: string;
-  price: number;
-  salesVolume: number;
-  discountedPrice: number;
+export interface ProductItemData
+  extends Omit<Product, "category_id, discount_id "> {
   discountPercentage: number;
-  createdAt: string;
   reviewCount: number;
 }
 

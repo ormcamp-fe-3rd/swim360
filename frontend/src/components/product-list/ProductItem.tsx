@@ -1,8 +1,6 @@
 import { ProductItemData } from "@/types/products";
 import { Link } from "react-router-dom";
 
-type ProductItemProps = ProductItemData;
-
 function ProductItem({
   id,
   brandName,
@@ -10,16 +8,17 @@ function ProductItem({
   price,
   discountedPrice,
   discountPercentage,
-  imgUrl,
-  createdAt,
-  reviewCount,
-  salesVolume,
-}: ProductItemProps) {
+  imageUrl,
+}: ProductItemData) {
   return (
     <Link to={`/product/${id}`}>
       <div className="grid h-full w-full grid-rows-[2fr_0.5fr]">
         <div className="h-full w-full overflow-hidden">
-          <img className="h-full w-full object-cover" src={imgUrl} alt={name} />
+          <img
+            className="h-full w-full object-cover"
+            src={imageUrl}
+            alt={name}
+          />
         </div>
         <div>
           <div className="mb-3 py-[6.5px] font-semibold">{brandName}</div>
@@ -33,9 +32,6 @@ function ProductItem({
               {discountPercentage}%
             </div>
           </div>
-          <div>등록 날짜: {new Date(createdAt).toLocaleDateString()}</div>
-          <div>리뷰: {reviewCount}</div>
-          <div>판매수: {salesVolume}</div>
         </div>
       </div>
     </Link>
