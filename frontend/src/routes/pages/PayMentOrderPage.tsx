@@ -1,3 +1,5 @@
+import { useLocation } from "react-router-dom";
+
 import MeansPayment from "@/components/paymentorder/MeansPayment";
 import OrderProductList from "@/components/paymentorder/OrderProductList";
 import PossessionPoint from "@/components/paymentorder/PossessionPoint";
@@ -19,30 +21,23 @@ const point = 5000;
 const shippingFee = 3000;
 const totalPayment = totalProductPrice - point + shippingFee;
 
-const productData = [
-  {
-    id: 1,
-    imageUrl: "https://via.placeholder.com/150",
-    name: "상품 1",
-    description: "상품 1 간략 설명",
-    option: "BLACK_S",
-    quantity: 1,
-    price: 50000,
-    totalPrice: 50000,
-  },
-  {
-    id: 2,
-    imageUrl: "https://via.placeholder.com/150",
-    name: "상품 2",
-    description: "상품 2 간략 설명",
-    option: "WHITE_M",
-    quantity: 2,
-    price: 60000,
-    totalPrice: 120000,
-  },
-];
-
 function PayMentOrderPage() {
+  const location = useLocation();
+  const state = location.state;
+
+  const products = [
+    {
+      id: 1,
+      imageUrl: "https://via.placeholder.com/150",
+      name: state.productName,
+      description: state.description,
+      option: state.size,
+      quantity: state.quantity,
+      price: state.discountedPrice,
+      totalPrice: state.totalPrice,
+    },
+  ];
+
   return (
     <div className="mx-auto w-[90%] max-w-[1440px]">
       <Breadcrumb>
@@ -67,7 +62,14 @@ function PayMentOrderPage() {
       <div className="grid min-w-[475px] flex-wrap gap-0 middle:flex">
         <form action="#" className="mb-10 middle:w-2/3">
           <ShippingInformation />
-          <OrderProductList products={productData} />
+          <OrderProductList
+            productName={state.productName}
+            size={state.size}
+            quantity={state.quantity}
+            description={state.description}
+            totalPrice={state.totalPrice}
+            products={products}
+          />
           <PossessionPoint points={points} />
           <MeansPayment />
         </form>

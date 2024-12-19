@@ -1,5 +1,6 @@
-import useCart from "@/hooks/useCart";
 import { Link } from "react-router-dom";
+
+import useCart from "@/hooks/useCart";
 
 interface DetailsProps {
   name: string;
@@ -106,7 +107,17 @@ function Details({ product }: { product: DetailsProps }) {
               장바구니 담기
             </button>
           </div>
-          <Link to="/order" className="w-full max-w-[522px]">
+          <Link
+            to="/paymentorderpage"
+            state={{
+              productName: product.name,
+              size: product.selectedSize,
+              quantity: product.selectedTotal || 1,
+              totalPrice: product.total,
+              description: product.description,
+            }}
+            className="w-full max-w-[522px]"
+          >
             <button className="my-2 h-[70px] w-full max-w-[522px] rounded-2xl bg-black text-white">
               바로 구매
             </button>
@@ -116,6 +127,7 @@ function Details({ product }: { product: DetailsProps }) {
     </div>
   );
 }
+
 function ProductPage() {
   // 임시 데이터 생성
   const mockProduct = {
