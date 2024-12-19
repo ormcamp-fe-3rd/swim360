@@ -10,6 +10,11 @@ interface Product {
 }
 
 interface OrderProductListProps {
+  productName: string;
+  size: string;
+  quantity: number;
+  description: string;
+  totalPrice: number;
   products: Product[]; // 상품 목록 배열
 }
 
@@ -42,11 +47,11 @@ function OrderProductList({ products }: OrderProductListProps) {
           </div>
           {/* 가격 */}
           <div className="ml-4 w-1/5 flex-col">
-            <span className="block text-right">
-              {product.price.toLocaleString()} 원
+            <span className="block text-right line-through">
+              {product.totalPrice?.toLocaleString() || "0"} 원
             </span>
             <span className="block text-right">
-              {product.totalPrice.toLocaleString()} 원
+              {product.totalPrice?.toLocaleString() || "0"} 원
             </span>
           </div>
         </div>

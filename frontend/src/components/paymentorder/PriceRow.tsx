@@ -15,12 +15,12 @@ function PriceRow({
     <div className={`${className} flex justify-between p-1`}>
       <span className="inline-block w-2/3">{label}</span>
       <div className="flex">
-        <span className="inline-block w-1/2 text-right">
+        <span className="m-1 block text-right">
           {isNegative
             ? `-${Number(value).toLocaleString()}`
             : Number(value).toLocaleString()}
         </span>
-        <span className="inline-block w-1/2 pl-1">원</span>
+        <span className="m-1 block pl-1">원</span>
       </div>
     </div>
   );
