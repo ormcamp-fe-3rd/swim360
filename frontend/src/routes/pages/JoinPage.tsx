@@ -16,7 +16,7 @@ function JoinPage() {
           id="emailid"
         />
         <InputField
-          label="비밀번호 변경"
+          label="비밀번호"
           name="password"
           id="password"
           type="password"

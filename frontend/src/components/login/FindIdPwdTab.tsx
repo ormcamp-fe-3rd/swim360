@@ -1,38 +1,52 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Tabs,
+  TabsContent,
+  TabsListCustom,
+  TabsTriggerCustom,
+} from "@/components/ui/tabs";
+import { cn } from "@/lib/utils";
 
 interface FindIdPwdTabProps {
   idContent: ReactNode;
   pwContent: ReactNode;
-  onIdClick?: () => void;
-  onPwClick?: () => void;
+  defaultValue: "find-id" | "find-pw";
 }
 
 function FindIdPwdTab({
   idContent,
   pwContent,
-  onIdClick,
-  onPwClick,
+  defaultValue,
 }: FindIdPwdTabProps) {
+  const [activeTab, setActiveTab] = useState(defaultValue);
+
+  const handleTabChange = (value: "find-id" | "find-pw") => {
+    setActiveTab(value);
+  };
+
   return (
-    <Tabs defaultValue="find-id" className="mx-auto w-full">
-      <TabsList className="w-full gap-2.5 px-4 pb-2.5">
-        <TabsTrigger
+    <Tabs defaultValue={defaultValue} className="mx-auto w-full">
+      <TabsListCustom className="mx-auto h-full w-full tablet:w-[600px]">
+        <TabsTriggerCustom
           value="find-id"
-          className="w-full"
-          onClick={onIdClick ? onIdClick : undefined}
+          className={cn("h-full w-1/2", {
+            "border-black": activeTab === "find-id",
+          })}
+          onClick={() => handleTabChange("find-id")}
         >
           아이디 찾기
-        </TabsTrigger>
-        <TabsTrigger
+        </TabsTriggerCustom>
+        <TabsTriggerCustom
           value="find-pw"
-          className="w-full"
-          onClick={onPwClick ? onPwClick : undefined}
+          className={cn("h-full w-1/2", {
+            "border-black": activeTab === "find-pw",
+          })}
+          onClick={() => handleTabChange("find-pw")}
         >
           비밀번호 찾기
-        </TabsTrigger>
-      </TabsList>
+        </TabsTriggerCustom>
+      </TabsListCustom>
       <TabsContent className="mx-auto py-20 text-center" value="find-id">
         {idContent}
       </TabsContent>
