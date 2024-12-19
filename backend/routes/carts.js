@@ -1,18 +1,27 @@
 const express = require("express");
 const { Cart } = require("../models");
+const { Product } = require("../models");
 const router = express.Router();
 
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
 
   try {
-    const cart = await Cart.findAll({ where: { user_id: id } });
+    const cartItems = await Cart.findAll({
+      where: {
+        user_id: id,
+      },
+      include: [
+        {
+          model: Product,
+          attributes: ["imageUrl", "name", "size", "discountedPrice", "price"],
+        },
+      ],
+      attributes: ["quantity", "price"],
+    });
 
-    if (!cart) {
-      return res.json({ isCartExist: false });
-    }
-
-    return res.json(cart);
+    console.log(cartItems);
+    return res.json(cartItems);
   } catch (error) {
     return res.status(500).json({ error: " 서버 에러 " + error });
   }

@@ -1,7 +1,7 @@
 import axios from "@/services/index.ts";
 import { UpdateCart } from "@/types/cart";
 
-export async function getCart(userId: number) {
+export async function getCartList(userId: number) {
   try {
     const response = await axios.get(`/carts/${userId}`);
     return response.data;
