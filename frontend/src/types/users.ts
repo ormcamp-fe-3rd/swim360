@@ -1,4 +1,4 @@
-import { ReviewsData } from "./reviews";
+import { Reviews } from "./reviews";
 
 export interface User {
   id?: number;
@@ -11,7 +11,7 @@ export interface User {
 
 export interface MyReview {
   // id: Reviews['id'];
-  content: ReviewsData["content"];
+  content: Reviews["content"];
   productName: string;
   date: string;
 }
