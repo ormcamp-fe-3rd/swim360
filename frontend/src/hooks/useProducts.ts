@@ -13,6 +13,7 @@ function useProduct() {
   const { currentCategoryId } = categoryContext;
 
   const [products, setProducts] = useState<ProductItemData[]>([]);
+
   const [sortOption, setsortOption] = useState<SortOption>("latest");
 
   const handleProductsfetch = async () => {
@@ -38,10 +39,7 @@ function useProduct() {
       [...products].sort((a, b) => b.reviewCount - a.reviewCount),
   };
 
-  const sortedProducts = (
-    products: ProductItemData[],
-    option: typeof sortOption,
-  ) => {
+  const sortedProducts = (option: typeof sortOption) => {
     return sortFunctions[option](products);
   };
 
