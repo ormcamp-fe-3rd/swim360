@@ -4,6 +4,8 @@ import { Product } from "@/types/products";
 import { Reviews } from "@/types/reviews";
 import { MyReview, User } from "@/types/users";
 
+
+//유저 리뷰 불러오기
 export async function getReview(userId: string) {
   try {
     const response = await axios.get<Reviews[]>(
@@ -30,9 +32,7 @@ export async function getReview(userId: string) {
   }
 }
 
-async function getProductName(
-  productId: Reviews["product_id"],
-): Promise<string> {
+async function getProductName(productId: Product["id"]): Promise<string> {
   try {
     const response = await axios.get<Product>(
       `http://localhost:3000/products/${productId}`,
@@ -44,6 +44,7 @@ async function getProductName(
   }
 }
 
+//유저 정보 불러오기
 export async function getUser(userId: string) {
   try {
     const response = await axios.get<User>(
@@ -53,5 +54,18 @@ export async function getUser(userId: string) {
   } catch (error) {
     console.log(error);
     return "";
+  }
+}
+
+//유저 주문 불러오기
+export async function getMyOrders(userId: string) {
+  try {
+    const response = await axios.get(
+      `http://localhost:3000/orders/users/${userId}`,
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
   }
 }

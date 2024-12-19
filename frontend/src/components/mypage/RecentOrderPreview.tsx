@@ -1,11 +1,7 @@
-import { OrderData } from "@/types/orders";
 import RecentOrders from "./RecentOrders";
 
-interface RecentOrderPreviewProps {
-  orders: OrderData[];
-}
 
-function RecentOrderPreview({ orders }: RecentOrderPreviewProps) {
+function RecentOrderPreview() {
   return (
     <div className="relative w-full">
       <div className="sticky flex w-full items-center justify-start py-[14.8px]">
@@ -24,7 +20,7 @@ function RecentOrderPreview({ orders }: RecentOrderPreviewProps) {
       </div>
 
       <div className="border-b border-[#E5E7EB] font-semibold tablet:max-h-[759px] tablet:overflow-y-scroll [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 [&::-webkit-scrollbar-track]:bg-gray-100 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 [&::-webkit-scrollbar]:w-2">
-        <RecentOrders orders={orders} />
+        <RecentOrders />
       </div>
     </div>
   );

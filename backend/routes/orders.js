@@ -1,7 +1,21 @@
 const express = require("express");
+const { Order, OrderItem } = require("../models");
 const router = express.Router();
 
-router.get("/:id", (req, res) => {});
+//유저 id로 조회
+router.get("/users/:id", async (req, res) => {
+  try{
+    const userId = req.params.id;
+
+    const orders = await Order.findAll({
+      where: {user_id: userId},
+    });
+    res.json(orders);
+  }catch (error){
+    console.log(error);
+    res.status(500).json({ error: error.message});
+  }
+});
 
 router.get("/:id", (req, res) => {});
 
