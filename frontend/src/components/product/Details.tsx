@@ -43,7 +43,7 @@ function Details() {
         </div>
       </div>
 
-      <Selected selectedSize={0} selectedtotal={0} selectedTotalPrise={0} />
+      <Selected selectedSize={"M"} />
 
       <div>
         <div className="mb-[10px] mt-10 flex w-[522px] justify-end">
