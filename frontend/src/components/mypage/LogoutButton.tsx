@@ -10,7 +10,7 @@ export default function LogoutButton(){
   }
 
   return(
-    <div className="flex justify-end">
+    <div className="flex justify-end pt-20">
         <div className="flex flex-col justify-center pr-4">
         <TooltipProvider delayDuration={100}>
           <Tooltip>

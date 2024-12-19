@@ -24,13 +24,13 @@ function MyPage() {
 
   return (
     <div className="px-7 tablet:px-[82px]">
-      <LogoutButton />
       <div className="mb-[41px] grid grid-cols-1 gap-[41px] tablet:mb-[69px] tablet:mt-[71px] tablet:grid-cols-2">
         <UserInfoPreview name={user.name} />
         <PointAndReviewPreview {...userPointAndReviewPreProps} />
       </div>
       <OrderStatusPreview {...orderStatusPreProps} />
       <RecentOrderPreview {...recentOrderPreProps} />
+      <LogoutButton />
     </div>
   );
 }
