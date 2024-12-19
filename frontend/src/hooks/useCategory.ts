@@ -36,16 +36,37 @@ function useCategory() {
     setCurrentCategoryId(categoryId);
   };
 
+  const getParentCategories = () => {
+    const parentCategories = categories.filter(
+      (category) => category.parent_id === null,
+    );
+    return parentCategories;
+  };
+
+  const getFirstChildCategory = (parentCategoryId: Category["parent_id"]) => {
+    return categories.find(
+      (category) => category.parent_id === parentCategoryId,
+    ) as Category;
+  };
+
+  const getChildCategories = (parentCategoryId: Category["parent_id"]) => {
+    return categories.filter(
+      (category) => category.parent_id === parentCategoryId,
+    );
+  };
+
   useEffect(() => {
     handleCategoryFetch();
   }, []);
 
   return {
-    categories,
     currentCategoryId,
     currentParentCategoryId,
     setCurrentParentCategoryId,
     handleCurrentCategoryChange,
+    getParentCategories,
+    getFirstChildCategory,
+    getChildCategories,
   };
 }
 
