@@ -60,7 +60,7 @@ export default function RecentOrderItems({orderData}:Props){
           </div>
           <div className="flex text-[#8c8b8b]">
             <div>사이즈: {orderItem.size}</div>
-            <div className="block tablet:hidden">, {orderItem.quantity}개</div>
+            <div className="block ">, {orderItem.quantity}개</div>
           </div>
         </div>
       </div>

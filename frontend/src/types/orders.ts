@@ -14,7 +14,7 @@ export interface MyOrderItem {
   id: number;
   name: Product["name"];
   size: Product["sizes"];
-  imageUrl: Product["imageUrl"];
+  imageUrl:string;
   quantity: OrderItem['quantity'];
 }
 export interface OrderItem {
