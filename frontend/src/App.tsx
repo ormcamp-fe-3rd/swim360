@@ -5,10 +5,9 @@ import CartContextProvider from "@/contexts/CartContext";
 import Footer from "./components/common/Footer";
 import Header from "./components/common/Header";
 import ScrollToTop from "./components/common/ScrollToTop";
-
-import CartContextProvider from "@/contexts/CartContext";
 import CategoryContextProvider from "./contexts/CategoryContext";
-import IsLoginContextProvider from "./contexts/IsLoginContext";
+import UserContextProvider from "./contexts/UserContext";
+
 
 
 function App() {
@@ -16,13 +15,13 @@ function App() {
     <div>
       <CartContextProvider>
         <CategoryContextProvider>
-        <IsLoginContextProvider>
-          <ScrollToTop />
-          <Header />
-          <Outlet />
-          <Footer />
+         <UserContextProvider>
+            <ScrollToTop />
+            <Header />
+            <Outlet />
+            <Footer />
+          </UserContextProvider>
         </CategoryContextProvider>
-        </IsLoginContextProvider>
       </CartContextProvider>
     </div>
   );

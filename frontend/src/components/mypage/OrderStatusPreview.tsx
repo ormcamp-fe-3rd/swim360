@@ -1,5 +1,6 @@
-import { OrderStatus, OrderStatusItem } from "@/types/orders";
 import { Link } from "react-router-dom";
+
+import { OrderStatus, OrderStatusItem } from "@/types/orders";
 
 const ORDER_STATUS: OrderStatusItem[] = [
   { status: "ORDER_COMPLETE", label: "주문 완료" },

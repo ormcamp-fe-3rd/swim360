@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import { cn } from "@/lib/utils";
-import { getReview } from "@/services/user";
 import { MyReview } from "@/types/users";
 
 import {
@@ -17,19 +16,15 @@ import ReviewList from "./ReviewList";
 
 export default function PointAndReviewTab() {
   const [tab, setTab] = useState(true);
-  const [reviews, setReviews] = useState<MyReview[]>([]);
-  const {id} = useParams();
+  const [myReview, setMyReview] = useState<MyReview[]>([])
 
-  useEffect(() => {
-    async function fetchReviews() {
-      const myReview = await getReview(`${id}`);
-      if (myReview) {
-        setReviews(myReview);
-      }
-    }
+  const location = useLocation();
+  
+  useEffect(()=>{
+    const reviews = location.state.reviews;
+    setMyReview(reviews)
 
-    fetchReviews();
-  }, []);
+  },[])
 
   return (
     <div className="h-screen">
@@ -55,7 +50,7 @@ export default function PointAndReviewTab() {
             <PointList points={points} />
           </TabsContent>
           <TabsContent value="my-reviews" className="mt-40">
-            <ReviewList reviews={reviews} />
+            <ReviewList reviews={myReview} />
           </TabsContent>
         </Tabs>
       </div>

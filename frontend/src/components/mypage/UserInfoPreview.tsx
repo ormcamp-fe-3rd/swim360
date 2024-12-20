@@ -1,14 +1,38 @@
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-interface UserInfoPreviewProps {
-  name: string;
-}
+import { UserIdContext } from "@/contexts/UserContext";
+import { getUser } from "@/services/user";
+import { User } from "@/types/users";
 
-function UserInfoPreview({ name }: UserInfoPreviewProps) {
+function UserInfoPreview() {
+  const userId = useContext(UserIdContext);
+  const [user, setUser] = useState<User|null>(null)
+  
+  const fetchUserData = async() => {
+    if (!userId) return "";
+    try{
+      const userData = await getUser(userId);
+      if(userData){
+        setUser(userData);
+      }
+    } catch (error){
+      console.log("fetch userData error", error)
+    }
+  }
+  
+  useEffect(()=>{
+    fetchUserData();
+  },[])
+
+  
   return (
-    <Link to="/mypage/auth_pw" role="link">
+    <Link
+      to={`/mypage/${userId}/verification`}
+      role="link"
+    >
       <div className="flex h-[146px] items-center justify-between border border-black px-5">
-        <div className="text-xl font-semibold tablet:text-xl">{name}</div>
+        <div className="text-xl font-semibold tablet:text-xl">{user? user.name: ""}</div>
         <img
           className="h-6 tablet:w-6"
           src="/public/images/mypage/icon-mypage-user.png"
