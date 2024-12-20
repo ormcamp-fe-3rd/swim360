@@ -39,7 +39,7 @@ router.get("/:id", async (req, res) => {
     const userId = req.params.id;
 
     const user = await User.findOne({ where: { id: userId } });
-    res.json("특정 ID에 대한 유저 조회:" + user);
+    res.json(user);
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: error.message });

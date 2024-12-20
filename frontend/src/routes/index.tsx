@@ -19,6 +19,7 @@ import PayMentPage from "./pages/PayMentPage";
 import PointAndReviewPage from "./pages/PointAndReviewPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import ProductListPage from "./pages/ProductListPage";
+import UserVerificationPage from "./pages/UserVerificationPage";
 
 const router = createBrowserRouter([
   {
@@ -32,15 +33,18 @@ const router = createBrowserRouter([
         element: <ProductDetailPage />,
       },
       { path: "/review/:id", element: <ProductDetailPage /> },
+
       { path: "/find_id_pwd", element: <FindIdPwdPage /> },
       { path: "/find_id", element: <FindIdPage /> },
       { path: "/login", element: <LoginPage /> },
       { path: "/join", element: <JoinPage /> },
       { path: "/join_completion", element: <JoinCompletionPage /> },
-      { path: "/mypage", element: <MyPage /> },
       { path: "/agrees", element: <AgreesPage /> },
-      { path: "/mypage/edit", element: <MyPageEditPage /> },
-      { path: "/mypage/point_and_review", element: <PointAndReviewPage /> },
+      { path: "/mypage/:id", element: <MyPage /> },
+      { path: "/mypage/:id/verification", element: <UserVerificationPage />},
+      { path: "/mypage/:id/edit", element: <MyPageEditPage /> },
+      { path: "/mypage/:id/point_and_review", element: <PointAndReviewPage /> },
+
       {
         path: "/change_pwd_completion",
         element: <ChangePwdCompletionPage />,

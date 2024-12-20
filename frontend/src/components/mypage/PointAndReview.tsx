@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 import { cn } from "@/lib/utils";
+import { MyReview } from "@/types/users";
 
 import {
   Tabs,
@@ -11,10 +13,18 @@ import {
 import PointList from "./PointList";
 import { points } from "./Points";
 import ReviewList from "./ReviewList";
-import {reviews} from "./Reviews";
 
 export default function PointAndReviewTab() {
   const [tab, setTab] = useState(true);
+  const [myReview, setMyReview] = useState<MyReview[]>([])
+
+  const location = useLocation();
+  
+  useEffect(()=>{
+    const reviews = location.state.reviews;
+    setMyReview(reviews)
+
+  },[])
 
   return (
     <div className="h-screen">
@@ -40,7 +50,7 @@ export default function PointAndReviewTab() {
             <PointList points={points} />
           </TabsContent>
           <TabsContent value="my-reviews" className="mt-40">
-            <ReviewList reviews={reviews}/>
+            <ReviewList reviews={myReview} />
           </TabsContent>
         </Tabs>
       </div>

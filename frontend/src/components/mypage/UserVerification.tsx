@@ -17,7 +17,7 @@ export default function UserVerification() {
           placeholder="비밀번호"
         />
       </div>
-      <Link to="/mypage/edit">
+      <Link to={`/mypage/edit`}>
         <PrimaryButton className="h-[70px] w-full rounded-xl text-base font-semibold">
           확인
         </PrimaryButton>
