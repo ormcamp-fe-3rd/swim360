@@ -1,5 +1,5 @@
 import { User } from "./users";
-export interface ReviewsData {
+export interface Reviews {
   id?: number;
   content: string;
   imageUrl: string;
@@ -9,4 +9,4 @@ export interface ReviewsData {
   updatedAt: string;
 }
 
-export type CombinedReviewType = User & ReviewsData;
+export type CombinedReviewType = User & Reviews;

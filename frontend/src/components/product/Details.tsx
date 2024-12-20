@@ -43,7 +43,9 @@ function Details() {
         </div>
       </div>
 
-      <Selected selectedSize={"M"} />
+      <div>
+        <Selected selectedSize={""} />
+      </div>
 
       <div>
         <div className="mb-[10px] mt-10 flex w-[522px] justify-end">

@@ -1,8 +1,35 @@
 const express = require("express");
 const router = express.Router();
+const { Review } = require("../models");
 
 // 해당 상품의 리뷰 모두 들고오기
-router.get("/:id", (req, res) => {});
+router.get("/:productId", async (req, res) => {
+  const { productId } = req.params; // URL 파라미터에서 productId 추출
+
+  try {
+    // 제품 정보를 가져오는 쿼리 (Product 모델)
+    const product = await Product.findOne({
+      where: { id: productId, reviews },
+    });
+
+    if (!product) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+
+    // 해당 productId에 해당하는 리뷰들을 가져오는 쿼리
+    const reviews = await Review.findAll({
+      where: { id: productId },
+    });
+
+    // 제품 정보와 리뷰를 함께 반환
+    return res.json({
+      product,
+      reviews,
+    });
+  } catch (error) {
+    return res.status(500).json({ error: "서버 에러 " + error.message });
+  }
+});
 
 // 해당 사용자의 리뷰 모두 들고오기
 router.get("/:id", (req, res) => {});
