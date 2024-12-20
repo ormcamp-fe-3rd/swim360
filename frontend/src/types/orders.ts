@@ -1,24 +1,33 @@
+import { Product } from "./products";
+
 export interface Order {
   id?: number;
   adress: string;
   price: number;
   orderStatus: string;
-  userId: number;
-  productId: number;
+  user_id: number;
   createdAt: string;
+  updatedAt: string;
 }
 
-export interface OrderItem {
+export interface MyOrderItem {
   id: number;
-  name: string;
-  size: string;
-  imageUrl: string;
-  quantity: number;
-  discountedPrice: number;
+  name: Product["name"];
+  size: Product["sizes"];
+  imageUrl:string;
+  quantity: OrderItem['quantity'];
 }
-
+export interface OrderItem {
+  id?: number;
+  price: number;
+  quantity: number;
+  order_id: number;
+  product_id: number;
+  createdAt: string;
+  updatedAt: string;
+}
 export interface OrderData extends Pick<Order, "id" | "price" | "createdAt"> {
-  orderItems: OrderItem[];
+  orderItems: MyOrderItem[];
 }
 
 export type OrderStatus =

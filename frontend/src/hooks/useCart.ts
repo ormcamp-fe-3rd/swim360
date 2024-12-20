@@ -1,38 +1,71 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CartContext } from "@/contexts/CartContext";
-import { updateCartData } from "@/services/cart";
+import { getCartCount, getCartList, updateCartData } from "@/services/cart";
+import { Cart } from "@/types/cart";
+
+// 더미 데이터
+const cartItem = {
+  userId: 1,
+  productId: 4,
+  price: 23000 * 3,
+  quantity: 2,
+};
+
+const user = {
+  userId: 1,
+};
 
 function useCart() {
   const context = useContext(CartContext);
 
   if (!context) {
-    throw new Error("useCart는 CartProvider 내부에서만 작동해야합니다");
+    throw new Error("context가 Provider 외부에 존재하고 있습니다.");
   }
 
   const { cartCount, setCartCount } = context;
 
-  const handleCartUpdate = async ({}) => {
-    setCartCount((prev) => prev + 1);
+  const [cartList, setCartList] = useState<Cart[]>([]);
 
-    // TODO: API 호출로 DB 업데이트
-    // TODO: 에러 처리 추가
-    // FIXME: 중복 체크 로직 필요 (productId 사용)
-
-    // test data
-    const cartItem = {
-      userId: 1,
-      productId: 1,
-      price: 20000,
-      quantity: 2,
-    };
-
+  const handleCartListFetch = async () => {
     try {
-      await updateCartData(cartItem);
-    } catch (err) {
-      console.log(err);
+      const fetchedCartList = await getCartList(user.userId);
+      console.log(fetchedCartList);
+
+      setCartList(fetchedCartList);
+    } catch (error) {
+      console.log(error);
     }
   };
 
-  return { cartCount, handleCartUpdate };
+  const handleCartCountFetch = async () => {
+    try {
+      const fetchedCartCount = await getCartCount(user.userId);
+      setCartCount(fetchedCartCount);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleCartUpdate = async () => {
+    const prevCount = cartCount;
+
+    try {
+      await updateCartData(cartItem);
+      setCartCount((prev) => prev + cartItem.quantity);
+    } catch (error) {
+      setCartCount(prevCount);
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    handleCartListFetch();
+  }, []);
+
+  useEffect(() => {
+    handleCartCountFetch();
+  }, [cartCount]);
+
+  return { cartList, cartCount, handleCartListFetch, handleCartUpdate };
 }
 export default useCart;

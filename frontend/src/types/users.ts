@@ -1,3 +1,5 @@
+import { Reviews } from "./reviews";
+
 export interface User {
   id?: number;
   name: string;
@@ -5,4 +7,11 @@ export interface User {
   phoneNumber: string; //
   password: string;
   adress: string;
+}
+
+export interface MyReview {
+  // id: Reviews['id'];
+  content: Reviews["content"];
+  productName: string;
+  date: string;
 }

@@ -1,20 +1,46 @@
-import categoriesData from "@/mocks/categories.json";
-function SideBar() {
-  const { categories } = categoriesData;
+import { Category } from "@/types/categories";
 
+interface SideBarProps {
+  childCategories: Category[];
+  handleCurrentCategoryChange: (
+    parentCategoryId: Category["parent_id"],
+    categoryId: Category["id"],
+  ) => void;
+  currentCategoryId: Category["id"];
+}
+
+function SideBar({
+  childCategories,
+  handleCurrentCategoryChange,
+  currentCategoryId,
+}: SideBarProps) {
   return (
-    <div className="">
+    <div>
       <ul className="top-2 z-10 mb-8 mr-2 mt-10 flex justify-center gap-3 tablet:sticky tablet:flex-col tablet:justify-start">
-        {categories.map((category) => (
+        {childCategories.map((childCategory) => (
           <li
-            key={category.name}
+            key={childCategory.name}
             className="flex flex-col justify-center px-[36.5px] py-[10px]"
           >
-            <button className="peer flex justify-center text-nowrap text-[26px] font-medium first:cursor-pointer hover:font-semibold focus:font-semibold">
-              {category.name}
+            <button
+              onClick={() =>
+                handleCurrentCategoryChange(
+                  childCategory.parent_id,
+                  childCategory.id,
+                )
+              }
+              className={
+                "peer flex justify-center text-nowrap text-[26px] font-medium first:cursor-pointer hover:font-semibold focus:font-semibold " +
+                `${childCategory.id === currentCategoryId ? "font-semibold" : "font-base"}`
+              }
+            >
+              {childCategory.name}
             </button>
             <img
-              className="invisible peer-hover:visible peer-focus:visible"
+              className={
+                "peer-hover:visible " +
+                `${childCategory.id === currentCategoryId ? "visible" : "invisible"}`
+              }
               src="/public/images/productlist/underline-menu.png"
             />
           </li>
