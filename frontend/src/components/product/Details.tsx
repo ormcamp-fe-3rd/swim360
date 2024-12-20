@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Selected } from "./SelectedItem";
 import { SizeButton } from "./SizeBtn";
 
+
 function Details() {
   const { product } = useProduct();
   const { handleCartUpdate } = useCart();
@@ -62,7 +63,17 @@ function Details() {
               장바구니 담기
             </button>
           </div>
-          <Link to="/order" className="w-full max-w-[522px]">
+          <Link
+            to="/paymentorderpage"
+            state={{
+              productName: product.name,
+              size: product.selectedSize,
+              quantity: product.selectedTotal || 1,
+              totalPrice: product.total,
+              description: product.description,
+            }}
+            className="w-full max-w-[522px]"
+          >
             <button className="my-2 h-[70px] w-full max-w-[522px] rounded-2xl bg-black text-white">
               바로 구매
             </button>
@@ -72,4 +83,5 @@ function Details() {
     </div>
   );
 }
+
 export default Details;
