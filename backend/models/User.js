@@ -28,10 +28,6 @@ const User = sequelize.define(
       type: DataTypes.STRING(16),
       allowNull: false,
     },
-    adress: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
   },
   {
     tableName: "USERS",

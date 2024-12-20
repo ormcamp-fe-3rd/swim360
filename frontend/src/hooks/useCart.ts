@@ -59,11 +59,11 @@ function useCart() {
   };
 
   useEffect(() => {
-    handleCartListFetch();
+    // handleCartListFetch();
   }, []);
 
   useEffect(() => {
-    handleCartCountFetch();
+    // handleCartCountFetch();
   }, [cartCount]);
 
   return { cartList, cartCount, handleCartListFetch, handleCartUpdate };

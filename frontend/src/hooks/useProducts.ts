@@ -1,6 +1,6 @@
 import { CategoryContext } from "@/contexts/CategoryContext";
 import { getProducts } from "@/services/product";
-import { ProductItemData, SortOption } from "@/types/products";
+import { Product, ProductItemData, SortOption } from "@/types/products";
 import { useContext, useEffect, useState } from "react";
 
 function useProducts() {
@@ -30,13 +30,14 @@ function useProducts() {
   };
 
   const sortFunctions = {
-    latest: (products: ProductItemData[]) =>
+    latest: (products: Product[]) =>
       [...products].sort((a, b) => b.createdAt.localeCompare(a.createdAt)),
 
-    sale: (products: ProductItemData[]) =>
+    sale: (products: Product[]) =>
       [...products].sort((a, b) => b.salesVolume - a.salesVolume),
-    review: (products: ProductItemData[]) =>
-      [...products].sort((a, b) => b.reviewCount - a.reviewCount),
+    // review: (products: Product[]) =>
+    //   [...products].sort((a, b) => b.reviewCount - a.reviewCount),
+    review: () => products,
   };
 
   const sortedProducts = (option: typeof sortOption) => {

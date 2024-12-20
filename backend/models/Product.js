@@ -20,6 +20,10 @@ const Product = sequelize.define(
       type: DataTypes.STRING(255),
       allowNull: false,
     },
+    description: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
     price: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -29,12 +33,26 @@ const Product = sequelize.define(
       allowNull: false,
     },
     size: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.TEXT, // TEXT로 변경
       allowNull: false,
+      get() {
+        const rawValue = this.getDataValue("size");
+        return rawValue ? JSON.parse(rawValue) : [];
+      },
+      set(value) {
+        this.setDataValue("size", JSON.stringify(value));
+      },
     },
     imageUrl: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.TEXT, // TEXT로 변경
       allowNull: false,
+      get() {
+        const rawValue = this.getDataValue("imageUrl");
+        return rawValue ? JSON.parse(rawValue) : [];
+      },
+      set(value) {
+        this.setDataValue("imageUrl", JSON.stringify(value));
+      },
     },
     salesVolume: {
       type: DataTypes.INTEGER,
