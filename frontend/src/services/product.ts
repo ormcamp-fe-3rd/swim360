@@ -9,6 +9,7 @@ export async function getProducts(categoryId: number) {
   }
 }
 
+
 export async function getProduct(productId: number) {
   try {
     const response = await axios.get(`/products/${productId}`);
@@ -17,3 +18,4 @@ export async function getProduct(productId: number) {
     console.log(error);
   }
 }
+
