@@ -1,8 +1,9 @@
 import axios from "axios";
+import axios from "@/services/index.ts";
 
 import { Product } from "@/types/products";
 
-export async function getProduct(productId: Product["id"]){
+export async function getProductById(productId: Product["id"]){
   try {
     const response = await axios.get(
       `http://localhost:3000/products/${productId}`,
@@ -11,5 +12,15 @@ export async function getProduct(productId: Product["id"]){
   } catch (error) {
     console.log(error);
     return "";
+
+
+
+export async function getProducts(categoryId: number) {
+  try {
+    const response = await axios.get(`/products/${categoryId}`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+
   }
 }
