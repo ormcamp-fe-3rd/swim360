@@ -33,7 +33,7 @@ const Product = sequelize.define(
       allowNull: false,
     },
     imageUrl: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false,
     },
     salesVolume: {
