@@ -1,18 +1,13 @@
-import useCart from "@/hooks/useCart";
-import useProduct from "@/hooks/useproduct";
 import { Link } from "react-router-dom";
 import { Selected } from "./SelectedItem";
 import { SizeButton } from "./SizeBtn";
+import { Product } from "@/types/products";
 
-
-function Details() {
-  const { product } = useProduct();
-  const { handleCartUpdate } = useCart();
-
-  if (!product) {
-    return <p>Loading...</p>; // 로딩 상태 처리
-  }
-
+interface DetailsProps {
+  product: Product;
+  handleCartUpdate: () => void;
+}
+function Details({ product, handleCartUpdate }: DetailsProps) {
   return (
     <div className="h-auto w-full max-w-[522px] flex-col">
       <p className="w-[522px] text-[18px] font-semibold">{product.name}</p>
@@ -67,10 +62,10 @@ function Details() {
             to="/paymentorderpage"
             state={{
               productName: product.name,
-              size: product.selectedSize,
-              quantity: product.selectedTotal || 1,
-              totalPrice: product.total,
               description: product.description,
+              // size: product.selectedSize,
+              // quantity: product.selectedTotal || 1,
+              // totalPrice: product.total,
             }}
             className="w-full max-w-[522px]"
           >

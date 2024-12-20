@@ -24,9 +24,9 @@ function ProductListPage() {
     handleSortOptionChange,
   };
 
-  const productItemListProps = {
-    sortedProducts: sortedProducts(sortOption),
-  };
+  // const productItemListProps = {
+  //   sortedProducts: sortedProducts(sortOption),
+  // };
 
   return (
     <div className="p-4">
@@ -34,7 +34,7 @@ function ProductListPage() {
         <SideBar {...sideBarProps} />
         <div>
           <SortSelect {...sortSelectProps} />
-          <ProductItemList {...productItemListProps} />
+          {/* <ProductItemList {...productItemListProps} /> */}
         </div>
       </div>
     </div>

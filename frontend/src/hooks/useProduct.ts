@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getProducts } from "@/services/product";
+import { getProduct } from "@/services/product";
 import { useParams } from "react-router-dom";
 import { Product } from "@/types/products";
 
@@ -21,7 +21,7 @@ function useProduct() {
         return;
       }
 
-      const fetchedProduct = await getProducts(numericId); // 변환된 숫자 사용
+      const fetchedProduct = await getProduct(numericId); // 변환된 숫자 사용
       setProduct(fetchedProduct);
     } catch (err) {
       console.error("Error fetching product:", err);
