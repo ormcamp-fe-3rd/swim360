@@ -1,7 +1,8 @@
+import LogoutButton from "@/components/mypage/LogoutButton";
 import OrderStatusPreview from "@/components/mypage/OrderStatusPreview";
+import PointAndReviewPreview from "@/components/mypage/PointAndReviewPreview";
 import RecentOrderPreview from "@/components/mypage/RecentOrderPreview";
 import UserInfoPreview from "@/components/mypage/UserInfoPreview";
-import PointAndReviewPreview from "@/components/mypage/PointAndReviewPreview";
 import myPageMainData from "@/mocks/mypage.json";
 
 function MyPage() {
@@ -29,6 +30,7 @@ function MyPage() {
       </div>
       <OrderStatusPreview {...orderStatusPreProps} />
       <RecentOrderPreview {...recentOrderPreProps} />
+      <LogoutButton />
     </div>
   );
 }
