@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { getOrderItems } from "@/services/orderItem";
-import { getProduct } from "@/services/product";
+import { getProductById } from "@/services/product";
 import { MyOrderItem, OrderData, OrderItem } from "@/types/orders";
 
 interface Props{
@@ -18,7 +18,7 @@ export default function RecentOrderItems({orderData}:Props){
 
         const formatted = await Promise.all(
           orderItems.map(async (orderItem:OrderItem)=> {
-            const product = await getProduct(orderItem.product_id)
+            const product = await getProductById(orderItem.product_id)
 
             const imageUrl = Array.isArray(product.imageUrl)
               ? product.imageUrl[0]

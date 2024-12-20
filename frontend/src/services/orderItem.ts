@@ -1,10 +1,10 @@
-import axios from "axios";
+import axios from "@/services/index.ts";
 
 //주문번호로 주문상품 불러오기
 export async function getOrderItems(orderId: string) {
   try {
     const response = await axios.get(
-      `http://localhost:3000/orderItems/orders/${orderId}`,
+      `/orderItems/orders/${orderId}`,
     );
     return response.data;
   } catch (error) {

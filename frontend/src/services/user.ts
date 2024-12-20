@@ -1,15 +1,13 @@
-import axios from "axios";
-
+import axios from "@/services/index.ts";
 import { Product } from "@/types/products";
 import { Reviews } from "@/types/reviews";
 import { MyReview, User } from "@/types/users";
-
 
 //유저 리뷰 불러오기
 export async function getReview(userId: string) {
   try {
     const response = await axios.get<Reviews[]>(
-      `http://localhost:3000/reviews/user/${userId}`,
+      `/reviews/user/${userId}`,
     );
 
     if (!Array.isArray(response.data) || response.data.length === 0) {
@@ -35,7 +33,7 @@ export async function getReview(userId: string) {
 async function getProductName(productId: Product["id"]): Promise<string> {
   try {
     const response = await axios.get<Product>(
-      `http://localhost:3000/products/${productId}`,
+      `/products/${productId}`,
     );
     return response.data.name;
   } catch (error) {
@@ -48,7 +46,7 @@ async function getProductName(productId: Product["id"]): Promise<string> {
 export async function getUser(userId: string) {
   try {
     const response = await axios.get<User>(
-      `http://localhost:3000/users/${userId}`,
+      `/users/${userId}`,
     );
     return response.data;
   } catch (error) {
