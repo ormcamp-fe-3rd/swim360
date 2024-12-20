@@ -67,6 +67,7 @@ function useCategory() {
     getParentCategories,
     getFirstChildCategory,
     getChildCategories,
+    childCategories: getChildCategories(currentParentCategoryId),
   };
 }
 
