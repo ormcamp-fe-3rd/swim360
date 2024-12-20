@@ -6,11 +6,17 @@ export interface Product {
   price: number;
   salesVolume: number; //
   discountedPrice: number;
-  sizes: string[];
+  size: string;
   stock: number;
   category_id: number;
   discount_id: number;
   createdAt: string;
+}
+
+export interface SelectedItem {
+  selectedSize: number;
+  selectedtotal: number;
+  selectedTotalPrise: number;
 }
 
 export type SortOption = "latest" | "sale" | "review";

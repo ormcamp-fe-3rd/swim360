@@ -3,6 +3,21 @@ const { Product } = require("../models");
 const router = express.Router();
 const { Product } = require("../models");
 
+
+router.get("/:productId", async (req, res) => {
+  const { productId } = req.params;
+
+  try {
+    const product = await Product.findOne({
+      where: { id: productId },
+    });
+
+    if (!product) {
+      return res.json({ isProductExist: false });
+    }
+
+    return res.json(product);
+
 router.get("/:categoryId", async (req, res) => {
   const { categoryId } = req.params;
 
@@ -16,10 +31,12 @@ router.get("/:categoryId", async (req, res) => {
     }
 
     return res.json(products);
+
   } catch (error) {
     return res.status(500).json({ error: " 서버 에러 " + error });
   }
 });
+
 
 //findById
 router.get("/:id", async(req, res) => {
@@ -37,6 +54,7 @@ router.get("/:id", async(req, res) => {
     res.status(500).json({ error: error.message })
   }
 });
+
 
 router.get("/:id", (req, res) => {});
 

@@ -5,6 +5,7 @@ import { PaginationDemo } from "../common/Paginaion";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import ProductTab from "./Tap";
+import Review from "./Review";
 
 function ReviewsTab() {
   const [isOpenModal, setOpenModal] = useState(false);
@@ -47,13 +48,10 @@ function ReviewsTab() {
           </div>
         </Link>
 
+        <Review />
         {/* 모달이 열리면 ReviewWriteModal 컴포넌트를 렌더링 */}
         {isOpenModal && (
-          <ReviewWriteModal
-            onClickToggleModal={onClickToggleModal}
-            size={undefined}
-            imageUrl={undefined}
-          />
+          <ReviewWriteModal onClickToggleModal={onClickToggleModal} />
         )}
 
         {isOpenModal2 && (
