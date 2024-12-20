@@ -1,3 +1,5 @@
+import { Reviews } from "./reviews";
+
 export interface Product {
   id: number;
   brandName: string;
@@ -14,6 +16,10 @@ export interface Product {
   createdAt: string;
 }
 
+export interface ProductDetail {
+  product: Product;
+  review: Reviews;
+}
 export interface SelectedItem {
   selectedSize: number;
   selectedtotal: number;

@@ -48,7 +48,20 @@ function ReviewsTab() {
           </div>
         </Link>
 
-        <Review />
+        <Review
+          name={"dsdf"}
+          emailId={"62"}
+          phoneNumber={"85"}
+          password={"252"}
+          adress={"asdad"}
+          content={"adad"}
+          imageUrl={"adasd"}
+          rating={0}
+          product_id={0}
+          user_id={0}
+          updatedAt={"3"}
+          createdAt={"5"}
+        />
         {/* 모달이 열리면 ReviewWriteModal 컴포넌트를 렌더링 */}
         {isOpenModal && (
           <ReviewWriteModal onClickToggleModal={onClickToggleModal} />

@@ -10,7 +10,7 @@ router.get("/:productId", async (req, res) => {
   try {
     // 제품 정보를 가져오는 쿼리 (Product 모델)
     const product = await Product.findOne({
-      where: { id: productId, reviews },
+      where: { id: productId },
     });
 
     if (!product) {
@@ -19,7 +19,7 @@ router.get("/:productId", async (req, res) => {
 
     // 해당 productId에 해당하는 리뷰들을 가져오는 쿼리
     const reviews = await Review.findAll({
-      where: { id: productId },
+      where: { product_id: productId },
     });
 
     // 제품 정보와 리뷰를 함께 반환

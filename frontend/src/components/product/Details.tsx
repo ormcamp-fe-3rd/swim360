@@ -4,25 +4,25 @@ import { SizeButton } from "./SizeBtn";
 import { Product } from "@/types/products";
 
 interface DetailsProps {
-  product: Product;
-  handleCartUpdate: () => void;
+  product: Product | undefined;
+  handleCartUpdate: () => Promise<void>;
 }
 function Details({ product, handleCartUpdate }: DetailsProps) {
   return (
     <div className="h-auto w-full max-w-[522px] flex-col">
-      <p className="w-[522px] text-[18px] font-semibold">{product.name}</p>
+      <p className="w-[522px] text-[18px] font-semibold">{product?.name}</p>
       {/*  <p className="w-[522px] text-sm font-extralight">{product.description}</p>*/}
       <div className="flex w-[522px] gap-[10px]">
         <p className="text-base font-medium">정상가</p>
-        <p className="text-sm font-extralight">{product.price}원</p>
+        <p className="text-sm font-extralight">{product?.price}원</p>
       </div>
       <div className="flex w-[522px] gap-[10px]">
         <p className="text-base font-medium">할인가</p>
         <p className="text-base font-bold text-[#D40022]">
-          {product.discountedPrice}원
+          {product?.discountedPrice}원
         </p>
         <p className="text-base font-bold text-[#D40022]">
-          {product.salesVolume}%
+          {product?.salesVolume}%
         </p>
       </div>
       <div className="flex w-[522px] gap-[10px]">
@@ -61,8 +61,8 @@ function Details({ product, handleCartUpdate }: DetailsProps) {
           <Link
             to="/paymentorderpage"
             state={{
-              productName: product.name,
-              description: product.description,
+              productName: product?.name,
+              description: product?.description,
               // size: product.selectedSize,
               // quantity: product.selectedTotal || 1,
               // totalPrice: product.total,
