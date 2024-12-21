@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { UserIdContext } from "@/contexts/UserContext";
 import { getMyOrders } from "@/services/user";
 import { Order, OrderData } from "@/types/orders";
+import getLocalDate from "@/utils/getLocalDate";
 
 import RecentOrderItems from "./RecentOrderItems";
 
@@ -48,13 +49,13 @@ function RecentOrders() {
               <div className="">주문 번호</div>
               <div>{order.id}</div>
               <div className="text-[#8c8b8b]">
-                {new Date(order.createdAt).toLocaleDateString()}
+                {getLocalDate(order.createdAt)}
               </div>
             </div>
           </div>
           <div>
             <div className="flex w-full items-center justify-between border-b border-[#E5E7EB] bg-[#F9FAFB] p-4 tablet:hidden">
-              <div>{new Date(order.createdAt).toLocaleDateString()} 주문</div>
+              <div>{getLocalDate(order.createdAt)}주문</div>
               <div className="flex items-center"></div>
             </div>
 
