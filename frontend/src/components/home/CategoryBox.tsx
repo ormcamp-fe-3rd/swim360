@@ -6,7 +6,7 @@ import CategoryUnderLine from "./CategoryUnderline";
 import { Link } from "react-router-dom";
 
 interface CategoryBoxProps {
-  currentCategoryId: Category["id"];
+  currentParentCategoryId: Category["parent_id"];
   handleCurrentCategoryChange: (
     parentCategoryId: Category["parent_id"],
     categoryId: Category["id"],
@@ -17,7 +17,7 @@ interface CategoryBoxProps {
 }
 
 export default function CategoryBox({
-  currentCategoryId,
+  currentParentCategoryId,
   handleCurrentCategoryChange,
   getParentCategories,
   getFirstChildCategory,
@@ -43,7 +43,9 @@ export default function CategoryBox({
                 {category.name.toUpperCase()}
               </div>
             </Link>
-            <CategoryUnderLine isVisible={currentCategoryId === category.id} />
+            <CategoryUnderLine
+              isVisible={currentParentCategoryId === category.id}
+            />
             <CategoryHoberBox
               handleCurrentCategoryChange={handleCurrentCategoryChange}
               childCategories={childCategories}

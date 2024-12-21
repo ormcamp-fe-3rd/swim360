@@ -8,7 +8,7 @@ import useToggle from "@/hooks/useToggle";
 
 function Header() {
   const {
-    currentCategoryId,
+    currentParentCategoryId,
     handleCurrentCategoryChange,
     getParentCategories,
     getFirstChildCategory,
@@ -26,7 +26,7 @@ function Header() {
   };
 
   const categoryBoxProps = {
-    currentCategoryId,
+    currentParentCategoryId,
     handleCurrentCategoryChange,
     getParentCategories,
     getFirstChildCategory,
