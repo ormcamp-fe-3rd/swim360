@@ -1,7 +1,7 @@
 import { CategoryContext } from "@/contexts/CategoryContext";
 import { getProductListData } from "@/services/product";
 import { ProductItemData, SortOption } from "@/types/products";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 
 function useProductList() {
   const categoryContext = useContext(CategoryContext);
@@ -41,9 +41,9 @@ function useProductList() {
       [...productListData].sort((a, b) => b.reviewCount - a.reviewCount),
   };
 
-  const sortedProducts = (option: typeof sortOption) => {
-    return sortFunctions[option](productListData);
-  };
+  const sortedProducts = useMemo(() => {
+    return sortFunctions[sortOption](productListData);
+  }, [sortOption, productListData]);
 
   useEffect(() => {
     handleProductsfetch();
@@ -52,7 +52,7 @@ function useProductList() {
   return {
     productListData,
     handleSortOptionChange,
-    sortedProducts: sortedProducts(sortOption),
+    sortedProducts,
   };
 }
 

@@ -11,7 +11,7 @@ interface CategoryBoxProps {
     parentCategoryId: Category["parent_id"],
     categoryId: Category["id"],
   ) => void;
-  getParentCategories: () => Category[];
+  parentCategories: Category[];
   getFirstChildCategory: (parentCategoryId: Category["id"]) => Category;
   getChildCategories: (parentCategoryId: Category["parent_id"]) => Category[];
 }
@@ -19,12 +19,10 @@ interface CategoryBoxProps {
 export default function CategoryBox({
   currentParentCategoryId,
   handleCurrentCategoryChange,
-  getParentCategories,
+  parentCategories,
   getFirstChildCategory,
   getChildCategories,
 }: CategoryBoxProps) {
-  const parentCategories = getParentCategories();
-
   return (
     <ul className="hidden w-full max-w-[500px] tablet:flex tablet:justify-between">
       {parentCategories.map((category: Category) => {

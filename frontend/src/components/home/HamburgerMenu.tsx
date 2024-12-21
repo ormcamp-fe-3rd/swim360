@@ -8,19 +8,17 @@ interface HamburgerMenuProps {
     parentCategoryId: Category["parent_id"],
     categoryId: Category["id"],
   ) => void;
-  getParentCategories: () => Category[];
+  parentCategories: Category[];
   getFirstChildCategory: (parentCategoryId: Category["parent_id"]) => Category;
 }
 
 export default function HamburgerMenu({
   isOpen,
   handleUIToggle,
-  getParentCategories,
+  parentCategories,
   getFirstChildCategory,
   handleCurrentCategoryChange,
 }: HamburgerMenuProps) {
-  const parentCategories = getParentCategories();
-
   return (
     <div className="relative tablet:hidden">
       <button onClick={handleUIToggle}>

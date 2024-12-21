@@ -11,7 +11,7 @@ function Header() {
   const {
     currentParentCategoryId,
     handleCurrentCategoryChange,
-    getParentCategories,
+    parentCategories,
     getFirstChildCategory,
     getChildCategories,
   } = useCategory();
@@ -22,14 +22,14 @@ function Header() {
     isOpen,
     handleUIToggle,
     handleCurrentCategoryChange,
-    getParentCategories,
+    parentCategories,
     getFirstChildCategory,
   };
 
   const categoryBoxProps = {
     currentParentCategoryId,
     handleCurrentCategoryChange,
-    getParentCategories,
+    parentCategories,
     getFirstChildCategory,
     getChildCategories,
   };
