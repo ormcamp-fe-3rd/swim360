@@ -12,7 +12,7 @@ router.get("/:productId", async (req, res) => {
     });
 
     if (!product) {
-      return res.json({ isProductExist: false });
+      return res.status(404).json({ message: "해당하는 상품이 없습니다." });
     }
     return res.json(product);
   } catch (error) {
@@ -56,7 +56,7 @@ router.get("/category/:categoryId", async (req, res) => {
     });
 
     if (!productList || productList.length === 0) {
-      return res.json({ isProductListExist: false });
+      return res.status(404).json({ message: "해당하는 상품이 없습니다." });
     }
 
     return res.json(productList);
