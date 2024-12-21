@@ -1,5 +1,3 @@
-// import { useState } from "react";
-
 import { Category } from "@/types/categories";
 import CategoryHoberBox from "./CategoryHoberBox";
 import CategoryUnderLine from "./CategoryUnderline";
