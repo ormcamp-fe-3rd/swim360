@@ -39,15 +39,10 @@ export default function CategoryBox({
                 {category.name.toUpperCase()}
               </div>
             </Link>
-<<<<<<< HEAD
             <CategoryUnderLine
               isVisible={currentParentCategoryId === category.id}
             />
-            <CategoryHoberBox
-=======
-            <CategoryUnderLine isVisible={currentCategoryId === category.id} />
             <CategoryHoverBox
->>>>>>> 700507ad (fix: Hober -> Hover)
               handleCurrentCategoryChange={handleCurrentCategoryChange}
               childCategories={childCategories}
             />
