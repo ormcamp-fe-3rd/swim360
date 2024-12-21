@@ -7,7 +7,7 @@ import { MyReview } from "@/types/users";
 
 import PointAndReviewItem from "./PointAndReviewItem";
 
-function PointAndReviewPreview() {
+function UserDetailPreview() {
   const userId = useContext(UserIdContext);
   const [reviews, setReviews] = useState<MyReview[]>([]);
 
@@ -33,4 +33,4 @@ function PointAndReviewPreview() {
   );
 }
 
-export default PointAndReviewPreview;
+export default UserDetailPreview;

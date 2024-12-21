@@ -1,12 +1,14 @@
-import { Tooltip, TooltipContent,TooltipProvider, TooltipTrigger } from "@radix-ui/react-tooltip";
+import { useNavigate } from "react-router-dom";
+
+import { Tooltip, TooltipContent,TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 
 export default function LogoutButton(){
-
+const navigate = useNavigate();
 
   function logout(){
     sessionStorage.removeItem('id');
     alert("👋안녕히가세요👋");
-    window.location.href = "/"
+    navigate("/")
   }
 
   return(
