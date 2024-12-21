@@ -2,6 +2,7 @@ import { CategoryContext } from "@/contexts/CategoryContext";
 import { getCategories } from "@/services/category";
 import { Category } from "@/types/categories";
 import { useContext, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 function useCategory() {
   const categoryContext = useContext(CategoryContext);
@@ -18,6 +19,8 @@ function useCategory() {
     currentCategoryId,
     setCurrentCategoryId,
   } = categoryContext;
+
+  const location = useLocation();
 
   const handleCategoryFetch = async () => {
     try {
@@ -58,6 +61,12 @@ function useCategory() {
   useEffect(() => {
     handleCategoryFetch();
   }, []);
+
+  useEffect(() => {
+    if (!location.pathname.includes("product_list")) {
+      setCurrentParentCategoryId(null);
+    }
+  }, [location]);
 
   return {
     currentCategoryId,
