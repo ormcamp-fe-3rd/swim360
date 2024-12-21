@@ -1,5 +1,5 @@
 import { Category } from "@/types/categories";
-import CategoryHoberBox from "./CategoryHoberBox";
+import CategoryHoverBox from "./CategoryHoverBox";
 import CategoryUnderLine from "./CategoryUnderline";
 import { Link } from "react-router-dom";
 
@@ -39,10 +39,15 @@ export default function CategoryBox({
                 {category.name.toUpperCase()}
               </div>
             </Link>
+<<<<<<< HEAD
             <CategoryUnderLine
               isVisible={currentParentCategoryId === category.id}
             />
             <CategoryHoberBox
+=======
+            <CategoryUnderLine isVisible={currentCategoryId === category.id} />
+            <CategoryHoverBox
+>>>>>>> 700507ad (fix: Hober -> Hover)
               handleCurrentCategoryChange={handleCurrentCategoryChange}
               childCategories={childCategories}
             />
