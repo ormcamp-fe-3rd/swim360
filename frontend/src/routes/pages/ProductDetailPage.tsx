@@ -6,7 +6,6 @@ import QnasTab from "@/components/product/QnasTab";
 import ReviewsTab from "@/components/product/ReviewsTab";
 import useCart from "@/hooks/useCart";
 import useProduct from "@/hooks/useproduct";
-import { Link } from "react-router-dom";
 
 function ProductDetailPage() {
   const { product } = useProduct();
