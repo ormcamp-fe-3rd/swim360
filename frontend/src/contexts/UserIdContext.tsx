@@ -4,9 +4,10 @@ interface UserIdContextProps {
   userId: string;
   setUserId: React.Dispatch<React.SetStateAction<string>>;
 }
-export const UserIdContext = createContext<UserIdContextProps | undefined>(
-  undefined,
-);
+export const UserIdContext = createContext<UserIdContextProps>({
+  userId: "",
+  setUserId: () => {}
+});
 
 interface Props {
   children: React.ReactNode;
@@ -21,13 +22,9 @@ export default function UserIdContextProvider({ children }: Props) {
     setUserId(sessionId);
   }, []);
 
-  const UserIdContextValue = {
-    userId,
-    setUserId,
-  };
 
   return (
-    <UserIdContext.Provider value={UserIdContextValue}>
+    <UserIdContext.Provider value={{ userId, setUserId}}>
       {children}
     </UserIdContext.Provider>
   );
