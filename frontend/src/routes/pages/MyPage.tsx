@@ -6,7 +6,7 @@ import OrderStatusPreview from "@/components/mypage/OrderStatusPreview";
 import RecentOrderPreview from "@/components/mypage/RecentOrderPreview";
 import UserDetailPreview from "@/components/mypage/UserDetailPreview";
 import UserInfoPreview from "@/components/mypage/UserInfoPreview";
-import { UserIdContext } from "@/contexts/UserContext";
+import { UserIdContext } from "@/contexts/UserIdContext";
 import myPageMainData from "@/mocks/mypage.json";
 
 function MyPage() {
@@ -14,10 +14,10 @@ function MyPage() {
   const orderStatusPreProps = { orderStatusCount };
 
   const userId = useContext(UserIdContext);
-  
+
   if (!userId) {
     alert("로그인 정보가 정확하지 않습니다.");
-    return <Navigate to={"/login"} replace />
+    return <Navigate to={"/login"} replace />;
   }
 
   return (

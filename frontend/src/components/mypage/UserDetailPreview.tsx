@@ -1,14 +1,14 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { UserIdContext } from "@/contexts/UserContext";
+import { useUserId } from "@/hooks/useUserId";
 import { getReview } from "@/services/user";
 import { MyReview } from "@/types/users";
 
 import PointAndReviewItem from "./PointAndReviewItem";
 
 function UserDetailPreview() {
-  const userId = useContext(UserIdContext);
+  const { userId } = useUserId();
   const [reviews, setReviews] = useState<MyReview[]>([]);
 
   useEffect(() => {
@@ -24,7 +24,10 @@ function UserDetailPreview() {
   }, []);
 
   return (
-    <Link to={`/mypage/${userId}/point_and_review`} state={{reviews: reviews}}>
+    <Link
+      to={`/mypage/${userId}/point_and_review`}
+      state={{ reviews: reviews }}
+    >
       <div className="flex h-[146px] w-full items-center justify-center border border-black py-[30px]">
         <PointAndReviewItem label="포인트" value={300} unit="p" />
         <PointAndReviewItem label="리뷰" value={reviews.length} unit="건" />

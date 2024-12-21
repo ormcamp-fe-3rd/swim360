@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-import { UserIdContext } from "@/contexts/UserContext";
+import { useUserId } from "@/hooks/useUserId";
 import { getMyOrders } from "@/services/user";
 import { Order, OrderData } from "@/types/orders";
 import { formatPrice } from "@/utils/formatPrice";
@@ -9,7 +9,7 @@ import getLocalDate from "@/utils/getLocalDate";
 import RecentOrderItems from "./RecentOrderItems";
 
 function RecentOrders() {
-  const userId = useContext(UserIdContext);
+  const { userId } = useUserId();
   const [orders, setOrders] = useState<OrderData[]>([]);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ function RecentOrders() {
   }, [userId]);
 
   if (!orders || orders.length === 0) {
-    return <div>주문 내역이 없습니다.</div>
+    return <div>주문 내역이 없습니다.</div>;
   }
 
   return (
@@ -61,7 +61,7 @@ function RecentOrders() {
             </div>
 
             <div className="flex flex-col pb-3">
-              <RecentOrderItems orderData={order}/>
+              <RecentOrderItems orderData={order} />
               <div className="flex justify-end p-2 text-lg font-semibold tablet:hidden">
                 결제 금액: 총 {formatPrice(order.price)}원
               </div>
@@ -79,7 +79,10 @@ function RecentOrders() {
             ))}
           </div>
           <div className="hidden flex-col items-center justify-center tablet:flex">
-            <div className="text-lg font-semibold"> 총 {formatPrice(order.price)}원</div>
+            <div className="text-lg font-semibold">
+              {" "}
+              총 {formatPrice(order.price)}원
+            </div>
           </div>
         </div>
       ))}

@@ -1,13 +1,16 @@
 import { useNavigate } from "react-router-dom";
 
 import { Tooltip, TooltipContent,TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { useUserId } from "@/hooks/useUserId";
 
 export default function LogoutButton(){
-const navigate = useNavigate();
+  const navigate = useNavigate();
+  const { setUserId } = useUserId();
 
-  function logout(){
+  function handleLogout(){
     sessionStorage.removeItem('id');
     alert("👋안녕히가세요👋");
+    setUserId("")
     navigate("/")
   }
 
@@ -17,7 +20,7 @@ const navigate = useNavigate();
         <TooltipProvider delayDuration={100}>
           <Tooltip>
             <TooltipTrigger>
-              <div onClick={logout} className="text-4xl">
+              <div onClick={handleLogout} className="text-4xl">
                 👋
               </div>
               </TooltipTrigger>

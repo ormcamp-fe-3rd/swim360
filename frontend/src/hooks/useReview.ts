@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Product } from "@/types/products";
 import { useParams } from "react-router-dom";
+
+import { Product } from "@/types/products";
 import { CombinedReviewType } from "@/types/reviews";
 
 function useReview() {
