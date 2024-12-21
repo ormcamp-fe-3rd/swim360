@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { UserIdContext } from "@/contexts/UserContext";
 import { getMyOrders } from "@/services/user";
 import { Order, OrderData } from "@/types/orders";
+import { formatPrice } from "@/utils/formatPrice";
 import getLocalDate from "@/utils/getLocalDate";
 
 import RecentOrderItems from "./RecentOrderItems";
@@ -62,7 +63,7 @@ function RecentOrders() {
             <div className="flex flex-col pb-3">
               <RecentOrderItems orderData={order}/>
               <div className="flex justify-end p-2 text-lg font-semibold tablet:hidden">
-                결제 금액: 총 {order.price}원
+                결제 금액: 총 {formatPrice(order.price)}원
               </div>
             </div>
           </div>
@@ -78,7 +79,7 @@ function RecentOrders() {
             ))}
           </div>
           <div className="hidden flex-col items-center justify-center tablet:flex">
-            <div className="text-lg font-semibold"> 총 {order.price}원</div>
+            <div className="text-lg font-semibold"> 총 {formatPrice(order.price)}원</div>
           </div>
         </div>
       ))}
