@@ -32,7 +32,7 @@ function RecentOrders() {
     fetchOrders();
   }, [userId]);
 
-  if ((!orders || orders.length) === 0) {
+  if (!orders || orders.length === 0) {
     return <div>주문 내역이 없습니다.</div>
   }
 

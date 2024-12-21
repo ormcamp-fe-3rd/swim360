@@ -65,7 +65,6 @@ export default function RecentOrderItems({ orderData }: Props) {
           </div>
         </div>
       ))}
-      ;
     </div>
-  );
+  )
 }
