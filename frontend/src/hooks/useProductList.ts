@@ -13,7 +13,7 @@ function useProductList() {
   const { currentCategoryId } = categoryContext;
 
   const [productListData, setProductListData] = useState<ProductItemData[]>([]);
-  const [sortOption, setsortOption] = useState<SortOption>("latest");
+  const [sortOption, setSortOption] = useState<SortOption>("latest");
 
   const handleProductsfetch = async () => {
     try {
@@ -26,7 +26,7 @@ function useProductList() {
   };
 
   const handleSortOptionChange = (sortOption: SortOption) => {
-    setsortOption(sortOption);
+    setSortOption(sortOption);
   };
 
   const sortFunctions = {
