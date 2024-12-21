@@ -5,7 +5,7 @@ import MainIconButton from "../home/MainIconButton";
 import MainLogo from "../home/MainLogo";
 import ScrollButton from "../home/ScrollButton";
 import useCategory from "@/hooks/useCategory";
-import useToggle from "@/hooks/useToggle";
+import { useState } from "react";
 
 function Header() {
   const {
@@ -16,7 +16,8 @@ function Header() {
     getChildCategories,
   } = useCategory();
 
-  const { isOpen, handleUIToggle } = useToggle();
+  const [isOpen, setIsOpen] = useState(false);
+  const handleUIToggle = () => setIsOpen(!isOpen);
 
   const hamburgerMenuProps = {
     isOpen,
