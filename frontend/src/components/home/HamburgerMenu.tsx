@@ -30,7 +30,6 @@ export default function HamburgerMenu({
       </button>
       <div
         className={`${isOpen ? "block" : "hidden"} fixed inset-0 top-[190px] z-10 backdrop-brightness-50`}
-        onClick={handleUIToggle}
       >
         <div className="h-full w-full">
           <ul className="flex h-[420px] flex-col items-center bg-white">
@@ -39,12 +38,13 @@ export default function HamburgerMenu({
               return (
                 <li
                   key={category.name}
-                  onClick={() =>
+                  onClick={() => {
+                    handleUIToggle();
                     handleCurrentCategoryChange(
                       category.id,
                       firstChildCategory.id,
-                    )
-                  }
+                    );
+                  }}
                   className="flex h-1/4 w-full shadow-sm"
                 >
                   <Link
