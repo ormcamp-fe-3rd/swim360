@@ -10,6 +10,11 @@ router.get("/users/:id", async (req, res) => {
     const orders = await Order.findAll({
       where: {user_id: userId},
     });
+
+    if (!orders) {
+      res.status(404).json({ message: 'Orders not found' })
+    }
+    
     res.json(orders);
   }catch (error){
     console.log(error);

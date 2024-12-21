@@ -6,9 +6,12 @@ const { User } = require("../models");
 router.get("/", async (req, res) => {
   try {
     const users = await User.findAll();
+
     if (!users) {
       console.log("No Users yet");
+      res.status(404).json('User not found')
     }
+
     res.json(users);
   } catch (error) {
     console.log(error);
@@ -39,6 +42,11 @@ router.get("/:id", async (req, res) => {
     const userId = req.params.id;
 
     const user = await User.findOne({ where: { id: userId } });
+
+    if(!user){
+      res.status(404).json({message: "User not found"})
+    }
+    
     res.json(user);
   } catch (error) {
     console.log(error);
