@@ -1,30 +1,26 @@
-// import { useState } from "react";
-
 import { Category } from "@/types/categories";
-import CategoryHoberBox from "./CategoryHoberBox";
+import CategoryHoverBox from "./CategoryHoverBox";
 import CategoryUnderLine from "./CategoryUnderline";
 import { Link } from "react-router-dom";
 
 interface CategoryBoxProps {
-  currentCategoryId: Category["id"];
+  currentParentCategoryId: Category["parent_id"];
   handleCurrentCategoryChange: (
     parentCategoryId: Category["parent_id"],
     categoryId: Category["id"],
   ) => void;
-  getParentCategories: () => Category[];
+  parentCategories: Category[];
   getFirstChildCategory: (parentCategoryId: Category["id"]) => Category;
   getChildCategories: (parentCategoryId: Category["parent_id"]) => Category[];
 }
 
 export default function CategoryBox({
-  currentCategoryId,
+  currentParentCategoryId,
   handleCurrentCategoryChange,
-  getParentCategories,
+  parentCategories,
   getFirstChildCategory,
   getChildCategories,
 }: CategoryBoxProps) {
-  const parentCategories = getParentCategories();
-
   return (
     <ul className="hidden w-full max-w-[500px] tablet:flex tablet:justify-between">
       {parentCategories.map((category: Category) => {
@@ -43,8 +39,10 @@ export default function CategoryBox({
                 {category.name.toUpperCase()}
               </div>
             </Link>
-            <CategoryUnderLine isVisible={currentCategoryId === category.id} />
-            <CategoryHoberBox
+            <CategoryUnderLine
+              isVisible={currentParentCategoryId === category.id}
+            />
+            <CategoryHoverBox
               handleCurrentCategoryChange={handleCurrentCategoryChange}
               childCategories={childCategories}
             />

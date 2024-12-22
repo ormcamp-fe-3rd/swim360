@@ -5,6 +5,7 @@ import Photos from "@/components/product/Photos";
 import QnasTab from "@/components/product/QnasTab";
 import ReviewsTab from "@/components/product/reviewsTab";
 import useCart from "@/hooks/useCart";
+
 import useProduct from "@/hooks/useProduct";
 
 function ProductDetailPage() {

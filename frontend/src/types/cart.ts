@@ -1,14 +1,22 @@
 import { Product } from "@/types/products";
-import { User } from "@/types/users";
 
 export interface Cart {
   id?: number;
   price: number;
+  size: string;
   quantity: number;
-  createdAt: string;
+  user_id: number;
+  product_id: number;
+  createdAt?: string;
 }
 
-export interface UpdateCart extends Omit<Cart, "createdAt"> {
-  userId: User["id"];
-  productId: Product["id"];
+export interface CartItem extends Cart {
+  Product: Pick<
+    Product,
+    "imageUrl" | "brandName" | "name" | "size" | "price" | "discountedPrice"
+  >;
+}
+
+export interface CartList extends Cart {
+  cartList: CartItem[];
 }

@@ -13,13 +13,15 @@ export interface Order {
 export interface MyOrderItem {
   id: number;
   name: Product["name"];
-  size: Product["sizes"];
-  imageUrl:string;
-  quantity: OrderItem['quantity'];
+  size: Product["size"];
+  imageUrl: string;
+  quantity: OrderItem["quantity"];
 }
+
 export interface OrderItem {
   id?: number;
   price: number;
+  size: string;
   quantity: number;
   order_id: number;
   product_id: number;

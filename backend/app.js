@@ -6,6 +6,7 @@ const app = express();
 const db = require("./db");
 const models = require("./models");
 const config = require("./config/config");
+const seedData = require("./seedData");
 
 const startServer = async () => {
   const corsOptions = {
@@ -16,7 +17,8 @@ const startServer = async () => {
   app.use(cors(corsOptions));
 
   await db.init();
-  await models.syncAll();
+  await models.syncAll({force: true}); // force: true 옵션을 추가 -> db가 실행될때마다 기존 테이블 삭제 후 새로 생성
+  await seedData(); 
 
   app.use(express.json());
 
