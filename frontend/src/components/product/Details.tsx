@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
+
+import { Product } from "@/types/products";
+
 import { Selected } from "./SelectedItem";
 import { SizeButton } from "./SizeBtn";
-import { Product } from "@/types/products";
 import { Cart } from "@/types/cart";
 
 interface DetailsProps {
@@ -71,10 +73,14 @@ function Details({ product, handleCartUpdate }: DetailsProps) {
             </button>
           </div>
           <Link
-            to="/paymentorderpage"
+            to="/paymentorder"
             state={{
-              productName: product.name,
+              product_id: product.id,
+              name: product.name,
               description: product.description,
+              totalQuantity: 5,
+              totalPrice: 2000000,
+              discountedPrice: product.price,
               // size: product.selectedSize,
               // quantity: product.selectedTotal || 1,
               // totalPrice: product.total,
