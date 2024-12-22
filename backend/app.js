@@ -7,6 +7,7 @@ const db = require("./db");
 const models = require("./models");
 const config = require("./config/config");
 const seedData = require("./seedData");
+const path = require("path");
 
 const startServer = async () => {
   const corsOptions = {
@@ -24,6 +25,8 @@ const startServer = async () => {
 
   app.use(require("./routes"));
 
+  app.use('/images', express.static(path.join(__dirname, 'public/images')))
+  
   app.listen(config.expressPort, () => {
     console.log(`server listening on port ${config.expressPort}`);
   });
