@@ -2,6 +2,7 @@ import axios from "@/services/index.ts";
 import { Product } from "@/types/products";
 import { Reviews } from "@/types/reviews";
 import { MyReview, User } from "@/types/users";
+import getLocalDate from "@/utils/getLocalDate";
 
 //유저 리뷰 불러오기
 export async function getReview(userId: string) {
@@ -19,7 +20,7 @@ export async function getReview(userId: string) {
         return {
           content: review.content,
           productName: await getProductName(review.product_id),
-          date: review.createdAt.slice(0, 10),
+          date: getLocalDate(review.createdAt),
         };
       }),
     );
