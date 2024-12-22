@@ -41,8 +41,8 @@ const router = createBrowserRouter([
       { path: "/join_completion", element: <JoinCompletionPage /> },
       { path: "/agrees", element: <AgreesPage /> },
       { path: "/mypage/:id", element: <MyPage /> },
-      { path: "/mypage/:id/verification", element: <UserVerificationPage />},
-      { path: "/mypage/:id/edit", element: <MyPageEditPage /> },
+      { path: "/mypage/verification", element: <UserVerificationPage />},
+      { path: "/mypage/edit", element: <MyPageEditPage /> },
       { path: "/mypage/:id/point_and_review", element: <PointAndReviewPage /> },
 
       {
