@@ -1,22 +1,12 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { CartContext } from "@/contexts/CartContext";
-import { getCartCount, getCartList, updateCartData } from "@/services/cart";
-import { Cart } from "@/types/cart";
-
-// 더미 데이터
-const cartItem = {
-  userId: 1,
-  productId: 4,
-  price: 23000 * 3,
-  quantity: 2,
-};
-
-const user = {
-  userId: 1,
-};
+import { getCartCount, getCartListData, updateCartData } from "@/services/cart";
+import { Cart, CartItem } from "@/types/cart";
 
 function useCart() {
   const context = useContext(CartContext);
+
+  const userId = Number(sessionStorage.getItem("id"));
 
   if (!context) {
     throw new Error("context가 Provider 외부에 존재하고 있습니다.");
@@ -24,14 +14,13 @@ function useCart() {
 
   const { cartCount, setCartCount } = context;
 
-  const [cartList, setCartList] = useState<Cart[]>([]);
+  const [cartListData, setCartListData] = useState<CartItem[]>([]);
 
-  const handleCartListFetch = async () => {
+  const handleCartListDataFetch = async () => {
     try {
-      const fetchedCartList = await getCartList(user.userId);
-      console.log(fetchedCartList);
+      const fetchedCartListData = await getCartListData(userId);
 
-      setCartList(fetchedCartList);
+      setCartListData(fetchedCartListData);
     } catch (error) {
       console.log(error);
     }
@@ -39,14 +28,14 @@ function useCart() {
 
   const handleCartCountFetch = async () => {
     try {
-      const fetchedCartCount = await getCartCount(user.userId);
+      const fetchedCartCount = await getCartCount(userId);
       setCartCount(fetchedCartCount);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleCartUpdate = async () => {
+  const handleCartUpdate = async (cartItem: Cart) => {
     const prevCount = cartCount;
 
     try {
@@ -58,14 +47,25 @@ function useCart() {
     }
   };
 
+  const cartTotalPrice = useMemo(
+    () => cartListData?.reduce((acc, item) => acc + item.price, 0) ?? 0,
+    [cartListData],
+  );
+
   useEffect(() => {
-    // handleCartListFetch();
+    handleCartListDataFetch();
   }, []);
 
   useEffect(() => {
-    // handleCartCountFetch();
-  }, [cartCount]);
+    handleCartCountFetch();
+  }, []);
 
-  return { cartList, cartCount, handleCartListFetch, handleCartUpdate };
+  return {
+    cartListData,
+    cartCount,
+    handleCartListDataFetch,
+    handleCartUpdate,
+    cartTotalPrice,
+  };
 }
 export default useCart;
