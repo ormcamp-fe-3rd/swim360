@@ -1,38 +1,40 @@
 import { useEffect, useState } from "react";
-import { getProduct } from "@/services/product";
+import { getProductDetail } from "@/services/product";
 import { useParams } from "react-router-dom";
-import { Product } from "@/types/products";
+import { ProductDetail } from "@/types/products";
 
 function useProduct() {
   const { id } = useParams<{ id: string }>(); // id의 타입을 명시적으로 지정
 
-  const [product, setProduct] = useState<Product>();
+  const [productDetail, setProductDetail] = useState<ProductDetail>();
 
-  const handleProductsfetch = async () => {
+  const handleProductDetailfetch = async () => {
     if (!id) {
       console.error("Product ID is missing from the URL.");
       return;
     }
 
     try {
-      const numericId = parseInt(id, 10); // string을 number로 변환
-      if (isNaN(numericId)) {
+      const numericProductId = parseInt(id, 10); // string을 number로 변환
+      if (isNaN(numericProductId)) {
         console.error("Invalid ID format.");
         return;
       }
 
-      const fetchedProduct = await getProduct(numericId); // 변환된 숫자 사용
-      setProduct(fetchedProduct);
+      // TODO: getProdcut -> getProductAndReview
+      const fetchedProductDetail = await getProductDetail(numericProductId); // 변환된 숫자 사용
+      setProductDetail(fetchedProductDetail);
+      console.log(fetchedProductDetail);
     } catch (err) {
       console.error("Error fetching product:", err);
     }
   };
 
   useEffect(() => {
-    handleProductsfetch();
+    handleProductDetailfetch();
   }, [id]);
 
-  return { product };
+  return { product: productDetail?.product, reviews: productDetail?.reviews };
 }
 
 export default useProduct;

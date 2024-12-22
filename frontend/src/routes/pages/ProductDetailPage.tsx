@@ -1,19 +1,25 @@
-import DetailsSection from "@/components/product/Details";
+import Details from "@/components/product/Details";
 import DetailsTab from "@/components/product/DetailsTab";
-import ExchangeTab from "@/components/product/ExchangeTab";
+import ExchangeTab from "@/components/product/exchangeTab";
 import Photos from "@/components/product/Photos";
 import QnasTab from "@/components/product/QnasTab";
-import ReviewsTab from "@/components/product/ReviewsTab";
+import ReviewsTab from "@/components/product/reviewsTab";
 import useCart from "@/hooks/useCart";
-import useProduct from "@/hooks/useproduct";
+
+import useProduct from "@/hooks/useProduct";
 
 function ProductDetailPage() {
-  const { product } = useProduct();
+  const { product, reviews } = useProduct();
   const { handleCartUpdate } = useCart();
 
   const detailsSectionProps = {
     product,
     handleCartUpdate,
+  };
+
+  const reviewsTabProps = {
+    product,
+    reviews,
   };
 
   if (!product) {
@@ -24,10 +30,10 @@ function ProductDetailPage() {
     <div className="flex flex-col justify-center px-4">
       <div className="mx-auto flex w-full max-w-[1064px] flex-wrap items-start justify-center gap-5">
         <Photos />
-        <DetailsSection {...detailsSectionProps} />
+        <Details {...detailsSectionProps} />
       </div>
       <DetailsTab />
-      <ReviewsTab />
+      <ReviewsTab {...reviewsTabProps} />
       <QnasTab />
       <ExchangeTab />
     </div>

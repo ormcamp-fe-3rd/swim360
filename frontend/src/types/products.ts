@@ -1,4 +1,7 @@
+
+import { Reviews } from "./reviews";
 import { Discount } from "./discounts";
+
 
 export interface Product {
   id: number;
@@ -14,6 +17,11 @@ export interface Product {
   category_id: number;
   discount_id: number;
   createdAt: string;
+}
+
+export interface ProductDetail {
+  product: Product | undefined;
+  reviews: Reviews[] | undefined;
 }
 
 export interface SelectedItem {
