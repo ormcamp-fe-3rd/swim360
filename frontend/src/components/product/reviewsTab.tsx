@@ -1,13 +1,13 @@
 import ReviewStar from "./ReviewStar";
 import ReviewWriteModal from "./ReviewWriteModal";
 import ReviewDetailModal from "./ReviewDetailModal";
-import { PaginationDemo } from "../common/Paginaion";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import ProductTab from "./Tap";
 import Review from "./Review";
+import { ProductDetail } from "@/types/products";
 
-function ReviewsTab() {
+function ReviewsTab({ reviews, product }: ProductDetail) {
   const [isOpenModal, setOpenModal] = useState(false);
   const [isOpenModal2, setOpenModal2] = useState(false);
 
@@ -48,20 +48,8 @@ function ReviewsTab() {
           </div>
         </Link>
 
-        <Review
-          name={"dsdf"}
-          emailId={"62"}
-          phoneNumber={"85"}
-          password={"252"}
-          adress={"asdad"}
-          content={"adad"}
-          imageUrl={"adasd"}
-          rating={0}
-          product_id={0}
-          user_id={0}
-          updatedAt={"3"}
-          createdAt={"5"}
-        />
+        {reviews?.map((review) => <Review key={review.id} review={review} />)}
+
         {/* 모달이 열리면 ReviewWriteModal 컴포넌트를 렌더링 */}
         {isOpenModal && (
           <ReviewWriteModal onClickToggleModal={onClickToggleModal} />
@@ -81,10 +69,6 @@ function ReviewsTab() {
             onClick={onClickToggleDetailModal}
             className="hover:bg-slate-100"
           ></div>
-        </div>
-
-        <div className="mt-9">
-          <PaginationDemo />
         </div>
       </div>
     </>

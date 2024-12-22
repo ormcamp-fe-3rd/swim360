@@ -34,7 +34,7 @@ function useProduct() {
     handleProductDetailfetch();
   }, [id]);
 
-  return { product: productDetail?.product, review: productDetail?.review };
+  return { product: productDetail?.product, reviews: productDetail?.reviews };
 }
 
 export default useProduct;

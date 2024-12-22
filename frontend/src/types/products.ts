@@ -17,9 +17,10 @@ export interface Product {
 }
 
 export interface ProductDetail {
-  product: Product;
-  review: Reviews;
+  product: Product | undefined;
+  reviews: Reviews[] | undefined;
 }
+
 export interface SelectedItem {
   selectedSize: number;
   selectedtotal: number;

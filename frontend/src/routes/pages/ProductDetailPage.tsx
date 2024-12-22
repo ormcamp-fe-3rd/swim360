@@ -5,15 +5,20 @@ import Photos from "@/components/product/Photos";
 import QnasTab from "@/components/product/QnasTab";
 import ReviewsTab from "@/components/product/reviewsTab";
 import useCart from "@/hooks/useCart";
-import useProduct from "@/hooks/useproduct";
+import useProduct from "@/hooks/useProduct";
 
 function ProductDetailPage() {
-  const { product, review } = useProduct();
+  const { product, reviews } = useProduct();
   const { handleCartUpdate } = useCart();
 
   const detailsSectionProps = {
     product,
     handleCartUpdate,
+  };
+
+  const reviewsTabProps = {
+    product,
+    reviews,
   };
 
   if (!product) {
@@ -27,7 +32,7 @@ function ProductDetailPage() {
         <Details {...detailsSectionProps} />
       </div>
       <DetailsTab />
-      <ReviewsTab />
+      <ReviewsTab {...reviewsTabProps} />
       <QnasTab />
       <ExchangeTab />
     </div>

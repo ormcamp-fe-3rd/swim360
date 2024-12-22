@@ -1,4 +1,3 @@
-import { User } from "./users";
 export interface Reviews {
   id?: number;
   content: string;
@@ -9,5 +8,3 @@ export interface Reviews {
   updatedAt: string;
   createdAt: string;
 }
-
-export type CombinedReviewType = User & Reviews;
