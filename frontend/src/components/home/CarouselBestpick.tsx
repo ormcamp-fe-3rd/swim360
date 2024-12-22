@@ -1,5 +1,6 @@
 import Autoplay from "embla-carousel-autoplay";
 import * as React from "react";
+import { Link } from "react-router-dom";
 
 import {
   Carousel,
@@ -32,9 +33,11 @@ export function CarouselBestPick({products}: Props) {
             key={product.id}
             className="flex items-center justify-center"
           >
-            <div className="rounded-none border-none shadow-none">
-              <img src={product.imageUrl} alt={product.name} />
-            </div>
+            <Link to={`/product/${product.id}`}>
+              <div className="rounded-none border-none shadow-none">
+                <img src={product.imageUrl} alt={product.name} />
+              </div>
+            </Link>
           </CarouselItem>
         ))}
       </CarouselContent>
