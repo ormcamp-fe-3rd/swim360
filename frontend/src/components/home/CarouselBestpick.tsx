@@ -8,47 +8,13 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel-origin";
+import { BestProduct } from "@/types/products";
 
-const bestpicks = [
-  {
-    id: 0,
-    brandName: "barrel",
-    name: "여성 수영복 1",
-    imageUrl: "/public/images/productlist/sample-1.png",
-    price: 10000,
-    discountedPrice: 5000,
-    salesVolume: 50,
-  },
-  {
-    id: 1,
-    brandName: "barrel",
-    name: "여성 수영복 1",
-    imageUrl: "/public/images/productlist/sample-1.png",
-    price: 10000,
-    discountedPrice: 5000,
-    salesVolume: 50,
-  },
-  {
-    id: 2,
-    brandName: "barrel",
-    name: "여성 수영복 1",
-    imageUrl: "/public/images/productlist/sample-1.png",
-    price: 10000,
-    discountedPrice: 5000,
-    salesVolume: 50,
-  },
-  {
-    id: 3,
-    brandName: "barrel",
-    name: "여성 수영복 1",
-    imageUrl: "/public/images/productlist/sample-1.png",
-    price: 10000,
-    discountedPrice: 5000,
-    salesVolume: 50,
-  },
-];
+interface Props{
+  products: BestProduct[]
+}
 
-export function CarouselBestPick() {
+export function CarouselBestPick({products}: Props) {
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: true }),
   );
@@ -61,8 +27,11 @@ export function CarouselBestPick() {
       onClick={plugin.current.stop}
     >
       <CarouselContent>
-        {bestpicks.map((product) => (
-          <CarouselItem key={product.id} className="flex justify-center items-center">
+        {products.map((product) => (
+          <CarouselItem
+            key={product.id}
+            className="flex items-center justify-center"
+          >
             <div className="rounded-none border-none shadow-none">
               <img src={product.imageUrl} alt={product.name} />
             </div>
