@@ -8,19 +8,17 @@ interface HamburgerMenuProps {
     parentCategoryId: Category["parent_id"],
     categoryId: Category["id"],
   ) => void;
-  getParentCategories: () => Category[];
+  parentCategories: Category[];
   getFirstChildCategory: (parentCategoryId: Category["parent_id"]) => Category;
 }
 
 export default function HamburgerMenu({
   isOpen,
   handleUIToggle,
-  getParentCategories,
+  parentCategories,
   getFirstChildCategory,
   handleCurrentCategoryChange,
 }: HamburgerMenuProps) {
-  const parentCategories = getParentCategories();
-
   return (
     <div className="relative tablet:hidden">
       <button onClick={handleUIToggle}>
@@ -32,7 +30,6 @@ export default function HamburgerMenu({
       </button>
       <div
         className={`${isOpen ? "block" : "hidden"} fixed inset-0 top-[190px] z-10 backdrop-brightness-50`}
-        onClick={handleUIToggle}
       >
         <div className="h-full w-full">
           <ul className="flex h-[420px] flex-col items-center bg-white">
@@ -41,12 +38,13 @@ export default function HamburgerMenu({
               return (
                 <li
                   key={category.name}
-                  onClick={() =>
+                  onClick={() => {
+                    handleUIToggle();
                     handleCurrentCategoryChange(
                       category.id,
                       firstChildCategory.id,
-                    )
-                  }
+                    );
+                  }}
                   className="flex h-1/4 w-full shadow-sm"
                 >
                   <Link

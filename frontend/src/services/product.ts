@@ -9,9 +9,9 @@ export async function getProduct(productId: number) {
   }
 }
 
-export async function getProducts(categoryId: number) {
+export async function getProductListData(categoryId: number) {
   try {
-    const response = await axios.get(`/products/${categoryId}`);
+    const response = await axios.get(`/products/category/${categoryId}`);
     return response.data;
   } catch (error) {
     console.log(error);

@@ -1,7 +1,8 @@
 import { CategoryContext } from "@/contexts/CategoryContext";
 import { getCategories } from "@/services/category";
 import { Category } from "@/types/categories";
-import { useContext, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { useContext, useEffect, useMemo } from "react";
 
 function useCategory() {
   const categoryContext = useContext(CategoryContext);
@@ -18,6 +19,8 @@ function useCategory() {
     currentCategoryId,
     setCurrentCategoryId,
   } = categoryContext;
+
+  const location = useLocation();
 
   const handleCategoryFetch = async () => {
     try {
@@ -36,12 +39,9 @@ function useCategory() {
     setCurrentCategoryId(categoryId);
   };
 
-  const getParentCategories = () => {
-    const parentCategories = categories.filter(
-      (category) => category.parent_id === null,
-    );
-    return parentCategories;
-  };
+  const parentCategories = useMemo(() => {
+    return categories.filter((category) => category.parent_id === null);
+  }, [categories]);
 
   const getFirstChildCategory = (parentCategoryId: Category["parent_id"]) => {
     return categories.find(
@@ -59,14 +59,21 @@ function useCategory() {
     handleCategoryFetch();
   }, []);
 
+  useEffect(() => {
+    if (!location.pathname.includes("product_list")) {
+      setCurrentParentCategoryId(null);
+    }
+  }, [location]);
+
   return {
     currentCategoryId,
     currentParentCategoryId,
     setCurrentParentCategoryId,
     handleCurrentCategoryChange,
-    getParentCategories,
+    parentCategories,
     getFirstChildCategory,
     getChildCategories,
+    childCategories: getChildCategories(currentParentCategoryId),
   };
 }
 

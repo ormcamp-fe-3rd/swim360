@@ -5,7 +5,7 @@ import { Product } from "@/types/products";
 
 interface DetailsProps {
   product: Product;
-  handleCartUpdate: () => void;
+  handleCartUpdate: () => Promise<void>;
 }
 function Details({ product, handleCartUpdate }: DetailsProps) {
   return (
