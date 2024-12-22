@@ -22,7 +22,7 @@ export default function RecentOrderItems({ orderId }: Props) {
       }
     };
     fetchOrderItems();
-  }, []);
+  }, [orderId]);
 
   return (
     <div>

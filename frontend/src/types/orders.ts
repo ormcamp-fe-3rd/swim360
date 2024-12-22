@@ -8,7 +8,16 @@ export interface Order {
   createdAt: string;
   updatedAt: string;
 }
-
+export interface MyOrder {
+  id?: number;
+  adress: string;
+  price: number;
+  orderStatus: string;
+  user_id: number;
+  createdAt: string;
+  updatedAt: string;
+  totalQuantity: number;
+}
 export interface MyOrderItem {
   id: number;
   quantity: number;

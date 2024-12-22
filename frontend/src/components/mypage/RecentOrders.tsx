@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { useUserId } from "@/hooks/useUserId";
 import { getMyOrders } from "@/services/order";
-import { Order } from "@/types/orders";
+import { MyOrder } from "@/types/orders";
 import { formatPrice } from "@/utils/formatPrice";
 import getLocalDate from "@/utils/getLocalDate";
 
@@ -10,24 +10,15 @@ import RecentOrderItems from "./RecentOrderItems";
 
 function RecentOrders() {
   const { userId } = useUserId();
-  const [orders, setOrders] = useState<Order[]>([]);
+  const [orders, setOrders] = useState<MyOrder[]>([]);
 
   useEffect(() => {
     if (!userId) return;
 
     const fetchOrders = async () => {
       try {
-        // const myOrders = await getMyOrders(userId);
-        // const formatted = await myOrders.map((order: Order) => {
-        //   return {
-        //     id: order.id,
-        //     price: order.price,
-        //     createdAt: order.createdAt,
-        //     orderItems: [],
-        //   };
-        // });
-        // setOrders(formatted);
         const myOrders = await getMyOrders(userId);
+        console.log(myOrders)
         setOrders(myOrders);
       } catch (error) {
         console.log("fetch Order error: ", error);
@@ -59,7 +50,7 @@ function RecentOrders() {
           </div>
 
           <div>
-          {/* tablet 이하 */}
+            {/* tablet 이하 */}
             <div className="flex w-full items-center justify-between border-b border-[#E5E7EB] bg-[#F9FAFB] p-4 tablet:hidden">
               <div>{getLocalDate(order.createdAt)}주문</div>
               <div className="flex items-center"></div>
@@ -73,18 +64,16 @@ function RecentOrders() {
             </div>
           </div>
 
-          {/* tablet 이상 */}
+          {/* tablet 이상, 총 수량 표시*/}
           <div className="tablet:flex tablet:flex-col">
-            {/* FIXME: 에러(안보임) */}
-            {/* {order.orderItems.map((orderItem) => (
-              <div
-                key={orderItem.id}
-                className="flex grow items-center justify-center"
-              >
-                {orderItem.quantity}
-              </div>
-            ))} */}
+            <div
+              key={order.id}
+              className="flex grow items-center justify-center"
+            >
+              {order.totalQuantity}
+            </div>
           </div>
+
           <div className="hidden flex-col items-center justify-center tablet:flex">
             <div className="text-lg font-semibold">
               {" "}
@@ -94,7 +83,7 @@ function RecentOrders() {
         </div>
       ))}
     </div>
-  )
+  );
 }
 
 export default RecentOrders;
