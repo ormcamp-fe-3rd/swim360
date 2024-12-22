@@ -435,10 +435,10 @@ const seedData = async () => {
     // 주문 항목 데이터 생성
     const orderItems = await OrderItem.bulkCreate([
       { price: 10000, quantity: 1, size: 'S', order_id: 1, product_id: 1 },
-      { price: 20000, quantity: 1, size: 'M', order_id: 1, product_id: 2 },
-      { price: 15000, quantity: 1, size: 'L', order_id: 2, product_id: 3 },
-      { price: 30000, quantity: 1, size: 'XL', order_id: 2, product_id: 4 },
-      { price: 20000, quantity: 1, size: 'M', order_id: 3, product_id: 5 },
+      { price: 20000, quantity: 2, size: 'M', order_id: 1, product_id: 2 },
+      { price: 15000, quantity: 2, size: 'L', order_id: 2, product_id: 3 },
+      { price: 30000, quantity: 3, size: 'XL', order_id: 2, product_id: 4 },
+      { price: 20000, quantity: 4, size: 'M', order_id: 3, product_id: 5 },
       { price: 55000, quantity: 1, size: 'S', order_id: 4, product_id: 6 },
     ])
 
