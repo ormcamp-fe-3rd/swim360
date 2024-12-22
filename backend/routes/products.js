@@ -98,22 +98,32 @@ router.get("/category/:categoryId", async (req, res) => {
   }
 });
 
-//findById
-router.get("/:id", async (req, res) => {
-  try {
-    const paramId = req.params.id;
-    const products = await Product.findOne({
-      where: { id: paramId },
+//메인 베스트상품 불러오기
+router.get("/bestProducts", async(req, res) => {
+  try{
+    const bestProducts = await Product.findAll({
+      order: [["salesVolume", "DESC"]],
+      limit: 4,
+      attributes: ["id", "name", "imageUrl", "brandName", "discountedPrice", "price"]
     });
-    if (!products) {
-      return res.status(200).json({ message: "해당하는 상품이 없습니다." });
+
+    if (!bestProducts || bestProducts.length === 0) {
+      res.status(404).json({ message: 'OrderItems not found' })
     }
-    res.json(products);
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: error.message });
+
+    const formattedItems = bestProducts.map((product) => {
+      if (product && Array.isArray(product.imageUrl)) {
+        product.imageUrl = product.imageUrl.length > 0 ? product.imageUrl[0] : null
+      }
+      return product
+    })
+
+    res.json(formattedItems)
+  }catch(error){
+    console.error("Error:", error);
+    return res.status(500).json({ error: "서버 에러: " + error.message})
   }
-});
+})
 
 router.get("/:id", (req, res) => {});
 

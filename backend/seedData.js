@@ -43,7 +43,7 @@ const seedData = async () => {
         discountedPrice: 135000,
         size: ['S', 'M', 'L', 'XL'],
         imageUrl: ['https://example.com/one-piece-a1-1.jpg', 'https://example.com/one-piece-a1-2.jpg'],
-        salesVolume: 0,
+        salesVolume: 100,
         category_id: 4,
         discount_id: 2,
       },
@@ -56,7 +56,7 @@ const seedData = async () => {
         discountedPrice: 126000,
         size: ['S', 'M', 'L', 'XL'],
         imageUrl: ['https://example.com/one-piece-s1-1.jpg', 'https://example.com/one-piece-s1-2.jpg'],
-        salesVolume: 0,
+        salesVolume: 200,
         category_id: 4,
         discount_id: 2,
       },
@@ -68,7 +68,7 @@ const seedData = async () => {
         discountedPrice: 130500,
         size: ['S', 'M', 'L', 'XL'],
         imageUrl: ['https://example.com/one-piece-m1-1.jpg', 'https://example.com/one-piece-m1-2.jpg'],
-        salesVolume: 0,
+        salesVolume: 300,
         category_id: 4,
         discount_id: 2,
       },
@@ -80,7 +80,7 @@ const seedData = async () => {
         discountedPrice: 104000,
         size: ['S', 'M', 'L', 'XL'],
         imageUrl: ['https://example.com/one-piece-a2-1.jpg', 'https://example.com/one-piece-a2-2.jpg'],
-        salesVolume: 0,
+        salesVolume: 400,
         category_id: 4,
         discount_id: 3,
       },
@@ -434,12 +434,12 @@ const seedData = async () => {
 
     // 주문 항목 데이터 생성
     const orderItems = await OrderItem.bulkCreate([
-      { price: 10000, quantity: 1, order_id: 1, product_id: 1 },
-      { price: 20000, quantity: 1, order_id: 1, product_id: 2 },
-      { price: 15000, quantity: 1, order_id: 2, product_id: 3 },
-      { price: 30000, quantity: 1, order_id: 2, product_id: 4 },
-      { price: 20000, quantity: 1, order_id: 3, product_id: 5 },
-      { price: 55000, quantity: 1, order_id: 4, product_id: 6 },
+      { price: 10000, quantity: 1, size: 'S', order_id: 1, product_id: 1 },
+      { price: 20000, quantity: 1, size: 'M', order_id: 1, product_id: 2 },
+      { price: 15000, quantity: 1, size: 'L', order_id: 2, product_id: 3 },
+      { price: 30000, quantity: 1, size: 'XL', order_id: 2, product_id: 4 },
+      { price: 20000, quantity: 1, size: 'M', order_id: 3, product_id: 5 },
+      { price: 55000, quantity: 1, size: 'S', order_id: 4, product_id: 6 },
     ])
 
     // 리뷰 데이터 생성

@@ -20,11 +20,20 @@ export async function getProductDetail(productId: number) {
 
 
 export async function getProductListData(categoryId: number) {
-
   try {
     const response = await axios.get(`/products/category/${categoryId}`);
     return response.data;
   } catch (error) {
+    console.log(error);
+  }
+}
+
+
+export async function getBestProducts(){
+  try{
+    const response = await axios.get('/products/bestProducts');
+    return response.data;
+  }catch(error){
     console.log(error);
   }
 }
