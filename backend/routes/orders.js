@@ -1,5 +1,5 @@
 const express = require("express");
-const { Order, OrderItem } = require("../models");
+const { Order } = require("../models");
 const router = express.Router();
 
 //유저 id로 조회
@@ -10,7 +10,6 @@ router.get("/users/:id", async (req, res) => {
     const orders = await Order.findAll({
       where: {user_id: userId},
     });
-
     if (!orders) {
       res.status(404).json({ message: 'Orders not found' })
     }

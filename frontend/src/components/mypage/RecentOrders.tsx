@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
 import { useUserId } from "@/hooks/useUserId";
-import { getMyOrders } from "@/services/user";
-import { Order, OrderData } from "@/types/orders";
+import { getMyOrders } from "@/services/order";
+import { Order } from "@/types/orders";
 import { formatPrice } from "@/utils/formatPrice";
 import getLocalDate from "@/utils/getLocalDate";
 
@@ -10,23 +10,25 @@ import RecentOrderItems from "./RecentOrderItems";
 
 function RecentOrders() {
   const { userId } = useUserId();
-  const [orders, setOrders] = useState<OrderData[]>([]);
+  const [orders, setOrders] = useState<Order[]>([]);
 
   useEffect(() => {
     if (!userId) return;
 
     const fetchOrders = async () => {
       try {
+        // const myOrders = await getMyOrders(userId);
+        // const formatted = await myOrders.map((order: Order) => {
+        //   return {
+        //     id: order.id,
+        //     price: order.price,
+        //     createdAt: order.createdAt,
+        //     orderItems: [],
+        //   };
+        // });
+        // setOrders(formatted);
         const myOrders = await getMyOrders(userId);
-        const formatted = await myOrders.map((order: Order) => {
-          return {
-            id: order.id,
-            price: order.price,
-            createdAt: order.createdAt,
-            orderItems: [],
-          };
-        });
-        setOrders(formatted);
+        setOrders(myOrders);
       } catch (error) {
         console.log("fetch Order error: ", error);
       }
@@ -45,6 +47,7 @@ function RecentOrders() {
           key={order.id}
           className="grid w-full grid-flow-col grid-cols-1 border-b border-[#E5E7EB] last:border-none tablet:grid-cols-[0.3fr_1fr_0.3fr_0.3fr]"
         >
+          {/* tablet 이상 */}
           <div className="hidden min-w-[150px] flex-col items-center justify-center text-lg tablet:flex">
             <div className="text-center">
               <div className="">주문 번호</div>
@@ -54,29 +57,33 @@ function RecentOrders() {
               </div>
             </div>
           </div>
+
           <div>
+          {/* tablet 이하 */}
             <div className="flex w-full items-center justify-between border-b border-[#E5E7EB] bg-[#F9FAFB] p-4 tablet:hidden">
               <div>{getLocalDate(order.createdAt)}주문</div>
               <div className="flex items-center"></div>
             </div>
 
             <div className="flex flex-col pb-3">
-              <RecentOrderItems orderData={order} />
+              <RecentOrderItems orderId={order.id} />
               <div className="flex justify-end p-2 text-lg font-semibold tablet:hidden">
                 결제 금액: 총 {formatPrice(order.price)}원
               </div>
             </div>
           </div>
 
+          {/* tablet 이상 */}
           <div className="tablet:flex tablet:flex-col">
-            {order.orderItems.map((orderItem) => (
+            {/* FIXME: 에러(안보임) */}
+            {/* {order.orderItems.map((orderItem) => (
               <div
                 key={orderItem.id}
                 className="flex grow items-center justify-center"
               >
                 {orderItem.quantity}
               </div>
-            ))}
+            ))} */}
           </div>
           <div className="hidden flex-col items-center justify-center tablet:flex">
             <div className="text-lg font-semibold">
@@ -87,7 +94,7 @@ function RecentOrders() {
         </div>
       ))}
     </div>
-  );
+  )
 }
 
 export default RecentOrders;
