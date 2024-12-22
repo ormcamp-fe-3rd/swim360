@@ -2,20 +2,16 @@ import ProductItemList from "@/components/product-list/ProductItemList";
 import SideBar from "@/components/product-list/Sidebar";
 import SortSelect from "@/components/product-list/SortSelect";
 import useCategory from "@/hooks/useCategory";
-import useProducts from "@/hooks/useProducts";
+import useProductList from "@/hooks/useProductList";
 
 function ProductListPage() {
-  const {
-    getChildCategories,
-    currentCategoryId,
-    currentParentCategoryId,
-    handleCurrentCategoryChange,
-  } = useCategory();
+  const { childCategories, currentCategoryId, handleCurrentCategoryChange } =
+    useCategory();
 
-  const { handleSortOptionChange, sortOption, sortedProducts } = useProducts();
+  const { handleSortOptionChange, sortedProducts } = useProductList();
 
   const sideBarProps = {
-    childCategories: getChildCategories(currentParentCategoryId),
+    childCategories,
     handleCurrentCategoryChange,
     currentCategoryId,
   };
@@ -24,9 +20,9 @@ function ProductListPage() {
     handleSortOptionChange,
   };
 
-  // const productItemListProps = {
-  //   sortedProducts: sortedProducts(sortOption),
-  // };
+  const productItemListProps = {
+    sortedProducts,
+  };
 
   return (
     <div className="p-4">
@@ -34,7 +30,7 @@ function ProductListPage() {
         <SideBar {...sideBarProps} />
         <div>
           <SortSelect {...sortSelectProps} />
-          {/* <ProductItemList {...productItemListProps} /> */}
+          <ProductItemList {...productItemListProps} />
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useProduct from "@/hooks/useproduct";
+import useProduct from "@/hooks/useProduct";
 
 export interface SelectedProps {
   selectedSize: string; // 사이즈는 문자열로 받기 (예: "S", "M", "L")

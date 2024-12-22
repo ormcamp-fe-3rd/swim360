@@ -28,9 +28,11 @@ export interface MyOrderItemProduct{
   name: string;
   imageUrl: string;
 }
+
 export interface OrderItem {
   id?: number;
   price: number;
+  size: string;
   quantity: number;
   order_id: number;
   product_id: number;

@@ -7,7 +7,7 @@ router.get("/", async (req, res) => {
     const categories = await Category.findAll({});
 
     if (!categories) {
-      return res.json({ isCategoryExist: false });
+      return res.status(404).json({ message: "저장된 카테고리가 없습니다." });
     }
 
     return res.json(categories);

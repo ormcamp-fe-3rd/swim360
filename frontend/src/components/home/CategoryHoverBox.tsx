@@ -10,7 +10,7 @@ interface CategoryHoberBoxProps {
   childCategories: Category[];
 }
 
-export default function CategoryHoberBox({
+export default function CategoryHoverBox({
   handleCurrentCategoryChange,
   childCategories,
 }: CategoryHoberBoxProps) {

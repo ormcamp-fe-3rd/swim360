@@ -23,7 +23,7 @@ export const CategoryContext = createContext<CategoryContextValue | undefined>(
 function CategoryContextProvider({ children }: CategoryProviderProps) {
   const [categories, setCategories] = useState<Category[]>([]);
   const [currentParentCategoryId, setCurrentParentCategoryId] =
-    useState<Category["parent_id"]>(1);
+    useState<Category["parent_id"]>(null);
   const [currentCategoryId, setCurrentCategoryId] = useState<Category["id"]>(4);
 
   const CategoryContextValue = {
