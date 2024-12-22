@@ -31,8 +31,11 @@ function OrderProductList({
         <span className="inline-block w-1/3 text-right">수량</span>
         <span className="inline-block w-1/3 text-right">가격</span>
       </div>
-      {selectedItems.map((selectedItem) => (
-        <div key={product_id} className="flex justify-between border-b p-2.5">
+      {selectedItems.map((selectedItem, index) => (
+        <div
+          key={`${product_id}-${index}`}
+          className="flex justify-between border-b p-2.5"
+        >
           {/* 상품 이미지 */}
           <img src={imageUrl} alt={name} className="w-1/6" />
           {/* 상품 정보 */}
