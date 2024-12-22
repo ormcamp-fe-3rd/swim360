@@ -1,7 +1,8 @@
 import axios from "@/services/index.ts";
-import { UpdateCart } from "@/types/cart";
+import { Cart } from "@/types/cart";
+import { User } from "@/types/users";
 
-export async function getCartList(userId: number) {
+export async function getCartListData(userId: User["id"]) {
   try {
     const response = await axios.get(`/carts/${userId}`);
     return response.data;
@@ -10,7 +11,7 @@ export async function getCartList(userId: number) {
   }
 }
 
-export async function getCartCount(userId: number) {
+export async function getCartCount(userId: User["id"]) {
   try {
     const response = await axios.get(`/carts/${userId}/count`);
     return response.data;
@@ -19,7 +20,7 @@ export async function getCartCount(userId: number) {
   }
 }
 
-export async function updateCartData(cartItem: UpdateCart) {
+export async function updateCartData(cartItem: Cart) {
   try {
     const response = await axios.post(`/carts`, cartItem);
 

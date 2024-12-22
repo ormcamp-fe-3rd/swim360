@@ -4,12 +4,16 @@ import { Product } from "@/types/products";
 
 import { Selected } from "./SelectedItem";
 import { SizeButton } from "./SizeBtn";
+import { Cart } from "@/types/cart";
 
 interface DetailsProps {
-  product: Product;
-  handleCartUpdate: () => void;
+  product: Product | undefined;
+  handleCartUpdate: (cartItem: Cart) => Promise<void>;
 }
 function Details({ product, handleCartUpdate }: DetailsProps) {
+  if (!product) {
+    return;
+  }
   return (
     <div className="h-auto w-full max-w-[522px] flex-col">
       <p className="w-[522px] text-[18px] font-semibold">{product.name}</p>
@@ -54,7 +58,15 @@ function Details({ product, handleCartUpdate }: DetailsProps) {
         <div className="h-auto w-[522px]">
           <div className="w-full max-w-[522px]">
             <button
-              onClick={handleCartUpdate}
+              onClick={() => {
+                handleCartUpdate({
+                  price: 2 * product.discountedPrice,
+                  size: "M",
+                  quantity: 2,
+                  user_id: Number(sessionStorage.getItem("id")),
+                  product_id: product.id,
+                });
+              }}
               className="mr-3 mt-4 h-[70px] w-full max-w-[522px] rounded-2xl border-[1px] text-black"
             >
               장바구니 담기

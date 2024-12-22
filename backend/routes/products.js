@@ -1,5 +1,6 @@
 const express = require("express");
-const { Product } = require("../models");
+const { Product, Review, Discount } = require("../models");
+const { sequelize } = require("../db");
 const router = express.Router();
 
 router.get("/:productId", async (req, res) => {
@@ -11,7 +12,7 @@ router.get("/:productId", async (req, res) => {
     });
 
     if (!product) {
-      return res.json({ isProductExist: false });
+      return res.status(404).json({ message: "해당하는 상품이 없습니다." });
     }
     return res.json(product);
   } catch (error) {
@@ -19,21 +20,49 @@ router.get("/:productId", async (req, res) => {
   }
 });
 
-router.get("/:categoryId", async (req, res) => {
+router.get("/category/:categoryId", async (req, res) => {
   const { categoryId } = req.params;
 
+  // TODO: Discount(Discount Percentage), Review(rev) 테이블과 조인
   try {
-    const products = await Product.findAll({
+    const productList = await Product.findAll({
       where: { category_id: categoryId },
+      attributes: [
+        "id",
+        "brandName",
+        "name",
+        "description",
+        "price",
+        "discountedPrice",
+        "size",
+        "imageUrl",
+        "salesVolume",
+        "createdAt",
+        [sequelize.fn("COUNT", sequelize.col("Reviews.id")), "reviewCount"], // 리뷰 수 계산
+      ],
+      include: [
+        {
+          model: Review,
+          attributes: [],
+          required: false,
+        },
+        {
+          model: Discount,
+          attributes: ["discountPercentage"],
+          required: false,
+        },
+      ],
+      group: ["Product.id", "Discount.id"],
     });
 
-    if (!products) {
-      return res.json({ isProductsExist: false });
+    if (!productList || productList.length === 0) {
+      return res.status(404).json({ message: "해당하는 상품이 없습니다." });
     }
 
-    return res.json(products);
+    return res.json(productList);
   } catch (error) {
-    return res.status(500).json({ error: " 서버 에러 " + error });
+    console.error("Error:", error);
+    return res.status(500).json({ error: "서버 에러: " + error.message });
   }
 });
 
