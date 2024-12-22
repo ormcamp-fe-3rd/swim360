@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import MeansPayment from "@/components/paymentorder/MeansPayment";
@@ -14,29 +15,50 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 
-const points = { amount: 1500 };
-
-const totalProductPrice = 120000;
-const point = 5000;
-const shippingFee = 3000;
-const totalPayment = totalProductPrice - point + shippingFee;
+// const totalProductPrice = 120000;
+// const point = 5000;
+// const shippingFee = 3000;
+// const totalPayment = totalProductPrice - point + shippingFee;
 
 function PayMentOrderPage() {
+  const [formData, setFormData] = useState({
+    ordererName: "",
+    recipientName: "",
+    phoneNumber: "",
+    address: "",
+    detailAddress: "",
+  });
+
   const location = useLocation();
   const state = location.state;
 
-  const products = [
-    {
-      id: 1,
-      imageUrl: "https://via.placeholder.com/150",
-      name: state.productName,
-      description: state.description,
-      option: state.size,
-      quantity: state.quantity,
-      price: state.discountedPrice,
-      totalPrice: state.totalPrice,
-    },
-  ];
+  const selectedProductInfo = {
+    product_id: state.product_id,
+    name: state.name,
+    imageUrl: "https://via.placeholder.com/150",
+    description: state.description,
+    price: state.discountedPrice,
+    selectedItems: [
+      {
+        size: "M",
+        quantity: 2,
+        totalPrice: 2 * state.discountedPrice, //TODO:Details에서 selectedItmes 데이터 받아오도록 (totalPrice도도)
+      },
+      {
+        size: "L",
+        quantity: 3,
+        totalPrice: 3 * state.discountedPrice,
+      },
+    ],
+    totalQuantity: state.totalQuantity,
+    totalPrice: state.totalPrice,
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, ...{ [name]: value } }));
+    console.log(formData);
+  };
 
   return (
     <div className="mx-auto w-[90%] max-w-[1440px]">
@@ -61,23 +83,15 @@ function PayMentOrderPage() {
       </Breadcrumb>
       <div className="grid min-w-[475px] flex-wrap gap-0 middle:flex">
         <form action="#" className="mb-10 middle:w-2/3">
-          <ShippingInformation />
-          <OrderProductList
-            productName={state.productName}
-            size={state.size}
-            quantity={state.quantity}
-            description={state.description}
-            totalPrice={state.totalPrice}
-            products={products}
-          />
-          <PossessionPoint points={points} />
+          <ShippingInformation handleInputChange={handleInputChange} />
+          <OrderProductList {...selectedProductInfo} />
+          <PossessionPoint />
           <MeansPayment />
         </form>
         <TotalPrice
-          totalProductPrice={totalProductPrice}
-          point={point}
-          shippingFee={shippingFee}
-          totalPayment={totalPayment}
+          totalPrice={selectedProductInfo.totalPrice}
+          point={0}
+          formData={{ ...formData }}
         />
       </div>
     </div>
