@@ -3,33 +3,43 @@ import { useNavigate } from "react-router-dom";
 
 import PrimaryButton from "@/components/common/PrimaryButton";
 import { useUserId } from "@/hooks/useUserId";
+import { getUserByEmail } from "@/services/user";
 
 function LoginPage() {
   const navigate = useNavigate();
-  // const setUserId = useContext(UserIdContext);
   const { setUserId } = useUserId();
 
   async function handleLogin() {
-    //TODO: 아이디, 비밀번호 검증
-    const idInput = document.getElementById("id") as HTMLInputElement;
+    const emailInput = document.getElementById("id") as HTMLInputElement;
     const passwordInput = document.getElementById(
       "password",
     ) as HTMLInputElement;
 
-    if (!idInput.value || !passwordInput.value) {
+    if (!emailInput.value || !passwordInput.value) {
       alert("아이디와 비밀번호를 입력해주세요.");
       return;
     }
 
     try {
-      sessionStorage.setItem("id", idInput.value);
-      if (idInput.value) {
-        setUserId(idInput.value);
-        navigate(`/mypage/${idInput.value}`);
+      //TODO: 에러핸들링 필요
+      const user = await getUserByEmail(emailInput.value);
+
+      if(!user){ 
+        alert('사용자가 없습니다.');
+        return
       }
+      
+      if(user.password != passwordInput.value){
+        alert('비밀번호가 틀립니다.');
+        return
+      }
+      
+      setUserId(user.id.toString());
+      sessionStorage.setItem("id", user.id.toString());
+      navigate(`/mypage/${user.id}`);
+      
     } catch (error) {
       console.log(error);
-      alert("로그인 오류");
     }
   }
 
