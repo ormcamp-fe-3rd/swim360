@@ -20,7 +20,11 @@ function useCart() {
     try {
       const fetchedCartListData = await getCartListData(userId);
 
-      setCartListData(fetchedCartListData);
+      if (!fetchedCartListData) {
+        setCartListData([]);
+      } else {
+        setCartListData(fetchedCartListData);
+      }
     } catch (error) {
       console.log(error);
     }
