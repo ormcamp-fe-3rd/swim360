@@ -8,14 +8,32 @@ const Category = require("./Category");
 const Discount = require("./Discount");
 
 const syncAll = async () => {
-  await User.sync();
-  await Discount.sync();
-  await Category.sync();
-  await Product.sync();
-  await Order.sync();
-  await Cart.sync();
-  await OrderItem.sync();
-  await Review.sync();
+try {
+  // Drop tables in reverse order of dependencies
+  await Review.drop({ force: true })
+  await OrderItem.drop({ force: true })
+  await Cart.drop({ force: true })
+  await Order.drop({ force: true })
+  await Product.drop({ force: true })
+  await Category.drop({ force: true })
+  await Discount.drop({ force: true })
+  await User.drop({ force: true })
+
+  // Recreate tables in order of dependencies
+  await User.sync({ force: true })
+  await Category.sync({ force: true })
+  await Discount.sync({ force: true })
+  await Product.sync({ force: true })
+  await Order.sync({ force: true })
+  await Cart.sync({ force: true })
+  await OrderItem.sync({ force: true })
+  await Review.sync({ force: true })
+
+  console.log('All tables synchronized successfully')
+} catch (error) {
+  console.error('Error synchronizing tables:', error)
+  throw error
+}
 };
 
 User.hasMany(Review, { foreignKey: "user_id" });
