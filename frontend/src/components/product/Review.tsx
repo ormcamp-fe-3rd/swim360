@@ -20,13 +20,9 @@ function Review({ size = "large", review }: ReviewsType) {
         <ReviewStar size="small" rating={review?.rating || 0} />
         <div className="flex justify-between">
           <div className="flex flex-col gap-2">
-            <div className="flex pt-2 text-[18px] font-medium">
-              <p>사이즈:</p>
-              <p> 000 </p>
-            </div>
             <p className="font-light">{review?.content}</p>
             {/* 라지 사이즈일 때만 이미지 보이도록 조건부 렌더링 */}
-            {size === "large" && (
+            {size === "large" && review?.imageUrl && (
               <div className="h-40 w-40 overflow-hidden bg-black object-cover pb-2">
                 <img src={review?.imageUrl} alt="수영복 뒷모습" />
               </div>

@@ -4,7 +4,7 @@ interface ShippingInformationProps {
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-function ShippingInformation(handleInputChange: ShippingInformationProps) {
+function ShippingInformation({ handleInputChange }: ShippingInformationProps) {
   return (
     <div>
       <p className="w-full border-b border-black p-2.5 font-bold">배송정보</p>
@@ -15,16 +15,15 @@ function ShippingInformation(handleInputChange: ShippingInformationProps) {
           name="ordererName"
           id="ordererName"
           className="w-full rounded-sm border-none bg-slate-100 p-2.5"
-          onChange={() => handleInputChange}
         />
       </div>
       <div className="h-22 mb-1 flex w-full border-b border-black p-2.5">
         <span className="inline-block w-1/4">받으시는분</span>
         <input
           type="text"
-          name="recipientName"
-          id="recipientName"
-          onChange={() => handleInputChange}
+          name="receiver"
+          id="receiver"
+          onChange={handleInputChange}
           className="w-full rounded-sm border-none bg-slate-100 p-2.5"
         />
       </div>
@@ -36,7 +35,7 @@ function ShippingInformation(handleInputChange: ShippingInformationProps) {
               type="text"
               name="address"
               id="address"
-              onChange={() => handleInputChange}
+              onChange={handleInputChange}
               className="mr-1 flex-grow rounded-sm border-none bg-slate-100 p-2.5"
             />
             <div className="w-1/5">
@@ -47,7 +46,7 @@ function ShippingInformation(handleInputChange: ShippingInformationProps) {
             type="text"
             name="detailAddress"
             id="detailAddress"
-            onChange={() => handleInputChange}
+            onChange={handleInputChange}
             className="w-full rounded-sm border-none bg-slate-100 p-2.5"
             placeholder="상세 주소를 입력해주세요."
           />
@@ -59,7 +58,7 @@ function ShippingInformation(handleInputChange: ShippingInformationProps) {
           type="tel"
           name="phoneNumber"
           id="phoneNumber"
-          onChange={() => handleInputChange}
+          onChange={handleInputChange}
           className="w-full rounded-sm border-none bg-slate-100 py-2.5"
         />
       </div>

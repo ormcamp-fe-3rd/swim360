@@ -14,6 +14,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { OrderFormData } from "@/types/orders";
 
 // const totalProductPrice = 120000;
 // const point = 5000;
@@ -21,9 +22,8 @@ import {
 // const totalPayment = totalProductPrice - point + shippingFee;
 
 function PayMentOrderPage() {
-  const [formData, setFormData] = useState({
-    ordererName: "",
-    recipientName: "",
+  const [formData, setFormData] = useState<OrderFormData>({
+    receiver: "",
     phoneNumber: "",
     address: "",
     detailAddress: "",
@@ -57,7 +57,6 @@ function PayMentOrderPage() {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, ...{ [name]: value } }));
-    console.log(formData);
   };
 
   return (
