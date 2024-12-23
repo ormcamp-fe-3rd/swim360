@@ -1,5 +1,3 @@
-import { Product } from "./products";
-
 export interface Order {
   id?: number;
   receiver: string;
@@ -46,7 +44,7 @@ export interface OrderStatusItem {
 export interface MyOrder {
   id?: number;
   adress: string;
-  price: number;
+  totalPrice: number;
   orderStatus: string;
   user_id: number;
   createdAt: string;
