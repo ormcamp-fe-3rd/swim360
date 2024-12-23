@@ -22,12 +22,7 @@ export default function CategoryBox({
   getFirstChildCategory,
   getChildCategories,
 }: CategoryBoxProps) {
-  if (parentCategories.length === 0)
-    return (
-      <div className="relative hidden tablet:block">
-        <Loader />
-      </div>
-    );
+  if (parentCategories.length === 0) return;
 
   return (
     <ul className="hidden w-full max-w-[500px] tablet:flex tablet:justify-between">
