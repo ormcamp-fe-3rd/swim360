@@ -17,7 +17,7 @@ function ProductItem({
         <div className="h-full w-full overflow-hidden">
           <img
             className="h-full w-full object-cover"
-            src={imageUrl[0]}
+            src={imageUrl}
             alt={name}
           />
         </div>

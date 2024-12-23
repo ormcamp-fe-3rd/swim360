@@ -2,7 +2,6 @@ import { Category } from "@/types/categories";
 import CategoryHoverBox from "./CategoryHoverBox";
 import CategoryUnderLine from "./CategoryUnderline";
 import { Link } from "react-router-dom";
-import Loader from "../common/Loader";
 
 interface CategoryBoxProps {
   currentParentCategoryId: Category["parent_id"];

@@ -23,7 +23,7 @@ const seedData = async () => {
       { name: "full-body", parent_id: 1 },
       { name: "mid-length", parent_id: 2 },
       { name: "square-cut", parent_id: 2 },
-      { name: "bag", parent_id: 3 },
+      { name: "cap", parent_id: 3 },
       { name: "towel", parent_id: 3 },
       { name: "fins", parent_id: 3 },
     ]);
