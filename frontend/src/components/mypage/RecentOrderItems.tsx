@@ -28,8 +28,8 @@ export default function RecentOrderItems({ orderId }: Props) {
   return (
     <div>
       {orderItems.map((orderItem) => (
-        <Link to={`/product/${orderItem.Product.id}`}>
-          <div key={orderItem.id} className="flex flex-col items-start gap-4">
+        <div key={orderItem.id} className="flex flex-col items-start gap-4">
+          <Link to={`/product/${orderItem.Product.id}`}>
             <div className="col-span-3 flex">
               <div className="ml-3 max-h-[209px] max-w-[153px] pt-3">
                 <img
@@ -48,8 +48,8 @@ export default function RecentOrderItems({ orderId }: Props) {
                 </div>
               </div>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </div>
       ))}
     </div>
   );

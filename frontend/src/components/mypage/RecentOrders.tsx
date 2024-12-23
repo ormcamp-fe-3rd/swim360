@@ -18,7 +18,6 @@ function RecentOrders() {
     const fetchOrders = async () => {
       try {
         const myOrders = await getMyOrders(userId);
-        console.log(myOrders)
         setOrders(myOrders);
       } catch (error) {
         console.log("fetch Order error: ", error);
