@@ -22,6 +22,14 @@ function TotalPrice({ totalPrice, point, formData }: TotalPriceProps) {
   };
 
   const handleBuyClick = async () => {
+    const userId = sessionStorage.getItem("id");
+
+    if (!userId) {
+      alert("로그인이 필요합니다.");
+      navigate("/login");
+      return;
+    }
+
     console.log(orderData);
     const response = await createOrderData(orderData, navigate);
     console.log(response);
