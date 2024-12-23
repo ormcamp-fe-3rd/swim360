@@ -12,11 +12,23 @@ const Order = sequelize.define(
       primaryKey: true,
       allowNull: false,
     },
-    adress: {
+    receiver: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    price: {
+    address: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    detailAddress: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    phoneNumber: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    totalPrice: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
