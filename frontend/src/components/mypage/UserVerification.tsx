@@ -1,6 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { useUserId } from "@/hooks/useUserId";
 import { getUser } from "@/services/user";
 
 import PrimaryButton from "../common/PrimaryButton";
@@ -8,32 +9,30 @@ import PrimaryButton from "../common/PrimaryButton";
 export default function UserVerification() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  //TODO: useUserId로 변경
-  const userId = sessionStorage.getItem('id')
+  const { userId } = useUserId();
 
-  const handlePassword = (event) => {
+  const handlePassword = (event:React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
   }
 
-  async function handleVerification(event){
+  async function handleVerification(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    if(!password){
-      alert("비밀번호를 입력해주세요.")
+    if (!password) {
+      alert("비밀번호를 입력해주세요.");
     }
 
-    try{
-      if(!userId) return
-      const user = await getUser(userId)
-      
-      if(!user) return
-      if(user.password === password){
-        navigate("/mypage/edit")
-      }else{
-        alert('비밀번호가 동일하지 않습니다.')
+    try {
+      const user = await getUser(userId);
+
+      if (!user) return;
+      if (user.password === password) {
+        navigate("/mypage/edit");
+      } else {
+        alert("비밀번호가 올바르지 않습니다.");
       }
-    }catch(error){
-      console.log(error)
+    } catch (error) {
+      console.log(error);
     }
   }
 
@@ -42,15 +41,15 @@ export default function UserVerification() {
       <p className="border-b border-black p-2.5 text-center text-xl font-semibold">
         본인확인
       </p>
-      <div className="p-2.5">
-        <form >
+      <form onSubmit={handleVerification}>
+        <div className="p-2.5 flex flex-col gap-[42px]">
           <input type="password" name="password" value={password} placeholder="비밀번호" onChange={handlePassword}
           className="placeholder-text-lg h-[60px] w-full rounded border p-2.5"/>
-        </form>
-      </div>
-      <PrimaryButton onClick={handleVerification} className="h-[70px] w-full rounded-xl text-base font-semibold">
-          확인
-      </PrimaryButton>
+          <PrimaryButton type="submit" >
+              확인
+          </PrimaryButton>
+        </div>
+      </form>
     </div>
-  );
+  )
 }
