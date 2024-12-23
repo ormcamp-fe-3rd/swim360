@@ -1,6 +1,5 @@
-
-import { Reviews } from "./reviews";
 import { Discount } from "./discounts";
+import { Reviews } from "./reviews";
 
 
 export interface Product {
@@ -13,7 +12,6 @@ export interface Product {
   salesVolume: number; //
   discountedPrice: number;
   size: string;
-  stock: number;
   category_id: number;
   discount_id: number;
   createdAt: string;
@@ -40,4 +38,13 @@ export interface ProductItemData
 
 export interface ProductListData {
   products: ProductItemData[];
+}
+
+export interface BestProduct{
+  id: number;
+  name: string;
+  brandName: string;
+  imageUrl: string;
+  discountedPrice: number;
+  price: number;
 }
