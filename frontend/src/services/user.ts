@@ -7,7 +7,7 @@ import getLocalDate from "@/utils/getLocalDate";
 //유저 리뷰 불러오기
 export async function getReview(userId: string) {
   try {
-    const response = await axios.get<Reviews[]>(`/reviews/user/${userId}`);
+    const response = await axios.get(`/reviews/user/${userId}`);
 
     if (!Array.isArray(response.data) || response.data.length === 0) {
       return [];
@@ -17,6 +17,7 @@ export async function getReview(userId: string) {
       response.data.map(async (review) => {
         return {
           content: review.content,
+          productId: review.product_id,
           productName: await getProductName(review.product_id),
           date: getLocalDate(review.createdAt),
         };

@@ -12,6 +12,7 @@ export interface User {
 export interface MyReview {
   // id: Reviews['id'];
   content: Reviews["content"];
+  productId: number;
   productName: string;
   date: string;
 }

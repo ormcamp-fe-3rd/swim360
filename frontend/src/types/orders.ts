@@ -25,6 +25,7 @@ export interface MyOrderItem {
   Product: MyOrderItemProduct;
 }
 export interface MyOrderItemProduct{
+  id: number;
   name: string;
   imageUrl: string;
 }

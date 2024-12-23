@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import { MyReview } from "@/types/users";
 
 import { TableBody, TableCell, TableRow } from "../ui/table";
@@ -25,7 +27,11 @@ export default function ReviewTableBody({ reviews }: Props) {
       {reviews.map((review, index) => (
         <TableRow key={index} className="h-20">
           <TableCell className={cellStyle}>{review.date}</TableCell>
-          <TableCell className={cellStyle}>{review.productName}</TableCell>
+          <TableCell className={cellStyle}>
+            <Link to={`/product/${review.productId}`}>
+              {review.productName}
+            </Link>
+          </TableCell>
           <TableCell className={`hidden tablet:table-cell ${cellStyle}`}>
             {review.content}
           </TableCell>
