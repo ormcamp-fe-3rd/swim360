@@ -1,5 +1,5 @@
 import axios from "@/services/index.ts";
-import { Order } from "@/types/orders";
+import { MyOrder, Order } from "@/types/orders";
 
 //유저 주문 불러오기
 export async function getMyOrders(userId: string) {
@@ -28,7 +28,7 @@ export async function createOrderData(orderData: Order) {
   }
 }
 
-export async function getMyOrderStatus(userId: string){
+export async function getMyOrderStatus(userId: string):Promise<Order[]>{
   try {
     const response = await axios.get(`/orders/usersOrderStatus/${userId}`);
     return response.data;
