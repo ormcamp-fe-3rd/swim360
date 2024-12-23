@@ -2,6 +2,7 @@ import { useContext, useEffect, useMemo, useState } from "react";
 import { CartContext } from "@/contexts/CartContext";
 import { getCartCount, getCartListData, updateCartData } from "@/services/cart";
 import { Cart, CartItem } from "@/types/cart";
+import { useNavigate } from "react-router-dom";
 
 function useCart() {
   const context = useContext(CartContext);
@@ -17,6 +18,8 @@ function useCart() {
   const [cartListData, setCartListData] = useState<CartItem[]>([]);
 
   const [updateCartTrigger, setUpdateCartTrigger] = useState(0);
+
+  const navigate = useNavigate();
 
   const handleCartListDataFetch = async () => {
     try {
@@ -54,7 +57,10 @@ function useCart() {
     const prevCount = cartCount;
 
     try {
-      if (!userId) return;
+      if (!userId) {
+        navigate("/login");
+        return;
+      }
 
       await updateCartData(cartItem);
       setCartCount((prev) => prev + cartItem.quantity);
