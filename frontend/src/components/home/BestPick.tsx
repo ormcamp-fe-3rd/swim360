@@ -13,8 +13,8 @@ export default function BestPick() {
     async function fetchBestProducts() {
       const products = await getBestProducts();
       setBestProducts(products);
+      console.log(products);
     }
-
     fetchBestProducts();
   }, []);
 
