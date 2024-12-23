@@ -21,7 +21,7 @@ function UserDetailPreview() {
     }
 
     fetchReviews();
-  }, []);
+  }, [userId]);
 
   return (
     <Link
