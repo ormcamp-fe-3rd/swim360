@@ -27,7 +27,7 @@ function UserInfoPreview() {
 
   return (
     <Link
-      to={"/mypage/verification"}
+      to="/mypage/verification"
       role="link"
     >
       <div className="flex h-[146px] items-center justify-between border border-black px-5">

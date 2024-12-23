@@ -25,7 +25,7 @@ function UserDetailPreview() {
 
   return (
     <Link
-      to={`/mypage/${userId}/point_and_review`}
+      to="/mypage/point_and_review"
       state={{ reviews: reviews }}
     >
       <div className="flex h-[146px] w-full items-center justify-center border border-black py-[30px]">

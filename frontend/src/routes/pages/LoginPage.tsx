@@ -45,7 +45,7 @@ function LoginPage() {
       
       setUserId(user.id.toString());
       sessionStorage.setItem("id", user.id.toString());
-      navigate(`/mypage/${user.id}`);
+      navigate("/mypage");
       
     } catch (error) {
       console.log(error);
