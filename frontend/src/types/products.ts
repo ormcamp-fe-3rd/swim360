@@ -1,5 +1,5 @@
 import { Discount } from "./discounts";
-import { Reviews } from "./reviews";
+import { Rating, Reviews } from "./reviews";
 
 export interface Product {
   id: number;

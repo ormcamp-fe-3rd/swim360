@@ -24,7 +24,7 @@ function useProduct() {
       // TODO: getProdcut -> getProductAndReview
       const fetchedProductDetail = await getProductDetail(numericProductId); // 변환된 숫자 사용
       setProductDetail(fetchedProductDetail);
-      console.log(fetchedProductDetail);
+      console.log("fet", fetchedProductDetail);
     } catch (err) {
       console.error("Error fetching product:", err);
     }
@@ -34,7 +34,10 @@ function useProduct() {
     handleProductDetailfetch();
   }, [id]);
 
-  return { product: productDetail?.product, reviews: productDetail?.reviews };
+  return {
+    product: productDetail?.product,
+    reviews: productDetail?.reviews,
+  };
 }
 
 export default useProduct;
