@@ -1,61 +1,44 @@
 import { useEffect, useState } from "react";
 
 import { getOrderItems } from "@/services/orderItem";
-import { getProduct } from "@/services/product";
-import { MyOrderItem, OrderData, OrderItem } from "@/types/orders";
+import { MyOrderItem, Order } from "@/types/orders";
 
 interface Props {
-  orderData: OrderData;
+  orderId: Order['id'];
 }
 
-export default function RecentOrderItems({ orderData }: Props) {
-  const [formattedItems, setFormattedItems] = useState<MyOrderItem[]>([]);
+export default function RecentOrderItems({ orderId }: Props) {
+  const [orderItems, setOrderItems] = useState<MyOrderItem[]>([]);
 
   useEffect(() => {
     const fetchOrderItems = async () => {
       try {
-        const orderItems = await getOrderItems(`${orderData.id}`);
+        if (!orderId) return;
+        const orderItems = await getOrderItems(orderId);
 
-        const formatted = await Promise.all(
-          orderItems.map(async (orderItem: OrderItem) => {
-            const product = await getProduct(orderItem.product_id);
-
-            const imageUrl = Array.isArray(product.imageUrl)
-              ? product.imageUrl[0]
-              : product.imageUrl;
-
-            return {
-              id: orderItem.id,
-              name: product.name,
-              imageUrl: imageUrl,
-              size: product.size,
-              quantity: orderItem.quantity,
-            };
-          }),
-        );
-        setFormattedItems(formatted);
+        setOrderItems(orderItems);
       } catch (error) {
         console.log("fetching orderItems error", error);
       }
     };
     fetchOrderItems();
-  }, [orderData.id]);
+  }, [orderId]);
 
   return (
     <div>
-      {formattedItems.map((orderItem) => (
+      {orderItems.map((orderItem) => (
         <div key={orderItem.id} className="flex flex-col items-start gap-4">
           <div className="col-span-3 flex">
             <div className="ml-3 max-h-[209px] max-w-[153px] pt-3">
               <img
                 className="h-full w-full object-cover"
-                src={orderItem.imageUrl}
-                alt={orderItem.name}
+                src={orderItem.Product.imageUrl}
+                alt={orderItem.Product.name}
               />
             </div>
             <div className="m-[13px] flex flex-col justify-center">
               <div className="text-md mb-3 text-lg font-semibold">
-                {orderItem.name}
+                {orderItem.Product.name}
               </div>
               <div className="flex text-[#8c8b8b]">
                 <div>사이즈: {orderItem.size}</div>
@@ -65,7 +48,6 @@ export default function RecentOrderItems({ orderData }: Props) {
           </div>
         </div>
       ))}
-      ;
     </div>
   );
 }

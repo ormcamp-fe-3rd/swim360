@@ -40,6 +40,10 @@ router.get("/user/:id", async (req, res) => {
     const reviews = await Review.findAll({
       where: { user_id: userId },
     });
+    
+    if (!reviews) {
+      res.status(404).json({ message: 'Reviews not found' })
+    }
 
     res.status(200).json(reviews);
   } catch (error) {

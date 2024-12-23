@@ -1,12 +1,17 @@
-import { Tooltip, TooltipContent,TooltipProvider, TooltipTrigger } from "@radix-ui/react-tooltip";
+import { useNavigate } from "react-router-dom";
+
+import { Tooltip, TooltipContent,TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { useUserId } from "@/hooks/useUserId";
 
 export default function LogoutButton(){
+  const navigate = useNavigate();
+  const { setUserId } = useUserId();
 
-
-  function logout(){
+  function handleLogout(){
     sessionStorage.removeItem('id');
     alert("👋안녕히가세요👋");
-    window.location.href = "/"
+    setUserId("")
+    navigate("/")
   }
 
   return(
@@ -15,7 +20,7 @@ export default function LogoutButton(){
         <TooltipProvider delayDuration={100}>
           <Tooltip>
             <TooltipTrigger>
-              <div onClick={logout} className="text-4xl">
+              <div onClick={handleLogout} className="text-4xl">
                 👋
               </div>
               </TooltipTrigger>

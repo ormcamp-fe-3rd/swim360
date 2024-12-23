@@ -1,8 +1,7 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
 
-import { UserIdContext } from "@/contexts/UserContext";
 import useCart from "@/hooks/useCart";
+import { useUserId } from "@/hooks/useUserId";
 
 const myPageIcon = {
   imgUrl: "/images/common/icon-mypage.png",
@@ -17,7 +16,7 @@ const cartIcon = {
 
 export default function MainIconButton() {
   const { cartCount } = useCart();
-  const userId = useContext(UserIdContext);
+  const { userId } = useUserId();
 
   return (
     <div className="flex justify-around tablet:w-[190px]">

@@ -6,9 +6,12 @@ const { User } = require("../models");
 router.get("/", async (req, res) => {
   try {
     const users = await User.findAll();
+
     if (!users) {
       console.log("No Users yet");
+      res.status(404).json('User not found')
     }
+
     res.json(users);
   } catch (error) {
     console.log(error);
@@ -39,12 +42,36 @@ router.get("/:id", async (req, res) => {
     const userId = req.params.id;
 
     const user = await User.findOne({ where: { id: userId } });
+
+    if(!user){
+      res.status(404).json({message: "User not found"})
+    }
+    
     res.json(user);
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: error.message });
   }
 });
+
+//이메일아이디로 회원 조회
+router.get('/email/:email', async (req, res) => {
+  try {
+    const userEmail = req.params.email
+
+    console.log(userEmail)
+    const user = await User.findOne({ where: { emailId: userEmail } })
+
+    if (!user) {
+      res.status(404).json({ message: 'User not found' })
+    }
+
+    res.json(user)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ error: error.message })
+  }
+})
 
 // 특정 유저 수정
 router.put("/:id", async (req, res) => {

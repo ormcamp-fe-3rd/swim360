@@ -4,7 +4,7 @@ const { sequelize } = require("../db.js");
 
 //주문_id(fk), 상품_id(fk),  가격
 const OrderItem = sequelize.define(
-  "OrderItem",
+  'OrderItem',
   {
     id: {
       autoIncrement: true, // 자동 증가
@@ -36,9 +36,9 @@ const OrderItem = sequelize.define(
   },
 
   {
-    tableName: "ORDERITEMS",
+    tableName: 'ORDERITEMS',
     timestamps: true, // 키면 createdAt, updateAt 자동으로 저장됨
   }
-);
+)
 
 module.exports = OrderItem; // 다른 데서 써야하니까 export

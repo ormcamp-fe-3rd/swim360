@@ -2,13 +2,12 @@ import axios from "@/services/index.ts";
 import { Product } from "@/types/products";
 import { Reviews } from "@/types/reviews";
 import { MyReview, User } from "@/types/users";
+import getLocalDate from "@/utils/getLocalDate";
 
 //유저 리뷰 불러오기
 export async function getReview(userId: string) {
   try {
-    const response = await axios.get<Reviews[]>(
-      `/reviews/user/${userId}`,
-    );
+    const response = await axios.get<Reviews[]>(`/reviews/user/${userId}`);
 
     if (!Array.isArray(response.data) || response.data.length === 0) {
       return [];
@@ -19,7 +18,7 @@ export async function getReview(userId: string) {
         return {
           content: review.content,
           productName: await getProductName(review.product_id),
-          date: review.createdAt.slice(0, 10),
+          date: getLocalDate(review.createdAt),
         };
       }),
     );
@@ -32,9 +31,7 @@ export async function getReview(userId: string) {
 
 async function getProductName(productId: Product["id"]): Promise<string> {
   try {
-    const response = await axios.get<Product>(
-      `/products/${productId}`,
-    );
+    const response = await axios.get<Product>(`/products/${productId}`);
     return response.data.name;
   } catch (error) {
     console.log(error);
@@ -43,27 +40,34 @@ async function getProductName(productId: Product["id"]): Promise<string> {
 }
 
 //유저 정보 불러오기
-export async function getUser(userId: string) {
+export async function getUser(userId: string): Promise<User | null> {
   try {
-    const response = await axios.get<User>(
-      `/users/${userId}`,
-    );
+    const response = await axios.get<User>(`/users/${userId}`);
     return response.data;
-  } catch (error) {
-    console.log(error);
-    return "";
+  } catch (error: any) {
+    if (error.response) {
+      //404, 500 오류
+      console.log(error);
+      throw new Error(error.response);
+    } else {
+      console.log(error);
+      throw new Error(error.message);
+    }
   }
 }
 
-//유저 주문 불러오기
-export async function getMyOrders(userId: string) {
+export async function getUserByEmail(userEmail: string): Promise<User | null> {
   try {
-    const response = await axios.get(
-      `http://localhost:3000/orders/users/${userId}`,
-    );
+    const response = await axios.get<User>(`/users/email/${userEmail}`);
     return response.data;
-  } catch (error) {
-    console.log(error);
-    return [];
+  } catch (error: any) {
+    if (error.response) {
+      //404, 500 오류
+      console.log(error);
+      throw new Error(error.response);
+    } else {
+      console.log(error);
+      throw new Error(error.message);
+    }
   }
 }
