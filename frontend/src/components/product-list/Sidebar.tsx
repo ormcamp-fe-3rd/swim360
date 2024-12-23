@@ -15,7 +15,7 @@ function SideBar({
   currentCategoryId,
 }: SideBarProps) {
   return (
-    <ul className="top-2 z-10 mb-8 mr-2 mt-10 flex justify-center gap-3 tablet:sticky tablet:flex-col tablet:justify-start">
+    <ul className="top-2 mb-8 mr-2 mt-10 flex justify-center gap-3 tablet:sticky tablet:flex-col tablet:justify-start">
       {childCategories.map((childCategory) => (
         <li
           key={childCategory.name}
