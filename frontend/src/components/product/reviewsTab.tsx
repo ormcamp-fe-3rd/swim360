@@ -27,28 +27,18 @@ function ReviewsTab({ reviews, product }: ProductDetail) {
       <div className="mx-auto flex w-full max-w-[1064px] flex-col items-center justify-center">
         <div className="mx-auto flex h-[250px] w-full max-w-[1064px] flex-col items-center justify-center bg-[#f6f9ff]">
           <p className="h-16">사용자 총 평점</p>
-          <ReviewStar />
+          <ReviewStar rating={0} />
           <div className="flex">
             <p>0.00</p>
             <p>/5</p>
           </div>
         </div>
         <Link to="/product/review" className="w-full">
-          <div className="mx-auto flex h-auto w-full justify-center">
-            <div className="mb-2 mt-8 flex h-auto w-full max-w-[1064px] justify-end">
-              <button
-                id="ReviewButton"
-                className="flex h-[50px] w-[164px] items-center justify-center gap-2 rounded-xl bg-black text-[24px] text-white"
-                onClick={onClickToggleModal}
-              >
-                <img src="/public/images/icon-reviews.png" />
-                후기 등록
-              </button>
-            </div>
-          </div>
+          <div className="mx-auto flex h-auto w-full justify-center"></div>
         </Link>
-
-        {reviews?.map((review) => <Review key={review.id} review={review} />)}
+        <div onClick={onClickToggleDetailModal}>
+          {reviews?.map((review) => <Review key={review.id} review={review} />)}
+        </div>
 
         {/* 모달이 열리면 ReviewWriteModal 컴포넌트를 렌더링 */}
         {isOpenModal && (
