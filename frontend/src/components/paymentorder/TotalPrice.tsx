@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import PrimaryButton from "@/components/common/PrimaryButton";
 import { createOrderData } from "@/services/order";
 import { OrderFormData } from "@/types/orders";
@@ -11,6 +13,7 @@ interface TotalPriceProps {
 }
 
 function TotalPrice({ totalPrice, point, formData }: TotalPriceProps) {
+  const navigate = useNavigate();
   const orderData = {
     ...formData,
     orderStatus: "ORDER_COMPLETE",
@@ -20,7 +23,7 @@ function TotalPrice({ totalPrice, point, formData }: TotalPriceProps) {
 
   const handleBuyClick = async () => {
     console.log(orderData);
-    const response = await createOrderData(orderData);
+    const response = await createOrderData(orderData, navigate);
     console.log(response);
   };
 
