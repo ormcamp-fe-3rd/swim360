@@ -22,7 +22,7 @@ function Review({ size = "large", review }: ReviewsType) {
           <div className="flex flex-col gap-2">
             <p className="font-light">{review?.content}</p>
             {/* 라지 사이즈일 때만 이미지 보이도록 조건부 렌더링 */}
-            {size === "large" && (
+            {size === "large" && review?.imageUrl && (
               <div className="h-40 w-40 overflow-hidden bg-black object-cover pb-2">
                 <img src={review?.imageUrl} alt="수영복 뒷모습" />
               </div>
