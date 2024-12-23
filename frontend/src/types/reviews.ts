@@ -8,3 +8,5 @@ export interface Reviews {
   updatedAt: string;
   createdAt: string;
 }
+
+export type Rating = Pick<Reviews, "rating" | "product_id">;
