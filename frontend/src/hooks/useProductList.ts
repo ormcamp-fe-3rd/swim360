@@ -21,7 +21,8 @@ function useProductList() {
         await getProductListData(currentCategoryId);
       setProductListData(fetchedProductListData);
     } catch (err) {
-      console.log(err);
+      setProductListData([]);
+    } finally {
     }
   };
 
@@ -30,15 +31,20 @@ function useProductList() {
   };
 
   const sortFunctions = {
-    latest: (productListData: ProductItemData[]) =>
-      [...productListData].sort((a, b) =>
+    latest: (productListData: ProductItemData[]) => {
+      if (!productListData) return [];
+      return [...productListData].sort((a, b) =>
         b.createdAt.localeCompare(a.createdAt),
-      ),
-
-    sale: (productListData: ProductItemData[]) =>
-      [...productListData].sort((a, b) => b.salesVolume - a.salesVolume),
-    review: (productListData: ProductItemData[]) =>
-      [...productListData].sort((a, b) => b.reviewCount - a.reviewCount),
+      );
+    },
+    sale: (productListData: ProductItemData[]) => {
+      if (!productListData) return [];
+      return [...productListData].sort((a, b) => b.salesVolume - a.salesVolume);
+    },
+    review: (productListData: ProductItemData[]) => {
+      if (!productListData) return [];
+      return [...productListData].sort((a, b) => b.reviewCount - a.reviewCount);
+    },
   };
 
   const sortedProducts = useMemo(() => {

@@ -1,3 +1,4 @@
+import Loader from "@/components/common/Loader";
 import ProductItemList from "@/components/product-list/ProductItemList";
 import SideBar from "@/components/product-list/Sidebar";
 import SortSelect from "@/components/product-list/SortSelect";
@@ -23,6 +24,14 @@ function ProductListPage() {
   const productItemListProps = {
     sortedProducts,
   };
+
+  if (childCategories.length === 0) {
+    return (
+      <div className="flex w-full items-center justify-center">
+        <Loader />
+      </div>
+    );
+  }
 
   return (
     <div className="p-4">

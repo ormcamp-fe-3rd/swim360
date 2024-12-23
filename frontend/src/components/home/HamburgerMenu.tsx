@@ -1,5 +1,6 @@
 import { Category } from "@/types/categories";
 import { Link } from "react-router-dom";
+import Loader from "../common/Loader";
 
 interface HamburgerMenuProps {
   isOpen: boolean;
@@ -19,6 +20,13 @@ export default function HamburgerMenu({
   getFirstChildCategory,
   handleCurrentCategoryChange,
 }: HamburgerMenuProps) {
+  if (parentCategories.length === 0)
+    return (
+      <div className="relative tablet:hidden">
+        <Loader />
+      </div>
+    );
+
   return (
     <div className="relative tablet:hidden">
       <button onClick={handleUIToggle}>
