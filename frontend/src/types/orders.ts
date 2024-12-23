@@ -1,32 +1,17 @@
+import { Product } from "./products";
 
 export interface Order {
   id?: number;
-  adress: string;
-  price: number;
+  receiver: string;
+  address: string;
+  detailAddress: string;
+  phoneNumber: string;
+  //
+  totalPrice: number;
   orderStatus: string;
   user_id: number;
   createdAt: string;
   updatedAt: string;
-}
-export interface MyOrder {
-  id?: number;
-  adress: string;
-  price: number;
-  orderStatus: string;
-  user_id: number;
-  createdAt: string;
-  updatedAt: string;
-  totalQuantity: number;
-}
-export interface MyOrderItem {
-  id: number;
-  quantity: number;
-  size: string;
-  Product: MyOrderItemProduct;
-}
-export interface MyOrderItemProduct{
-  name: string;
-  imageUrl: string;
 }
 
 export interface OrderItem {
@@ -39,8 +24,12 @@ export interface OrderItem {
   createdAt: string;
   updatedAt: string;
 }
-export interface OrderData extends Pick<Order, "id" | "price" | "createdAt"> {
-  orderItems: MyOrderItem[];
+
+export interface OrderFormData {
+  receiver: string;
+  address: string;
+  detailAddress: string;
+  phoneNumber: string;
 }
 
 export type OrderStatus =
@@ -53,4 +42,24 @@ export type OrderStatus =
 export interface OrderStatusItem {
   status: OrderStatus;
   label: string;
+}
+
+export interface MyOrderItem {
+  id: number;
+  name: Product["name"];
+  size: Product["size"];
+  imageUrl: string;
+  quantity: OrderItem["quantity"];
+}
+
+export interface MyOrderItemProduct {
+  name: string;
+  imageUrl: string;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+export interface OrderData
+  extends Pick<Order, "id" | "totalPrice" | "createdAt"> {
+  orderItems: MyOrderItem[];
 }

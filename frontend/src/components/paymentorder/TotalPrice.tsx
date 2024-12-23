@@ -1,39 +1,27 @@
-import axios from "axios";
-
 import PrimaryButton from "@/components/common/PrimaryButton";
+import { createOrderData } from "@/services/order";
+import { OrderFormData } from "@/types/orders";
 
 import PriceRow from "./PriceRow";
-
-interface orderFormData {
-  ordererName: string;
-  recipientName: string;
-  phoneNumber: string;
-  address: string;
-  detailAddress: string;
-}
 
 interface TotalPriceProps {
   totalPrice: number;
   point: number;
-  formData: orderFormData;
+  formData: OrderFormData;
 }
 
 function TotalPrice({ totalPrice, point, formData }: TotalPriceProps) {
+  const orderData = {
+    ...formData,
+    orderStatus: "ORDER_COMPLETE",
+    totalPrice,
+    user_id: Number(sessionStorage.getItem("id")),
+  };
+
   const handleBuyClick = async () => {
-    try {
-      const response = await axios.post("/api/orders", {
-        ...formData,
-        totalPrice,
-      });
-      if (response.status === 200) {
-        alert("주문이 성공적으로 완료되었습니다!");
-      } else {
-        throw new Error("서버 오류");
-      }
-    } catch (error) {
-      console.error("주문 오류:", error);
-      alert("주문 중 문제가 발생했습니다.");
-    }
+    console.log(orderData);
+    const response = await createOrderData(orderData);
+    console.log(response);
   };
 
   return (
