@@ -77,3 +77,15 @@ export interface OrderData
   extends Pick<Order, "id" | "totalPrice" | "createdAt"> {
   orderItems: MyOrderItem[];
 }
+
+declare global {
+  interface Window {
+    daum: {
+      Postcode: new (options: {
+        oncomplete: (data: { address: string }) => void;
+      }) => {
+        open: () => void;
+      };
+    };
+  }
+}
