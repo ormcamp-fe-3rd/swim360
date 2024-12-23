@@ -16,3 +16,15 @@ export interface MyReview {
   productName: string;
   date: string;
 }
+
+export type UserResponse = SuccessResponse | ErrorResposne;
+
+export interface SuccessResponse{
+  status: 'success';
+  data: User;
+}
+
+export interface ErrorResposne{
+  status: 'error';
+  data: string;
+}
