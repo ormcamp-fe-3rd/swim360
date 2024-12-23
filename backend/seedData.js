@@ -1280,25 +1280,25 @@ const seedData = async () => {
     const orders = await Order.bulkCreate([
       {
         adress: "서울시 강남구 123",
-        price: 30000,
+        price: 297000,
         orderStatus: "ORDER_COMPLETE",
         user_id: 1,
       },
       {
         adress: "서울시 서초구 456",
-        price: 45000,
+        price: 441000,
         orderStatus: "SHIPPING",
         user_id: 1,
       },
       {
         adress: "서울시 용산구 789",
-        price: 20000,
+        price: 356000,
         orderStatus: "PAYMENT_COMPLETE",
         user_id: 2,
       },
       {
         adress: "서울시 종로구 101",
-        price: 55000,
+        price: 99000,
         orderStatus: "DELIVERED",
         user_id: 2,
       },
@@ -1307,12 +1307,12 @@ const seedData = async () => {
     // 주문 항목 데이터 생성
     const orderItems = await OrderItem.bulkCreate([
 
-      { price: 10000, quantity: 1, size: 'S', order_id: 1, product_id: 1 },
-      { price: 20000, quantity: 2, size: 'M', order_id: 1, product_id: 30 },
-      { price: 15000, quantity: 2, size: 'L', order_id: 2, product_id: 20 },
-      { price: 30000, quantity: 3, size: 'XL', order_id: 2, product_id: 40 },
-      { price: 20000, quantity: 4, size: 'M', order_id: 3, product_id: 50 },
-      { price: 55000, quantity: 1, size: 'S', order_id: 4, product_id: 35 },
+      { price: 99000, quantity: 1, size: 'S', order_id: 1, product_id: 1 },
+      { price: 99000, quantity: 2, size: 'M', order_id: 1, product_id: 30 },
+      { price: 72000, quantity: 2, size: 'L', order_id: 2, product_id: 20 },
+      { price: 99000, quantity: 3, size: 'XL', order_id: 2, product_id: 40 },
+      { price: 89000, quantity: 4, size: 'M', order_id: 3, product_id: 50 },
+      { price: 99000, quantity: 1, size: 'S', order_id: 4, product_id: 35 },
     ])
 
     // 리뷰 데이터 생성

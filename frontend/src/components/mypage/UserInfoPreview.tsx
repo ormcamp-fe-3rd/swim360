@@ -7,15 +7,14 @@ import { User } from "@/types/users";
 
 function UserInfoPreview() {
   const { userId } = useUserId();
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User|null>(null);
 
   
   useEffect(() => {
     const fetchUserData = async () => {
-      if (!userId) return "";
+      if (!userId) return
       try {
         const userData = await getUser(userId);
-        if(!userData) return "";
         setUser(userData);
       } catch (error) {
         console.log("fetch userData error", error);
@@ -26,10 +25,13 @@ function UserInfoPreview() {
   }, [userId]);
 
   return (
-    <Link to={`/mypage/${userId}/verification`} role="link">
+    <Link
+      to="/mypage/verification"
+      role="link"
+    >
       <div className="flex h-[146px] items-center justify-between border border-black px-5">
         <div className="text-xl font-semibold tablet:text-xl">
-          {user ? user.name : ""}
+          {user? user.name: ""}
         </div>
         <img
           className="h-6 tablet:w-6"

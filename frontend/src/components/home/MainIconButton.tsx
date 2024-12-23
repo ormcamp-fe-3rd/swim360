@@ -21,7 +21,7 @@ export default function MainIconButton() {
   return (
     <div className="flex justify-around tablet:w-[190px]">
       <button>
-        <Link to={userId ? `/mypage/${userId}` : "/login"}>
+        <Link to={userId ? "/mypage" : "/login"}>
           <img
             className="hidden h-8 w-8 tablet:block"
             src={myPageIcon.imgUrl}
@@ -33,7 +33,7 @@ export default function MainIconButton() {
       </button>
 
       <button className="relative">
-        <Link to={userId ? `/cart` : "/login"}>
+        <Link to={userId ? "/cart" : "/login"}>
           {cartCount > 0 && (
             <div className="absolute left-5 top-1 flex h-3 w-3 items-center justify-center rounded-full bg-red-600 text-[8px] text-white">
               {cartCount > 99 ? "99" : cartCount}

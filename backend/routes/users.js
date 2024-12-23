@@ -44,13 +44,13 @@ router.get("/:id", async (req, res) => {
     const user = await User.findOne({ where: { id: userId } });
 
     if(!user){
-      res.status(404).json({message: "User not found"})
+      return res.status(404).json({ status: 'error', message: "User not found"})
     }
     
-    res.json(user);
+    return res.json({ status: 'success', data: user});
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: error.message });
+    return res.status(500).json({ status: 'error', message: error.message });
   }
 });
 
@@ -59,17 +59,16 @@ router.get('/email/:email', async (req, res) => {
   try {
     const userEmail = req.params.email
 
-    console.log(userEmail)
     const user = await User.findOne({ where: { emailId: userEmail } })
 
     if (!user) {
-      res.status(404).json({ message: 'User not found' })
+      return res.status(404).json({ status: 'error', message: 'User not found' })
     }
 
-    res.json(user)
+    return res.json({ status: 'success', data: user})
   } catch (error) {
     console.log(error)
-    res.status(500).json({ error: error.message })
+    return res.status(500).json({ status: 'error', message: error.message })
   }
 })
 

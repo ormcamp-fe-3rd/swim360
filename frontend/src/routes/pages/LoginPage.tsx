@@ -12,16 +12,33 @@ function LoginPage() {
 
   const [emailId, setEmailId] = useState("");
   const [password, setPassword] = useState("");
+  const [rememberEmail, setRememberEmail] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleEmailChange = (event) => {
+  useState(() => {
+    const savedEmail = localStorage.getItem("savedEmail");
+    if (savedEmail) {
+      setEmailId(savedEmail);
+      setRememberEmail(true);
+    }
+  }, []);
+
+  const handleEmailChange = (event:React.ChangeEvent<HTMLInputElement>) => {
     setEmailId(event.target.value);
   };
 
-  const handlePasswordChange = (event) => {
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
   };
 
-  async function handleLogin(event) {
+  const handleRememberEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRememberEmail(event.target.checked);
+    if (!event.target.checked) {
+      localStorage.removeItem("savedEmail");
+    }
+  };
+
+  async function handleLogin(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (!emailId || !password) {
@@ -30,25 +47,27 @@ function LoginPage() {
     }
 
     try {
-      //TODO: 에러핸들링 필요
+      setIsLoading(true);
       const user = await getUserByEmail(emailId);
 
-      if(!user){ 
-        alert('사용자가 없습니다.');
-        return
-      }
-      
-      if (user.password != password) {
-        alert("비밀번호가 틀립니다.");
+      if (!user || user.password != password) {
+        alert("이메일 또는 비밀번호가 올바르지 않습니다.");
         return;
       }
-      
-      setUserId(user.id.toString());
-      sessionStorage.setItem("id", user.id.toString());
-      navigate(`/mypage/${user.id}`);
-      
-    } catch (error) {
-      console.log(error);
+
+      if (rememberEmail) {
+        localStorage.setItem("savedEmail", emailId);
+      }
+
+      const userId = user.id.toString();
+      setUserId(userId);
+      sessionStorage.setItem("id", userId);
+      navigate("/mypage");
+    } catch (error: any) {
+      console.log("Login error: ", error);
+      alert(error.message);
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -58,37 +77,48 @@ function LoginPage() {
         로그인
       </p>
       <div className="p-2.5">
-        <form>
-          <input
-            type="text"
-            name="id"
-            value={emailId}
-            placeholder="이메일 아이디"
-            onChange={handleEmailChange}
-            className="mb-2.5 w-full rounded border p-2.5"
-          />
-          <input
-            type="password"
-            name="password"
-            value={password}
-            placeholder="비밀번호"
-            onChange={handlePasswordChange}
-            className="mb-2.5 w-full rounded border p-2.5"
-          />
-        </form>
-      </div>
-      <label className="my-4 ml-4 inline-block">
-        <input
-          type="checkbox"
-          className="sm:h-[14px] sm:w-[14px]"
-          name="idMemories"
-          id="idMemories"
-        />
-        <span className="ml-2 align-text-bottom sm:text-[14px]">
-          아이디 저장
-        </span>
-      </label>
-      <PrimaryButton onClick={handleLogin}>로그인</PrimaryButton>
+        <form onSubmit={handleLogin}>
+          <div>
+            <input
+              type="email"
+              name="emailId"
+              value={emailId}
+              placeholder="이메일 아이디"
+              onChange={handleEmailChange}
+              disabled={isLoading}
+              className="mb-2.5 w-full rounded border p-2.5"
+              required
+              />
+          </div>
+          <div>
+            <input
+              type="password"
+              name="password"
+              value={password}
+              placeholder="비밀번호"
+              onChange={handlePasswordChange}
+              disabled={isLoading}
+              className="mb-2.5 w-full rounded border p-2.5"
+              required
+            />
+          </div>
+          <label className="my-4 ml-4 inline-block">
+            <input
+              type="checkbox"
+              className="sm:h-[14px] sm:w-[14px]"
+              checked={rememberEmail}
+              onChange={handleRememberEmail}
+              disabled={isLoading}
+              name="idMemories"
+              id="idMemories"
+              />
+            <span className="ml-2 align-text-bottom sm:text-[14px]">
+              아이디 저장
+            </span>
+          </label>
+          <PrimaryButton type="submit" disabled={isLoading}>{isLoading? "로그인 중..." : "로그인"}</PrimaryButton>
+          </form>
+        </div>
       <ul className="mt-4 grid gap-4 text-center sm:flex sm:justify-center">
         <Link to="/Find_Id_Pwd?type=id">
           <li className="inline-block">아이디 찾기</li>

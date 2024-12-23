@@ -40,10 +40,10 @@ const router = createBrowserRouter([
       { path: "/join", element: <JoinPage /> },
       { path: "/join_completion", element: <JoinCompletionPage /> },
       { path: "/agrees", element: <AgreesPage /> },
-      { path: "/mypage/:id", element: <MyPage /> },
-      { path: "/mypage/:id/verification", element: <UserVerificationPage />},
-      { path: "/mypage/:id/edit", element: <MyPageEditPage /> },
-      { path: "/mypage/:id/point_and_review", element: <PointAndReviewPage /> },
+      { path: "/mypage", element: <MyPage /> },
+      { path: "/mypage/verification", element: <UserVerificationPage />},
+      { path: "/mypage/edit", element: <MyPageEditPage /> },
+      { path: "/mypage/point_and_review", element: <PointAndReviewPage /> },
 
       {
         path: "/change_pwd_completion",

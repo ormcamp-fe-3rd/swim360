@@ -6,7 +6,6 @@ export interface Order {
   address: string;
   detailAddress: string;
   phoneNumber: string;
-  //
   totalPrice: number;
   orderStatus: string;
   user_id: number;
@@ -44,19 +43,26 @@ export interface OrderStatusItem {
   label: string;
 }
 
+export interface MyOrder {
+  id?: number;
+  adress: string;
+  price: number;
+  orderStatus: string;
+  user_id: number;
+  createdAt: string;
+  updatedAt: string;
+  totalQuantity: number;
+}
 export interface MyOrderItem {
   id: number;
-  name: Product["name"];
-  size: Product["size"];
-  imageUrl: string;
-  quantity: OrderItem["quantity"];
+  quantity: number;
+  size: string;
+  Product: MyOrderItemProduct;
 }
-
-export interface MyOrderItemProduct {
+export interface MyOrderItemProduct{
+  id: number;
   name: string;
   imageUrl: string;
-  createdAt?: string;
-  updatedAt?: string;
 }
 
 export interface OrderData

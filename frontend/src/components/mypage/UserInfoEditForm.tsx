@@ -1,10 +1,10 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { z } from "zod";
 
-import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -15,20 +15,59 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useUserId } from "@/hooks/useUserId";
+import { getUser } from "@/services/user";
+import { User } from "@/types/users";
+
+import PrimaryButton from "../common/PrimaryButton";
 
 const formSchema = z.object({
   username: z.string().min(2).max(50),
+  phoneNumber: z.string().optional(),
+  emailId: z.string().email().optional(),
+  password: z.string().min(8).max(16).optional(),
+  address: z.string().optional(),
 });
 
 export default function UserInfoEditForm() {
+  const { userId } = useUserId();
+  const [user, setUser] = useState<User>();
+  
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       username: "",
+      phoneNumber: "",
+      emailId: "",
+      password: "",
+      address:"",
     },
   });
 
+  useEffect(()=>{
+    const fetchUserInfo = async () => {
+      try{
+        const user = await getUser(userId);
+        setUser(user);
+
+        form.reset({
+          username: user.name||"",
+          phoneNumber: user.phoneNumber||"",
+          emailId: user.emailId||"",
+          password: user.password||"",
+        });
+        
+      }catch(error:any){
+        console.log("User Edit error: ", error);
+        alert(error.message)
+      }
+    }
+    fetchUserInfo();
+  },[userId])
+
+
+  
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
@@ -62,7 +101,7 @@ export default function UserInfoEditForm() {
           />
           <FormField
             control={form.control}
-            name="username"
+            name="phoneNumber"
             render={({ field }) => (
               <FormItem className="h-16 w-full border-b-2">
                 <div className="flex w-full items-center justify-between px-10">
@@ -79,7 +118,7 @@ export default function UserInfoEditForm() {
           />
           <FormField
             control={form.control}
-            name="username"
+            name="emailId"
             render={({ field }) => (
               <FormItem className="h-16 w-full border-b-2">
                 <div className="flex w-full items-center justify-between px-10">
@@ -96,7 +135,7 @@ export default function UserInfoEditForm() {
           />
           <FormField
             control={form.control}
-            name="username"
+            name="password"
             render={({ field }) => (
               <FormItem className="h-20 w-full border-b-2">
                 <div className="flex w-full items-center justify-between px-10">
@@ -118,7 +157,7 @@ export default function UserInfoEditForm() {
           />
           <FormField
             control={form.control}
-            name="username"
+            name="passwordCheck"
             render={({ field }) => (
               <FormItem className="h-20 w-full border-b-2">
                 <div className="flex w-full items-center justify-between px-10">
@@ -140,7 +179,7 @@ export default function UserInfoEditForm() {
           />
           <FormField
             control={form.control}
-            name="username"
+            name="address"
             render={({ field }) => (
               <FormItem className="h-32 w-full border-b-2">
                 <div className="flex w-full items-center justify-between px-10">
@@ -165,20 +204,12 @@ export default function UserInfoEditForm() {
           />
           <div className="mt-10 flex w-full gap-2">
             <Link to="/mypage" className="w-full">
-              <Button
-                className="h-[70px] w-full rounded-xl bg-white text-base text-black hover:bg-gray-100"
-                type="submit"
-              >
+              <PrimaryButton className="bg-white text-black hover:bg-gray-100">
                 취소
-              </Button>
+              </PrimaryButton>
             </Link>
             <Link to="/mypage" className="w-full">
-              <Button
-                className="h-[70px] w-full rounded-xl text-base"
-                type="submit"
-              >
-                확인
-              </Button>
+              <PrimaryButton>확인</PrimaryButton>
             </Link>
           </div>
         </form>
