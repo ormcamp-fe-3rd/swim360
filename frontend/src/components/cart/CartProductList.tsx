@@ -26,14 +26,20 @@ export default function CartProductList({
         <span className="inline-block w-1/3 text-right">가격</span>
       </div>
 
-      {cartListData.map((cartItem, index) => (
-        <CartProduct
-          key={index}
-          selectedSize={cartItem.size}
-          quantity={cartItem.quantity}
-          {...cartItem.Product}
-        />
-      ))}
+      {cartListData.length > 0 ? (
+        cartListData.map((cartItem, index) => (
+          <CartProduct
+            key={index}
+            selectedSize={cartItem.size}
+            quantity={cartItem.quantity}
+            {...cartItem.Product}
+          />
+        ))
+      ) : (
+        <div className="flex items-center justify-center">
+          아직 장바구니에 담긴 상품이 없습니다.
+        </div>
+      )}
     </div>
   );
 }

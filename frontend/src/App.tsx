@@ -6,21 +6,19 @@ import Footer from "./components/common/Footer";
 import Header from "./components/common/Header";
 import ScrollToTop from "./components/common/ScrollToTop";
 import CategoryContextProvider from "./contexts/CategoryContext";
-import UserContextProvider from "./contexts/UserContext";
-
-
+import UserIdContextProvider from "./contexts/UserIdContext";
 
 function App() {
   return (
     <div>
       <CartContextProvider>
         <CategoryContextProvider>
-         <UserContextProvider>
+          <UserIdContextProvider>
             <ScrollToTop />
             <Header />
             <Outlet />
             <Footer />
-          </UserContextProvider>
+          </UserIdContextProvider>
         </CategoryContextProvider>
       </CartContextProvider>
     </div>

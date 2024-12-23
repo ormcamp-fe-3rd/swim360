@@ -16,11 +16,19 @@ function useCart() {
 
   const [cartListData, setCartListData] = useState<CartItem[]>([]);
 
+  const [updateCartTrigger, setUpdateCartTrigger] = useState(0);
+
   const handleCartListDataFetch = async () => {
     try {
+      if (!userId) return;
+
       const fetchedCartListData = await getCartListData(userId);
 
-      setCartListData(fetchedCartListData);
+      if (!fetchedCartListData) {
+        setCartListData([]);
+      } else {
+        setCartListData(fetchedCartListData);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -28,7 +36,14 @@ function useCart() {
 
   const handleCartCountFetch = async () => {
     try {
+      if (!userId) return;
+
       const fetchedCartCount = await getCartCount(userId);
+      if (!fetchedCartCount) {
+        setCartCount(0);
+      } else {
+        setCartCount(fetchedCartCount);
+      }
       setCartCount(fetchedCartCount);
     } catch (error) {
       console.log(error);
@@ -39,8 +54,11 @@ function useCart() {
     const prevCount = cartCount;
 
     try {
+      if (!userId) return;
+
       await updateCartData(cartItem);
       setCartCount((prev) => prev + cartItem.quantity);
+      setUpdateCartTrigger((prev) => prev + 1);
     } catch (error) {
       setCartCount(prevCount);
       console.log(error);
@@ -58,7 +76,7 @@ function useCart() {
 
   useEffect(() => {
     handleCartCountFetch();
-  }, []);
+  }, [userId, updateCartTrigger]);
 
   return {
     cartListData,

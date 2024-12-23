@@ -1,8 +1,9 @@
 type ReviewStarProps = {
   size?: "small" | "large"; // 크기 옵션
+  rating: number; // 별점 (1 ~ 5)
 };
 
-function ReviewStar({ size = "large" }: ReviewStarProps) {
+function ReviewStar({ size = "large", rating }: ReviewStarProps) {
   // size에 따라 스타일 설정
   const sizeStyles = {
     small: {
@@ -12,7 +13,7 @@ function ReviewStar({ size = "large" }: ReviewStarProps) {
     },
     large: {
       container:
-        "w-full h-auto  tablet:w-16 tablet:h-16 flex items-center justify-center",
+        "w-full h-auto tablet:w-16 tablet:h-16 flex items-center justify-center",
       image: "w-11 h-[42px]",
     },
   };
@@ -25,8 +26,12 @@ function ReviewStar({ size = "large" }: ReviewStarProps) {
         <div key={i} className={styles.container}>
           <img
             className={styles.image}
-            src="/public/images/product/review-star-none.png"
-            alt="리뷰 별점 확인, 입력용"
+            src={
+              i < rating
+                ? "/public/images/product/review-star-selected.png" // 선택된 별
+                : "/public/images/product/review-star-none.png" // 비선택된 별
+            }
+            alt={`별점 ${i + 1} ${i < rating ? "선택됨" : "선택되지 않음"}`}
           />
         </div>
       ))}

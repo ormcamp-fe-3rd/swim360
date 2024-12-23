@@ -1,22 +1,19 @@
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import { Table, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { MyReview } from "@/types/users";
 
+import ReviewTableBody from "./ReviewTableBody";
+
+
 interface Prop {
-  reviews: MyReview[];
+  reviews: MyReview[] | string;
 }
 
-export default function ReviewList({ reviews }: Prop) {
-  const cellStyle =
-    "text-center text-base overflow-hidden text-ellipsis whitespace-nowrap";
+export default function ReviewTable({ reviews }: Prop) {
+  let reviewsLength = reviews.length;
 
-  
+  if (typeof reviews === "string") {
+    reviewsLength = 0;
+  }
 
   return (
     <div className="w-full">
@@ -29,7 +26,7 @@ export default function ReviewList({ reviews }: Prop) {
         </div>
       </div>
       <div className="flex justify-end pb-4">
-        <div className="pr-4 text-right">총 {reviews.length}건</div>
+        <div className="pr-4 text-right">총 {reviewsLength}건</div>
       </div>
       <Table className="w-full table-auto md:table-fixed">
         <TableHeader>
@@ -45,17 +42,7 @@ export default function ReviewList({ reviews }: Prop) {
             </TableHead>
           </TableRow>
         </TableHeader>
-        <TableBody>
-          {reviews.map((review, index) => (
-            <TableRow key={index} className="h-20">
-              <TableCell className={cellStyle}>{review.date}</TableCell>
-              <TableCell className={cellStyle}>{review.productName}</TableCell>
-              <TableCell className={`hidden tablet:table-cell ${cellStyle}`}>
-                {review.content}
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
+        <ReviewTableBody reviews={reviews} />
       </Table>
     </div>
   );

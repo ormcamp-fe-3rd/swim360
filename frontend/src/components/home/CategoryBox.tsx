@@ -2,6 +2,7 @@ import { Category } from "@/types/categories";
 import CategoryHoverBox from "./CategoryHoverBox";
 import CategoryUnderLine from "./CategoryUnderline";
 import { Link } from "react-router-dom";
+import Loader from "../common/Loader";
 
 interface CategoryBoxProps {
   currentParentCategoryId: Category["parent_id"];
@@ -21,6 +22,8 @@ export default function CategoryBox({
   getFirstChildCategory,
   getChildCategories,
 }: CategoryBoxProps) {
+  if (parentCategories.length === 0) return;
+
   return (
     <ul className="hidden w-full max-w-[500px] tablet:flex tablet:justify-between">
       {parentCategories.map((category: Category) => {

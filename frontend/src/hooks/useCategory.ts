@@ -40,16 +40,24 @@ function useCategory() {
   };
 
   const parentCategories = useMemo(() => {
+    if (!categories) return [];
     return categories.filter((category) => category.parent_id === null);
   }, [categories]);
 
   const getFirstChildCategory = (parentCategoryId: Category["parent_id"]) => {
+    if (!categories)
+      return {
+        id: 0,
+        name: "no category",
+        parent_id: null,
+      } as Category;
     return categories.find(
       (category) => category.parent_id === parentCategoryId,
     ) as Category;
   };
 
   const getChildCategories = (parentCategoryId: Category["parent_id"]) => {
+    if (!categories) return [];
     return categories.filter(
       (category) => category.parent_id === parentCategoryId,
     );

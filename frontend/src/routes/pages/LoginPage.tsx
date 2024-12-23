@@ -1,36 +1,54 @@
-
-import { useContext } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 import PrimaryButton from "@/components/common/PrimaryButton";
-import { UserIdSetterContext } from "@/contexts/UserContext";
+import { useUserId } from "@/hooks/useUserId";
+import { getUserByEmail } from "@/services/user";
 
 function LoginPage() {
   const navigate = useNavigate();
-  const setUserId = useContext(UserIdSetterContext);
+  const { setUserId } = useUserId();
 
-  async function login() {
-    //TODO: 아이디, 비밀번호 검증
-    const idInput = document.getElementById("id") as HTMLInputElement;
-    const passwordInput = document.getElementById(
-      "password",
-    ) as HTMLInputElement;
+  const [emailId, setEmailId] = useState("");
+  const [password, setPassword] = useState("");
 
-    if (!idInput.value || !passwordInput.value) {
+  const handleEmailChange = (event) => {
+    setEmailId(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  async function handleLogin(event) {
+    event.preventDefault();
+
+    if (!emailId || !password) {
       alert("아이디와 비밀번호를 입력해주세요.");
       return;
     }
 
     try {
-      sessionStorage.setItem("id", idInput.value);
-      if (idInput.value) {
-        setUserId(idInput.value);
-        navigate(`/mypage/${idInput.value}`);
+      //TODO: 에러핸들링 필요
+      const user = await getUserByEmail(emailId);
+
+      if(!user){ 
+        alert('사용자가 없습니다.');
+        return
       }
+      
+      if (user.password != password) {
+        alert("비밀번호가 틀립니다.");
+        return;
+      }
+      
+      setUserId(user.id.toString());
+      sessionStorage.setItem("id", user.id.toString());
+      navigate(`/mypage/${user.id}`);
+      
     } catch (error) {
       console.log(error);
-      alert("로그인 오류");
     }
   }
 
@@ -40,20 +58,24 @@ function LoginPage() {
         로그인
       </p>
       <div className="p-2.5">
-        <input
-          type="text"
-          className="mb-2.5 w-full rounded border p-2.5"
-          name="id"
-          id="id"
-          placeholder="아이디"
-        />
-        <input
-          type="password"
-          className="w-full rounded border p-2.5"
-          name="password"
-          id="password"
-          placeholder="비밀번호"
-        />
+        <form>
+          <input
+            type="text"
+            name="id"
+            value={emailId}
+            placeholder="이메일 아이디"
+            onChange={handleEmailChange}
+            className="mb-2.5 w-full rounded border p-2.5"
+          />
+          <input
+            type="password"
+            name="password"
+            value={password}
+            placeholder="비밀번호"
+            onChange={handlePasswordChange}
+            className="mb-2.5 w-full rounded border p-2.5"
+          />
+        </form>
       </div>
       <label className="my-4 ml-4 inline-block">
         <input
@@ -66,7 +88,7 @@ function LoginPage() {
           아이디 저장
         </span>
       </label>
-      <PrimaryButton onClick={login}>로그인</PrimaryButton>
+      <PrimaryButton onClick={handleLogin}>로그인</PrimaryButton>
       <ul className="mt-4 grid gap-4 text-center sm:flex sm:justify-center">
         <Link to="/Find_Id_Pwd?type=id">
           <li className="inline-block">아이디 찾기</li>

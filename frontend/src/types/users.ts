@@ -1,7 +1,7 @@
 import { Reviews } from "./reviews";
 
 export interface User {
-  id?: number;
+  id: number;
   name: string;
   emailId: string;
   phoneNumber: string; //

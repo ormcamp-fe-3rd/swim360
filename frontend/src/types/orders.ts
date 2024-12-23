@@ -1,4 +1,3 @@
-import { Product } from "./products";
 
 export interface Order {
   id?: number;
@@ -9,13 +8,25 @@ export interface Order {
   createdAt: string;
   updatedAt: string;
 }
-
+export interface MyOrder {
+  id?: number;
+  adress: string;
+  price: number;
+  orderStatus: string;
+  user_id: number;
+  createdAt: string;
+  updatedAt: string;
+  totalQuantity: number;
+}
 export interface MyOrderItem {
   id: number;
-  name: Product["name"];
-  size: Product["size"];
+  quantity: number;
+  size: string;
+  Product: MyOrderItemProduct;
+}
+export interface MyOrderItemProduct{
+  name: string;
   imageUrl: string;
-  quantity: OrderItem["quantity"];
 }
 
 export interface OrderItem {

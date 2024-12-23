@@ -12,19 +12,21 @@ import {
 } from "../ui/tabs";
 import PointList from "./PointList";
 import { points } from "./Points";
-import ReviewList from "./ReviewList";
+import ReviewTable from "./ReviewTable";
 
 export default function PointAndReviewTab() {
   const [tab, setTab] = useState(true);
-  const [myReview, setMyReview] = useState<MyReview[]>([])
+  const [myReview, setMyReview] = useState<MyReview[] | string>([]);
 
   const location = useLocation();
-  
-  useEffect(()=>{
-    const reviews = location.state.reviews;
-    setMyReview(reviews)
 
-  },[])
+  useEffect(() => {
+    const reviews = location.state.reviews;
+    if (!reviews) {
+      setMyReview("리뷰 정보를 가져오는 데 실패했습니다.");
+    }
+    setMyReview(reviews);
+  }, []);
 
   return (
     <div className="h-screen">
@@ -50,7 +52,7 @@ export default function PointAndReviewTab() {
             <PointList points={points} />
           </TabsContent>
           <TabsContent value="my-reviews" className="mt-40">
-            <ReviewList reviews={myReview} />
+            <ReviewTable reviews={myReview} />
           </TabsContent>
         </Tabs>
       </div>

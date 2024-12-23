@@ -1,7 +1,5 @@
-
-import { Reviews } from "./reviews";
 import { Discount } from "./discounts";
-
+import { Reviews } from "./reviews";
 
 export interface Product {
   id: number;
@@ -12,8 +10,7 @@ export interface Product {
   price: number;
   salesVolume: number; //
   discountedPrice: number;
-  size: string;
-  stock: number;
+  size: string[];
   category_id: number;
   discount_id: number;
   createdAt: string;
@@ -34,10 +31,21 @@ export type SortOption = "latest" | "sale" | "review";
 
 export interface ProductItemData
   extends Omit<Product, "category_id, discount_id "> {
-  discountPercentage: Discount["discountPercentage"];
   reviewCount: number;
+  Discount: {
+    discountPercentage: Discount["discountPercentage"];
+  };
 }
 
 export interface ProductListData {
   products: ProductItemData[];
+}
+
+export interface BestProduct {
+  id: number;
+  name: string;
+  brandName: string;
+  imageUrl: string;
+  discountedPrice: number;
+  price: number;
 }

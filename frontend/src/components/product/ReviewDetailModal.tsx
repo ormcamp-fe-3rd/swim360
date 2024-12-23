@@ -71,11 +71,8 @@ function ReviewDetailModal({ onClickToggleDetailModal }: ReviewModalProps2) {
 
             {/* Reviews Component */}
             <div className="w-full">
-              <Reviews size="small" />
+              <Reviews size="small" review={undefined} />
             </div>
-            <button className="mt-6 h-[50px] w-[200px] rounded-[8px] bg-black text-white sm:h-[45px] sm:w-[160px] lg:h-[50px] lg:w-[200px]">
-              수정하기
-            </button>
           </div>
         </div>
       </div>
