@@ -6,7 +6,6 @@ export interface User {
   emailId: string;
   phoneNumber: string; //
   password: string;
-  adress: string;
 }
 
 export interface MyReview {
