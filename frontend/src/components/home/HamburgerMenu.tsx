@@ -20,12 +20,7 @@ export default function HamburgerMenu({
   getFirstChildCategory,
   handleCurrentCategoryChange,
 }: HamburgerMenuProps) {
-  if (parentCategories.length === 0)
-    return (
-      <div className="relative tablet:hidden">
-        <Loader />
-      </div>
-    );
+  if (parentCategories.length === 0) return;
 
   return (
     <div className="relative tablet:hidden">

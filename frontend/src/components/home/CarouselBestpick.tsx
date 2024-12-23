@@ -9,13 +9,13 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel-origin";
-import { BestProduct } from "@/types/products";
+import { ProductItemData } from "@/types/products";
 
-interface Props{
-  products: BestProduct[]
+interface Props {
+  products: ProductItemData[];
 }
 
-export function CarouselBestPick({products}: Props) {
+export function CarouselBestPick({ products }: Props) {
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: true }),
   );
@@ -35,7 +35,7 @@ export function CarouselBestPick({products}: Props) {
           >
             <Link to={`/product/${product.id}`}>
               <div className="rounded-none border-none shadow-none">
-                <img src={product.imageUrl} alt={product.name} />
+                <img src={product.imageUrl[0]} alt={product.name} />
               </div>
             </Link>
           </CarouselItem>
