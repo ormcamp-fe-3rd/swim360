@@ -7,8 +7,6 @@ export type ReviewsType = {
 };
 
 function Review({ size = "large", review }: ReviewsType) {
-  console.log("Reviews 데이터:", review);
-  // sizeStyles로 동적 클래스 적용
   const sizeStyles = {
     small: "w-full min-h-[200px]",
     large: "w-[1064px] min-h-[196px]",
@@ -19,8 +17,7 @@ function Review({ size = "large", review }: ReviewsType) {
       className={`container ${sizeStyles[size]} flex items-center border-b py-2`}
     >
       <div className="flex flex-col">
-        <ReviewStar size="small" />
-        <p>{review?.rating}</p>
+        <ReviewStar size="small" rating={review?.rating || 0} />
         <div className="flex justify-between">
           <div className="flex flex-col gap-2">
             <div className="flex pt-2 text-[18px] font-medium">

@@ -1,33 +1,44 @@
-const { User, Review, Order, Product, Cart, OrderItem, Category, Discount, syncAll } = require('./models')
+const {
+  User,
+  Review,
+  Order,
+  Product,
+  Cart,
+  OrderItem,
+  Category,
+  Discount,
+  syncAll,
+} = require("./models");
 
 const seedData = async () => {
   try {
-    await syncAll({force:true})
+    await syncAll({ force: true });
 
     // 카테고리 데이터 생성
     const categories = await Category.bulkCreate([
-      { name: 'woman', parent_id: null },
-      { name: 'man', parent_id: null },
-      { name: 'acc', parent_id: null },
-      { name: 'one-piece', parent_id: 1 },
-      { name: 'full-body', parent_id: 1 },
-      { name: 'mid-length', parent_id: 2 },
-      { name: 'square-cut', parent_id: 2 },
-      { name: 'bag', parent_id: 3 },
-      { name: 'towel', parent_id: 3 },
-      { name: 'fins', parent_id: 3 },
-    ])
+      { name: "woman", parent_id: null },
+      { name: "man", parent_id: null },
+      { name: "acc", parent_id: null },
+      { name: "one-piece", parent_id: 1 },
+      { name: "full-body", parent_id: 1 },
+      { name: "mid-length", parent_id: 2 },
+      { name: "square-cut", parent_id: 2 },
+      { name: "bag", parent_id: 3 },
+      { name: "towel", parent_id: 3 },
+      { name: "fins", parent_id: 3 },
+    ]);
 
     // 할인 데이터 생성
     const discounts = await Discount.bulkCreate([
-      { name: 'Not on Sale', discountPercentage: 0 },
-      { name: 'Holiday Sale', discountPercentage: 10 },
-      { name: 'Black Friday', discountPercentage: 20 },
-      { name: 'Summer Sale', discountPercentage: 20 },
-    ])
+      { name: "Not on Sale", discountPercentage: 0 },
+      { name: "Holiday Sale", discountPercentage: 10 },
+      { name: "Black Friday", discountPercentage: 20 },
+      { name: "Summer Sale", discountPercentage: 20 },
+    ]);
 
     // 사용자 데이터 생성
     const users = await User.bulkCreate([
+
       { name: '홍길동', emailId: 'hong@example.com', phoneNumber: '01012345678', password: '123' },
       { name: '김철수', emailId: 'kim@example.com', phoneNumber: '01087654321', password: '123' },
       { name: '신물개', emailId: 'sin@example.com', phoneNumber: '01087654321', password: '123' },
@@ -65,6 +76,7 @@ const seedData = async () => {
         discount_id: 1,
       },
       {
+
         brandName: 'NikeSwim',
         name: '앤서 솔리드 패스트백 탄탄이3',
         description:
@@ -252,17 +264,22 @@ const seedData = async () => {
       {
         brandName: 'ADDIBLE',
         name: '플레이어 반신 브이백 딥와인1',
+
         description:
-          '엘리트 수영선수를 위한 프리미엄 원피스 수영복입니다. 편안한 착용감과 함께 최적의 근육 지지력을 제공합니다.',
+          "엘리트 수영선수를 위한 프리미엄 원피스 수영복입니다. 편안한 착용감과 함께 최적의 근육 지지력을 제공합니다.",
         price: 72000,
         discountedPrice: 72000,
-        size: ['S', 'M', 'L', 'XL'],
-        imageUrl: ['http://localhost:3000/images/product2-01.jpg', 'http://localhost:3000/images/product2-02.jpg'],
+        size: ["S", "M", "L", "XL"],
+        imageUrl: [
+          "http://localhost:3000/images/product2-01.jpg",
+          "http://localhost:3000/images/product2-02.jpg",
+        ],
         salesVolume: 200,
         category_id: 5,
         discount_id: 1,
       },
       {
+
         brandName: 'ADDIBLE',
         name: '플레이어 반신 브이백 딥와인2',
         description:
@@ -862,6 +879,7 @@ const seedData = async () => {
         size: ['S', 'M', 'L', 'XL'],
         imageUrl: ['http://localhost:3000/images/product4-01.jpg', 'http://localhost:3000/images/product4-02.jpg'],
         salesVolume: 5,
+
         category_id: 7,
         discount_id: 1,
       },
@@ -869,6 +887,7 @@ const seedData = async () => {
     //수모 cap 10개
     productData.push(
       {
+
         brandName: 'NikeSwim',
         name: '스윔 빅 스우시 실리콘수모1',
         description: '나이키 시그니처 스타일의 빅 스우시 실리콘 수모입니다.',
@@ -876,11 +895,13 @@ const seedData = async () => {
         discountedPrice: 25000,
         size: ['FREE'],
         imageUrl: ['http://localhost:3000/images/product5-01.jpg', 'http://localhost:3000/images/product5-02.jpg'],
+
         salesVolume: 10,
         category_id: 8,
         discount_id: 1,
       },
       {
+
         brandName: 'NikeSwim',
         name: '스윔 빅 스우시 실리콘수모2',
         description: '나이키 시그니처 스타일의 빅 스우시 실리콘 수모입니다.',
@@ -900,11 +921,13 @@ const seedData = async () => {
         discountedPrice: 25000,
         size: ['FREE'],
         imageUrl: ['http://localhost:3000/images/product5-01.jpg', 'http://localhost:3000/images/product5-02.jpg'],
+
         salesVolume: 0,
         category_id: 8,
         discount_id: 1,
       },
       {
+
         brandName: 'NikeSwim',
         name: '스윔 빅 스우시 실리콘수모4',
         description: '나이키 시그니처 스타일의 빅 스우시 실리콘 수모입니다.',
@@ -912,11 +935,13 @@ const seedData = async () => {
         discountedPrice: 25000,
         size: ['FREE'],
         imageUrl: ['http://localhost:3000/images/product5-01.jpg', 'http://localhost:3000/images/product5-02.jpg'],
+
         salesVolume: 0,
         category_id: 8,
         discount_id: 1,
       },
       {
+
         brandName: 'NikeSwim',
         name: '스윔 빅 스우시 실리콘수모5',
         description: '나이키 시그니처 스타일의 빅 스우시 실리콘 수모입니다.',
@@ -924,11 +949,13 @@ const seedData = async () => {
         discountedPrice: 25000,
         size: ['FREE'],
         imageUrl: ['http://localhost:3000/images/product5-01.jpg', 'http://localhost:3000/images/product5-02.jpg'],
+
         salesVolume: 0,
         category_id: 8,
         discount_id: 1,
       },
       {
+
         brandName: 'NikeSwim',
         name: '스윔 빅 스우시 실리콘수모6',
         description: '나이키 시그니처 스타일의 빅 스우시 실리콘 수모입니다.',
@@ -936,11 +963,13 @@ const seedData = async () => {
         discountedPrice: 25000,
         size: ['FREE'],
         imageUrl: ['http://localhost:3000/images/product5-01.jpg', 'http://localhost:3000/images/product5-02.jpg'],
+
         salesVolume: 0,
         category_id: 8,
         discount_id: 1,
       },
       {
+
         brandName: 'NikeSwim',
         name: '스윔 빅 스우시 실리콘수모7',
         description: '나이키 시그니처 스타일의 빅 스우시 실리콘 수모입니다.',
@@ -948,11 +977,13 @@ const seedData = async () => {
         discountedPrice: 25000,
         size: ['FREE'],
         imageUrl: ['http://localhost:3000/images/product5-01.jpg', 'http://localhost:3000/images/product5-02.jpg'],
+
         salesVolume: 0,
         category_id: 8,
         discount_id: 1,
       },
       {
+
         brandName: 'NikeSwim',
         name: '스윔 빅 스우시 실리콘수모8',
         description: '나이키 시그니처 스타일의 빅 스우시 실리콘 수모입니다.',
@@ -960,11 +991,13 @@ const seedData = async () => {
         discountedPrice: 25000,
         size: ['FREE'],
         imageUrl: ['http://localhost:3000/images/product5-01.jpg', 'http://localhost:3000/images/product5-02.jpg'],
+
         salesVolume: 0,
         category_id: 8,
         discount_id: 1,
       },
       {
+
         brandName: 'NikeSwim',
         name: '스윔 빅 스우시 실리콘수모9',
         description: '나이키 시그니처 스타일의 빅 스우시 실리콘 수모입니다.',
@@ -972,11 +1005,13 @@ const seedData = async () => {
         discountedPrice: 25000,
         size: ['FREE'],
         imageUrl: ['http://localhost:3000/images/product5-01.jpg', 'http://localhost:3000/images/product5-02.jpg'],
+
         salesVolume: 0,
         category_id: 8,
         discount_id: 1,
       },
       {
+
         brandName: 'NikeSwim',
         name: '스윔 빅 스우시 실리콘수모10',
         description: '나이키 시그니처 스타일의 빅 스우시 실리콘 수모입니다.',
@@ -984,6 +1019,7 @@ const seedData = async () => {
         discountedPrice: 25000,
         size: ['FREE'],
         imageUrl: ['http://localhost:3000/images/product5-01.jpg', 'http://localhost:3000/images/product5-02.jpg'],
+
         salesVolume: 0,
         category_id: 8,
         discount_id: 1,
@@ -992,6 +1028,7 @@ const seedData = async () => {
     //타올 towel 12개
     productData.push(
       {
+
         brandName: 'Speeco',
         name: '마이크로 습식타올 더블 L 그린1',
         description:
@@ -1026,11 +1063,13 @@ const seedData = async () => {
         discountedPrice: 36000,
         size: ['FREE'],
         imageUrl: ['http://localhost:3000/images/product6-01.jpg', 'http://localhost:3000/images/product5-02.jpg'],
+
         salesVolume: 0,
         category_id: 9,
         discount_id: 2,
       },
       {
+
         brandName: 'Speeco',
         name: '마이크로 습식타올 더블 L 그린4',
         description:
@@ -1039,11 +1078,13 @@ const seedData = async () => {
         discountedPrice: 36000,
         size: ['FREE'],
         imageUrl: ['http://localhost:3000/images/product6-01.jpg', 'http://localhost:3000/images/product5-02.jpg'],
+
         salesVolume: 0,
         category_id: 9,
         discount_id: 2,
       },
       {
+
         brandName: 'Speeco',
         name: '마이크로 습식타올 더블 L 그린5',
         description:
@@ -1052,11 +1093,13 @@ const seedData = async () => {
         discountedPrice: 36000,
         size: ['FREE'],
         imageUrl: ['http://localhost:3000/images/product6-01.jpg', 'http://localhost:3000/images/product5-02.jpg'],
+
         salesVolume: 0,
         category_id: 9,
         discount_id: 2,
       },
       {
+
         brandName: 'Speeco',
         name: '마이크로 습식타올 더블 L 그린6',
         description:
@@ -1065,11 +1108,13 @@ const seedData = async () => {
         discountedPrice: 36000,
         size: ['FREE'],
         imageUrl: ['http://localhost:3000/images/product6-01.jpg', 'http://localhost:3000/images/product5-02.jpg'],
+
         salesVolume: 0,
         category_id: 9,
         discount_id: 2,
       },
       {
+
         brandName: 'Speeco',
         name: '마이크로 습식타올 더블 L 그린7',
         description:
@@ -1104,11 +1149,13 @@ const seedData = async () => {
         discountedPrice: 36000,
         size: ['FREE'],
         imageUrl: ['http://localhost:3000/images/product6-01.jpg', 'http://localhost:3000/images/product5-02.jpg'],
+
         salesVolume: 0,
         category_id: 9,
         discount_id: 2,
       },
       {
+
         brandName: 'Speeco',
         name: '마이크로 습식타올 더블 L 그린10',
         description:
@@ -1117,11 +1164,13 @@ const seedData = async () => {
         discountedPrice: 36000,
         size: ['FREE'],
         imageUrl: ['http://localhost:3000/images/product6-01.jpg', 'http://localhost:3000/images/product5-02.jpg'],
+
         salesVolume: 0,
         category_id: 9,
         discount_id: 2,
       },
       {
+
         brandName: 'Speeco',
         name: '마이크로 습식타올 더블 L 그린11',
         description:
@@ -1130,11 +1179,13 @@ const seedData = async () => {
         discountedPrice: 36000,
         size: ['FREE'],
         imageUrl: ['http://localhost:3000/images/product6-01.jpg', 'http://localhost:3000/images/product5-02.jpg'],
+
         salesVolume: 0,
         category_id: 9,
         discount_id: 2,
       },
       {
+
         brandName: 'Speeco',
         name: '마이크로 습식타올 더블 L 그린12',
         description:
@@ -1143,6 +1194,7 @@ const seedData = async () => {
         discountedPrice: 36000,
         size: ['FREE'],
         imageUrl: ['http://localhost:3000/images/product6-01.jpg', 'http://localhost:3000/images/product5-02.jpg'],
+
         salesVolume: 0,
         category_id: 9,
         discount_id: 2,
@@ -1151,6 +1203,7 @@ const seedData = async () => {
     //오리발 5개
     productData.push(
       {
+
         brandName: 'Mares',
         name: '뉴 클리퍼 오리발1',
         description: '부드러운 소재로 발목의 무리를 최소화하며, 편안한 착용감을 제공합니다.',
@@ -1159,10 +1212,12 @@ const seedData = async () => {
         size: ['S', 'M', 'L', 'XL'],
         imageUrl: ['http://localhost:3000/images/product7-01.jpg', 'http://localhost:3000/images/product7-02.jpg'],
         salesVolume: 20,
+
         category_id: 10,
         discount_id: 2,
       },
       {
+
         brandName: 'Mares',
         name: '뉴 클리퍼 오리발2',
         description: '부드러운 소재로 발목의 무리를 최소화하며, 편안한 착용감을 제공합니다.',
@@ -1171,10 +1226,12 @@ const seedData = async () => {
         size: ['S', 'M', 'L', 'XL'],
         imageUrl: ['http://localhost:3000/images/product7-01.jpg', 'http://localhost:3000/images/product7-02.jpg'],
         salesVolume: 30,
+
         category_id: 10,
         discount_id: 2,
       },
       {
+
         brandName: 'Mares',
         name: '뉴 클리퍼 오리발3',
         description: '부드러운 소재로 발목의 무리를 최소화하며, 편안한 착용감을 제공합니다.',
@@ -1183,10 +1240,12 @@ const seedData = async () => {
         size: ['S', 'M', 'L', 'XL'],
         imageUrl: ['http://localhost:3000/images/product7-01.jpg', 'http://localhost:3000/images/product7-02.jpg'],
         salesVolume: 10,
+
         category_id: 10,
         discount_id: 2,
       },
       {
+
         brandName: 'Mares',
         name: '뉴 클리퍼 오리발4',
         description: '부드러운 소재로 발목의 무리를 최소화하며, 편안한 착용감을 제공합니다.',
@@ -1194,11 +1253,13 @@ const seedData = async () => {
         discountedPrice: 54000,
         size: ['S', 'M', 'L', 'XL'],
         imageUrl: ['http://localhost:3000/images/product7-01.jpg', 'http://localhost:3000/images/product7-02.jpg'],
+
         salesVolume: 0,
         category_id: 10,
         discount_id: 2,
       },
       {
+
         brandName: 'Mares',
         name: '뉴 클리퍼 오리발5',
         description: '부드러운 소재로 발목의 무리를 최소화하며, 편안한 착용감을 제공합니다.',
@@ -1214,16 +1275,38 @@ const seedData = async () => {
 
     const products = await Product.bulkCreate(productData)
 
+
     // 주문 데이터 생성 (각 사용자당 2개)
     const orders = await Order.bulkCreate([
-      { adress: '서울시 강남구 123', price: 30000, orderStatus: 'ORDER_COMPLETE', user_id: 1 },
-      { adress: '서울시 서초구 456', price: 45000, orderStatus: 'SHIPPING', user_id: 1 },
-      { adress: '서울시 용산구 789', price: 20000, orderStatus: 'PAYMENT_COMPLETE', user_id: 2 },
-      { adress: '서울시 종로구 101', price: 55000, orderStatus: 'DELIVERED', user_id: 2 },
-    ])
+      {
+        adress: "서울시 강남구 123",
+        price: 30000,
+        orderStatus: "ORDER_COMPLETE",
+        user_id: 1,
+      },
+      {
+        adress: "서울시 서초구 456",
+        price: 45000,
+        orderStatus: "SHIPPING",
+        user_id: 1,
+      },
+      {
+        adress: "서울시 용산구 789",
+        price: 20000,
+        orderStatus: "PAYMENT_COMPLETE",
+        user_id: 2,
+      },
+      {
+        adress: "서울시 종로구 101",
+        price: 55000,
+        orderStatus: "DELIVERED",
+        user_id: 2,
+      },
+    ]);
 
     // 주문 항목 데이터 생성
     const orderItems = await OrderItem.bulkCreate([
+
       { price: 10000, quantity: 1, size: 'S', order_id: 1, product_id: 1 },
       { price: 20000, quantity: 2, size: 'M', order_id: 1, product_id: 30 },
       { price: 15000, quantity: 2, size: 'L', order_id: 2, product_id: 20 },
@@ -1261,10 +1344,11 @@ const seedData = async () => {
       { content: '입문자에게 추천!', imageUrl: null, rating: 5, product_id: 91, user_id: 2 },
     ])
 
-    console.log('더미 데이터 생성 완료!')
-  } catch (error) {
-    console.error('더미 데이터 생성 중 오류 발생:', error)
-  }
-}
 
-module.exports = seedData
+    console.log("더미 데이터 생성 완료!");
+  } catch (error) {
+    console.error("더미 데이터 생성 중 오류 발생:", error);
+  }
+};
+
+module.exports = seedData;
