@@ -31,8 +31,10 @@ export type SortOption = "latest" | "sale" | "review";
 
 export interface ProductItemData
   extends Omit<Product, "category_id, discount_id "> {
-  discountPercentage: Discount["discountPercentage"];
   reviewCount: number;
+  Discount: {
+    discountPercentage: Discount["discountPercentage"];
+  };
 }
 
 export interface ProductListData {
