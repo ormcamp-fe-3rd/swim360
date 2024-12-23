@@ -12,14 +12,17 @@ const Order = sequelize.define(
       primaryKey: true,
       allowNull: false,
     },
+    //받는사람 이름
     receiver: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
+    //주소
     address: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
+    //상세주소
     detailAddress: {
       type: DataTypes.STRING(255),
       allowNull: false,
