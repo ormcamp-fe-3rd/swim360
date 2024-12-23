@@ -1279,30 +1279,42 @@ const seedData = async () => {
     // 주문 데이터 생성 (각 사용자당 2개)
     const orders = await Order.bulkCreate([
       {
-        adress: "서울시 강남구 123",
-        price: 297000,
-        orderStatus: "ORDER_COMPLETE",
+        receiver: "김철수",
+        address: '서울시 강남구 123',
+        detailAddress: "1123호",
+        phoneNumber:"010-1111-2222",
+        totalPrice: 297000,
+        orderStatus: 'ORDER_COMPLETE',
         user_id: 1,
       },
       {
-        adress: "서울시 서초구 456",
-        price: 441000,
-        orderStatus: "SHIPPING",
+        receiver: "김지균",
+        address: '서울시 서초구 456',
+        detailAddress: "101호",
+        phoneNumber: "010-1234-1234",
+        totalPrice: 441000,
+        orderStatus: 'SHIPPING',
         user_id: 1,
       },
       {
-        adress: "서울시 용산구 789",
-        price: 356000,
-        orderStatus: "PAYMENT_COMPLETE",
+        receiver: "김철수",
+        address: '서울시 용산구 789',
+        detailAddress:"802호",
+        phoneNumber:"010-1211-2223",
+        totalPrice: 356000,
+        orderStatus: 'PAYMENT_COMPLETE',
         user_id: 2,
       },
       {
-        adress: "서울시 종로구 101",
-        price: 99000,
-        orderStatus: "DELIVERED",
+        receiver: "김철수",
+        address: '서울시 종로구 101',
+        detailAddress: "1102호",
+        phoneNumber:"010-1111-2224",
+        totalPrice: 99000,
+        orderStatus: 'DELIVERED',
         user_id: 2,
       },
-    ]);
+    ])
 
     // 주문 항목 데이터 생성
     const orderItems = await OrderItem.bulkCreate([
