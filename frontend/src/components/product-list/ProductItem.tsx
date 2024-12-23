@@ -12,7 +12,7 @@ function ProductItem({
   Discount,
 }: ProductItemData) {
   return (
-    <Link to={`/product/${id} `}>
+    <Link to={`/product/${id}`}>
       <div className="grid h-full w-full grid-rows-[2fr_0.5fr]">
         <div className="h-full w-full overflow-hidden">
           <img
