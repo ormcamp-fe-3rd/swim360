@@ -1,5 +1,5 @@
 import { Discount } from "./discounts";
-import { Rating, Reviews } from "./reviews";
+import { Reviews } from "./reviews";
 
 export interface Product {
   id: number;
@@ -16,8 +16,14 @@ export interface Product {
   createdAt: string;
 }
 
+export interface ProductData extends Product {
+  Discount: {
+    discountPercentage: number;
+  };
+}
+
 export interface ProductDetail {
-  product: Product | undefined;
+  product: ProductData | undefined;
   reviews: Reviews[] | undefined;
 }
 
