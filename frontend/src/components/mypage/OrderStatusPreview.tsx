@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 
 import { OrderStatus, OrderStatusItem } from "@/types/orders";
+import { useUserId } from "@/hooks/useUserId";
+import { useEffect } from "react";
+import { getMyOrderStatus } from "@/services/order";
 
 const ORDER_STATUS: OrderStatusItem[] = [
   { status: "ORDER_COMPLETE", label: "주문 완료" },
@@ -15,6 +18,14 @@ interface OrderStatusProps {
 }
 
 function OrderStatusPreview({ orderStatusCount }: OrderStatusProps) {
+  const { userId } = useUserId();
+  // const myOrderStatus = 
+
+  // useEffect(()=> {
+  //   const orders = getMyOrderStatus(userId);
+
+  // },[])
+
   return (
     <Link to="/orderlist">
       <div className="mb-[69px] flex h-[146px] border border-black">

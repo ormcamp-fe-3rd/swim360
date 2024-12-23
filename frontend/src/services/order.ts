@@ -27,3 +27,13 @@ export async function createOrderData(orderData: Order) {
     alert("주문 중 문제가 발생했습니다.");
   }
 }
+
+export async function getMyOrderStatus(userId: string){
+  try {
+    const response = await axios.get(`/orders/usersOrderStatus/${userId}`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+}
