@@ -5,51 +5,67 @@ const router = express.Router();
 
 //모델명/검색모델명/검색모델의id ex.products/category/1
 //메인 베스트상품 불러오기
-router.get("/bestProducts", async(req, res) => {
-  try{
+router.get("/bestProducts", async (req, res) => {
+  try {
     const bestProducts = await Product.findAll({
       order: [["salesVolume", "DESC"]],
       limit: 4,
-      attributes: ["id", "name", "imageUrl", "brandName", "discountedPrice", "price"]
+      attributes: [
+        "id",
+        "name",
+        "imageUrl",
+        "brandName",
+        "discountedPrice",
+        "price",
+      ],
+      include: [
+        {
+          model: Discount,
+          attributes: ["discountPercentage"],
+          required: false,
+        },
+      ],
+      group: ["Product.id", "Discount.id"],
     });
 
     if (!bestProducts || bestProducts.length === 0) {
-      return res.status(404).json({ message: 'BestProducts Not Found' })
+      return res.status(404).json({ message: "BestProducts Not Found" });
     }
 
     const formattedItems = bestProducts.map((product) => {
       if (product && Array.isArray(product.imageUrl)) {
-        product.imageUrl = product.imageUrl.length > 0 ? product.imageUrl[0] : null
+        product.imageUrl =
+          product.imageUrl.length > 0 ? product.imageUrl[0] : null;
       }
-      return product
-    })
+      return product;
+    });
 
-    res.json(formattedItems)
-  }catch(error){
+    res.json(formattedItems);
+  } catch (error) {
     console.error("Error:", error);
-    return res.status(500).json({ error: "서버 에러: " + error.message})
+    return res.status(500).json({ error: "서버 에러: " + error.message });
   }
-})
+});
 
-router.get('/category/:categoryId', async (req, res) => {
-  const { categoryId } = req.params
+router.get("/category/:categoryId", async (req, res) => {
+  const { categoryId } = req.params;
 
   // TODO: Discount(Discount Percentage), Review(rev) 테이블과 조인
   try {
     const productList = await Product.findAll({
       where: { category_id: categoryId },
       attributes: [
-        'id',
-        'brandName',
-        'name',
-        'description',
-        'price',
-        'discountedPrice',
-        'size',
-        'imageUrl',
-        'salesVolume',
-        'createdAt',
-        [sequelize.fn('COUNT', sequelize.col('Reviews.id')), 'reviewCount'], // 리뷰 수 계산
+        "id",
+        "brandName",
+        "name",
+        "description",
+        "price",
+        "discountedPrice",
+        "size",
+        "imageUrl",
+        "salesVolume",
+        "createdAt",
+        [sequelize.fn("COUNT", sequelize.col("Reviews.id")), "reviewCount"], // 리뷰 수 계산
       ],
       include: [
         {
@@ -59,24 +75,23 @@ router.get('/category/:categoryId', async (req, res) => {
         },
         {
           model: Discount,
-          attributes: ['discountPercentage'],
+          attributes: ["discountPercentage"],
           required: false,
         },
       ],
-      group: ['Product.id', 'Discount.id'],
-    })
+      group: ["Product.id", "Discount.id"],
+    });
 
     if (!productList || productList.length === 0) {
-      return res.status(404).json({ message: '해당하는 상품이 없습니다.' })
+      return res.status(404).json({ message: "해당하는 상품이 없습니다." });
     }
 
-    return res.json(productList)
+    return res.json(productList);
   } catch (error) {
-    console.error('Error:', error)
-    return res.status(500).json({ error: '서버 에러: ' + error.message })
+    console.error("Error:", error);
+    return res.status(500).json({ error: "서버 에러: " + error.message });
   }
-})
-
+});
 
 router.get("/detail/:productId", async (req, res) => {
   const { productId } = req.params; // URL 파라미터에서 productId 추출
@@ -106,27 +121,23 @@ router.get("/detail/:productId", async (req, res) => {
   }
 });
 
-
-router.get('/:productId', async (req, res) => {
-  const { productId } = req.params // URL 파라미터에서 productId 추출
+router.get("/:productId", async (req, res) => {
+  const { productId } = req.params; // URL 파라미터에서 productId 추출
 
   try {
     const product = await Product.findOne({
       where: { id: productId },
-    })
+    });
 
     if (!product) {
-      return res.status(404).json({ error: 'Product not found' })
+      return res.status(404).json({ error: "Product not found" });
     }
 
-    return res.json(product)
+    return res.json(product);
   } catch (error) {
-    return res.status(500).json({ error: '서버 에러 ' + error.message })
+    return res.status(500).json({ error: "서버 에러 " + error.message });
   }
-})
-
-
-
+});
 
 router.get("/:id", (req, res) => {});
 

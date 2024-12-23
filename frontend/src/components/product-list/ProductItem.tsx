@@ -9,7 +9,7 @@ function ProductItem({
   imageUrl,
   price,
   discountedPrice,
-  discountPercentage,
+  Discount,
 }: ProductItemData) {
   return (
     <Link to={`/product/${id} `}>
@@ -30,7 +30,7 @@ function ProductItem({
               <div className="text-[14px] line-through">{price}원</div>
             </div>
             <div className="font-semibold text-[#ED1818]">
-              {discountPercentage}%
+              {Discount.discountPercentage}%
             </div>
           </div>
         </div>
