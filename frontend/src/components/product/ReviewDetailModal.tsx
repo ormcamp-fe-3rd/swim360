@@ -16,7 +16,7 @@ function ReviewDetailModal({
     <>
       {/* Modal Container */}
       <div
-        className="fixed left-1/2 top-1/2 z-50 w-full max-w-[1024px] -translate-x-1/2 -translate-y-1/2 transform rounded-xl bg-white shadow-lg"
+        className="fixed left-1/2 top-1/2 z-50 w-full max-w-[1024px] -translate-x-1/2 -translate-y-1/2 transform rounded-xl shadow-lg"
         onClick={(e) => e.stopPropagation()} // 내부 클릭 시 이벤트 전파 방지
       >
         <div className="flex flex-col sm:flex-row">
@@ -24,10 +24,10 @@ function ReviewDetailModal({
           <div className="relative mx-auto flex w-full items-center justify-center rounded-l-xl bg-black text-white sm:max-w-[400px] lg:max-w-[706px]">
             <Carousel className="z-50 flex h-full w-full items-center justify-between">
               <CarouselContent>
-                <CarouselItem className="flex h-[300px] w-full items-center justify-center">
+                <CarouselItem className="flex w-full items-center justify-center">
                   {review?.imageUrl ? (
                     <img
-                      className="h-auto w-auto max-w-full rounded-l-xl object-contain"
+                      className="w-auto max-w-full rounded-l-xl object-contain"
                       src={review.imageUrl}
                       alt="review-image"
                     />
@@ -42,7 +42,7 @@ function ReviewDetailModal({
           </div>
 
           {/* Modal Content Section */}
-          <div className="relative flex w-full flex-col items-center justify-start rounded-r-xl border-2 p-6">
+          <div className="relative flex w-full flex-col items-center justify-start rounded-r-xl bg-white p-6">
             <div className="mb-4 flex w-full items-center justify-between">
               <p className="w-full border-b-2 border-black text-center text-lg">
                 후기작성
