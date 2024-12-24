@@ -108,6 +108,14 @@ router.get("/detail/:productId", async (req, res) => {
     // 제품 정보를 가져오는 쿼리 (Product 모델)
     const product = await Product.findOne({
       where: { id: productId },
+      include: [
+        {
+          model: Discount,
+          attributes: ["discountPercentage"],
+          required: false,
+        },
+      ],
+      group: ["Product.id", "Discount.id"],
     });
 
     if (!product) {

@@ -1,11 +1,16 @@
+
+import { Link } from "react-router-dom";
+import { ProductData } from "@/types/products";
+
 import { useState } from "react";
 import { Product } from "@/types/products";
+
 import { Selected } from "./SelectedItem";
 import { SizeButton } from "./SizeBtn";
 import { Cart } from "@/types/cart";
 
 interface DetailsProps {
-  product: Product | undefined;
+  product: ProductData | undefined;
   handleCartUpdate: (cartItem: Cart) => Promise<void>;
 }
 
@@ -63,7 +68,7 @@ function Details({ product, handleCartUpdate }: DetailsProps) {
           {product?.discountedPrice}원
         </p>
         <p className="text-base font-bold text-[#D40022]">
-          {product?.salesVolume}%
+          {product?.Discount.discountPercentage}%
         </p>
       </div>
       <div className="flex w-[522px] gap-[10px]">
