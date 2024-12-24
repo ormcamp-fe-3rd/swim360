@@ -14,6 +14,7 @@ export default function Cart() {
   } = useCart();
 
   const cartProductListProps = {
+    selectedCartIds,
     cartListData,
     cartTotalQuantity,
     handleSelectedCartUpdate,

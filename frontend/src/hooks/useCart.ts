@@ -127,15 +127,6 @@ function useCart() {
     });
   };
 
-  const handleOneCartDelete = async (cartId: Cart["id"]) => {
-    try {
-      const response = await deleteOneCart(cartId);
-      console.log(response?.status);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   const cartTotalPrice = useMemo(
     () =>
       Array.from(selectedCartItems).reduce((acc, item) => acc + item.price, 0),
@@ -169,7 +160,6 @@ function useCart() {
     selectedCartItems: Array.from(selectedCartItems),
     handleSelectedCartUpdate,
     selectedCartIds,
-    handleOneCartDelete,
   };
 }
 export default useCart;
