@@ -1,6 +1,7 @@
-import { Category } from "@/types/categories";
 import { Link } from "react-router-dom";
-import Loader from "../common/Loader";
+
+import { useUserId } from "@/hooks/useUserId";
+import { Category } from "@/types/categories";
 
 interface HamburgerMenuProps {
   isOpen: boolean;
@@ -20,6 +21,7 @@ export default function HamburgerMenu({
   getFirstChildCategory,
   handleCurrentCategoryChange,
 }: HamburgerMenuProps) {
+  const { userId } = useUserId();
   if (parentCategories.length === 0) return;
 
   return (
@@ -33,6 +35,7 @@ export default function HamburgerMenu({
       </button>
       <div
         className={`${isOpen ? "block" : "hidden"} fixed inset-0 top-[190px] z-10 backdrop-brightness-50`}
+        onClick={handleUIToggle}
       >
         <div className="h-full w-full">
           <ul className="flex h-[420px] flex-col items-center bg-white">
@@ -61,7 +64,7 @@ export default function HamburgerMenu({
             })}
             <li className="flex h-1/4 w-full shadow-sm">
               <Link
-                to={"/mypage"}
+                to={userId? "/mypage": "/login"}
                 className="flex h-full w-full items-center justify-center font-semibold"
               >
                 MY PAGE
