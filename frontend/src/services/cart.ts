@@ -32,19 +32,7 @@ export async function updateCartData(cartItems: Cart[]) {
 
 export async function deleteOrderedCart(cartIds: Cart["id"][]) {
   try {
-    console.log(cartIds);
-    console.log({ data: cartIds });
     const response = await axios.delete(`/carts`, { data: { cartIds } });
-    return response;
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-export async function deleteOneCart(cartId: Cart["id"]) {
-  try {
-    const response = await axios.delete(`/carts/${cartId}`);
-
     return response;
   } catch (error) {
     console.error(error);
