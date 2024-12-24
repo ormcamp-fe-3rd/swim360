@@ -58,20 +58,50 @@ router.get("/usersOrderStatus/:userId", async(req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const orderData = req.body;
+    const {
+      receiver,
+      phoneNumber,
+      address,
+      detailAddress,
+      totalPrice,
+      orderStatus,
+      user_id,
+      products,
+    } = req.body;
 
     // 필수 데이터 검증
     if (
-      !orderData.receiver ||
-      !orderData.phoneNumber ||
-      !orderData.address ||
-      !orderData.totalPrice
+      !receiver ||
+      !phoneNumber ||
+      !address ||
+      !totalPrice ||
+      !products ||
+      products.length === 0
     ) {
       return res.status(400).json({ error: "필수 정보가 누락되었습니다." });
     }
 
     // 주문 정보 저장
-    const newOrder = await Order.create(orderData);
+    const newOrder = await Order.create({
+      receiver,
+      phoneNumber,
+      address,
+      detailAddress,
+      totalPrice,
+      orderStatus,
+      user_id,
+    });
+
+    // 주문 상품 정보 저장
+    const orderItems = products.map((product) => ({
+      order_id: newOrder.id, // 생성된 주문 ID와 연결
+      size: product.size,
+      quantity: product.quantity,
+      total_price: product.totalPrice,
+    }));
+
+    await OrderItem.bulkCreate(orderItems);
+    console.log("상품 저장 완료");
 
     res.status(200).json({
       message: "주문이 성공적으로 등록되었습니다.",
