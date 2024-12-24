@@ -10,8 +10,8 @@ import {
   TabsListCustom,
   TabsTriggerCustom,
 } from "../ui/tabs";
-import PointList from "./PointList";
 import { points } from "./Points";
+import PointTable from "./PointTable";
 import ReviewTable from "./ReviewTable";
 
 export default function PointAndReviewTab() {
@@ -49,7 +49,7 @@ export default function PointAndReviewTab() {
             </TabsTriggerCustom>
           </TabsListCustom>
           <TabsContent value="my-points" className="mt-40 h-full">
-            <PointList points={points} />
+            <PointTable points={points} />
           </TabsContent>
           <TabsContent value="my-reviews" className="mt-40 h-full">
             <ReviewTable reviews={myReview} />
