@@ -23,7 +23,7 @@ function ProductDetailPage() {
   };
 
   if (!product) {
-    return <p>Loading...</p>; // 로딩 상태 처리
+    return <p className="mt-20 flex items-center justify-center">Loading...</p>; // 로딩 상태 처리
   }
 
   return (
