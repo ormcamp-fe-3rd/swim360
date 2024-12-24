@@ -14,6 +14,7 @@ interface CartProductListProps {
     isChecked: boolean,
     selectedCartId: Cart["id"],
   ) => void;
+  handleSelectAllCartItems: (isChecked: boolean) => void;
 }
 
 export default function CartProductList({
@@ -21,24 +22,9 @@ export default function CartProductList({
   cartListData,
   selectedCartIds,
   handleSelectedCartUpdate,
+  handleSelectAllCartItems,
 }: CartProductListProps) {
   const navigate = useNavigate();
-
-  const handleSelectAll = (checked: boolean) => {
-    cartListData.forEach((cartItem) => {
-      const selectedCartItem = {
-        productId: cartItem.Product.id,
-        name: cartItem.Product.name,
-        description: cartItem.Product.description,
-        price: cartItem.price,
-        imageUrl: cartItem.Product.imageUrl,
-        size: cartItem.size,
-        quantity: cartItem.quantity,
-        totalPrice: cartItem.price,
-      };
-      handleSelectedCartUpdate(selectedCartItem, checked, cartItem.id);
-    });
-  };
 
   const handleSelectedCartDelete = async (
     selectedCartIds: Set<number | undefined>,
@@ -87,7 +73,7 @@ export default function CartProductList({
                 cartListData.length > 0 &&
                 selectedCartIds.size === cartListData.length
               }
-              onCheckedChange={handleSelectAll}
+              onCheckedChange={handleSelectAllCartItems}
             />
             <span className="w-full">상품정보</span>
           </div>

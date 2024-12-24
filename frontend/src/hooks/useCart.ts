@@ -140,6 +140,7 @@ function useCart() {
       );
       setSelectedCartItems(newSelectedItems);
     } else {
+      console.log("전체 체크해제");
       setSelectedCartIds(new Set());
       setSelectedCartItems(new Set());
     }
