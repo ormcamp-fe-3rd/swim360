@@ -40,7 +40,6 @@ export default function UserInfoEditForm() {
       username: "",
       phoneNumber: "",
       emailId: "",
-      password: "",
       address:"",
     },
   });
@@ -55,7 +54,6 @@ export default function UserInfoEditForm() {
           username: user.name||"",
           phoneNumber: user.phoneNumber||"",
           emailId: user.emailId||"",
-          password: user.password||"",
         });
         
       }catch(error:any){
@@ -92,7 +90,7 @@ export default function UserInfoEditForm() {
                     이름
                   </FormLabel>
                   <FormControl className="h-12 w-2/3 border-none bg-[#F0F0F0]">
-                    <Input placeholder="shadcn" {...field} />
+                    <Input placeholder="name" {...field} />
                   </FormControl>
                   <FormMessage />
                 </div>
@@ -109,7 +107,7 @@ export default function UserInfoEditForm() {
                     연락처
                   </FormLabel>
                   <FormControl className="h-12 w-2/3 border-none bg-[#F0F0F0]">
-                    <Input placeholder="shadcn" {...field} />
+                    <Input placeholder="010-1234-1234" {...field} />
                   </FormControl>
                   <FormMessage />
                 </div>
@@ -126,7 +124,7 @@ export default function UserInfoEditForm() {
                     이메일 아이디
                   </FormLabel>
                   <FormControl className="h-12 w-2/3 border-none bg-[#F0F0F0]">
-                    <Input placeholder="shadcn" {...field} />
+                    <Input placeholder="swim360@google.com" {...field} />
                   </FormControl>
                   <FormMessage />
                 </div>
@@ -144,7 +142,7 @@ export default function UserInfoEditForm() {
                   </FormLabel>
                   <div className="w-2/3">
                     <FormControl className="h-12 border-none bg-[#F0F0F0]">
-                      <Input placeholder="shadcn" {...field} />
+                      <Input placeholder="password" {...field} />
                     </FormControl>
                     <FormDescription className="pt-1">
                       영문, 숫자, 특수문자 포함 8자~16자 사이로 입력가능합니다.
@@ -166,7 +164,7 @@ export default function UserInfoEditForm() {
                   </FormLabel>
                   <div className="w-2/3">
                     <FormControl className="h-12 border-none bg-[#F0F0F0]">
-                      <Input placeholder="shadcn" {...field} />
+                      <Input placeholder="password" {...field} />
                     </FormControl>
                     <FormDescription className="pt-1">
                       비밀번호가 동일하지 않습니다.
@@ -188,7 +186,7 @@ export default function UserInfoEditForm() {
                   </FormLabel>
                   <div className="flex w-2/3 flex-col gap-1">
                     <FormControl className="h-12 border-none bg-[#F0F0F0]">
-                      <Input placeholder="shadcn" {...field} />
+                      <Input placeholder="adress" {...field} />
                     </FormControl>
                     <FormControl className="h-12 border-none bg-[#F0F0F0]">
                       <Input
