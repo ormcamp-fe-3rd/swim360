@@ -91,7 +91,8 @@ function PayMentOrderPage() {
           totalPrice={selectedProductInfo.totalPrice}
           point={0}
           formData={{ ...formData }}
-          products={[]}
+          productId={selectedProductInfo.product_id}
+          products={selectedProductInfo.selectedItems}
         />
       </div>
     </div>

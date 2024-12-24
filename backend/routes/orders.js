@@ -37,24 +37,24 @@ router.get("/users/:id", async (req, res) => {
   }
 });
 
-router.get("/usersOrderStatus/:userId", async(req, res) => {
-  try{
+router.get("/usersOrderStatus/:userId", async (req, res) => {
+  try {
     const userId = req.params.userId;
     const orders = await Order.findAll({
       where: { user_id: userId },
-      attributes: ['id', 'orderStatus'],
-    })
+      attributes: ["id", "orderStatus"],
+    });
 
     if (!orders) {
       return res.status(404).json({ message: "Orders not found" });
     }
 
     return res.json(orders);
-  }catch(error){
+  } catch (error) {
     console.log(error);
-    return res.status(500).json({error: error.message});
+    return res.status(500).json({ error: error.message });
   }
-})
+});
 
 router.post("/", async (req, res) => {
   try {
@@ -67,17 +67,11 @@ router.post("/", async (req, res) => {
       orderStatus,
       user_id,
       products,
+      productId,
     } = req.body;
 
     // 필수 데이터 검증
-    if (
-      !receiver ||
-      !phoneNumber ||
-      !address ||
-      !totalPrice ||
-      !products ||
-      products.length === 0
-    ) {
+    if (!receiver || !phoneNumber || !address || !totalPrice || !products) {
       return res.status(400).json({ error: "필수 정보가 누락되었습니다." });
     }
 
@@ -97,7 +91,8 @@ router.post("/", async (req, res) => {
       order_id: newOrder.id, // 생성된 주문 ID와 연결
       size: product.size,
       quantity: product.quantity,
-      total_price: product.totalPrice,
+      price: product.totalPrice,
+      product_id: productId,
     }));
 
     await OrderItem.bulkCreate(orderItems);
