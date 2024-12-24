@@ -41,7 +41,7 @@ function ReviewsTab({ reviews }: ProductDetail) {
         </Link>
         <div onClick={onClickToggleDetailModal}>
           {reviews?.map((review) => (
-            <div>
+            <div key={review.id}>
               <Review
                 key={review.id}
                 review={review}
