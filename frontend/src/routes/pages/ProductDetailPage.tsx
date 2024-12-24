@@ -23,13 +23,18 @@ function ProductDetailPage() {
   };
 
   if (!product) {
-    return <p>Loading...</p>; // 로딩 상태 처리
+    return <p className="mt-20 flex items-center justify-center">Loading...</p>; // 로딩 상태 처리
   }
 
   return (
     <div className="flex flex-col justify-center px-4">
       <div className="mx-auto flex w-full max-w-[1064px] flex-wrap items-start justify-center gap-5">
-        <Photos />
+        <Photos
+          imageUrl={product.imageUrl}
+          onClick={function (): void {
+            throw new Error("Function not implemented.");
+          }}
+        />
         <Details {...detailsSectionProps} />
       </div>
       <DetailsTab />

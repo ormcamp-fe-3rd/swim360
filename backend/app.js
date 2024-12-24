@@ -25,7 +25,8 @@ const startServer = async () => {
 
   app.use(require("./routes"));
 
-  app.use('/images', express.static(path.join(__dirname, 'public/images')))
+  app.use('/product-images', express.static(path.join(__dirname, 'public/product-images')))
+  app.use('/review-images', express.static(path.join(__dirname, 'public/review-images')))
   
   app.listen(config.expressPort, () => {
     console.log(`server listening on port ${config.expressPort}`);

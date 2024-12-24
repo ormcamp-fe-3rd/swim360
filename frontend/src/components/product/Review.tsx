@@ -18,6 +18,9 @@ function Review({ size = "large", review, onClickSelecteReview }: ReviewsType) {
     return <div>리뷰 업로드에 문제가 생겼습니다.</div>;
   }
 
+  const maxLength = 20; // 텍스트 자를 길이 설정
+  const truncatedContent = review.content.slice(0, maxLength); // 잘라낼 텍스트
+
   return (
     <div
       onClick={() => {
@@ -30,7 +33,18 @@ function Review({ size = "large", review, onClickSelecteReview }: ReviewsType) {
         <ReviewStar size="small" rating={review?.rating || 0} />
         <div className="flex justify-between">
           <div className="flex flex-col gap-2">
-            <p className="font-light">{review?.content}</p>
+            {/* 텍스트 자르기 */}
+            <p className="limit-text font-light">
+              {size === "large" && review.content.length > maxLength
+                ? `${truncatedContent}...` // 자르고 '...' 추가
+                : review.content}{" "}
+              {/* size가 large일 때만 "자세히 보기" 버튼을 표시 */}
+              {size === "large" && review.content.length > maxLength && (
+                <button className="cursor-pointer text-slate-500">
+                  자세히 보기
+                </button>
+              )}
+            </p>
             {/* 라지 사이즈일 때만 이미지 보이도록 조건부 렌더링 */}
             {size === "large" && review?.imageUrl && (
               <div className="h-40 w-40 overflow-hidden bg-black object-cover pb-2">

@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 import { useUserId } from "@/hooks/useUserId";
 import { getMyOrderStatus } from "@/services/order";
-import { Order, OrderStatus, OrderStatusItem } from "@/types/orders";
+import { OrderStatus, OrderStatusItem } from "@/types/orders";
 
 const ORDER_STATUS: OrderStatusItem[] = [
   { status: "ORDER_COMPLETE", label: "주문 완료" },
@@ -14,13 +13,9 @@ const ORDER_STATUS: OrderStatusItem[] = [
 ] as const;
 
 type orderStatusCount = Record<OrderStatus, number>;
-// interface OrderStatusProps {
-//   orderStatusCount: Record<OrderStatus, number>;
-// }
 
 function OrderStatusPreview() {
   const { userId } = useUserId();
-  const [orders, setOrders] = useState<Order[]>([]);
   const [myOrderStatus, setMyOrderStatus] = useState<orderStatusCount>({
     ORDER_COMPLETE: 0,
     PAYMENT_COMPLETE: 0,
@@ -34,11 +29,10 @@ function OrderStatusPreview() {
     const fetchOrderStatus = async () => {
       try{
         const myOrders = await getMyOrderStatus(userId);
-        setOrders(myOrders)
         
         const newStatusCount = ORDER_STATUS.reduce(
           (acc, { status }) => {
-            acc[status] = orders.filter(
+            acc[status] = myOrders.filter(
               order => order.orderStatus === status).length;
               return acc;
             },
@@ -63,15 +57,14 @@ function OrderStatusPreview() {
 
 
   return (
-    <Link to="/orderlist">
-      <div className="mb-[69px] flex h-[146px] border border-black">
+      <div className="mb-[69px] flex h-[146px] rounded-lg shadow-md overflow-x-auto">
         {ORDER_STATUS.map(({ status, label }, i) => (
           <div key={status} className="flex w-full items-center text-center">
             <div className="w-full tablet:px-[17px]">
               <div className="text-xl font-semibold tablet:text-lg">
                 {myOrderStatus[status]}
               </div>
-              <div className="tablet:text-md text-nowrap text-[12px] font-semibold desktop:text-xl">
+              <div className="tablet:text-md text-nowrap font-semibold desktop:text-xl">
                 {label}
               </div>
             </div>
@@ -84,7 +77,6 @@ function OrderStatusPreview() {
           </div>
         ))}
       </div>
-    </Link>
   );
 }
 

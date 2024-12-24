@@ -67,7 +67,6 @@ router.post("/", async (req, res) => {
       orderStatus,
       user_id,
       products,
-      productId,
     } = req.body;
 
     // 필수 데이터 검증
@@ -92,7 +91,7 @@ router.post("/", async (req, res) => {
       size: product.size,
       quantity: product.quantity,
       price: product.totalPrice,
-      product_id: productId,
+      product_id: product.productId,
     }));
 
     await OrderItem.bulkCreate(orderItems);

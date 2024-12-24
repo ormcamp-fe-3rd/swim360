@@ -7,12 +7,8 @@ import RecentOrderPreview from "@/components/mypage/RecentOrderPreview";
 import UserDetailPreview from "@/components/mypage/UserDetailPreview";
 import UserInfoPreview from "@/components/mypage/UserInfoPreview";
 import { UserIdContext } from "@/contexts/UserIdContext";
-import myPageMainData from "@/mocks/mypage.json";
 
 function MyPage() {
-  const { orderStatusCount } = myPageMainData;
-  const orderStatusPreProps = { orderStatusCount };
-
   const userId = useContext(UserIdContext);
 
   if (!userId) {
@@ -26,7 +22,7 @@ function MyPage() {
         <UserInfoPreview />
         <UserDetailPreview />
       </div>
-      <OrderStatusPreview {...orderStatusPreProps} />
+      <OrderStatusPreview />
       <RecentOrderPreview />
       <LogoutButton />
     </div>

@@ -30,29 +30,7 @@ function PayMentOrderPage() {
   });
 
   const location = useLocation();
-  const state = location.state;
-
-  const selectedProductInfo = {
-    product_id: state.product_id,
-    name: state.name,
-    imageUrl: "https://via.placeholder.com/150",
-    description: state.description,
-    price: state.discountedPrice,
-    selectedItems: [
-      {
-        size: "M",
-        quantity: 2,
-        totalPrice: 2 * state.discountedPrice, //TODO:Details에서 selectedItmes 데이터 받아오도록 (totalPrice도도)
-      },
-      {
-        size: "L",
-        quantity: 3,
-        totalPrice: 3 * state.discountedPrice,
-      },
-    ],
-    totalQuantity: state.totalQuantity,
-    totalPrice: state.totalPrice,
-  };
+  const selectedProductInfo = location.state;
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -91,7 +69,6 @@ function PayMentOrderPage() {
           totalPrice={selectedProductInfo.totalPrice}
           point={0}
           formData={{ ...formData }}
-          productId={selectedProductInfo.product_id}
           products={selectedProductInfo.selectedItems}
         />
       </div>

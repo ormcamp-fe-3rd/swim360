@@ -16,8 +16,6 @@ export async function getMyOrders(userId: string) {
 export async function createOrderData(orderData: OrderRequest) {
   try {
     const response = await axios.post("/orders", orderData);
-    console.log("응답 상태 코드:", response.status);
-    console.log("응답 데이터:", response.data);
     return response;
   } catch (error) {
     console.error("주문 오류:", error);

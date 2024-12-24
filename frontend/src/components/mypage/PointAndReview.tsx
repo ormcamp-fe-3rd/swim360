@@ -10,8 +10,7 @@ import {
   TabsListCustom,
   TabsTriggerCustom,
 } from "../ui/tabs";
-import PointList from "./PointList";
-import { points } from "./Points";
+import PointTable from "./PointTable";
 import ReviewTable from "./ReviewTable";
 
 export default function PointAndReviewTab() {
@@ -23,7 +22,7 @@ export default function PointAndReviewTab() {
   useEffect(() => {
     const reviews = location.state.reviews;
     if (!reviews) {
-      setMyReview("리뷰 정보를 가져오는 데 실패했습니다.");
+      setMyReview("정보를 가져오는 데 실패했습니다.");
     }
     setMyReview(reviews);
   }, []);
@@ -31,25 +30,25 @@ export default function PointAndReviewTab() {
   return (
     <div className="h-full">
       <div className="my-10 w-full">
-        <Tabs defaultValue="my-points" className="h-auto">
+        <Tabs defaultValue="my-reviews" className="h-auto">
           <TabsListCustom className="mx-auto h-full w-full tablet:w-[600px]">
             <TabsTriggerCustom
               value="my-points"
-              className={cn("h-full w-1/2", { "border-black": tab })}
-              onClick={() => setTab(true)}
+              className={cn("h-full w-1/2", { "border-black": !tab })}
+              onClick={() => setTab(false)}
             >
               포인트 내역
             </TabsTriggerCustom>
             <TabsTriggerCustom
               value="my-reviews"
-              className={cn("h-full w-1/2", { "border-black": !tab })}
-              onClick={() => setTab(false)}
+              className={cn("h-full w-1/2", { "border-black": tab })}
+              onClick={() => setTab(true)}
             >
               리뷰 내역
             </TabsTriggerCustom>
           </TabsListCustom>
           <TabsContent value="my-points" className="mt-40 h-full">
-            <PointList points={points} />
+            <PointTable />
           </TabsContent>
           <TabsContent value="my-reviews" className="mt-40 h-full">
             <ReviewTable reviews={myReview} />

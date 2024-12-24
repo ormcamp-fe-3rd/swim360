@@ -13,7 +13,6 @@ function ShippingInformation({ handleInputChange }: ShippingInformationProps) {
   const handleAddressSearch = () => {
     new window.daum.Postcode({
       oncomplete: (data: { address: string }) => {
-        console.log("주소 데이터:", data.address); // 디버깅용 로그
         if (data.address) {
           setAddress(data.address);
           handleInputChange({
