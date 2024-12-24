@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { useUserId } from "@/hooks/useUserId";
 import { getMyOrderStatus } from "@/services/order";
-import { Order, OrderStatus, OrderStatusItem } from "@/types/orders";
+import { OrderStatus, OrderStatusItem } from "@/types/orders";
 
 const ORDER_STATUS: OrderStatusItem[] = [
   { status: "ORDER_COMPLETE", label: "주문 완료" },
@@ -13,13 +13,9 @@ const ORDER_STATUS: OrderStatusItem[] = [
 ] as const;
 
 type orderStatusCount = Record<OrderStatus, number>;
-// interface OrderStatusProps {
-//   orderStatusCount: Record<OrderStatus, number>;
-// }
 
 function OrderStatusPreview() {
   const { userId } = useUserId();
-  const [orders, setOrders] = useState<Order[]>([]);
   const [myOrderStatus, setMyOrderStatus] = useState<orderStatusCount>({
     ORDER_COMPLETE: 0,
     PAYMENT_COMPLETE: 0,
@@ -33,11 +29,10 @@ function OrderStatusPreview() {
     const fetchOrderStatus = async () => {
       try{
         const myOrders = await getMyOrderStatus(userId);
-        setOrders(myOrders)
         
         const newStatusCount = ORDER_STATUS.reduce(
           (acc, { status }) => {
-            acc[status] = orders.filter(
+            acc[status] = myOrders.filter(
               order => order.orderStatus === status).length;
               return acc;
             },
