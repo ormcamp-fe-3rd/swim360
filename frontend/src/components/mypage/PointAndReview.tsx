@@ -31,19 +31,19 @@ export default function PointAndReviewTab() {
   return (
     <div className="h-full">
       <div className="my-10 w-full">
-        <Tabs defaultValue="my-points" className="h-auto">
+        <Tabs defaultValue="my-reviews" className="h-auto">
           <TabsListCustom className="mx-auto h-full w-full tablet:w-[600px]">
             <TabsTriggerCustom
               value="my-points"
-              className={cn("h-full w-1/2", { "border-black": tab })}
-              onClick={() => setTab(true)}
+              className={cn("h-full w-1/2", { "border-black": !tab })}
+              onClick={() => setTab(false)}
             >
               포인트 내역
             </TabsTriggerCustom>
             <TabsTriggerCustom
               value="my-reviews"
-              className={cn("h-full w-1/2", { "border-black": !tab })}
-              onClick={() => setTab(false)}
+              className={cn("h-full w-1/2", { "border-black": tab })}
+              onClick={() => setTab(true)}
             >
               리뷰 내역
             </TabsTriggerCustom>
