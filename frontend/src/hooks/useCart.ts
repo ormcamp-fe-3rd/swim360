@@ -27,14 +27,13 @@ function useCart() {
 
       const fetchedCartListData = await getCartListData(userId);
 
-      if (!fetchedCartListData) {
+      if (!fetchedCartListData || fetchedCartListData.length === 0) {
         setCartListData([]);
+        return;
       } else {
         setCartListData(fetchedCartListData);
       }
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const handleCartCountFetch = async () => {
@@ -42,7 +41,7 @@ function useCart() {
       if (!userId) return;
 
       const fetchedCartCount = await getCartCount(userId);
-      if (!fetchedCartCount) {
+      if (!fetchedCartCount || fetchedCartCount === 0) {
         setCartCount(0);
       } else {
         setCartCount(fetchedCartCount);

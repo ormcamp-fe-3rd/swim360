@@ -27,8 +27,8 @@ router.get("/:id", async (req, res) => {
       attributes: ["quantity", "price", "size", "createdAt"],
     });
 
-    if (!cartItems || cartItems.length === 0) {
-      return res.status(404).json({ error: "장바구니 데이터 없음 " });
+    if (!cartItems) {
+      return res.status(404).json({ error: "장바구니 불러오기 싫패 " });
     }
     return res.json(cartItems);
   } catch (error) {
@@ -44,8 +44,8 @@ router.get("/:id/count", async (req, res) => {
       where: { user_id: id },
     });
 
-    if (!carts || carts.length === 0) {
-      return res.status(404).json({ error: "장바구니 데이터 없음 " });
+    if (!carts) {
+      return res.status(404).json({ error: "장바구니 불러오기 싫패 " });
     }
     const totalQuantity = carts.reduce((sum, cart) => sum + cart.quantity, 0);
 

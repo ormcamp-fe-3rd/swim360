@@ -58,13 +58,13 @@ function RecentOrders() {
             <div className="flex flex-col pb-3">
               <RecentOrderItems orderId={order.id} />
               <div className="flex justify-end p-2 text-lg font-semibold tablet:hidden">
-                결제 금액: 총 {formatPrice(order.price)}원
+                결제 금액: 총 {formatPrice(order.totalPrice)}원
               </div>
             </div>
           </div>
 
           {/* tablet 이상, 총 수량 표시*/}
-          <div className="tablet:flex tablet:flex-col">
+          <div className="hidden tablet:flex tablet:flex-col">
             <div
               key={order.id}
               className="flex grow items-center justify-center"
@@ -76,7 +76,7 @@ function RecentOrders() {
           <div className="hidden flex-col items-center justify-center tablet:flex">
             <div className="text-lg font-semibold">
               {" "}
-              총 {formatPrice(order.price)}원
+              총 {formatPrice(order.totalPrice)}원
             </div>
           </div>
         </div>
