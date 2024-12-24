@@ -1,3 +1,4 @@
+import { formatPrice } from "@/utils/formatPrice";
 import PrimaryButton from "../common/PrimaryButton";
 interface CartTotalPriceProps {
   cartTotalPrice: number;
@@ -11,7 +12,9 @@ export default function CartTotalPrice({
       <div className="flex justify-between p-1">
         <span className="inline-block w-2/3">총 상품 금액</span>
         <div className="flex">
-          <span className="inline-block text-right">{cartTotalPrice}</span>
+          <span className="inline-block text-right">
+            {formatPrice(cartTotalPrice)}
+          </span>
           <span className="inline-block w-1/2 pl-1">원</span>
         </div>
       </div>
@@ -25,7 +28,9 @@ export default function CartTotalPrice({
       <div className="flex justify-between border-t border-black p-1">
         <span className="inline-block w-2/3">총 결제금액</span>
         <div className="flex">
-          <span className="inline-block text-right">{cartTotalPrice}</span>
+          <span className="inline-block text-right">
+            {formatPrice(cartTotalPrice)}
+          </span>
           <span className="inline-block w-1/2 pl-1">원</span>
         </div>
       </div>

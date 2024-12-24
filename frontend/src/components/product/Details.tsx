@@ -7,6 +7,7 @@ import { ProductData } from "@/types/products";
 import { Selected } from "./SelectedItem";
 import { SizeButton } from "./SizeBtn";
 import { SelectedOrderItem } from "@/types/orders";
+import { formatPrice } from "@/utils/formatPrice";
 
 interface DetailsProps {
   product: ProductData | undefined;
@@ -130,13 +131,13 @@ function Details({ product, handleCartUpdate }: DetailsProps) {
       <div className="flex w-[522px] gap-[10px]">
         <p className="text-base font-bold">정상가</p>
         <p className="text-sm font-extralight line-through">
-          {product?.price}원
+          {formatPrice(product?.price)}원
         </p>
       </div>
       <div className="flex w-[522px] gap-[10px]">
         <p className="text-base font-bold">할인가</p>
         <p className="text-base font-bold text-[#D40022]">
-          {product?.discountedPrice}원
+          {formatPrice(product?.discountedPrice)}원
         </p>
         <p className="text-base font-bold text-[#D40022]">
           {product?.Discount.discountPercentage}%
@@ -180,7 +181,9 @@ function Details({ product, handleCartUpdate }: DetailsProps) {
       <div>
         <div className="mb-[10px] mt-10 flex w-[522px] justify-end">
           <p className="text-[16px] font-semibold">총 상품 금액: </p>
-          <p className="text-[16px] font-semibold">{totalPrice}원</p>
+          <p className="text-[16px] font-semibold">
+            {formatPrice(totalPrice)}원
+          </p>
         </div>
 
         <div className="h-auto w-[522px]">
