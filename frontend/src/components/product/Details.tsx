@@ -23,6 +23,7 @@ function Details({ product, handleCartUpdate }: DetailsProps) {
     M: 0,
     L: 0,
     XL: 0,
+    FREE: 0,
   }); // 각 사이즈별 수량 상태 관리
 
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]); // 선택된 사이즈 배열 상태
@@ -142,7 +143,7 @@ function Details({ product, handleCartUpdate }: DetailsProps) {
       <div className="mb-5 h-[88px] w-[522px] flex-col justify-between border-t-[1px] border-black pt-5">
         <p className="mb-2 text-base">사이즈</p>
         <div className="mb-5 flex gap-1">
-          {["S", "M", "L", "XL"].map((size) => (
+          {product.size.map((size) => (
             <div
               key={size}
               onClick={() => handleSizeButtonClick(size)}
