@@ -19,6 +19,7 @@ export interface OrderRequest {
   address: string;
   detailAddress: string;
   phoneNumber: string;
+  products: { size: string; quantity: number; totalPrice: number }[];
 }
 
 export interface OrderItem {

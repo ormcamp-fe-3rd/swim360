@@ -28,6 +28,7 @@ export async function createOrderData(
     } else {
       throw new Error("서버 오류");
     }
+    return response.data;
   } catch (error) {
     console.error("주문 오류:", error);
     alert("주문 중 문제가 발생했습니다.");

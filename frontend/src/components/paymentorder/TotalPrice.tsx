@@ -10,17 +10,16 @@ interface TotalPriceProps {
   totalPrice: number;
   point: number;
   formData: OrderFormData;
+  products: { size: string; quantity: number; totalPrice: number }[];
 }
 
-function TotalPrice({ totalPrice, point, formData }: TotalPriceProps) {
+function TotalPrice({
+  totalPrice,
+  point,
+  formData,
+  products,
+}: TotalPriceProps) {
   const navigate = useNavigate();
-  const orderData = {
-    ...formData,
-    orderStatus: "ORDER_COMPLETE",
-    totalPrice,
-    user_id: Number(sessionStorage.getItem("id")),
-  };
-
   const handleBuyClick = async () => {
     const userId = sessionStorage.getItem("id");
 
@@ -30,9 +29,17 @@ function TotalPrice({ totalPrice, point, formData }: TotalPriceProps) {
       return;
     }
 
-    console.log(orderData);
+    const orderData = {
+      ...formData,
+      orderStatus: "ORDER_COMPLETE",
+      totalPrice,
+      user_id: Number(userId),
+      products,
+    };
+
+    console.log("전송 데이터: ", orderData);
     const response = await createOrderData(orderData, navigate);
-    console.log(response);
+    console.log("응답: ", response);
   };
 
   return (

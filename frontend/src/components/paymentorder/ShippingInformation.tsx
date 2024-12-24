@@ -13,7 +13,15 @@ function ShippingInformation({ handleInputChange }: ShippingInformationProps) {
   const handleAddressSearch = () => {
     new window.daum.Postcode({
       oncomplete: (data: { address: string }) => {
-        setAddress(data.address);
+        console.log("주소 데이터:", data.address); // 디버깅용 로그
+        if (data.address) {
+          setAddress(data.address);
+          handleInputChange({
+            target: { name: "address", value: data.address },
+          } as React.ChangeEvent<HTMLInputElement>); // 상위로 상태 전달
+        } else {
+          console.error("주소 데이터가 비어 있습니다.");
+        }
       },
     }).open();
   };
@@ -79,7 +87,7 @@ function ShippingInformation({ handleInputChange }: ShippingInformationProps) {
           name="phoneNumber"
           id="phoneNumber"
           onChange={handleInputChange}
-          className="w-full rounded-sm border-none bg-slate-100 py-2.5"
+          className="w-full rounded-sm border-none bg-slate-100 p-2.5"
         />
       </div>
     </div>
