@@ -57,7 +57,7 @@ function OrderStatusPreview() {
 
 
   return (
-      <div className="mb-[69px] flex h-[146px] border border-black">
+      <div className="mb-[69px] flex h-[146px] rounded-lg shadow-md">
         {ORDER_STATUS.map(({ status, label }, i) => (
           <div key={status} className="flex w-full items-center text-center">
             <div className="w-full tablet:px-[17px]">

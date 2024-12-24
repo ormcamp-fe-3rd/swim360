@@ -29,7 +29,7 @@ function UserInfoPreview() {
       to="/mypage/verification"
       role="link"
     >
-      <div className="flex h-[146px] items-center justify-between border border-black px-5">
+      <div className="flex h-[146px] items-center justify-between rounded-lg shadow-md hover:bg-gray-50 px-5">
         <div className="text-xl font-semibold tablet:text-xl">
           {user? user.name: ""}
         </div>

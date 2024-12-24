@@ -24,11 +24,8 @@ function UserDetailPreview() {
   }, [userId]);
 
   return (
-    <Link
-      to="/mypage/point_and_review"
-      state={{ reviews: reviews }}
-    >
-      <div className="flex h-[146px] w-full items-center justify-center border border-black py-[30px]">
+    <Link to="/mypage/point_and_review" state={{ reviews: reviews }}>
+      <div className="flex h-[146px] w-full items-center justify-center rounded-lg py-[30px] shadow-md hover:bg-gray-50">
         <PointAndReviewItem label="포인트" value={300} unit="p" />
         <PointAndReviewItem label="리뷰" value={reviews.length} unit="건" />
       </div>
