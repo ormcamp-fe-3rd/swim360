@@ -233,57 +233,7 @@ const handleAddressSearch = () => {
             )}
           />
           <div className="border-b-2"></div>
-          <div className="flex h-32 w-full flex-col">
-            <FormField
-              control={form.control}
-              name="address"
-              render={({ field }) => (
-                <FormItem className="h-20">
-                  <div className="flex w-full items-center justify-between px-10">
-                    <FormLabel className="flex w-1/3 items-center justify-start text-lg font-normal text-[#5E5E5E]">
-                      우편번호
-                    </FormLabel>
-                    <div className="flex w-2/3 flex-col gap-1">
-                      <FormControl className="h-12 border-none">
-                        <div className="flex gap-2">
-                          <Input
-                            placeholder="address"
-                            {...field}
-                            className="h-full bg-[#F0F0F0]"
-                          />
-                          <PrimaryButton className="h-full w-1/5" onClick={handleAddressSearch}>
-                            주소검색
-                          </PrimaryButton>
-                        </div>
-                      </FormControl>
-                    </div>
-                    <FormMessage />
-                  </div>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="detailAddress"
-              render={({ field }) => (
-                <FormItem className="flex h-20 w-full">
-                  <div className="flex w-full items-center justify-between px-10">
-                    <FormLabel className="flex w-1/3 items-center justify-start text-lg font-normal text-[#5E5E5E]">
-                      상세주소
-                    </FormLabel>
-                    <FormControl className="h-12 w-2/3 border-none bg-[#F0F0F0]">
-                      <Input
-                        placeholder="상세 주소를 입력해주세요"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </div>
-                </FormItem>
-              )}
-            />
-          </div>
-          <div className="border-b-2"></div>
+          
           <div className="mt-10 flex w-full gap-2">
             <Link to="/mypage" className="w-full">
               <PrimaryButton className="bg-white text-black hover:bg-gray-100">
