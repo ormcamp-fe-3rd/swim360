@@ -55,7 +55,9 @@ function TotalPrice({
 
     const response = await createOrderData(orderData);
     if (response?.status === 200) {
-      handleOrderedCartDelete(selectedCartIds);
+      if (selectedCartIds) {
+        handleOrderedCartDelete(selectedCartIds);
+      }
       navigate("/order/thanks");
     } else {
       throw new Error("서버 오류");
