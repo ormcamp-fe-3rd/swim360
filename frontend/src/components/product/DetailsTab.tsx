@@ -1,4 +1,5 @@
 import ProductTab from "./Tap";
+import Js from "./js";
 
 function DetailsTab() {
   return (
@@ -6,7 +7,9 @@ function DetailsTab() {
       <div id="detailsTab">
         <ProductTab activeCategory="detailsTab" />
       </div>
-      <div className="mx-auto h-[824px] w-full max-w-[1064px] rounded-[20px] bg-black"></div>
+      <div className="mx-auto h-[824px] w-full max-w-[1064px] rounded-[20px] bg-black">
+        <Js />
+      </div>
 
       <div className="mx-auto flex w-full flex-wrap justify-center gap-[12px]">
         <div className="flex w-[1064px] flex-wrap justify-center">

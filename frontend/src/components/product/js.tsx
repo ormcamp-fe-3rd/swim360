@@ -3,12 +3,12 @@ import { OrbitControls, useFBX } from "@react-three/drei";
 
 function Model() {
   // FBX 파일 로드
-  const fbx = useFBX("src/assets/womenSwimSuit01.fbx"); // FBX 파일 경로
+  const fbx = useFBX("/public/models/womenSwimSuit01.fbx"); // FBX 파일 경로
 
   return <primitive object={fbx} scale={0.2} color="#ffffff" />; // 크기 조정 (scale)
 }
 
-function App() {
+function Js() {
   return (
     <div className="h-screen w-full">
       <Canvas
@@ -25,4 +25,4 @@ function App() {
     </div>
   );
 }
-export default App;
+export default Js;
