@@ -1,15 +1,17 @@
 import { formatPrice } from "@/utils/formatPrice";
 import { Checkbox } from "../ui/checkbox";
 import { SelectedOrderItem } from "@/types/orders";
+import { Cart } from "@/types/cart";
 
 interface CartProductProps {
-  id: number;
+  productId: number;
   brandName: string;
   description: string;
   name: string;
   imageUrl: string;
   eachPrice: number;
 
+  cartId: Cart["id"];
   size: string;
   price: number;
   quantity: number;
@@ -17,16 +19,18 @@ interface CartProductProps {
   handleSelectedCartUpdate: (
     selectedCartItem: SelectedOrderItem,
     isChecked: boolean,
+    selectedCartId: Cart["id"],
   ) => void;
 }
 
 export default function CartProduct({
-  id,
+  productId,
   brandName,
   name,
   imageUrl,
   description,
   eachPrice,
+  cartId,
   size,
   price,
   quantity,
@@ -35,7 +39,7 @@ export default function CartProduct({
   //cart는 체크 안한 cartId만 지우면됨
 
   const cartItem = {
-    productId: id,
+    productId: productId,
     name: name,
     description: description,
     price: price,
@@ -50,7 +54,7 @@ export default function CartProduct({
       <Checkbox
         className="mt-2.5"
         onCheckedChange={(checked: boolean) =>
-          handleSelectedCartUpdate(cartItem, checked)
+          handleSelectedCartUpdate(cartItem, checked, cartId)
         }
       />
       <div className="flex w-full items-center justify-between border-b pl-2.5">

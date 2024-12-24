@@ -5,8 +5,10 @@ import { createOrderData } from "@/services/order";
 import { OrderFormData } from "@/types/orders";
 
 import PriceRow from "./PriceRow";
+import { deleteOrderedCart } from "@/services/cart";
 
 interface TotalPriceProps {
+  selectedCartIds: Set<number | undefined>;
   totalPrice: number;
   point: number;
   formData: OrderFormData;
@@ -14,12 +16,26 @@ interface TotalPriceProps {
 }
 
 function TotalPrice({
+  selectedCartIds,
   totalPrice,
   point,
   formData,
   products,
 }: TotalPriceProps) {
   const navigate = useNavigate();
+
+  const handleOrderedCartDelete = async (
+    selectedCartIds: Set<number | undefined>,
+  ) => {
+    try {
+      const cartIds = Array.from(selectedCartIds);
+      const response = await deleteOrderedCart(cartIds);
+      console.log(response?.status);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const handleBuyClick = async () => {
     const userId = sessionStorage.getItem("id");
 
@@ -39,6 +55,7 @@ function TotalPrice({
 
     const response = await createOrderData(orderData);
     if (response?.status === 200) {
+      handleOrderedCartDelete(selectedCartIds);
       navigate("/order/thanks");
     } else {
       throw new Error("서버 오류");

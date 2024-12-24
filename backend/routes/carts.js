@@ -25,7 +25,7 @@ router.get("/:id", async (req, res) => {
           ],
         },
       ],
-      attributes: ["quantity", "price", "size", "createdAt"],
+      attributes: ["id", "quantity", "price", "size", "createdAt"],
     });
 
     if (!cartItems) {
@@ -96,8 +96,37 @@ router.post(`/`, async (req, res) => {
   }
 });
 
-router.put("/:id", (req, res) => {});
+router.delete("/", async (req, res) => {
+  try {
+    const { cartIds } = req.body;
+    console.log(cartIds);
 
-router.delete("/:id", (req, res) => {});
+    await Cart.destroy({
+      where: {
+        id: cartIds,
+      },
+    });
+
+    return res.status(200).json({ message: "주문한 장바구니 상품 삭제 완료" });
+  } catch (error) {
+    return res.status(500).json({ error: " 서버 에러 " + error });
+  }
+});
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    await Cart.destroy({
+      where: {
+        id: id,
+      },
+    });
+
+    return res.status(200).json({ message: "선택한 장바구니 상품 삭제 완료" });
+  } catch (error) {
+    return res.status(500).json({ error: " 서버 에러 " + error });
+  }
+});
 
 module.exports = router;

@@ -32,8 +32,6 @@ function OrderPage() {
     setFormData((prev) => ({ ...prev, ...{ [name]: value } }));
   };
 
-  console.log(selectedProductInfo);
-
   return (
     <div className="mx-auto w-[90%] max-w-[1440px]">
       <Breadcrumb>
@@ -63,6 +61,7 @@ function OrderPage() {
           <MeansPayment />
         </form>
         <TotalPrice
+          selectedCartIds={selectedProductInfo.selectedCartIds}
           totalPrice={selectedProductInfo.totalPrice}
           point={0}
           formData={{ ...formData }}

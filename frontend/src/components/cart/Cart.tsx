@@ -9,6 +9,7 @@ export default function Cart() {
     cartTotalPrice,
     cartTotalQuantity,
     selectedCartItems,
+    selectedCartIds,
     handleSelectedCartUpdate,
   } = useCart();
 
@@ -19,6 +20,7 @@ export default function Cart() {
   };
 
   const cartTotalPriceProps = {
+    selectedCartIds,
     selectedItems: selectedCartItems,
     totalQuantity: cartTotalQuantity,
     totalPrice: cartTotalPrice,

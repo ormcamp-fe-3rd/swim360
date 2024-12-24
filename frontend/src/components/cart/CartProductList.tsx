@@ -1,4 +1,4 @@
-import { CartItem } from "@/types/cart";
+import { Cart, CartItem } from "@/types/cart";
 import { Checkbox } from "../ui/checkbox";
 import CartProduct from "./CartProduct";
 import { SelectedOrderItem } from "@/types/orders";
@@ -9,6 +9,7 @@ interface CartProductListProps {
   handleSelectedCartUpdate: (
     selectedCartItem: SelectedOrderItem,
     isChecked: boolean,
+    selectedCartId: Cart["id"],
   ) => void;
 }
 
@@ -38,7 +39,8 @@ export default function CartProductList({
         cartListData.map((cartItem, index) => (
           <CartProduct
             key={index}
-            id={cartItem.Product.id}
+            cartId={cartItem.id}
+            productId={cartItem.Product.id}
             brandName={cartItem.Product.brandName}
             name={cartItem.Product.name}
             description={cartItem.Product.description}

@@ -1,6 +1,11 @@
 import { useContext, useEffect, useMemo, useState } from "react";
 import { CartContext } from "@/contexts/CartContext";
-import { getCartCount, getCartListData, updateCartData } from "@/services/cart";
+import {
+  deleteOneCart,
+  getCartCount,
+  getCartListData,
+  updateCartData,
+} from "@/services/cart";
 import { Cart, CartItem } from "@/types/cart";
 import { useNavigate } from "react-router-dom";
 import { SelectedOrderItem } from "@/types/orders";
@@ -19,6 +24,10 @@ function useCart() {
   const [cartListData, setCartListData] = useState<CartItem[]>([]);
 
   const [updateCartTrigger, setUpdateCartTrigger] = useState(0);
+
+  const [selectedCartIds, setSelectedCartIds] = useState<Set<Cart["id"]>>(
+    new Set(),
+  );
 
   const [selectedCartItems, setSelectedCartItems] = useState<
     Set<SelectedOrderItem>
@@ -88,7 +97,18 @@ function useCart() {
   const handleSelectedCartUpdate = (
     selectedCartItem: SelectedOrderItem,
     isChecked: boolean,
+    selectedCartId: Cart["id"],
   ) => {
+    setSelectedCartIds((prev) => {
+      const newIds = new Set(prev);
+      if (isChecked) {
+        newIds.add(selectedCartId);
+      } else {
+        newIds.delete(selectedCartId);
+      }
+      return newIds;
+    });
+
     setSelectedCartItems((prev) => {
       const newSet = new Set(prev);
       if (isChecked) {
@@ -99,10 +119,21 @@ function useCart() {
             item.productId === selectedCartItem.productId &&
             item.size === selectedCartItem.size,
         );
-        if (cartItem) newSet.delete(cartItem);
+        if (cartItem) {
+          newSet.delete(cartItem);
+        }
       }
       return newSet;
     });
+  };
+
+  const handleOneCartDelete = async (cartId: Cart["id"]) => {
+    try {
+      const response = await deleteOneCart(cartId);
+      console.log(response?.status);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const cartTotalPrice = useMemo(
@@ -137,6 +168,8 @@ function useCart() {
     cartTotalQuantity,
     selectedCartItems: Array.from(selectedCartItems),
     handleSelectedCartUpdate,
+    selectedCartIds,
+    handleOneCartDelete,
   };
 }
 export default useCart;

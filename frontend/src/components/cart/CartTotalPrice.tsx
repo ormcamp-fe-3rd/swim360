@@ -3,12 +3,14 @@ import PrimaryButton from "../common/PrimaryButton";
 import { useNavigate } from "react-router-dom";
 import { SelectedOrderItem } from "@/types/orders";
 interface CartTotalPriceProps {
+  selectedCartIds: Set<number | undefined>;
   selectedItems: SelectedOrderItem[];
   totalQuantity: number;
   totalPrice: number;
 }
 
 export default function CartTotalPrice({
+  selectedCartIds,
   selectedItems,
   totalQuantity,
   totalPrice,
@@ -16,6 +18,7 @@ export default function CartTotalPrice({
   const navigate = useNavigate();
 
   const selectedCartData = {
+    selectedCartIds: selectedCartIds,
     selectedItems: selectedItems,
     totalQuantity: totalQuantity,
     totalPrice: totalPrice,

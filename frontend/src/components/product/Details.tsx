@@ -156,8 +156,6 @@ function Details({ product, handleCartUpdate }: DetailsProps) {
       return;
     }
 
-    console.log(selectedProductData);
-
     navigate("/order", { state: selectedProductData });
   };
 
