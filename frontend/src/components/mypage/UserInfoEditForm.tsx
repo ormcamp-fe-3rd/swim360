@@ -79,13 +79,13 @@ export default function UserInfoEditForm() {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="flex flex-col gap-10"
+          className="flex flex-col gap-5"
         >
           <FormField
             control={form.control}
             name="username"
             render={({ field }) => (
-              <FormItem className="h-16 w-full border-b-2">
+              <FormItem className="h-16 w-full flex ">
                 <div className="flex w-full items-center justify-between px-10">
                   <FormLabel className="flex w-1/3 items-center justify-start text-lg font-normal text-[#5E5E5E]">
                     이름
@@ -98,11 +98,12 @@ export default function UserInfoEditForm() {
               </FormItem>
             )}
           />
+          <div className="border-b-2"></div>
           <FormField
             control={form.control}
             name="phoneNumber"
             render={({ field }) => (
-              <FormItem className="h-16 w-full border-b-2">
+              <FormItem className="h-16 w-full flex">
                 <div className="flex w-full items-center justify-between px-10">
                   <FormLabel className="flex w-1/3 items-center justify-start text-lg font-normal text-[#5E5E5E]">
                     연락처
@@ -115,11 +116,12 @@ export default function UserInfoEditForm() {
               </FormItem>
             )}
           />
+          <div className="border-b-2"></div>
           <FormField
             control={form.control}
             name="emailId"
             render={({ field }) => (
-              <FormItem className="h-16 w-full border-b-2">
+              <FormItem className="h-16 w-full flex">
                 <div className="flex w-full items-center justify-between px-10">
                   <FormLabel className="flex w-1/3 items-center justify-start text-lg font-normal text-[#5E5E5E]">
                     이메일 아이디
@@ -132,11 +134,12 @@ export default function UserInfoEditForm() {
               </FormItem>
             )}
           />
+          <div className="border-b-2"></div>
           <FormField
             control={form.control}
             name="password"
             render={({ field }) => (
-              <FormItem className="h-20 w-full border-b-2">
+              <FormItem className="h-20 w-full flex">
                 <div className="flex w-full items-center justify-between px-10">
                   <FormLabel className="flex w-1/3 items-center justify-start text-lg font-normal text-[#5E5E5E]">
                     비밀번호 변경
@@ -154,11 +157,12 @@ export default function UserInfoEditForm() {
               </FormItem>
             )}
           />
+          <div className="border-b-2"></div>
           <FormField
             control={form.control}
             name="password"
             render={({ field }) => (
-              <FormItem className="h-20 w-full border-b-2">
+              <FormItem className="h-20 w-full flex">
                 <div className="flex w-full items-center justify-between px-10">
                   <FormLabel className="flex w-1/3 items-center justify-start text-lg font-normal text-[#5E5E5E]">
                     비밀번호 확인
@@ -177,11 +181,12 @@ export default function UserInfoEditForm() {
               </FormItem>
             )}
           />
+          <div className="border-b-2"></div>
           <FormField
             control={form.control}
             name="address"
             render={({ field }) => (
-              <FormItem className="h-32 w-full border-b-2">
+              <FormItem className="h-32 w-full flex">
                 <div className="flex w-full items-center justify-between px-10">
                   <FormLabel className="flex w-1/3 items-center justify-start text-lg font-normal text-[#5E5E5E]">
                     배송지
@@ -211,6 +216,7 @@ export default function UserInfoEditForm() {
               </FormItem>
             )}
           />
+          <div className="border-b-2"></div>
           <div className="mt-10 flex w-full gap-2">
             <Link to="/mypage" className="w-full">
               <PrimaryButton className="bg-white text-black hover:bg-gray-100">
@@ -218,7 +224,7 @@ export default function UserInfoEditForm() {
               </PrimaryButton>
             </Link>
             <Link to="/mypage" className="w-full">
-            {/* TODO: 회원정보 수정 기능 추가 */}
+              {/* TODO: 회원정보 수정 기능 추가 */}
               <PrimaryButton>확인</PrimaryButton>
             </Link>
           </div>
