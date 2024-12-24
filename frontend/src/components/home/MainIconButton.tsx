@@ -24,7 +24,6 @@ export default function MainIconButton() {
       <TooltipProvider delayDuration={200}>
         <Tooltip>
           <TooltipTrigger>
-            <button>
               <Link to={userId ? "/mypage" : "/login"}>
                 <img
                   className="hidden h-8 w-8 tablet:block"
@@ -34,7 +33,6 @@ export default function MainIconButton() {
                   tabIndex={0}
                 />
               </Link>
-            </button>
           </TooltipTrigger>
           <TooltipContent side="bottom">
             <div className="flex h-10 w-20 items-center justify-center rounded-lg shadow-md">
@@ -47,8 +45,7 @@ export default function MainIconButton() {
       <TooltipProvider delayDuration={200}>
         <Tooltip>
           <TooltipTrigger>
-            <button className="relative">
-              <Link to={userId ? "/cart" : "/login"}>
+              <Link to={userId ? "/cart" : "/login"} className="relative">
                 {cartCount > 0 && (
                   <div className="absolute left-5 top-1 flex h-3 w-3 items-center justify-center rounded-full bg-red-600 text-[8px] text-white">
                     {cartCount > 99 ? "99" : cartCount}
@@ -62,7 +59,6 @@ export default function MainIconButton() {
                   tabIndex={0}
                 />
               </Link>
-            </button>
           </TooltipTrigger>
           <TooltipContent side="bottom">
             <div className="flex h-10 w-20 items-center justify-center rounded-lg shadow-md">

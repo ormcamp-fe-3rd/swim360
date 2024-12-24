@@ -1,11 +1,13 @@
+import { useState } from "react";
+
+import useCategory from "@/hooks/useCategory";
 import { cn } from "@/lib/utils";
+
 import CategoryBox from "../home/CategoryBox";
 import HamburgerMenu from "../home/HamburgerMenu";
 import MainIconButton from "../home/MainIconButton";
 import MainLogo from "../home/MainLogo";
 import ScrollButton from "../home/ScrollButton";
-import useCategory from "@/hooks/useCategory";
-import { useState } from "react";
 
 function Header() {
   const {
