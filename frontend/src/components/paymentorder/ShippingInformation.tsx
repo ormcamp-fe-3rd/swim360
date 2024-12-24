@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import PrimaryButton from "@/components/common/PrimaryButton";
 
 interface ShippingInformationProps {
@@ -5,6 +7,17 @@ interface ShippingInformationProps {
 }
 
 function ShippingInformation({ handleInputChange }: ShippingInformationProps) {
+  const [address, setAddress] = useState("");
+  const [detailAddress, setDetailAddress] = useState("");
+
+  const handleAddressSearch = () => {
+    new window.daum.Postcode({
+      oncomplete: (data: { address: string }) => {
+        setAddress(data.address);
+      },
+    }).open();
+  };
+
   return (
     <div>
       <p className="w-full border-b border-black p-2.5 font-bold">배송정보</p>
@@ -35,18 +48,25 @@ function ShippingInformation({ handleInputChange }: ShippingInformationProps) {
               type="text"
               name="address"
               id="address"
-              onChange={handleInputChange}
+              value={address}
+              readOnly
               className="mr-1 flex-grow rounded-sm border-none bg-slate-100 p-2.5"
             />
             <div className="w-1/5">
-              <PrimaryButton>주소검색</PrimaryButton>
+              <PrimaryButton onClick={handleAddressSearch}>
+                주소검색
+              </PrimaryButton>
             </div>
           </div>
           <input
             type="text"
             name="detailAddress"
             id="detailAddress"
-            onChange={handleInputChange}
+            value={detailAddress}
+            onChange={(e) => {
+              setDetailAddress(e.target.value);
+              handleInputChange(e);
+            }}
             className="w-full rounded-sm border-none bg-slate-100 p-2.5"
             placeholder="상세 주소를 입력해주세요."
           />
@@ -65,4 +85,5 @@ function ShippingInformation({ handleInputChange }: ShippingInformationProps) {
     </div>
   );
 }
+
 export default ShippingInformation;
