@@ -3,7 +3,6 @@ import { CartContext } from "@/contexts/CartContext";
 import { getCartCount, getCartListData, updateCartData } from "@/services/cart";
 import { Cart, CartItem } from "@/types/cart";
 import { useNavigate } from "react-router-dom";
-import { SelectedOrderItem } from "@/types/orders";
 
 function useCart() {
   const context = useContext(CartContext);
@@ -19,6 +18,10 @@ function useCart() {
   const [cartListData, setCartListData] = useState<CartItem[]>([]);
 
   const [updateCartTrigger, setUpdateCartTrigger] = useState(0);
+
+  const [selectedCartItems, setSelectedCartItems] = useState<Set<Cart>>(
+    new Set(),
+  );
 
   const navigate = useNavigate();
 
@@ -78,9 +81,39 @@ function useCart() {
     }
   };
 
+  const handleSelectedCartUpdate = (
+    selectedCartItem: Cart,
+    isChecked: boolean,
+  ) => {
+    setSelectedCartItems((prev) => {
+      const newSet = new Set(prev);
+      if (isChecked) {
+        newSet.add(selectedCartItem);
+      } else {
+        const cartItem = Array.from(newSet).find(
+          (item) =>
+            item.product_id === selectedCartItem.product_id &&
+            item.size === selectedCartItem.size,
+        );
+        if (cartItem) newSet.delete(cartItem);
+      }
+      return newSet;
+    });
+  };
+
   const cartTotalPrice = useMemo(
-    () => cartListData?.reduce((acc, item) => acc + item.price, 0) ?? 0,
-    [cartListData],
+    () =>
+      Array.from(selectedCartItems).reduce((acc, item) => acc + item.price, 0),
+    [selectedCartItems],
+  );
+
+  const cartTotalQuantity = useMemo(
+    () =>
+      Array.from(selectedCartItems).reduce(
+        (acc, item) => acc + item.quantity,
+        0,
+      ),
+    [selectedCartItems],
   );
 
   useEffect(() => {
@@ -97,6 +130,9 @@ function useCart() {
     handleCartListDataFetch,
     handleCartUpdate,
     cartTotalPrice,
+    cartTotalQuantity,
+    selectedCartItems: Array.from(selectedCartItems),
+    handleSelectedCartUpdate,
   };
 }
 export default useCart;

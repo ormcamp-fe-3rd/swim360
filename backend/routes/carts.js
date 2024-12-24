@@ -15,10 +15,10 @@ router.get("/:id", async (req, res) => {
         {
           model: Product,
           attributes: [
+            "id",
             "brandName",
             "imageUrl",
             "name",
-            "size",
             "discountedPrice",
             "price",
           ],

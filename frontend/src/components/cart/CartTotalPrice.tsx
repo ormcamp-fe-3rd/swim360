@@ -1,19 +1,29 @@
 import { formatPrice } from "@/utils/formatPrice";
 import PrimaryButton from "../common/PrimaryButton";
+import { Cart } from "@/types/cart";
 interface CartTotalPriceProps {
-  cartTotalPrice: number;
+  selectedItems: Cart[];
+  totalQuantity: number;
+  totalPrice: number;
 }
 
 export default function CartTotalPrice({
-  cartTotalPrice,
+  selectedItems,
+  totalQuantity,
+  totalPrice,
 }: CartTotalPriceProps) {
+  const selectedCartData = {
+    selectedItems,
+    totalQuantity,
+    totalPrice,
+  };
   return (
     <div className="w-full p-4 middle:w-1/3">
       <div className="flex justify-between p-1">
         <span className="inline-block w-2/3">총 상품 금액</span>
         <div className="flex">
           <span className="inline-block text-right">
-            {formatPrice(cartTotalPrice)}
+            {formatPrice(totalPrice)}
           </span>
           <span className="inline-block w-1/2 pl-1">원</span>
         </div>
@@ -29,7 +39,7 @@ export default function CartTotalPrice({
         <span className="inline-block w-2/3">총 결제금액</span>
         <div className="flex">
           <span className="inline-block text-right">
-            {formatPrice(cartTotalPrice)}
+            {formatPrice(totalPrice)}
           </span>
           <span className="inline-block w-1/2 pl-1">원</span>
         </div>

@@ -1,19 +1,26 @@
-import { CartItem } from "@/types/cart";
+import { Cart, CartItem } from "@/types/cart";
 import { Checkbox } from "../ui/checkbox";
 import CartProduct from "./CartProduct";
 
 interface CartProductListProps {
+  cartTotalQuantity: number;
   cartListData: CartItem[];
+  handleSelectedCartUpdate: (
+    selectedCartItem: Cart,
+    isChecked: boolean,
+  ) => void;
 }
 
 export default function CartProductList({
+  cartTotalQuantity,
   cartListData,
+  handleSelectedCartUpdate,
 }: CartProductListProps) {
   return (
     <div className="border-b border-black py-2.5">
       <p className="w-full border-b border-black p-2.5 font-bold">
-        {/* TODO: 총 상품 개수를 체크박스 선택된 상품의 개수로 변경 */}총 상품(
-        <span>{cartListData.length}</span>)
+        총 상품(
+        <span>{cartTotalQuantity}</span>)
       </p>
       <div className="w-full border-b p-2.5">
         <span className="inline-block w-1/3 text-center">
@@ -30,9 +37,15 @@ export default function CartProductList({
         cartListData.map((cartItem, index) => (
           <CartProduct
             key={index}
-            selectedSize={cartItem.size}
+            id={cartItem.Product.id}
+            brandName={cartItem.Product.brandName}
+            name={cartItem.Product.name}
+            imageUrl={cartItem.Product.imageUrl}
+            size={cartItem.size}
+            eachPrice={cartItem.Product.price}
+            price={cartItem.price}
             quantity={cartItem.quantity}
-            {...cartItem.Product}
+            handleSelectedCartUpdate={handleSelectedCartUpdate}
           />
         ))
       ) : (

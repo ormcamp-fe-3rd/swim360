@@ -13,7 +13,7 @@ export interface Cart {
 export interface CartItem extends Cart {
   Product: Pick<
     Product,
-    "imageUrl" | "brandName" | "name" | "size" | "price" | "discountedPrice"
+    "id" | "imageUrl" | "brandName" | "name" | "price" | "discountedPrice"
   >;
 }
 

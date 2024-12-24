@@ -4,14 +4,24 @@ import CartProductList from "./CartProductList";
 import CartTotalPrice from "./CartTotalPrice";
 
 export default function Cart() {
-  const { cartListData, cartTotalPrice } = useCart();
+  const {
+    cartListData,
+    cartTotalPrice,
+    cartTotalQuantity,
+    selectedCartItems,
+    handleSelectedCartUpdate,
+  } = useCart();
 
   const cartProductListProps = {
     cartListData,
+    cartTotalQuantity,
+    handleSelectedCartUpdate,
   };
 
   const cartTotalPriceProps = {
-    cartTotalPrice,
+    selectedItems: selectedCartItems,
+    totalQuantity: cartTotalQuantity,
+    totalPrice: cartTotalPrice,
   };
 
   return (
