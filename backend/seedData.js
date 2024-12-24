@@ -78,7 +78,7 @@ const seedData = async () => {
         size: ["S", "M", "L", "XL"],
         imageUrl: [
           "http://localhost:3000/product-images/product1-01.jpg",
-          "http://localhost:3000/product-images/product1-01.jpg",
+          "http://localhost:3000/product-images/product1-02.jpg",
         ],
         salesVolume: 50,
         category_id: 4,
@@ -94,7 +94,7 @@ const seedData = async () => {
         size: ["S", "M", "L", "XL"],
         imageUrl: [
           "http://localhost:3000/product-images/product1-01.jpg",
-          "http://localhost:3000/product-images/product1-01.jpg",
+          "http://localhost:3000/product-images/product1-02.jpg",
         ],
         salesVolume: 1000,
         category_id: 4,
@@ -110,7 +110,7 @@ const seedData = async () => {
         size: ["S", "M", "L", "XL"],
         imageUrl: [
           "http://localhost:3000/product-images/product1-01.jpg",
-          "http://localhost:3000/product-images/product1-01.jpg",
+          "http://localhost:3000/product-images/product1-02.jpg",
         ],
         salesVolume: 0,
         category_id: 4,
@@ -126,7 +126,7 @@ const seedData = async () => {
         size: ["S", "M", "L", "XL"],
         imageUrl: [
           "http://localhost:3000/product-images/product1-01.jpg",
-          "http://localhost:3000/product-images/product1-01.jpg",
+          "http://localhost:3000/product-images/product1-02.jpg",
         ],
         salesVolume: 10,
         category_id: 4,
@@ -142,7 +142,7 @@ const seedData = async () => {
         size: ["S", "M", "L", "XL"],
         imageUrl: [
           "http://localhost:3000/product-images/product1-01.jpg",
-          "http://localhost:3000/product-images/product1-01.jpg",
+          "http://localhost:3000/product-images/product1-02.jpg",
         ],
         salesVolume: 0,
         category_id: 4,
@@ -158,7 +158,7 @@ const seedData = async () => {
         size: ["S", "M", "L", "XL"],
         imageUrl: [
           "http://localhost:3000/product-images/product1-01.jpg",
-          "http://localhost:3000/product-images/product1-01.jpg",
+          "http://localhost:3000/product-images/product1-02.jpg",
         ],
         salesVolume: 0,
         category_id: 4,
@@ -174,7 +174,7 @@ const seedData = async () => {
         size: ["S", "M", "L", "XL"],
         imageUrl: [
           "http://localhost:3000/product-images/product1-01.jpg",
-          "http://localhost:3000/product-images/product1-01.jpg",
+          "http://localhost:3000/product-images/product1-02.jpg",
         ],
         salesVolume: 0,
         category_id: 4,
@@ -190,7 +190,7 @@ const seedData = async () => {
         size: ["S", "M", "L", "XL"],
         imageUrl: [
           "http://localhost:3000/product-images/product1-01.jpg",
-          "http://localhost:3000/product-images/product1-01.jpg",
+          "http://localhost:3000/product-images/product1-02.jpg",
         ],
         salesVolume: 0,
         category_id: 4,
@@ -206,7 +206,7 @@ const seedData = async () => {
         size: ["S", "M", "L", "XL"],
         imageUrl: [
           "http://localhost:3000/product-images/product1-01.jpg",
-          "http://localhost:3000/product-images/product1-01.jpg",
+          "http://localhost:3000/product-images/product1-02.jpg",
         ],
         salesVolume: 0,
         category_id: 4,
@@ -222,7 +222,7 @@ const seedData = async () => {
         size: ["S", "M", "L", "XL"],
         imageUrl: [
           "http://localhost:3000/product-images/product1-01.jpg",
-          "http://localhost:3000/product-images/product1-01.jpg",
+          "http://localhost:3000/product-images/product1-02.jpg",
         ],
         salesVolume: 0,
         category_id: 4,
@@ -238,7 +238,7 @@ const seedData = async () => {
         size: ["S", "M", "L", "XL"],
         imageUrl: [
           "http://localhost:3000/product-images/product1-01.jpg",
-          "http://localhost:3000/product-images/product1-01.jpg",
+          "http://localhost:3000/product-images/product1-02.jpg",
         ],
         salesVolume: 0,
         category_id: 4,
@@ -254,7 +254,7 @@ const seedData = async () => {
         size: ["S", "M", "L", "XL"],
         imageUrl: [
           "http://localhost:3000/product-images/product1-01.jpg",
-          "http://localhost:3000/product-images/product1-01.jpg",
+          "http://localhost:3000/product-images/product1-02.jpg",
         ],
         salesVolume: 0,
         category_id: 4,
@@ -270,7 +270,7 @@ const seedData = async () => {
         size: ["S", "M", "L", "XL"],
         imageUrl: [
           "http://localhost:3000/product-images/product1-01.jpg",
-          "http://localhost:3000/product-images/product1-01.jpg",
+          "http://localhost:3000/product-images/product1-02.jpg",
         ],
         salesVolume: 0,
         category_id: 4,
@@ -286,7 +286,7 @@ const seedData = async () => {
         size: ["S", "M", "L", "XL"],
         imageUrl: [
           "http://localhost:3000/product-images/product1-01.jpg",
-          "http://localhost:3000/product-images/product1-01.jpg",
+          "http://localhost:3000/product-images/product1-02.jpg",
         ],
         salesVolume: 0,
         category_id: 4,
@@ -302,7 +302,7 @@ const seedData = async () => {
         size: ["S", "M", "L", "XL"],
         imageUrl: [
           "http://localhost:3000/product-images/product1-01.jpg",
-          "http://localhost:3000/product-images/product1-01.jpg",
+          "http://localhost:3000/product-images/product1-02.jpg",
         ],
         salesVolume: 0,
         category_id: 4,
@@ -318,7 +318,7 @@ const seedData = async () => {
         size: ["S", "M", "L", "XL"],
         imageUrl: [
           "http://localhost:3000/product-images/product1-01.jpg",
-          "http://localhost:3000/product-images/product1-01.jpg",
+          "http://localhost:3000/product-images/product1-02.jpg",
         ],
         salesVolume: 0,
         category_id: 4,
