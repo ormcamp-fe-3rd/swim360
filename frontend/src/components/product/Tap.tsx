@@ -15,7 +15,7 @@ function ProductTab({ activeCategory = "" }: ProductTabProps) {
           activeCategory === "detailsTab"
             ? "border-black text-black"
             : "border-[#CCCCCC] text-gray-500"
-        } text-base font-medium sm:text-[24px]`}
+        } text-sm font-extralight sm:text-[24px]`}
       >
         상품상세정보
       </HashLink>
