@@ -40,6 +40,7 @@ export default function UserInfoEditForm() {
       username: "",
       phoneNumber: "",
       emailId: "",
+      password: "",
       address:"",
     },
   });
@@ -155,7 +156,7 @@ export default function UserInfoEditForm() {
           />
           <FormField
             control={form.control}
-            name="passwordCheck"
+            name="password"
             render={({ field }) => (
               <FormItem className="h-20 w-full border-b-2">
                 <div className="flex w-full items-center justify-between px-10">
@@ -167,7 +168,8 @@ export default function UserInfoEditForm() {
                       <Input placeholder="password" {...field} />
                     </FormControl>
                     <FormDescription className="pt-1">
-                      비밀번호가 동일하지 않습니다.
+                      영문, 숫자, 특수문자 포함 8자~16자 사이로 입력가능합니다.
+                      {/* 비밀번호가 동일하지 않습니다. */}
                     </FormDescription>
                   </div>
                   <FormMessage />
@@ -185,8 +187,17 @@ export default function UserInfoEditForm() {
                     배송지
                   </FormLabel>
                   <div className="flex w-2/3 flex-col gap-1">
-                    <FormControl className="h-12 border-none bg-[#F0F0F0]">
-                      <Input placeholder="adress" {...field} />
+                    <FormControl className="h-12 border-none">
+                      <div className="flex gap-1">
+                        <Input
+                          placeholder="adress"
+                          {...field}
+                          className="h-full bg-[#F0F0F0]"
+                        />
+                        <PrimaryButton className="h-full w-1/5">
+                          주소검색
+                        </PrimaryButton>
+                      </div>
                     </FormControl>
                     <FormControl className="h-12 border-none bg-[#F0F0F0]">
                       <Input
@@ -207,6 +218,7 @@ export default function UserInfoEditForm() {
               </PrimaryButton>
             </Link>
             <Link to="/mypage" className="w-full">
+            {/* TODO: 회원정보 수정 기능 추가 */}
               <PrimaryButton>확인</PrimaryButton>
             </Link>
           </div>
