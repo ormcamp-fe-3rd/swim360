@@ -20,6 +20,7 @@ router.get("/:id", async (req, res) => {
             "imageUrl",
             "name",
             "discountedPrice",
+            "description",
             "price",
           ],
         },
@@ -30,7 +31,18 @@ router.get("/:id", async (req, res) => {
     if (!cartItems) {
       return res.status(404).json({ error: "장바구니 불러오기 싫패 " });
     }
-    return res.json(cartItems);
+
+    const formattedItems = cartItems.map((cartItem) => {
+      if (cartItem && Array.isArray(cartItem.Product.imageUrl)) {
+        cartItem.Product.imageUrl =
+          cartItem.Product.imageUrl.length > 0
+            ? cartItem.Product.imageUrl[0]
+            : null;
+      }
+      return cartItem;
+    });
+
+    return res.json(formattedItems);
   } catch (error) {
     return res.status(500).json({ error: " 서버 에러 " + error });
   }

@@ -1,8 +1,9 @@
 import { formatPrice } from "@/utils/formatPrice";
 import PrimaryButton from "../common/PrimaryButton";
-import { Cart } from "@/types/cart";
+import { useNavigate } from "react-router-dom";
+import { SelectedOrderItem } from "@/types/orders";
 interface CartTotalPriceProps {
-  selectedItems: Cart[];
+  selectedItems: SelectedOrderItem[];
   totalQuantity: number;
   totalPrice: number;
 }
@@ -12,11 +13,22 @@ export default function CartTotalPrice({
   totalQuantity,
   totalPrice,
 }: CartTotalPriceProps) {
+  const navigate = useNavigate();
+
   const selectedCartData = {
-    selectedItems,
-    totalQuantity,
-    totalPrice,
+    selectedItems: selectedItems,
+    totalQuantity: totalQuantity,
+    totalPrice: totalPrice,
   };
+
+  const handleOrderButtonClick = () => {
+    if (selectedItems.length === 0) {
+      alert("구매할 상품을 선택해주세요.");
+      return;
+    }
+    navigate("/order", { state: selectedCartData });
+  };
+
   return (
     <div className="w-full p-4 middle:w-1/3">
       <div className="flex justify-between p-1">
@@ -44,7 +56,7 @@ export default function CartTotalPrice({
           <span className="inline-block w-1/2 pl-1">원</span>
         </div>
       </div>
-      <PrimaryButton>바로구매</PrimaryButton>
+      <PrimaryButton onClick={handleOrderButtonClick}>바로구매</PrimaryButton>
     </div>
   );
 }

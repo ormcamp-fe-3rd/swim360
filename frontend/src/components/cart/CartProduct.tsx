@@ -1,12 +1,13 @@
 import { formatPrice } from "@/utils/formatPrice";
 import { Checkbox } from "../ui/checkbox";
-import { Cart } from "@/types/cart";
+import { SelectedOrderItem } from "@/types/orders";
 
 interface CartProductProps {
   id: number;
   brandName: string;
+  description: string;
   name: string;
-  imageUrl: string[];
+  imageUrl: string;
   eachPrice: number;
 
   size: string;
@@ -14,7 +15,7 @@ interface CartProductProps {
   quantity: number;
 
   handleSelectedCartUpdate: (
-    selectedCartItem: Cart,
+    selectedCartItem: SelectedOrderItem,
     isChecked: boolean,
   ) => void;
 }
@@ -24,18 +25,24 @@ export default function CartProduct({
   brandName,
   name,
   imageUrl,
+  description,
   eachPrice,
   size,
   price,
   quantity,
   handleSelectedCartUpdate,
 }: CartProductProps) {
+  //cart는 체크 안한 cartId만 지우면됨
+
   const cartItem = {
+    productId: id,
+    name: name,
+    description: description,
     price: price,
+    imageUrl: imageUrl,
     size: size,
     quantity: quantity,
-    user_id: Number(sessionStorage.getItem("id")),
-    product_id: id,
+    totalPrice: price,
   };
 
   return (
@@ -47,7 +54,7 @@ export default function CartProduct({
         }
       />
       <div className="flex w-full items-center justify-between border-b pl-2.5">
-        <img src={imageUrl[0]} alt="이미지" className="w-1/6" />
+        <img src={imageUrl} alt="이미지" className="w-1/6" />
         <div className="w-1/3">
           <p>{brandName}</p>
           <p>{name}</p>

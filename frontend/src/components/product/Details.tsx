@@ -155,6 +155,9 @@ function Details({ product, handleCartUpdate }: DetailsProps) {
       alert("사이즈를 선택해주세요.");
       return;
     }
+
+    console.log(selectedProductData);
+
     navigate("/order", { state: selectedProductData });
   };
 

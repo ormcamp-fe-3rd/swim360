@@ -3,6 +3,7 @@ import { CartContext } from "@/contexts/CartContext";
 import { getCartCount, getCartListData, updateCartData } from "@/services/cart";
 import { Cart, CartItem } from "@/types/cart";
 import { useNavigate } from "react-router-dom";
+import { SelectedOrderItem } from "@/types/orders";
 
 function useCart() {
   const context = useContext(CartContext);
@@ -19,9 +20,9 @@ function useCart() {
 
   const [updateCartTrigger, setUpdateCartTrigger] = useState(0);
 
-  const [selectedCartItems, setSelectedCartItems] = useState<Set<Cart>>(
-    new Set(),
-  );
+  const [selectedCartItems, setSelectedCartItems] = useState<
+    Set<SelectedOrderItem>
+  >(new Set());
 
   const navigate = useNavigate();
 
@@ -82,7 +83,7 @@ function useCart() {
   };
 
   const handleSelectedCartUpdate = (
-    selectedCartItem: Cart,
+    selectedCartItem: SelectedOrderItem,
     isChecked: boolean,
   ) => {
     setSelectedCartItems((prev) => {
@@ -92,7 +93,7 @@ function useCart() {
       } else {
         const cartItem = Array.from(newSet).find(
           (item) =>
-            item.product_id === selectedCartItem.product_id &&
+            item.productId === selectedCartItem.productId &&
             item.size === selectedCartItem.size,
         );
         if (cartItem) newSet.delete(cartItem);
