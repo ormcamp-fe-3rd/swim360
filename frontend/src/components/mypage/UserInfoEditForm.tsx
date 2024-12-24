@@ -98,6 +98,15 @@ export default function UserInfoEditForm() {
     }
   }, [password, passwordCheck]);
 
+//주소 입력
+const handleAddressSearch = () => {
+  new window.daum.Postcode({
+    oncomplete: (data: {address: string})=> {
+      form.setValue("address", data.address)
+    }
+  }).open();
+}
+
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
@@ -242,7 +251,7 @@ export default function UserInfoEditForm() {
                             {...field}
                             className="h-full bg-[#F0F0F0]"
                           />
-                          <PrimaryButton className="h-full w-1/5">
+                          <PrimaryButton className="h-full w-1/5" onClick={handleAddressSearch}>
                             주소검색
                           </PrimaryButton>
                         </div>
