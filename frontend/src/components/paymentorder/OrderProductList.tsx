@@ -1,23 +1,11 @@
-interface SelectedItem {
-  size: string;
-  quantity: number;
-  totalPrice: number;
-}
+import { SelectedOrderItem } from "@/types/orders";
 
 interface OrderProductListProps {
-  product_id: number;
-  name: string;
-  imageUrl: string;
-  description: string;
-  selectedItems: SelectedItem[];
+  selectedItems: SelectedOrderItem[];
   totalQuantity: number;
 }
 
 function OrderProductList({
-  product_id,
-  name,
-  imageUrl,
-  description,
   selectedItems,
   totalQuantity,
 }: OrderProductListProps) {
@@ -33,15 +21,19 @@ function OrderProductList({
       </div>
       {selectedItems.map((selectedItem, index) => (
         <div
-          key={`${product_id}-${index}`}
+          key={`${selectedItem.productId}-${index}`}
           className="flex justify-between border-b p-2.5"
         >
           {/* 상품 이미지 */}
-          <img src={imageUrl} alt={name} className="w-1/6" />
+          <img
+            src={selectedItem.imageUrl}
+            alt={selectedItem.name}
+            className="w-1/6"
+          />
           {/* 상품 정보 */}
           <div className="w-1/3">
-            <p>{name}</p>
-            <p>{description}</p>
+            <p>{selectedItem.name}</p>
+            <p>{selectedItem.description}</p>
             <p>
               옵션 : <span>{selectedItem.size}</span>
             </p>

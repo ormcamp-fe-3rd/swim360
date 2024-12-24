@@ -90,3 +90,14 @@ declare global {
     };
   }
 }
+
+export interface SelectedOrderItem {
+  productId: number;
+  name: string;
+  description: string;
+  price: number;
+  imageUrl: string;
+  size: string;
+  quantity: number;
+  totalPrice: number;
+}
