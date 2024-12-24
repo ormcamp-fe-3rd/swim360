@@ -1,7 +1,7 @@
 import { Category } from "@/types/categories";
 import CategoryHoverBox from "./CategoryHoverBox";
 import CategoryUnderLine from "./CategoryUnderline";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 interface CategoryBoxProps {
   currentParentCategoryId: Category["parent_id"];
@@ -23,6 +23,8 @@ export default function CategoryBox({
 }: CategoryBoxProps) {
   if (parentCategories.length === 0) return;
 
+  const location = useLocation();
+
   return (
     <ul className="hidden w-full max-w-[500px] tablet:flex tablet:justify-between">
       {parentCategories.map((category: Category) => {
@@ -42,7 +44,10 @@ export default function CategoryBox({
               </div>
             </Link>
             <CategoryUnderLine
-              isVisible={currentParentCategoryId === category.id}
+              isVisible={
+                location.pathname.includes("product_list") &&
+                currentParentCategoryId === category.id
+              }
             />
             <CategoryHoverBox
               handleCurrentCategoryChange={handleCurrentCategoryChange}
