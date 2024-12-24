@@ -1,11 +1,6 @@
 import { useContext, useEffect, useMemo, useState } from "react";
 import { CartContext } from "@/contexts/CartContext";
-import {
-  deleteOneCart,
-  getCartCount,
-  getCartListData,
-  updateCartData,
-} from "@/services/cart";
+import { getCartCount, getCartListData, updateCartData } from "@/services/cart";
 import { Cart, CartItem } from "@/types/cart";
 import { useNavigate } from "react-router-dom";
 import { SelectedOrderItem } from "@/types/orders";
@@ -19,11 +14,10 @@ function useCart() {
     throw new Error("context가 Provider 외부에 존재하고 있습니다.");
   }
 
-  const { cartCount, setCartCount } = context;
+  const { cartCount, setCartCount, cartFetchTrigger, setCartFetchTrigger } =
+    context;
 
   const [cartListData, setCartListData] = useState<CartItem[]>([]);
-
-  const [updateCartTrigger, setUpdateCartTrigger] = useState(0);
 
   const [selectedCartIds, setSelectedCartIds] = useState<Set<Cart["id"]>>(
     new Set(),
@@ -82,7 +76,7 @@ function useCart() {
 
       if (response?.status === 200) {
         setCartCount((prev) => prev + totalQuantity);
-        setUpdateCartTrigger((prev) => prev + 1);
+        setCartFetchTrigger((prev) => prev + 1);
         alert("장바구니에 선택한 상품이 담겼습니다.");
       } else {
         setCartCount(prevCount);
@@ -144,11 +138,11 @@ function useCart() {
 
   useEffect(() => {
     handleCartListDataFetch();
-  }, []);
+  }, [cartFetchTrigger]);
 
   useEffect(() => {
     handleCartCountFetch();
-  }, [userId, updateCartTrigger]);
+  }, [userId, cartFetchTrigger]);
 
   return {
     cartListData,

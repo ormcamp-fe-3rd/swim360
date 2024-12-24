@@ -6,6 +6,8 @@ import { OrderFormData } from "@/types/orders";
 
 import PriceRow from "./PriceRow";
 import { deleteOrderedCart } from "@/services/cart";
+import { CartContext } from "@/contexts/CartContext";
+import { useContext } from "react";
 
 interface TotalPriceProps {
   selectedCartIds: Set<number | undefined>;
@@ -22,6 +24,14 @@ function TotalPrice({
   formData,
   products,
 }: TotalPriceProps) {
+  const context = useContext(CartContext);
+
+  if (!context) {
+    throw new Error("context가 Provider 외부에 존재하고 있습니다.");
+  }
+
+  const { setCartFetchTrigger } = context;
+
   const navigate = useNavigate();
 
   const handleOrderedCartDelete = async (
@@ -58,6 +68,7 @@ function TotalPrice({
       if (selectedCartIds) {
         handleOrderedCartDelete(selectedCartIds);
       }
+      setCartFetchTrigger((prev) => prev + 1);
       navigate("/order/thanks");
     } else {
       throw new Error("서버 오류");
