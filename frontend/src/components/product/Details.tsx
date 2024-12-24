@@ -1,13 +1,12 @@
-
-import { Link } from "react-router-dom";
-import { ProductData } from "@/types/products";
-
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
+import { Cart } from "@/types/cart";
+import { ProductData } from "@/types/products";
 import { Product } from "@/types/products";
 
 import { Selected } from "./SelectedItem";
 import { SizeButton } from "./SizeBtn";
-import { Cart } from "@/types/cart";
 
 interface DetailsProps {
   product: ProductData | undefined;
@@ -128,9 +127,25 @@ function Details({ product, handleCartUpdate }: DetailsProps) {
             >
               장바구니 담기
             </button>
-            <button className="my-2 h-[70px] w-full max-w-[522px] rounded-2xl bg-black text-white">
-              바로 구매
-            </button>
+            <Link
+              to="/paymentorder"
+              state={{
+                product_id: product.id,
+                name: product.name,
+                description: product.description,
+                totalQuantity: 5,
+                totalPrice: 2000000,
+                discountedPrice: product.price,
+                // size: product.selectedSize,
+                // quantity: product.selectedTotal || 1,
+                // totalPrice: product.total,
+              }}
+              className="w-full max-w-[522px]"
+            >
+              <button className="my-2 h-[70px] w-full max-w-[522px] rounded-2xl bg-black text-white">
+                바로 구매
+              </button>
+            </Link>
           </div>
         </div>
       </div>
