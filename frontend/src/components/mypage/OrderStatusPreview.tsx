@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 import { useUserId } from "@/hooks/useUserId";
 import { getMyOrderStatus } from "@/services/order";
@@ -63,7 +62,6 @@ function OrderStatusPreview() {
 
 
   return (
-    <Link to="/orderlist">
       <div className="mb-[69px] flex h-[146px] border border-black">
         {ORDER_STATUS.map(({ status, label }, i) => (
           <div key={status} className="flex w-full items-center text-center">
@@ -84,7 +82,6 @@ function OrderStatusPreview() {
           </div>
         ))}
       </div>
-    </Link>
   );
 }
 
