@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import PrimaryButton from "@/components/common/PrimaryButton";
 
-function PayMentPage() {
+function OrderThanksPage() {
   return (
     <div className="mx-auto w-full max-w-[836px]">
       <p className="mx-4 border-b p-2.5 text-center font-bold">
@@ -18,4 +18,4 @@ function PayMentPage() {
   );
 }
 
-export default PayMentPage;
+export default OrderThanksPage;
