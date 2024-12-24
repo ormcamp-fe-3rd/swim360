@@ -2,12 +2,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Cart } from "@/types/cart";
+import { SelectedOrderItem } from "@/types/orders";
 import { ProductData } from "@/types/products";
+import { formatPrice } from "@/utils/formatPrice";
 
 import { Selected } from "./SelectedItem";
 import { SizeButton } from "./SizeBtn";
-import { SelectedOrderItem } from "@/types/orders";
-import { formatPrice } from "@/utils/formatPrice";
 
 interface DetailsProps {
   product: ProductData | undefined;
@@ -114,7 +114,7 @@ function Details({ product, handleCartUpdate }: DetailsProps) {
       alert("사이즈를 선택해주세요.");
       return;
     }
-    navigate("/paymentorder", { state: selectedProductData });
+    navigate("/order", { state: selectedProductData });
   };
 
   if (!product) {

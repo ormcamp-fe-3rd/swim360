@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import MeansPayment from "@/components/paymentorder/MeansPayment";
-import OrderProductList from "@/components/paymentorder/OrderProductList";
-import PossessionPoint from "@/components/paymentorder/PossessionPoint";
-import ShippingInformation from "@/components/paymentorder/ShippingInformation";
-import TotalPrice from "@/components/paymentorder/TotalPrice";
+import MeansPayment from "@/components/order/MeansPayment";
+import OrderProductList from "@/components/order/OrderProductList";
+import PossessionPoint from "@/components/order/PossessionPoint";
+import ShippingInformation from "@/components/order/ShippingInformation";
+import TotalPrice from "@/components/order/TotalPrice";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -21,7 +21,7 @@ import { OrderFormData } from "@/types/orders";
 // const shippingFee = 3000;
 // const totalPayment = totalProductPrice - point + shippingFee;
 
-function PayMentOrderPage() {
+function OrderPage() {
   const [formData, setFormData] = useState<OrderFormData>({
     receiver: "",
     phoneNumber: "",
@@ -42,7 +42,7 @@ function PayMentOrderPage() {
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink href="/" className="text-gray-500">
+            <BreadcrumbLink href="/cart" className="text-gray-500">
               장바구니
             </BreadcrumbLink>
           </BreadcrumbItem>
@@ -76,4 +76,4 @@ function PayMentOrderPage() {
   );
 }
 
-export default PayMentOrderPage;
+export default OrderPage;
