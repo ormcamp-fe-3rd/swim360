@@ -40,7 +40,9 @@ function TotalPrice({
     try {
       const cartIds = Array.from(selectedCartIds);
       const response = await deleteOrderedCart(cartIds);
-      console.log(response?.status);
+      if (response?.status === 200) {
+        setCartFetchTrigger((prev) => prev + 1);
+      }
     } catch (err) {
       console.log(err);
     }
@@ -68,7 +70,6 @@ function TotalPrice({
       if (selectedCartIds) {
         handleOrderedCartDelete(selectedCartIds);
       }
-      setCartFetchTrigger((prev) => prev + 1);
       navigate("/order/thanks");
     } else {
       throw new Error("서버 오류");
