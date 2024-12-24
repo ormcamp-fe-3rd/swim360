@@ -29,16 +29,14 @@ const formSchema = z.object({
   address: z.string().optional(),
   detailAddress: z.string().optional(),
   passwordCheck: z.string().min(8).max(16),
-}).refine((data)=> data.password === data.passwordCheck, {
-  message: "비밀번호가 동일하지 않습니다.",
-  path: ["passwordCheck"]
 })
 
 export default function UserInfoEditForm() {
   const { userId } = useUserId();
   const [user, setUser] = useState<User>();
+  const [passwordMessage, setPasswordMessage] = useState("");
   const [passwordCheckMessage, setPasswordCheckMessage] = useState("");
-  
+
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -47,46 +45,50 @@ export default function UserInfoEditForm() {
       phoneNumber: "",
       emailId: "",
       password: "",
-      address:"",
+      address: "",
       detailAddress: "",
-      passwordCheck: ""
+      passwordCheck: "",
     },
   });
 
   //회원정보 불러오기
-  useEffect(()=>{
+  useEffect(() => {
     const fetchUserInfo = async () => {
-      try{
+      try {
         const user = await getUser(userId);
         setUser(user);
 
         form.reset({
-          username: user.name||"",
-          phoneNumber: user.phoneNumber||"",
-          emailId: user.emailId||"",
+          username: user.name || "",
+          phoneNumber: user.phoneNumber || "",
+          emailId: user.emailId || "",
         });
-        
-      }catch(error:any){
+      } catch (error: any) {
         console.log("User Edit error: ", error);
-        alert(error.message)
+        alert(error.message);
       }
-    }
+    };
     fetchUserInfo();
-  },[form, userId])
+  }, [form, userId]);
 
   //비밀번호 검증
-  const password = form.watch("password")
-  const passwordCheck = form.watch("passwordCheck")
-  
-  useEffect(()=>{
-    if(passwordCheck && password !== passwordCheck){
-      setPasswordCheckMessage("비밀번호가 동일하지 않습니다.")
-    }else{
+  const password = form.watch("password");
+  const passwordCheck = form.watch("passwordCheck");
+  useEffect(() => {
+    if (passwordCheck && password !== passwordCheck) {
+      setPasswordCheckMessage("비밀번호가 동일하지 않습니다.");
+    } else {
       setPasswordCheckMessage("");
     }
-  },[password, passwordCheck])
+    if(password?.length<8 || password?.length>16){
+      setPasswordMessage(
+        "영문, 숫자, 특수문자 포함 8자~16자 사이로 입력가능합니다.",
+      );
+    } else {
+      setPasswordMessage("")
+    }
+  }, [password, passwordCheck]);
 
-  
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
@@ -177,7 +179,7 @@ export default function UserInfoEditForm() {
                       />
                     </FormControl>
                     <FormDescription className="pt-1">
-                      영문, 숫자, 특수문자 포함 8자~16자 사이로 입력가능합니다.
+                      {passwordMessage}
                     </FormDescription>
                   </div>
                   <FormMessage />
