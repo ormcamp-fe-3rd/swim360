@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 import { Cart } from "@/types/cart";
 import { ProductData } from "@/types/products";
-import { Product } from "@/types/products";
 
 import { Selected } from "./SelectedItem";
 import { SizeButton } from "./SizeBtn";
@@ -56,13 +55,19 @@ function Details({ product, handleCartUpdate }: DetailsProps) {
 
   return (
     <div className="h-auto w-full max-w-[522px] flex-col">
-      <p className="w-[522px] text-[18px] font-semibold">{product?.name}</p>
+      <p className="w-[522px] text-base font-semibold">{product?.brandName}</p>
+      <p className="text- w-[522px] font-semibold">{product?.name}</p>
+      <p className="mb-4 w-[522px] text-[14px] font-medium">
+        {product?.description}
+      </p>
       <div className="flex w-[522px] gap-[10px]">
-        <p className="text-base font-medium">정상가</p>
-        <p className="text-sm font-extralight">{product?.price}원</p>
+        <p className="text-base font-bold">정상가</p>
+        <p className="text-sm font-extralight line-through">
+          {product?.price}원
+        </p>
       </div>
       <div className="flex w-[522px] gap-[10px]">
-        <p className="text-base font-medium">할인가</p>
+        <p className="text-base font-bold">할인가</p>
         <p className="text-base font-bold text-[#D40022]">
           {product?.discountedPrice}원
         </p>
@@ -70,7 +75,7 @@ function Details({ product, handleCartUpdate }: DetailsProps) {
           {product?.Discount.discountPercentage}%
         </p>
       </div>
-      <div className="flex w-[522px] gap-[10px]">
+      <div className="mb-5 flex w-[522px] gap-[10px]">
         <p className="text-sm text-[#B0B0B0]">무료 배송</p>
       </div>
 

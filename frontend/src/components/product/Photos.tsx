@@ -1,33 +1,11 @@
 import { useState } from "react";
-
-interface MiniPhotosProps {
-  src: string; // 이미지 소스를 필수값으로 받음
+interface PhotosProps {
+  imageUrl: string[];
   onClick: () => void; // 클릭 이벤트 핸들러를 필수값으로 받음
 }
 
-function MiniPhotos({ src, onClick }: MiniPhotosProps) {
-  return (
-    <img
-      className="h-[120px] w-[88px] cursor-pointer overflow-hidden rounded object-cover"
-      src={src}
-      alt="Thumbnail image"
-      onClick={onClick} // 클릭 이벤트 핸들러 연결
-    />
-  );
-}
-
-function Photos() {
-  const [mainImage, setMainImage] = useState(
-    "/public/images/product/swimsuit-front.jpg",
-  );
-
-  const thumbnails = [
-    "/public/images/product/swimsuit-front.jpg",
-    "/public/images/product/swimsuit-front2.jpg",
-    "/public/images/product/swimsuit-side.jpg",
-    "/public/images/product/swimsuit-back.jpg",
-    "/public/images/product/swimsuit-back2.jpg",
-  ];
+function Photos({ imageUrl }: PhotosProps) {
+  const [mainImage, setMainImage] = useState<string>(imageUrl[0]); // 첫 번째 이미지를 기본 메인 이미지로 설정
 
   return (
     <div className="h-auto w-full max-w-[522px]">
@@ -39,12 +17,14 @@ function Photos() {
       />
 
       {/* 썸네일 이미지들 */}
-      <div className="tablet:none flex w-full max-w-[522px] gap-5">
-        {thumbnails.map((thumbnail, index) => (
-          <MiniPhotos
+      <div className="tablet:none flex w-full max-w-[522px] justify-center gap-5">
+        {imageUrl.map((src, index) => (
+          <img
             key={index}
-            src={thumbnail}
-            onClick={() => setMainImage(thumbnail)} // 클릭 시 메인 이미지 변경
+            className="h-[120px] w-[88px] cursor-pointer overflow-hidden rounded object-cover"
+            src={src} // 썸네일 이미지로 각 배열 요소를 사용
+            alt={`Thumbnail image ${index}`}
+            onClick={() => setMainImage(src)} // 썸네일 클릭 시 메인 이미지 변경
           />
         ))}
       </div>
