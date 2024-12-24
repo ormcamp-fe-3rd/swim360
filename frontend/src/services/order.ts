@@ -1,5 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 import axios from "@/services/index.ts";
-import { Order } from "@/types/orders";
+import { OrderRequest } from "@/types/orders";
 
 //유저 주문 불러오기
 export async function getMyOrders(userId: string) {
@@ -12,13 +14,17 @@ export async function getMyOrders(userId: string) {
   }
 }
 
-export async function createOrderData(orderData: Order) {
+export async function createOrderData(
+  orderData: OrderRequest,
+  navigate: ReturnType<typeof useNavigate>,
+) {
   try {
     const response = await axios.post("/orders", orderData);
     console.log("응답 상태 코드:", response.status);
     console.log("응답 데이터:", response.data);
     if (response.status === 200) {
       alert("주문이 성공적으로 완료되었습니다!");
+      navigate("/payment");
     } else {
       throw new Error("서버 오류");
     }
