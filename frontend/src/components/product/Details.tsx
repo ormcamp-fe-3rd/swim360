@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { Cart } from "@/types/cart";
 import { ProductData } from "@/types/products";
 
 import { Selected } from "./SelectedItem";
 import { SizeButton } from "./SizeBtn";
+import { SelectedOrderItem } from "@/types/orders";
 
 interface DetailsProps {
   product: ProductData | undefined;
@@ -13,45 +14,111 @@ interface DetailsProps {
 }
 
 function Details({ product, handleCartUpdate }: DetailsProps) {
-  const [counts, setCounts] = useState<{ [key: string]: number }>({
+  const navigate = useNavigate();
+
+  const [sizeCountStatus, setSizeCountStatus] = useState<{
+    [key: string]: number;
+  }>({
     S: 0,
     M: 0,
     L: 0,
     XL: 0,
+    FREE: 0,
   }); // 각 사이즈별 수량 상태 관리
-
-  // 수량 증가 함수
-  const increaseCount = (size: string) => {
-    setCounts((prev) => ({ ...prev, [size]: prev[size] + 1 }));
-  };
-
-  // 수량 감소 함수
-  const decreaseCount = (size: string) => {
-    setCounts((prev) => ({ ...prev, [size]: Math.max(prev[size] - 1, 0) }));
-  };
 
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]); // 선택된 사이즈 배열 상태
 
-  const handleClick = (size: string) => {
+  const [selectedItems, setSelectedItems] = useState<SelectedOrderItem[]>([]);
+
+  const updateSelectedItems = (size: string, count: number) => {
+    if (!selectedSizes.includes(size)) {
+      setSelectedItems((prev) => [
+        ...prev,
+        {
+          productId: product?.id || 0,
+          imageUrl: product?.imageUrl[0] || "",
+          name: product?.name || "",
+          description: product?.description || "",
+          price: product?.price || 0,
+          size,
+          quantity: count,
+          totalPrice: (product?.discountedPrice || 0) * count,
+        },
+      ]);
+    } else {
+      setSelectedItems((prev) =>
+        prev.map((item) =>
+          item.size === size
+            ? {
+                ...item,
+                quantity: count,
+                totalPrice: (product?.discountedPrice || 0) * count,
+              }
+            : item,
+        ),
+      );
+    }
+  };
+
+  // 수량 증가 함수
+  const increaseSizeCount = (size: string) => {
+    setSizeCountStatus((prev) => ({ ...prev, [size]: prev[size] + 1 }));
+    updateSelectedItems(size, sizeCountStatus[size] + 1);
+  };
+
+  // 수량 감소 함수
+  const decreaseSizeCount = (size: string) => {
+    setSizeCountStatus((prev) => ({
+      ...prev,
+      [size]: Math.max(prev[size] - 1, 0),
+    }));
+
+    const newCount = Math.max(sizeCountStatus[size] - 1, 0);
+    updateSelectedItems(size, newCount);
+  };
+
+  const handleSizeButtonClick = (size: string) => {
     if (!selectedSizes.includes(size)) {
       setSelectedSizes((prev) => [...prev, size]); // 선택된 사이즈 추가
     }
-    increaseCount(size); // 사이즈 클릭 시 수량 증가
+    increaseSizeCount(size);
   };
 
-  if (!product) {
-    return null;
-  }
+  const totalQuantity = selectedSizes.reduce((acc, size) => {
+    const count = sizeCountStatus[size];
+    if (count > 0) {
+      return acc + count;
+    }
+    return acc;
+  }, 0);
 
   // 총 상품 금액 계산 (각 사이즈의 수량 * 가격)
   const totalPrice = selectedSizes.reduce((acc, size) => {
-    const count = counts[size];
+    const count = sizeCountStatus[size];
     if (count > 0) {
       const sizePrice = count * (product?.discountedPrice || 0);
       return acc + sizePrice;
     }
     return acc;
   }, 0);
+
+  const selectedProductData = {
+    selectedItems: selectedItems,
+    totalQuantity: totalQuantity,
+    totalPrice: totalPrice,
+  };
+
+  const handleOrderButtonClick = () => {
+    if (selectedItems.length === 0) {
+      alert("사이즈를 선택해주세요.");
+      return;
+    }
+    navigate("/paymentorder", { state: selectedProductData });
+  };
+
+  if (!product) {
+    return null;
+  }
 
   return (
     <div className="h-auto w-full max-w-[522px] flex-col">
@@ -82,10 +149,10 @@ function Details({ product, handleCartUpdate }: DetailsProps) {
       <div className="mb-5 h-[88px] w-[522px] flex-col justify-between border-t-[1px] border-black pt-5">
         <p className="mb-2 text-base">사이즈</p>
         <div className="mb-5 flex gap-1">
-          {["S", "M", "L", "XL"].map((size) => (
+          {product.size.map((size) => (
             <div
               key={size}
-              onClick={() => handleClick(size)}
+              onClick={() => handleSizeButtonClick(size)}
               className="cursor-pointer"
             >
               <SizeButton size={size} />
@@ -98,13 +165,13 @@ function Details({ product, handleCartUpdate }: DetailsProps) {
         {/* 선택된 사이즈들만 렌더링, count가 0이면 Selected 컴포넌트가 렌더링되지 않음 */}
         {selectedSizes.map(
           (size) =>
-            counts[size] > 0 && (
+            sizeCountStatus[size] > 0 && (
               <Selected
                 key={size}
                 selectedSize={size}
-                count={counts[size]}
-                setCount={increaseCount}
-                decreaseCount={decreaseCount}
+                count={sizeCountStatus[size]}
+                increaseSizeCount={increaseSizeCount}
+                decreaseSizeCount={decreaseSizeCount}
               />
             ),
         )}
@@ -132,25 +199,13 @@ function Details({ product, handleCartUpdate }: DetailsProps) {
             >
               장바구니 담기
             </button>
-            <Link
-              to="/paymentorder"
-              state={{
-                product_id: product.id,
-                name: product.name,
-                description: product.description,
-                totalQuantity: 5,
-                totalPrice: 2000000,
-                discountedPrice: product.price,
-                // size: product.selectedSize,
-                // quantity: product.selectedTotal || 1,
-                // totalPrice: product.total,
-              }}
-              className="w-full max-w-[522px]"
+
+            <button
+              onClick={handleOrderButtonClick}
+              className="my-2 h-[70px] w-full max-w-[522px] rounded-2xl bg-black text-white"
             >
-              <button className="my-2 h-[70px] w-full max-w-[522px] rounded-2xl bg-black text-white">
-                바로 구매
-              </button>
-            </Link>
+              바로 구매
+            </button>
           </div>
         </div>
       </div>

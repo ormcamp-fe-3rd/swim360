@@ -10,12 +10,10 @@ interface TotalPriceProps {
   totalPrice: number;
   point: number;
   formData: OrderFormData;
-  productId: number;
   products: { size: string; quantity: number; totalPrice: number }[];
 }
 
 function TotalPrice({
-  productId,
   totalPrice,
   point,
   formData,
@@ -37,10 +35,8 @@ function TotalPrice({
       totalPrice,
       user_id: Number(userId),
       products,
-      productId,
     };
 
-    console.log("전송 데이터: ", orderData);
     const response = await createOrderData(orderData);
     if (response?.status === 200) {
       alert("주문이 성공적으로 완료되었습니다!");
@@ -48,7 +44,6 @@ function TotalPrice({
     } else {
       throw new Error("서버 오류");
     }
-    console.log("응답: ", response);
   };
 
   return (
