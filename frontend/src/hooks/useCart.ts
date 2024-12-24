@@ -43,7 +43,10 @@ function useCart() {
 
   const handleCartCountFetch = async () => {
     try {
-      if (!userId) return;
+      if (!userId) {
+        setCartCount(0);
+        return;
+      }
 
       const fetchedCartCount = await getCartCount(userId);
       if (!fetchedCartCount || fetchedCartCount === 0) {
