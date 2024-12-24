@@ -1,19 +1,29 @@
 import ReviewStar from "./ReviewStar";
 import { Reviews } from "@/types/reviews";
+import getLocalDate from "@/utils/getLocalDate";
 
 export type ReviewsType = {
   review: Reviews | undefined;
   size?: "small" | "large" | undefined; // 크기 옵션
+  onClickSelecteReview?: (review: Reviews | undefined) => void;
 };
 
-function Review({ size = "large", review }: ReviewsType) {
+function Review({ size = "large", review, onClickSelecteReview }: ReviewsType) {
   const sizeStyles = {
     small: "w-full min-h-[200px]",
     large: "w-[1064px] min-h-[196px]",
   };
 
+  if (!review) {
+    return <div>리뷰 업로드에 문제가 생겼습니다.</div>;
+  }
+
   return (
     <div
+      onClick={() => {
+        if (!onClickSelecteReview) return;
+        onClickSelecteReview(review);
+      }}
       className={`container ${sizeStyles[size]} flex items-center border-b py-2`}
     >
       <div className="flex flex-col">
@@ -30,8 +40,7 @@ function Review({ size = "large", review }: ReviewsType) {
           </div>
         </div>
         <div className="flex justify-start gap-2 pb-2 text-[12px] font-medium text-[#B0B0B0]">
-          <p>|{review?.createdAt}</p>
-          <p>|{review?.updatedAt}</p>
+          <p>{getLocalDate(review?.createdAt)}</p>
         </div>
       </div>
     </div>
