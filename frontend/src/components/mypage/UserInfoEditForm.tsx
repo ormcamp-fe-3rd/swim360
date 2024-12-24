@@ -22,11 +22,13 @@ import { User } from "@/types/users";
 import PrimaryButton from "../common/PrimaryButton";
 
 const formSchema = z.object({
-  username: z.string().min(2).max(50),
-  phoneNumber: z.string().optional(),
-  emailId: z.string().email().optional(),
-  password: z.string().min(8).max(16).optional(),
+  username: z.string().min(2).max(10),
+  phoneNumber: z.string().min(10, {message: "10자 이상이어야 합니다."}).max(12),
+  emailId: z.string().email(),
+  password: z.string().min(8, {message: "8자 이상이어야 합니다."}).max(16, {message: "16자 이하여야 합니다."}),
   address: z.string().optional(),
+  detailAddress: z.string().optional(),
+  passwordCheck: z.string().min(8).max(16),
 });
 
 export default function UserInfoEditForm() {
@@ -42,6 +44,8 @@ export default function UserInfoEditForm() {
       emailId: "",
       password: "",
       address:"",
+      detailAddress: "",
+      passwordCheck: ""
     },
   });
 
@@ -81,7 +85,7 @@ export default function UserInfoEditForm() {
           onSubmit={form.handleSubmit(onSubmit)}
           className="flex flex-col gap-5"
         >
-          <FormField
+          <FormField 
             control={form.control}
             name="username"
             render={({ field }) => (
@@ -91,7 +95,7 @@ export default function UserInfoEditForm() {
                     이름
                   </FormLabel>
                   <FormControl className="h-12 w-2/3 border-none bg-[#F0F0F0]">
-                    <Input placeholder="name" {...field} />
+                    <Input placeholder="name" {...field} readOnly/>
                   </FormControl>
                   <FormMessage />
                 </div>
@@ -127,7 +131,7 @@ export default function UserInfoEditForm() {
                     이메일 아이디
                   </FormLabel>
                   <FormControl className="h-12 w-2/3 border-none bg-[#F0F0F0]">
-                    <Input placeholder="swim360@google.com" {...field} />
+                    <Input placeholder="swim360@google.com" {...field} readOnly/>
                   </FormControl>
                   <FormMessage />
                 </div>
@@ -160,7 +164,7 @@ export default function UserInfoEditForm() {
           <div className="border-b-2"></div>
           <FormField
             control={form.control}
-            name="password"
+            name="passwordCheck"
             render={({ field }) => (
               <FormItem className="h-20 w-full flex">
                 <div className="flex w-full items-center justify-between px-10">
@@ -182,40 +186,54 @@ export default function UserInfoEditForm() {
             )}
           />
           <div className="border-b-2"></div>
+          <div className="h-32 w-full flex flex-col">
+
           <FormField
             control={form.control}
             name="address"
             render={({ field }) => (
-              <FormItem className="h-32 w-full flex">
+              <FormItem className="h-20">
                 <div className="flex w-full items-center justify-between px-10">
                   <FormLabel className="flex w-1/3 items-center justify-start text-lg font-normal text-[#5E5E5E]">
-                    배송지
+                    우편번호
                   </FormLabel>
                   <div className="flex w-2/3 flex-col gap-1">
                     <FormControl className="h-12 border-none">
-                      <div className="flex gap-1">
+                      <div className="flex gap-2">
                         <Input
-                          placeholder="adress"
+                          placeholder="address"
                           {...field}
                           className="h-full bg-[#F0F0F0]"
-                        />
+                          />
                         <PrimaryButton className="h-full w-1/5">
                           주소검색
                         </PrimaryButton>
                       </div>
-                    </FormControl>
-                    <FormControl className="h-12 border-none bg-[#F0F0F0]">
-                      <Input
-                        placeholder="상세 주소를 입력해주세요"
-                        {...field}
-                      />
                     </FormControl>
                   </div>
                   <FormMessage />
                 </div>
               </FormItem>
             )}
+            />
+          <FormField control={form.control} name="detailAddress" render={({field}) => (
+            <FormItem className="h-20 w-full flex">
+                <div className="flex w-full items-center justify-between px-10">
+                  <FormLabel className="flex w-1/3 items-center justify-start text-lg font-normal text-[#5E5E5E]">
+                    상세주소
+                  </FormLabel>
+                  <FormControl className="h-12 w-2/3 border-none bg-[#F0F0F0]">
+                      <Input
+                        placeholder="상세 주소를 입력해주세요"
+                        {...field}
+                        />
+                    </FormControl>
+                    <FormMessage/>
+                </div>
+            </FormItem>
+          )}
           />
+          </div>
           <div className="border-b-2"></div>
           <div className="mt-10 flex w-full gap-2">
             <Link to="/mypage" className="w-full">
