@@ -54,7 +54,7 @@ export interface OrderStatusItem {
 export interface MyOrder {
   id?: number;
   adress: string;
-  price: number;
+  totalPrice: number;
   orderStatus: string;
   user_id: number;
   createdAt: string;

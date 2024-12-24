@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router-dom";
 
 import axios from "@/services/index.ts";
+import { MyOrder, Order } from "@/types/orders";
 import { OrderRequest } from "@/types/orders";
+
 
 //유저 주문 불러오기
 export async function getMyOrders(userId: string) {
@@ -31,5 +33,15 @@ export async function createOrderData(
   } catch (error) {
     console.error("주문 오류:", error);
     alert("주문 중 문제가 발생했습니다.");
+  }
+}
+
+export async function getMyOrderStatus(userId: string):Promise<Order[]>{
+  try {
+    const response = await axios.get(`/orders/usersOrderStatus/${userId}`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
   }
 }

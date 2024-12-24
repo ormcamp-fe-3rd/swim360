@@ -37,7 +37,24 @@ router.get("/users/:id", async (req, res) => {
   }
 });
 
-router.get("/:id", (req, res) => {});
+router.get("/usersOrderStatus/:userId", async(req, res) => {
+  try{
+    const userId = req.params.userId;
+    const orders = await Order.findAll({
+      where: { user_id: userId },
+      attributes: ['id', 'orderStatus'],
+    })
+
+    if (!orders) {
+      return res.status(404).json({ message: "Orders not found" });
+    }
+
+    return res.json(orders);
+  }catch(error){
+    console.log(error);
+    return res.status(500).json({error: error.message});
+  }
+})
 
 router.post("/", async (req, res) => {
   try {

@@ -1,6 +1,9 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { OrderStatus, OrderStatusItem } from "@/types/orders";
+import { useUserId } from "@/hooks/useUserId";
+import { getMyOrderStatus } from "@/services/order";
+import { Order, OrderStatus, OrderStatusItem } from "@/types/orders";
 
 const ORDER_STATUS: OrderStatusItem[] = [
   { status: "ORDER_COMPLETE", label: "주문 완료" },
@@ -10,11 +13,55 @@ const ORDER_STATUS: OrderStatusItem[] = [
   { status: "DELIVERED", label: "배송 완료" },
 ] as const;
 
-interface OrderStatusProps {
-  orderStatusCount: Record<OrderStatus, number>;
-}
+type orderStatusCount = Record<OrderStatus, number>;
+// interface OrderStatusProps {
+//   orderStatusCount: Record<OrderStatus, number>;
+// }
 
-function OrderStatusPreview({ orderStatusCount }: OrderStatusProps) {
+function OrderStatusPreview() {
+  const { userId } = useUserId();
+  const [orders, setOrders] = useState<Order[]>([]);
+  const [myOrderStatus, setMyOrderStatus] = useState<orderStatusCount>({
+    ORDER_COMPLETE: 0,
+    PAYMENT_COMPLETE: 0,
+    PREPARING: 0,
+    SHIPPING: 0,
+    DELIVERED: 0
+  });
+
+  useEffect(()=> {
+    if(!userId) return;
+    const fetchOrderStatus = async () => {
+      try{
+        const myOrders = await getMyOrderStatus(userId);
+        setOrders(myOrders)
+        
+        const newStatusCount = ORDER_STATUS.reduce(
+          (acc, { status }) => {
+            acc[status] = orders.filter(
+              order => order.orderStatus === status).length;
+              return acc;
+            },
+            {
+              ORDER_COMPLETE: 0,
+              PAYMENT_COMPLETE: 0,
+              PREPARING: 0,
+              SHIPPING: 0,
+              DELIVERED: 0,
+            } as orderStatusCount
+          );
+          setMyOrderStatus(newStatusCount);
+
+      }catch(error){
+        console.log(error);
+      }
+    }
+    
+      fetchOrderStatus();
+    },[userId])
+
+
+
   return (
     <Link to="/orderlist">
       <div className="mb-[69px] flex h-[146px] border border-black">
@@ -22,7 +69,7 @@ function OrderStatusPreview({ orderStatusCount }: OrderStatusProps) {
           <div key={status} className="flex w-full items-center text-center">
             <div className="w-full tablet:px-[17px]">
               <div className="text-xl font-semibold tablet:text-lg">
-                {orderStatusCount[status]}
+                {myOrderStatus[status]}
               </div>
               <div className="tablet:text-md text-nowrap text-[12px] font-semibold desktop:text-xl">
                 {label}
