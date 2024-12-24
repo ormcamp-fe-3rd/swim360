@@ -34,7 +34,7 @@ export default function CartProduct({
           <span>{quantity}</span>
         </div>
         <div className="ml-4 w-1/5 flex-col">
-          <span className="block text-right text-gray-400">
+          <span className="block text-right text-gray-400 line-through">
             {formatPrice(price * quantity)}
           </span>
           <span className="block text-right">

@@ -110,13 +110,6 @@ function Details({ product, handleCartUpdate }: DetailsProps) {
     updateCartItems(size, newCount);
   };
 
-  const handleSizeButtonClick = (size: string) => {
-    if (!selectedSizes.includes(size)) {
-      setSelectedSizes((prev) => [...prev, size]); // 선택된 사이즈 추가
-    }
-    increaseSizeCount(size);
-  };
-
   const totalQuantity = selectedSizes.reduce((acc, size) => {
     const count = sizeCountStatus[size];
     if (count > 0) {
@@ -139,6 +132,13 @@ function Details({ product, handleCartUpdate }: DetailsProps) {
     selectedItems: selectedItems,
     totalQuantity: totalQuantity,
     totalPrice: totalPrice,
+  };
+
+  const handleSizeButtonClick = (size: string) => {
+    if (!selectedSizes.includes(size)) {
+      setSelectedSizes((prev) => [...prev, size]); // 선택된 사이즈 추가
+    }
+    increaseSizeCount(size);
   };
 
   const handleCartButtonClick = () => {

@@ -40,7 +40,7 @@ function TotalPrice({
     const response = await createOrderData(orderData);
     if (response?.status === 200) {
       alert("주문이 성공적으로 완료되었습니다!");
-      navigate("/payment");
+      navigate("/order/thanks");
     } else {
       throw new Error("서버 오류");
     }
