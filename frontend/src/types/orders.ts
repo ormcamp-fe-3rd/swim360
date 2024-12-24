@@ -7,8 +7,8 @@ export interface Order {
   totalPrice: number;
   orderStatus: string;
   user_id: number;
-  createdAt: string;
-  updatedAt: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface OrderRequest {
