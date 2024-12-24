@@ -20,11 +20,11 @@ export async function getCartCount(userId: User["id"]) {
   }
 }
 
-export async function updateCartData(cartItem: Cart) {
+export async function updateCartData(cartItems: Cart[]) {
   try {
-    const response = await axios.post(`/carts`, cartItem);
+    const response = await axios.post(`/carts`, cartItems);
 
-    return response.data;
+    return response;
   } catch (error) {
     console.error(error);
   }

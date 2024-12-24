@@ -3,6 +3,7 @@ import { CartContext } from "@/contexts/CartContext";
 import { getCartCount, getCartListData, updateCartData } from "@/services/cart";
 import { Cart, CartItem } from "@/types/cart";
 import { useNavigate } from "react-router-dom";
+import { SelectedOrderItem } from "@/types/orders";
 
 function useCart() {
   const context = useContext(CartContext);
@@ -52,7 +53,7 @@ function useCart() {
     }
   };
 
-  const handleCartUpdate = async (cartItem: Cart) => {
+  const handleCartUpdate = async (cartItems: Cart[], totalQuantity: number) => {
     const prevCount = cartCount;
 
     try {
@@ -61,9 +62,16 @@ function useCart() {
         return;
       }
 
-      await updateCartData(cartItem);
-      setCartCount((prev) => prev + cartItem.quantity);
-      setUpdateCartTrigger((prev) => prev + 1);
+      const response = await updateCartData(cartItems);
+
+      if (response?.status === 200) {
+        setCartCount((prev) => prev + totalQuantity);
+        setUpdateCartTrigger((prev) => prev + 1);
+        alert("장바구니에 선택한 상품이 담겼습니다.");
+      } else {
+        setCartCount(prevCount);
+        alert("선택한 상품을 담는 중 오류가 생겼습니다.");
+      }
     } catch (error) {
       setCartCount(prevCount);
       console.log(error);
