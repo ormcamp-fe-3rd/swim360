@@ -10,7 +10,6 @@ import {
   TabsListCustom,
   TabsTriggerCustom,
 } from "../ui/tabs";
-import { points } from "./Points";
 import PointTable from "./PointTable";
 import ReviewTable from "./ReviewTable";
 
@@ -23,7 +22,7 @@ export default function PointAndReviewTab() {
   useEffect(() => {
     const reviews = location.state.reviews;
     if (!reviews) {
-      setMyReview("리뷰 정보를 가져오는 데 실패했습니다.");
+      setMyReview("정보를 가져오는 데 실패했습니다.");
     }
     setMyReview(reviews);
   }, []);
@@ -49,7 +48,7 @@ export default function PointAndReviewTab() {
             </TabsTriggerCustom>
           </TabsListCustom>
           <TabsContent value="my-points" className="mt-40 h-full">
-            <PointTable points={points} />
+            <PointTable />
           </TabsContent>
           <TabsContent value="my-reviews" className="mt-40 h-full">
             <ReviewTable reviews={myReview} />

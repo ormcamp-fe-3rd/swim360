@@ -6,19 +6,14 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { points } from "@/mocks/points.json"
+import { formatPrice } from "@/utils/formatPrice";
+import { getTotalAmount } from "@/utils/getTotalAmount";
 
-import { point } from "./Points";
 
-interface Prop {
-  points: point[];
-}
+export default function PointTable() {
 
-export default function PointTable({ points }: Prop) {
-  function getTotalPoint(points: point[]): number {
-    let totalPoint: number = 0;
-    points.map((point) => (totalPoint += point.amount));
-    return totalPoint;
-  }
+
 
   return (
     <div className="w-full">
@@ -32,7 +27,7 @@ export default function PointTable({ points }: Prop) {
       </div>
       <div className="flex justify-end pb-4">
         <div className="pr-4 text-right">
-          현재 포인트 {getTotalPoint(points)}
+          현재 포인트 {formatPrice(getTotalAmount(points))}
         </div>
       </div>
       <Table className="w-full table-auto md:table-fixed">
