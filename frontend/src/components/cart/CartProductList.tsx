@@ -24,6 +24,22 @@ export default function CartProductList({
 }: CartProductListProps) {
   const navigate = useNavigate();
 
+  const handleSelectAll = (checked: boolean) => {
+    cartListData.forEach((cartItem) => {
+      const selectedCartItem = {
+        productId: cartItem.Product.id,
+        name: cartItem.Product.name,
+        description: cartItem.Product.description,
+        price: cartItem.price,
+        imageUrl: cartItem.Product.imageUrl,
+        size: cartItem.size,
+        quantity: cartItem.quantity,
+        totalPrice: cartItem.price,
+      };
+      handleSelectedCartUpdate(selectedCartItem, checked, cartItem.id);
+    });
+  };
+
   const handleSelectedCartDelete = async (
     selectedCartIds: Set<number | undefined>,
   ) => {
@@ -66,7 +82,13 @@ export default function CartProductList({
       <div className="w-full border-b p-2.5">
         <span className="inline-block w-1/3 text-center">
           <div className="flex w-full items-center">
-            <Checkbox />
+            <Checkbox
+              checked={
+                cartListData.length > 0 &&
+                selectedCartIds.size === cartListData.length
+              }
+              onCheckedChange={handleSelectAll}
+            />
             <span className="w-full">상품정보</span>
           </div>
         </span>
@@ -89,6 +111,7 @@ export default function CartProductList({
             price={cartItem.price}
             quantity={cartItem.quantity}
             handleSelectedCartUpdate={handleSelectedCartUpdate}
+            isChecked={selectedCartIds.has(cartItem.id)}
           />
         ))
       ) : (

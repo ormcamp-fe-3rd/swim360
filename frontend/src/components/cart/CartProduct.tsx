@@ -21,6 +21,8 @@ interface CartProductProps {
     isChecked: boolean,
     selectedCartId: Cart["id"],
   ) => void;
+
+  isChecked: boolean;
 }
 
 export default function CartProduct({
@@ -35,9 +37,8 @@ export default function CartProduct({
   price,
   quantity,
   handleSelectedCartUpdate,
+  isChecked,
 }: CartProductProps) {
-  //cart는 체크 안한 cartId만 지우면됨
-
   const cartItem = {
     productId: productId,
     name: name,
@@ -53,6 +54,7 @@ export default function CartProduct({
     <div className="flex p-2.5">
       <Checkbox
         className="mt-2.5"
+        checked={isChecked}
         onCheckedChange={(checked: boolean) =>
           handleSelectedCartUpdate(cartItem, checked, cartId)
         }
