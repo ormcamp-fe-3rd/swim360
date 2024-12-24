@@ -75,17 +75,26 @@ export default function UserInfoEditForm() {
   const password = form.watch("password");
   const passwordCheck = form.watch("passwordCheck");
   useEffect(() => {
+    if (password) {
+      const passwordRegex =
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$/;
+      if (!passwordRegex.test(password)) {
+        setPasswordMessage(
+          "영문, 숫자, 특수문자 포함 8자~16자 사이로 입력가능합니다.",
+        );
+      } else {
+        setPasswordMessage("");
+      }
+    } else {
+      setPasswordMessage(
+        "영문, 숫자, 특수문자 포함 8자~16자 사이로 입력가능합니다.",
+      );
+    }
+
     if (passwordCheck && password !== passwordCheck) {
       setPasswordCheckMessage("비밀번호가 동일하지 않습니다.");
     } else {
       setPasswordCheckMessage("");
-    }
-    if(password?.length<8 || password?.length>16){
-      setPasswordMessage(
-        "영문, 숫자, 특수문자 포함 8자~16자 사이로 입력가능합니다.",
-      );
-    } else {
-      setPasswordMessage("")
     }
   }, [password, passwordCheck]);
 
