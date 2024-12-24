@@ -6,10 +6,17 @@ import ProductTab from "./Tap";
 import Review from "./Review";
 import { ProductDetail } from "@/types/products";
 import { AverageRating } from "./AverageRating";
+import { Reviews } from "@/types/reviews";
 
 function ReviewsTab({ reviews }: ProductDetail) {
   const [isOpenModal, setOpenModal] = useState(false);
   const [isOpenModal2, setOpenModal2] = useState(false);
+
+  const [selectedReview, setSelectedReview] = useState<Reviews>();
+
+  const onClickSelecteReview = (review: Reviews | undefined) => {
+    setSelectedReview(review);
+  };
 
   const onClickToggleModal = () => {
     setOpenModal(!isOpenModal);
@@ -33,18 +40,27 @@ function ReviewsTab({ reviews }: ProductDetail) {
           <div className="mx-auto flex h-auto w-full justify-center"></div>
         </Link>
         <div onClick={onClickToggleDetailModal}>
-          {reviews?.map((review) => <Review key={review.id} review={review} />)}
+          {reviews?.map((review) => (
+            <div>
+              <Review
+                key={review.id}
+                review={review}
+                onClickSelecteReview={onClickSelecteReview}
+              />
+
+              {isOpenModal2 && (
+                <ReviewDetailModal
+                  review={selectedReview}
+                  onClickToggleDetailModal={onClickToggleDetailModal}
+                />
+              )}
+            </div>
+          ))}
         </div>
 
         {/* 모달이 열리면 ReviewWriteModal 컴포넌트를 렌더링 */}
         {isOpenModal && (
           <ReviewWriteModal onClickToggleModal={onClickToggleModal} />
-        )}
-
-        {isOpenModal2 && (
-          <ReviewDetailModal
-            onClickToggleDetailModal={onClickToggleDetailModal}
-          />
         )}
 
         <div
