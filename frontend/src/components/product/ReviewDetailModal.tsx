@@ -1,20 +1,17 @@
 import { Reviews } from "@/types/reviews";
 import Review from "./Review";
 
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNextCustomBlack,
-  CarouselPreviousCustomBlack,
-} from "../ui/carousel";
+import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 
 interface ReviewModalProps {
   review: Reviews | undefined;
-  onClose: () => void; // 함수명 변경: 더 명확하게 표현
+  onClickToggleDetailModal: () => void; // 함수명 변경: 더 명확하게 표현
 }
 
-function ReviewDetailModal({ review, onClose }: ReviewModalProps) {
+function ReviewDetailModal({
+  review,
+  onClickToggleDetailModal,
+}: ReviewModalProps) {
   return (
     <>
       {/* Modal Container */}
@@ -26,7 +23,6 @@ function ReviewDetailModal({ review, onClose }: ReviewModalProps) {
           {/* Carousel Section */}
           <div className="relative mx-auto flex w-full items-center justify-center rounded-l-xl bg-black text-white sm:max-w-[400px] lg:max-w-[706px]">
             <Carousel className="z-50 flex h-full w-full items-center justify-between">
-              <CarouselPreviousCustomBlack className="absolute left-2 z-10" />
               <CarouselContent>
                 <CarouselItem className="flex h-[300px] w-full items-center justify-center">
                   {review?.imageUrl ? (
@@ -42,7 +38,6 @@ function ReviewDetailModal({ review, onClose }: ReviewModalProps) {
                   )}
                 </CarouselItem>
               </CarouselContent>
-              <CarouselNextCustomBlack className="absolute right-2" />
             </Carousel>
           </div>
 
@@ -55,7 +50,7 @@ function ReviewDetailModal({ review, onClose }: ReviewModalProps) {
               <button
                 onClick={(e) => {
                   e.stopPropagation(); // 클릭 이벤트 전파 방지
-                  onClose();
+                  onClickToggleDetailModal();
                 }}
                 className="absolute right-4 top-4"
               >
@@ -78,7 +73,7 @@ function ReviewDetailModal({ review, onClose }: ReviewModalProps) {
       {/* Background Overlay */}
       <div
         className="fixed left-0 top-0 z-40 h-full w-full bg-black bg-opacity-55"
-        onClick={onClose} // 배경 클릭 시 모달 닫힘
+        onClick={onClickToggleDetailModal} // 배경 클릭 시 모달 닫힘
       ></div>
     </>
   );
