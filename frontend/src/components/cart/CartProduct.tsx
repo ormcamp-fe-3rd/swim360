@@ -1,3 +1,4 @@
+import { formatPrice } from "@/utils/formatPrice";
 import { Checkbox } from "../ui/checkbox";
 
 interface CartProductProps {
@@ -34,9 +35,11 @@ export default function CartProduct({
         </div>
         <div className="ml-4 w-1/5 flex-col">
           <span className="block text-right text-gray-400">
-            {price * quantity}
+            {formatPrice(price * quantity)}
           </span>
-          <span className="block text-right">{discountedPrice * quantity}</span>
+          <span className="block text-right">
+            {formatPrice(discountedPrice * quantity)}
+          </span>
         </div>
       </div>
     </div>

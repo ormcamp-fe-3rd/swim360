@@ -1,4 +1,5 @@
 import useProduct from "@/hooks/useProduct";
+import { formatPrice } from "@/utils/formatPrice";
 
 export interface SelectedProps {
   selectedSize: string; // 사이즈는 문자열로 받기 (예: "S", "M", "L")
@@ -30,7 +31,7 @@ export function Selected({
           <img className="w-6" src="/public/images/product/icon-add.png" />
         </button>
       </div>
-      <p className="flex w-[174px] justify-end">{totalPrice}원</p>{" "}
+      <p className="flex w-[174px] justify-end">{formatPrice(totalPrice)}원</p>{" "}
       {/* 총 가격 표시 */}
     </div>
   );
