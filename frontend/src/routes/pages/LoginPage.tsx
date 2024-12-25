@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
@@ -15,7 +15,7 @@ function LoginPage() {
   const [rememberEmail, setRememberEmail] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  useState(() => {
+  useEffect(() => {
     const savedEmail = localStorage.getItem("savedEmail");
     if (savedEmail) {
       setEmailId(savedEmail);
@@ -50,7 +50,7 @@ function LoginPage() {
       setIsLoading(true);
       const user = await getUserByEmail(emailId);
 
-      if (!user || user.password != password) {
+      if (!user || user.password !== password) {
         alert("이메일 또는 비밀번호가 올바르지 않습니다.");
         return;
       }
