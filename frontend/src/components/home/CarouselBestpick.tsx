@@ -24,7 +24,7 @@ export function CarouselBestPick({ products }: Props) {
     <Carousel
       opts={{ align: "start", loop: true }}
       plugins={[plugin.current]}
-      className="relative h-full w-full pt-0 tablet:pt-20 desktop:pt-0"
+      className="relative h-full w-full"
       onClick={plugin.current.stop}
     >
       <CarouselContent>

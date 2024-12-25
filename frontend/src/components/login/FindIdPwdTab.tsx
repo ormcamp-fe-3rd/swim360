@@ -30,7 +30,7 @@ function FindIdPwdTab({
       <TabsListCustom className="mx-auto h-full w-full tablet:w-[600px]">
         <TabsTriggerCustom
           value="find-id"
-          className={cn("h-full w-1/2", {
+          className={cn("h-full w-1/2 text-base", {
             "border-black": activeTab === "find-id",
           })}
           onClick={() => handleTabChange("find-id")}
@@ -39,7 +39,7 @@ function FindIdPwdTab({
         </TabsTriggerCustom>
         <TabsTriggerCustom
           value="find-pw"
-          className={cn("h-full w-1/2", {
+          className={cn("h-full w-1/2 text-base", {
             "border-black": activeTab === "find-pw",
           })}
           onClick={() => handleTabChange("find-pw")}
@@ -47,10 +47,10 @@ function FindIdPwdTab({
           비밀번호 찾기
         </TabsTriggerCustom>
       </TabsListCustom>
-      <TabsContent className="mx-auto py-20 text-center" value="find-id">
+      <TabsContent className="mx-auto px-2.5 py-4 text-center" value="find-id">
         {idContent}
       </TabsContent>
-      <TabsContent className="mx-auto py-20 text-center" value="find-pw">
+      <TabsContent className="mx-auto px-2.5 py-4 text-center" value="find-pw">
         {pwContent}
       </TabsContent>
     </Tabs>

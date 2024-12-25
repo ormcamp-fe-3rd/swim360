@@ -1,8 +1,15 @@
 import PrimaryButton from "@/components/common/PrimaryButton";
 import CustomButton from "@/components/join/CustomButton";
 import InputField from "@/components/join/InputField";
+import { useNavigate } from "react-router-dom";
 
 function JoinPage() {
+  const navigate = useNavigate();
+
+  const handleCancelButtonClick = () => {
+    navigate("/login");
+  };
+
   return (
     <div className="mx-auto w-full max-w-[960px] px-4">
       <p className="border-b border-black p-2.5 text-center text-xl font-semibold">
@@ -38,7 +45,7 @@ function JoinPage() {
         <div className="border-b-2"></div>
       </form>
       <div className="mt-20 flex justify-around gap-2.5">
-        <CustomButton className="w-1/2 border-gray-400 hover:bg-gray-50">
+        <CustomButton onClick={handleCancelButtonClick}  className="w-1/2 border-gray-400 hover:bg-gray-50">
           취소
         </CustomButton>
         <PrimaryButton className="w-1/2">확인</PrimaryButton>

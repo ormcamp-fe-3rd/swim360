@@ -1290,7 +1290,7 @@ const seedData = async () => {
         size: ["FREE"],
         imageUrl: [
           "http://localhost:3000/product-images/product6-01.jpg",
-          "http://localhost:3000/product-images/product5-02.jpg",
+          "http://localhost:3000/product-images/product6-02.jpg",
         ],
         salesVolume: 10,
         category_id: 9,
@@ -1306,7 +1306,7 @@ const seedData = async () => {
         size: ["FREE"],
         imageUrl: [
           "http://localhost:3000/product-images/product6-01.jpg",
-          "http://localhost:3000/product-images/product5-02.jpg",
+          "http://localhost:3000/product-images/product6-02.jpg",
         ],
         salesVolume: 20,
         category_id: 9,
@@ -1322,7 +1322,7 @@ const seedData = async () => {
         size: ["FREE"],
         imageUrl: [
           "http://localhost:3000/product-images/product6-01.jpg",
-          "http://localhost:3000/product-images/product5-02.jpg",
+          "http://localhost:3000/product-images/product6-02.jpg",
         ],
 
         salesVolume: 0,
@@ -1339,7 +1339,7 @@ const seedData = async () => {
         size: ["FREE"],
         imageUrl: [
           "http://localhost:3000/product-images/product6-01.jpg",
-          "http://localhost:3000/product-images/product5-02.jpg",
+          "http://localhost:3000/product-images/product6-02.jpg",
         ],
 
         salesVolume: 0,
@@ -1356,7 +1356,7 @@ const seedData = async () => {
         size: ["FREE"],
         imageUrl: [
           "http://localhost:3000/product-images/product6-01.jpg",
-          "http://localhost:3000/product-images/product5-02.jpg",
+          "http://localhost:3000/product-images/product6-02.jpg",
         ],
 
         salesVolume: 0,
@@ -1373,7 +1373,7 @@ const seedData = async () => {
         size: ["FREE"],
         imageUrl: [
           "http://localhost:3000/product-images/product6-01.jpg",
-          "http://localhost:3000/product-images/product5-02.jpg",
+          "http://localhost:3000/product-images/product6-02.jpg",
         ],
 
         salesVolume: 0,
@@ -1390,7 +1390,7 @@ const seedData = async () => {
         size: ["FREE"],
         imageUrl: [
           "http://localhost:3000/product-images/product6-01.jpg",
-          "http://localhost:3000/product-images/product5-02.jpg",
+          "http://localhost:3000/product-images/product6-02.jpg",
         ],
         salesVolume: 10,
         category_id: 9,
@@ -1406,7 +1406,7 @@ const seedData = async () => {
         size: ["FREE"],
         imageUrl: [
           "http://localhost:3000/product-images/product6-01.jpg",
-          "http://localhost:3000/product-images/product5-02.jpg",
+          "http://localhost:3000/product-images/product6-02.jpg",
         ],
         salesVolume: 20,
         category_id: 9,
@@ -1422,7 +1422,7 @@ const seedData = async () => {
         size: ["FREE"],
         imageUrl: [
           "http://localhost:3000/product-images/product6-01.jpg",
-          "http://localhost:3000/product-images/product5-02.jpg",
+          "http://localhost:3000/product-images/product6-02.jpg",
         ],
 
         salesVolume: 0,
@@ -1439,7 +1439,7 @@ const seedData = async () => {
         size: ["FREE"],
         imageUrl: [
           "http://localhost:3000/product-images/product6-01.jpg",
-          "http://localhost:3000/product-images/product5-02.jpg",
+          "http://localhost:3000/product-images/product6-02.jpg",
         ],
 
         salesVolume: 0,
@@ -1456,7 +1456,7 @@ const seedData = async () => {
         size: ["FREE"],
         imageUrl: [
           "http://localhost:3000/product-images/product6-01.jpg",
-          "http://localhost:3000/product-images/product5-02.jpg",
+          "http://localhost:3000/product-images/product6-02.jpg",
         ],
 
         salesVolume: 0,
@@ -1473,7 +1473,7 @@ const seedData = async () => {
         size: ["FREE"],
         imageUrl: [
           "http://localhost:3000/product-images/product6-01.jpg",
-          "http://localhost:3000/product-images/product5-02.jpg",
+          "http://localhost:3000/product-images/product6-02.jpg",
         ],
 
         salesVolume: 0,

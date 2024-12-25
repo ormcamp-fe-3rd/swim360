@@ -32,7 +32,7 @@ export default function Cart() {
   return (
     <div className="mx-auto w-[90%] max-w-[1440px]">
       <BreadcrumbCustom name="장바구니" />
-      <div className="grid w-full flex-wrap gap-0 middle:flex">
+      <div className="grid w-full flex-wrap justify-between gap-0 middle:flex">
         <form action="#" className="mb-10 middle:w-2/3">
           <CartProductList {...cartProductListProps} />
         </form>
