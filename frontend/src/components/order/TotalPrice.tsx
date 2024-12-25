@@ -63,6 +63,22 @@ function TotalPrice({
       navigate("/login");
       return;
     }
+    if (!formData.address) {
+      alert("배송주소는 필수 항목입니다.");
+      return;
+    }
+    if (!formData.detailAddress) {
+      alert("배송주소는 필수 항목입니다.");
+      return;
+    }
+    if (!formData.phoneNumber) {
+      alert("휴대전화번호는 필수 항목입니다.");
+      return;
+    }
+    if (!formData.receiver) {
+      alert("받으시는분 입력은 필수 항목입니다.");
+      return;
+    }
     if (!meansPaymentData.depositorName) {
       alert("입금자 이름은 필수 항목입니다.");
       return;
