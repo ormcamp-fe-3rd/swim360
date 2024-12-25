@@ -57,7 +57,7 @@ const TabsTriggerCustom = React.forwardRef<
   <TabsPrimitive.Trigger
     ref={ref}
     className={cn(
-      "inline-flex items-center justify-center whitespace-nowrap border-b px-3 py-1 text-2xl font-normal",
+      "inline-flex items-center justify-center whitespace-nowrap border-b px-3 py-2.5 text-2xl font-normal",
 
       className,
     )}

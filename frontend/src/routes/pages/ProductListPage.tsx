@@ -35,7 +35,7 @@ function ProductListPage() {
 
   return (
     <div className="p-4">
-      <div className="flex flex-col justify-center tablet:flex-row">
+      <div className="mx-auto flex w-[90%] max-w-[1440px] flex-col justify-center tablet:flex-row">
         <SideBar {...sideBarProps} />
         <div>
           <SortSelect {...sortSelectProps} />

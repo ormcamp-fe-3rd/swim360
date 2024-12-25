@@ -60,7 +60,7 @@ export default function CartProductList({
         <button
           onClick={() => handleSelectedCartDelete(selectedCartIds)}
           type="button"
-          className="text-nowrap"
+          className="text-nowrap rounded-lg border border-gray-300 px-2 py-1 text-gray-700"
         >
           선택 삭제
         </button>

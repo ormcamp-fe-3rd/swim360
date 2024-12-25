@@ -31,7 +31,7 @@ export default function PointAndReviewTab() {
     <div className="h-full">
       <div className="my-10 w-full">
         <Tabs defaultValue="my-reviews" className="h-auto">
-          <TabsListCustom className="mx-auto h-full w-full tablet:w-[600px]">
+          <TabsListCustom className="mx-auto h-full w-full tablet:w-full">
             <TabsTriggerCustom
               value="my-points"
               className={cn("h-full w-1/2", { "border-black": !tab })}
@@ -47,10 +47,10 @@ export default function PointAndReviewTab() {
               리뷰 내역
             </TabsTriggerCustom>
           </TabsListCustom>
-          <TabsContent value="my-points" className="mt-40 h-full">
+          <TabsContent value="my-points" className="mt-20 h-full">
             <PointTable />
           </TabsContent>
-          <TabsContent value="my-reviews" className="mt-40 h-full">
+          <TabsContent value="my-reviews" className="mt-20 h-full">
             <ReviewTable reviews={myReview} />
           </TabsContent>
         </Tabs>

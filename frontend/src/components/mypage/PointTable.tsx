@@ -6,15 +6,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { points } from "@/mocks/points.json"
+import { points } from "@/mocks/points.json";
 import { formatPrice } from "@/utils/formatPrice";
 import { getTotalAmount } from "@/utils/getTotalAmount";
 
-
 export default function PointTable() {
-
-
-
   return (
     <div className="w-full">
       <div className="flex w-full flex-col justify-start py-[14.8px] tablet:flex-row tablet:items-center">

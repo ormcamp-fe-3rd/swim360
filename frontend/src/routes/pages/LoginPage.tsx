@@ -23,7 +23,7 @@ function LoginPage() {
     }
   }, []);
 
-  const handleEmailChange = (event:React.ChangeEvent<HTMLInputElement>) => {
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmailId(event.target.value);
   };
 
@@ -72,11 +72,11 @@ function LoginPage() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-[600px] px-4">
+    <div className="mx-auto w-full max-w-[620px]">
       <p className="border-b border-black p-2.5 text-center font-bold">
         로그인
       </p>
-      <div className="p-2.5">
+      <div className="py-2.5">
         <form onSubmit={handleLogin}>
           <div>
             <input
@@ -86,9 +86,9 @@ function LoginPage() {
               placeholder="이메일 아이디"
               onChange={handleEmailChange}
               disabled={isLoading}
-              className="mb-2.5 w-full rounded border p-2.5"
+              className="my-2 w-full rounded border p-2.5"
               required
-              />
+            />
           </div>
           <div>
             <input
@@ -98,11 +98,11 @@ function LoginPage() {
               placeholder="비밀번호"
               onChange={handlePasswordChange}
               disabled={isLoading}
-              className="mb-2.5 w-full rounded border p-2.5"
+              className="my-2 w-full rounded border p-2.5"
               required
             />
           </div>
-          <label className="my-4 ml-4 inline-block">
+          <label className="my-2 ml-0.5 inline-block">
             <input
               type="checkbox"
               className="sm:h-[14px] sm:w-[14px]"
@@ -111,14 +111,16 @@ function LoginPage() {
               disabled={isLoading}
               name="idMemories"
               id="idMemories"
-              />
+            />
             <span className="ml-2 align-text-bottom sm:text-[14px]">
               아이디 저장
             </span>
           </label>
-          <PrimaryButton type="submit" disabled={isLoading}>{isLoading? "로그인 중..." : "로그인"}</PrimaryButton>
-          </form>
-        </div>
+          <PrimaryButton type="submit" disabled={isLoading}>
+            {isLoading ? "로그인 중..." : "로그인"}
+          </PrimaryButton>
+        </form>
+      </div>
       <ul className="mt-4 grid gap-4 text-center sm:flex sm:justify-center">
         <Link to="/Find_Id_Pwd?type=id">
           <li className="inline-block">아이디 찾기</li>

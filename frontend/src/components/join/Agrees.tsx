@@ -43,7 +43,7 @@ export default function Agrees() {
       <p className="border-b border-black p-2.5 text-center font-bold">
         회원가입
       </p>
-      <label className="mt-4 flex w-full justify-center border border-black p-2.5">
+      <label className="mt-10 flex w-full justify-center rounded-lg border border-gray-200 p-2.5 shadow-md">
         <input
           type="checkbox"
           checked={allChecked}
