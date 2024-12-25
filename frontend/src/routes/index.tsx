@@ -49,7 +49,7 @@ const router = createBrowserRouter([
         path: "/change_pwd_completion",
         element: <ChangePwdCompletionPage />,
       },
-      { path: "/order/thanks", element: <OrderThanksPage /> },
+      { path: "/orderthanks", element: <OrderThanksPage /> },
       { path: "/order", element: <OrderPage /> },
       { path: "/cart", element: <CartPage /> },
       { path: "*", element: <ErrorPage /> },
