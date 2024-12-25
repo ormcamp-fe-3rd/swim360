@@ -20,6 +20,7 @@ import { getUser } from "@/services/user";
 import { User } from "@/types/users";
 
 import PrimaryButton from "../common/PrimaryButton";
+import CustomButton from "../join/CustomButton";
 
 const formSchema = z.object({
   username: z.string().min(2).max(10),
@@ -236,9 +237,9 @@ const handleAddressSearch = () => {
           
           <div className="mt-10 flex w-full gap-2">
             <Link to="/mypage" className="w-full">
-              <PrimaryButton className="bg-white text-black hover:bg-gray-100">
+              <CustomButton className="bg-white text-black hover:bg-gray-50 border-gray-400">
                 취소
-              </PrimaryButton>
+              </CustomButton>
             </Link>
             <Link to="/mypage" className="w-full">
               {/* TODO: 회원정보 수정 기능 추가 */}
