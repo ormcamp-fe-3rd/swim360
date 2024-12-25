@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import PrimaryButton from "@/components/common/PrimaryButton";
+import { Link } from "react-router-dom";
 
 export default function Agrees() {
   const [allChecked, setAllChecked] = useState(false);
@@ -539,9 +540,9 @@ export default function Agrees() {
         </div>
       </div>
       <div className="mt-4 flex gap-2.5">
-        <button className="w-1/2 rounded-sm border bg-white text-black">
-          취소
-        </button>
+        <div className="flex w-1/2 items-center justify-center rounded-sm border bg-white text-black">
+          <Link to="/login">취소</Link>
+        </div>
         <div className="w-1/2">
           <PrimaryButton
             onClick={handleNext}
