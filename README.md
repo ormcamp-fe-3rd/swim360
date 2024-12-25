@@ -101,8 +101,8 @@
 <table>
   <tr align="center">
     <th>Name</th>
-    <td> 🐳</td>
-    <td> 🐠</td>
+    <td>김지균 🐳</td>
+    <td>김혜빈 🐠</td>
   </tr>
   <tr style="white-space: nowrap; font-size:13px">
     <th>Role</th>
@@ -127,8 +127,8 @@
   </tr>
   <tr align="center" >
     <th>Name</th>
-      <td> 🐡</td>
-      <td> 🐬</td>
+      <td>반재영 🐡</td>
+      <td>신명희 🐬</td>
   </tr>
   <tr style="white-space: nowrap; font-size:13px;">
     <th>Role</th>
