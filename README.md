@@ -30,7 +30,32 @@
 
 ## 🖥️ 미리보기
 
-
+<table>
+  <tr align="center">
+    <td>메인 페이지</td>
+    <td>상품 목록</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/cd12ec62-7964-421b-9ee3-5353550f93eb"/></td>
+    <td><img src="https://github.com/user-attachments/assets/439d8fc0-c62e-47d1-8ae1-2f2af85de7c0"/></td>
+  </tr>
+  <tr align="center">
+    <td>상품 상세 페이지</td>
+    <td>상품 구매</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/86234bb7-2b49-426c-96e5-7edd854acd76"/></td>
+    <td><img src="https://github.com/user-attachments/assets/ed8fe672-8bdb-42b1-86bd-3bce048b4e3b"/></td>
+  </tr>
+  <tr align="center">
+    <td>회원 페이지</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/7695da44-3974-48aa-9db6-6941c8c538a5" /></td>
+    <td></td>
+  </tr>
+</table>
 
 <br/>
 
