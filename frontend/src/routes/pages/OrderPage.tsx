@@ -16,11 +16,6 @@ import {
 } from "@/components/ui/breadcrumb";
 import { OrderFormData } from "@/types/orders";
 
-// const totalProductPrice = 120000;
-// const point = 5000;
-// const shippingFee = 3000;
-// const totalPayment = totalProductPrice - point + shippingFee;
-
 function OrderPage() {
   const [formData, setFormData] = useState<OrderFormData>({
     receiver: "",
@@ -66,6 +61,7 @@ function OrderPage() {
           <MeansPayment />
         </form>
         <TotalPrice
+          selectedCartIds={selectedProductInfo.selectedCartIds}
           totalPrice={selectedProductInfo.totalPrice}
           point={0}
           formData={{ ...formData }}

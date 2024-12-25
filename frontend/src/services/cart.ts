@@ -20,11 +20,20 @@ export async function getCartCount(userId: User["id"]) {
   }
 }
 
-export async function updateCartData(cartItem: Cart) {
+export async function updateCartData(cartItems: Cart[]) {
   try {
-    const response = await axios.post(`/carts`, cartItem);
+    const response = await axios.post(`/carts`, cartItems);
 
-    return response.data;
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function deleteOrderedCart(cartIds: Cart["id"][]) {
+  try {
+    const response = await axios.delete(`/carts`, { data: { cartIds } });
+    return response;
   } catch (error) {
     console.error(error);
   }

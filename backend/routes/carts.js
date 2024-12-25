@@ -15,22 +15,34 @@ router.get("/:id", async (req, res) => {
         {
           model: Product,
           attributes: [
+            "id",
             "brandName",
             "imageUrl",
             "name",
-            "size",
             "discountedPrice",
+            "description",
             "price",
           ],
         },
       ],
-      attributes: ["quantity", "price", "size", "createdAt"],
+      attributes: ["id", "quantity", "price", "size", "createdAt"],
     });
 
     if (!cartItems) {
       return res.status(404).json({ error: "장바구니 불러오기 싫패 " });
     }
-    return res.json(cartItems);
+
+    const formattedItems = cartItems.map((cartItem) => {
+      if (cartItem && Array.isArray(cartItem.Product.imageUrl)) {
+        cartItem.Product.imageUrl =
+          cartItem.Product.imageUrl.length > 0
+            ? cartItem.Product.imageUrl[0]
+            : null;
+      }
+      return cartItem;
+    });
+
+    return res.json(formattedItems);
   } catch (error) {
     return res.status(500).json({ error: " 서버 에러 " + error });
   }
@@ -57,32 +69,47 @@ router.get("/:id/count", async (req, res) => {
 
 router.post(`/`, async (req, res) => {
   try {
-    const { price, user_id, size, product_id, quantity } = req.body;
-    const existingProduct = await Cart.findOne({
-      where: { product_id: product_id },
+    const cartItems = req.body;
+
+    cartItems.forEach(async (cartItem) => {
+      const existingProduct = await Cart.findOne({
+        where: { product_id: cartItem.product_id, size: cartItem.size },
+      });
+
+      if (existingProduct) {
+        await existingProduct.increment("quantity", { by: cartItem.quantity });
+        await existingProduct.increment("price", { by: cartItem.price });
+      } else {
+        await Cart.create({
+          user_id: cartItem.user_id,
+          product_id: cartItem.product_id,
+          size: cartItem.size,
+          price: cartItem.price,
+          quantity: cartItem.quantity,
+        });
+      }
     });
 
-    if (existingProduct) {
-      await existingProduct.increment("quantity", { by: quantity });
-      await existingProduct.increment("price", { by: price });
-      return res.json({ existingProduct: true });
-    } else {
-      const newCart = await Cart.create({
-        user_id: user_id,
-        product_id: product_id,
-        size,
-        price,
-        quantity,
-      });
-      return res.json(newCart);
-    }
+    return res.status(200).json({ message: "장바구니 업데이트 완료" });
   } catch (error) {
     return res.status(500).json({ error: " 서버 에러 " + error });
   }
 });
 
-router.put("/:id", (req, res) => {});
+router.delete("/", async (req, res) => {
+  try {
+    const { cartIds } = req.body;
 
-router.delete("/:id", (req, res) => {});
+    await Cart.destroy({
+      where: {
+        id: cartIds,
+      },
+    });
+
+    return res.status(200).json({ message: "주문한 장바구니 상품 삭제 완료" });
+  } catch (error) {
+    return res.status(500).json({ error: " 서버 에러 " + error });
+  }
+});
 
 module.exports = router;

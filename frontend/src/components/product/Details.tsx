@@ -1,17 +1,18 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Cart } from "@/types/cart";
-import { SelectedOrderItem } from "@/types/orders";
 import { ProductData } from "@/types/products";
 import { formatPrice } from "@/utils/formatPrice";
 
 import { Selected } from "./SelectedItem";
 import { SizeButton } from "./SizeBtn";
+import { SelectedOrderItem } from "@/types/orders";
+
+import { Cart } from "@/types/cart";
 
 interface DetailsProps {
   product: ProductData | undefined;
-  handleCartUpdate: (cartItem: Cart) => Promise<void>;
+  handleCartUpdate: (cartItems: Cart[], totalQuantity: number) => Promise<void>;
 }
 
 function Details({ product, handleCartUpdate }: DetailsProps) {
@@ -30,6 +31,35 @@ function Details({ product, handleCartUpdate }: DetailsProps) {
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]); // 선택된 사이즈 배열 상태
 
   const [selectedItems, setSelectedItems] = useState<SelectedOrderItem[]>([]);
+
+  const [cartItems, setCartItems] = useState<Cart[]>([]);
+
+  const updateCartItems = (size: string, count: number) => {
+    if (!selectedSizes.includes(size)) {
+      setCartItems((prev) => [
+        ...prev,
+        {
+          price: (product?.discountedPrice || 0) * count,
+          size,
+          quantity: count,
+          user_id: Number(sessionStorage.getItem("id")),
+          product_id: product?.id || 0,
+        },
+      ]);
+    } else {
+      setCartItems((prev) =>
+        prev.map((item) =>
+          item.size === size
+            ? {
+                ...item,
+                quantity: count,
+                price: (product?.discountedPrice || 0) * count,
+              }
+            : item,
+        ),
+      );
+    }
+  };
 
   const updateSelectedItems = (size: string, count: number) => {
     if (!selectedSizes.includes(size)) {
@@ -65,6 +95,7 @@ function Details({ product, handleCartUpdate }: DetailsProps) {
   const increaseSizeCount = (size: string) => {
     setSizeCountStatus((prev) => ({ ...prev, [size]: prev[size] + 1 }));
     updateSelectedItems(size, sizeCountStatus[size] + 1);
+    updateCartItems(size, sizeCountStatus[size] + 1);
   };
 
   // 수량 감소 함수
@@ -76,13 +107,7 @@ function Details({ product, handleCartUpdate }: DetailsProps) {
 
     const newCount = Math.max(sizeCountStatus[size] - 1, 0);
     updateSelectedItems(size, newCount);
-  };
-
-  const handleSizeButtonClick = (size: string) => {
-    if (!selectedSizes.includes(size)) {
-      setSelectedSizes((prev) => [...prev, size]); // 선택된 사이즈 추가
-    }
-    increaseSizeCount(size);
+    updateCartItems(size, newCount);
   };
 
   const totalQuantity = selectedSizes.reduce((acc, size) => {
@@ -109,11 +134,28 @@ function Details({ product, handleCartUpdate }: DetailsProps) {
     totalPrice: totalPrice,
   };
 
+  const handleSizeButtonClick = (size: string) => {
+    if (!selectedSizes.includes(size)) {
+      setSelectedSizes((prev) => [...prev, size]); // 선택된 사이즈 추가
+    }
+    increaseSizeCount(size);
+  };
+
+  const handleCartButtonClick = () => {
+    if (cartItems.length === 0) {
+      alert("사이즈를 선택해주세요.");
+      return;
+    }
+
+    handleCartUpdate(cartItems, totalQuantity);
+  };
+
   const handleOrderButtonClick = () => {
     if (selectedItems.length === 0) {
       alert("사이즈를 선택해주세요.");
       return;
     }
+
     navigate("/order", { state: selectedProductData });
   };
 
@@ -189,15 +231,7 @@ function Details({ product, handleCartUpdate }: DetailsProps) {
         <div className="h-auto w-[522px]">
           <div className="w-full max-w-[522px]">
             <button
-              onClick={() => {
-                handleCartUpdate({
-                  price: totalPrice,
-                  size: "M", // 예시로 "M" 사이즈로 설정
-                  quantity: 2, // 예시로 수량 2로 설정
-                  user_id: Number(sessionStorage.getItem("id")),
-                  product_id: product.id,
-                });
-              }}
+              onClick={handleCartButtonClick}
               className="mr-3 mt-4 h-[70px] w-full max-w-[522px] rounded-2xl border-[1px] text-black"
             >
               장바구니 담기

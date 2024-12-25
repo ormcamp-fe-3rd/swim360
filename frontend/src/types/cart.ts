@@ -11,10 +11,15 @@ export interface Cart {
 }
 
 export interface CartItem extends Cart {
-  Product: Pick<
-    Product,
-    "imageUrl" | "brandName" | "name" | "size" | "price" | "discountedPrice"
-  >;
+  Product: {
+    id: Product["id"];
+    imageUrl: string;
+    description: Product["description"];
+    brandName: Product["brandName"];
+    name: Product["name"];
+    price: Product["price"];
+    discountedPrice: Product["discountedPrice"];
+  };
 }
 
 export interface CartList extends Cart {
