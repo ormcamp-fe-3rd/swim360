@@ -17,7 +17,7 @@ function MyPage() {
   }
 
   return (
-    <div className="px-7 tablet:px-[82px]">
+    <div className="mx-auto w-[90%] max-w-[1440px]">
       <div className="mb-[41px] grid grid-cols-1 gap-[41px] tablet:mb-[69px] tablet:mt-[71px] tablet:grid-cols-2">
         <UserInfoPreview />
         <UserDetailPreview />

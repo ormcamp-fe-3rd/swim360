@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 
 import PrimaryButton from "@/components/common/PrimaryButton";
 import FindIdPwdTab from "@/components/login/FindIdPwdTab";
+import { Link } from "react-router-dom";
 
 function FindIdPwdPage() {
   const location = useLocation();
@@ -16,12 +17,12 @@ function FindIdPwdPage() {
           <div>
             <input
               type="text"
-              className="mx-auto mb-4 h-[60px] w-full rounded-[5px] border p-2.5"
+              className="mx-auto mb-4 w-full rounded border p-2.5"
               placeholder="이름 / 홍길동"
             />
             <input
               type="text"
-              className="mx-auto h-[60px] w-full rounded-[5px] border p-2.5"
+              className="mx-auto w-full rounded border p-2.5"
               placeholder="전화번호 / 01011112222"
             />
           </div>
@@ -30,24 +31,33 @@ function FindIdPwdPage() {
           <div>
             <input
               type="text"
-              className="mx-auto mb-4 h-[60px] w-full rounded-[5px] border p-2.5"
+              className="mx-auto mb-4 w-full rounded border p-2.5"
               placeholder="이메일 아이디 / kim123@naver.com"
             />
             <input
               type="text"
-              className="mx-auto mb-4 h-[60px] w-full rounded-[5px] border p-2.5"
+              className="mx-auto mb-4 w-full rounded border p-2.5"
               placeholder="이름 / 홍길동"
             />
             <input
               type="text"
-              className="mx-auto h-[60px] w-full rounded-[5px] border p-2.5"
+              className="mx-auto w-full rounded border p-2.5"
               placeholder="전화번호 / 01011112222"
             />
           </div>
         }
       />
 
-      <PrimaryButton className="mx-auto my-4 w-full">확인</PrimaryButton>
+      <div className="px-2">
+        <PrimaryButton
+          onClick={() => {
+            alert("준비 중인 기능입니다.");
+          }}
+          className="my-4 w-full"
+        >
+          확인
+        </PrimaryButton>
+      </div>
     </div>
   );
 }

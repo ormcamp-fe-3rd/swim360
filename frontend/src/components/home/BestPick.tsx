@@ -20,11 +20,11 @@ export default function BestPick() {
   return (
     <section className="flex h-full w-full flex-col items-center px-10 desktop:h-[845px] desktop:w-[1440px]">
       <div className="text-center text-[26px] font-semibold">BEST PICK</div>
-      <div className="mt-10 flex h-full w-full flex-col gap-4 tablet:flex-row desktop:max-w-[1440px]">
-        <div className="w-full lg:w-1/2">
+      <div className="mt-10 flex h-full w-full flex-col items-center gap-4 tablet:flex-row desktop:max-w-[1440px]">
+        <div className="h-full w-full lg:w-1/2">
           <CarouselBestPick products={bestProducts} />
         </div>
-        <div className="grid w-full grid-cols-2 grid-rows-2 gap-4 lg:w-1/2">
+        <div className="grid h-full w-full grid-cols-2 grid-rows-2 gap-4 lg:w-1/2">
           {bestProducts.map((product) => (
             <ProductItem key={product.id} {...product} />
           ))}

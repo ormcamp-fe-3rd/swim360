@@ -16,15 +16,17 @@ function InputField({
   helperText,
 }: InputFieldProps) {
   return (
-    <div className="h-22 flex w-full justify-between border-b py-4">
-      <span className="block w-1/2 pl-4">{label}</span>
-      <div className="w-1/2 flex-col">
+    <div className="h-16 flex w-full items-center justify-between py-4">
+      <span className="block w-1/3 px-10 text-lg font-normal text-[#5E5E5E]">
+        {label}
+      </span>
+      <div className="w-2/3 flex-col pr-10">
         <input
           type={type}
           name={name}
           id={id}
           placeholder={placeholder}
-          className="w-full border-none bg-slate-100 py-2.5"
+          className="w-full rounded-md border-none bg-[#F0F0F0] py-2.5"
         />
         {helperText && (
           <span className="mt-2 block text-sm text-gray-500">{helperText}</span>

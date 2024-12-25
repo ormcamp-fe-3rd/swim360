@@ -101,3 +101,12 @@ export interface SelectedOrderItem {
   quantity: number;
   totalPrice: number;
 }
+
+export interface SelectedCartItem {
+  name: string;
+  totalPrice: number; //price
+  size: string;
+  quantity: number;
+  userId: number;
+  productId: number;
+}

@@ -1,14 +1,39 @@
+import { useState } from "react";
 import ProductTab from "./Tap";
 import Js from "./js";
 
 function DetailsTab() {
+  const [adjustColor, setAdjustColor] = useState(false);
+  const [imageIndex, setImageIndex] = useState(0); // 현재 이미지의 인덱스를 관리
+
+  const handleButtonClick = () => {
+    setAdjustColor((prev) => !prev); // 상태를 토글
+    setImageIndex((prevIndex) => (prevIndex + 1) % images.length); // 다음 이미지로 변경
+  };
+
+  const images = [
+    "/public/images/product/icon-water.png",
+    "/public/images/product/icon-sun.png",
+  ]; // 사용할 이미지 배열
+
   return (
     <div>
       <div id="detailsTab">
         <ProductTab activeCategory="detailsTab" />
       </div>
-      <div className="mx-auto h-[824px] w-full max-w-[1064px] rounded-[20px] bg-black">
-        <Js />
+      <div className="bg- relative mx-auto h-[600px] w-full max-w-[1064px] rounded-[20px] bg-slate-100">
+        <Js adjustColor={adjustColor} />
+
+        <button
+          className="absolute bottom-10 right-10 flex h-16 w-16 items-center justify-center rounded-full bg-slate-50 shadow-md shadow-slate-300 hover:bg-slate-200"
+          onClick={handleButtonClick}
+        >
+          <img
+            className="h-8 w-8"
+            src={images[imageIndex]} // 현재 인덱스에 해당하는 이미지 표시
+            alt="Button Icon"
+          />
+        </button>
       </div>
 
       <div className="mx-auto flex w-full flex-wrap justify-center gap-[12px]">
