@@ -21,7 +21,7 @@ function LoginPage() {
       setEmailId(savedEmail);
       setRememberEmail(true);
     }
-  }, []);
+  });
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmailId(event.target.value);
