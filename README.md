@@ -37,8 +37,8 @@
     <td>상품 목록</td>
   </tr>
   <tr>
-    <td><img src="https://github.com/user-attachments/assets/e4254c96-3334-420d-86fe-ef85d2a510a0"/></td>
-    <td><img src="https://github.com/user-attachments/assets/439d8fc0-c62e-47d1-8ae1-2f2af85de7c0"/></td>
+    <td><img src="https://github.com/user-attachments/assets/00fa36f7-4990-409a-8557-84e06886dd1a"/></td>
+    <td><img src="https://github.com/user-attachments/assets/c64769b8-c477-467f-a936-2dfed00f1d36"/></td>
   </tr>
   <tr align="center">
     <td>상품 상세 페이지</td>
@@ -46,7 +46,7 @@
   </tr>
   <tr>
     <td><img src="https://github.com/user-attachments/assets/86234bb7-2b49-426c-96e5-7edd854acd76"/></td>
-    <td><img src="https://github.com/user-attachments/assets/ed8fe672-8bdb-42b1-86bd-3bce048b4e3b"/></td>
+    <td><img src="https://github.com/user-attachments/assets/db1f6250-4e58-44c6-8156-60678adf5770" /></td>
   </tr>
   <tr align="center">
     <td>회원 페이지</td>
