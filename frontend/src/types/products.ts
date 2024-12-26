@@ -37,7 +37,7 @@ export type SortOption = "latest" | "sale" | "review";
 
 export interface ProductItemData
   extends Omit<Product, "imageUrl" | "category_id" | "discount_id"> {
-  imageUrl: string;
+  imageUrl: string[];
   reviewCount: number;
   Discount: {
     discountPercentage: Discount["discountPercentage"];

@@ -62,7 +62,7 @@ function OrderPage() {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <div className="grid min-w-[475px] flex-wrap gap-0 middle:flex">
+      <div className="grid w-full flex-wrap gap-0 middle:flex">
         <form action="#" className="mb-10 middle:w-2/3">
           <ShippingInformation handleInputChange={handleInputChange} />
           <OrderProductList {...selectedProductInfo} />

@@ -72,7 +72,7 @@ function LoginPage() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-[620px]">
+    <div className="mx-auto w-full max-w-[620px] px-4">
       <p className="border-b border-black p-2.5 text-center font-bold">
         로그인
       </p>
@@ -121,7 +121,7 @@ function LoginPage() {
           </PrimaryButton>
         </form>
       </div>
-      <ul className="mt-4 grid gap-4 text-center sm:flex sm:justify-center">
+      <ul className="mt-4 flex justify-center gap-4 text-center">
         <Link to="/Find_Id_Pwd?type=id">
           <li className="inline-block">아이디 찾기</li>
         </Link>

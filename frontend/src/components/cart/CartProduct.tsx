@@ -51,7 +51,7 @@ export default function CartProduct({
   };
 
   return (
-    <div className="flex p-2.5">
+    <div className="flex px-2.5">
       <Checkbox
         className="mt-2.5"
         checked={isChecked}
@@ -59,7 +59,7 @@ export default function CartProduct({
           handleSelectedCartUpdate(cartItem, checked, cartId)
         }
       />
-      <div className="flex w-full items-center justify-between border-b pl-2.5">
+      <div className="flex w-full items-center justify-between border-b pl-2.5 py-2">
         <img src={imageUrl} alt="이미지" className="w-1/6" />
         <div className="w-1/3">
           <p>{brandName}</p>

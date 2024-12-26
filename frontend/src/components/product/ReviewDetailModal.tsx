@@ -22,7 +22,7 @@ function ReviewDetailModal({
         <div className="flex flex-col sm:flex-row">
           {/* Carousel Section */}
           <div className="relative mx-auto flex w-full items-center justify-center rounded-l-xl bg-black text-white sm:max-w-[400px] lg:max-w-[706px]">
-            <Carousel className="z-50 flex h-full w-full items-center justify-between">
+            <Carousel className="z-50 flex h-full w-full items-center justify-center">
               <CarouselContent>
                 <CarouselItem className="flex w-full items-center justify-center">
                   {review?.imageUrl ? (
