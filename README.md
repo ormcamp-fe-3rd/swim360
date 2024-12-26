@@ -63,26 +63,16 @@
   <tr align="center">
     <td>메인 페이지</td>
     <td>상품 목록</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr align="center">
     <td>상품 상세 페이지</td>
     <td>상품 구매</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr align="center">
     <td>회원 페이지</td>
-    <td></td>
   </tr>
   <tr>
+    <td><img src="https://github.com/user-attachments/assets/273f100e-9830-49b7-b0be-e1c8cc199f46"/></td>
+    <td><img src="https://github.com/user-attachments/assets/f9fc5c6c-48c7-4520-b57e-25fd88424af5"/></td>
     <td></td>
-    <td></td>
+    <td><img src="https://github.com/user-attachments/assets/c4e1fb89-3eda-4a07-896b-c6d47444f87e"/></td>
+    <td><img src="https://github.com/user-attachments/assets/8501d5bd-bf3a-4b36-bd1a-be4ba3d53d93"/></td>
   </tr>
 </table>
 <br/>
