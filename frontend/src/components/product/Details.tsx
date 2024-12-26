@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { Cart } from "@/types/cart";
+import { SelectedOrderItem } from "@/types/orders";
 import { ProductData } from "@/types/products";
 import { formatPrice } from "@/utils/formatPrice";
 
 import { Selected } from "./SelectedItem";
 import { SizeButton } from "./SizeBtn";
-import { SelectedOrderItem } from "@/types/orders";
-
-import { Cart } from "@/types/cart";
 
 interface DetailsProps {
   product: ProductData | undefined;

@@ -20,7 +20,7 @@ export function Selected({
   const totalPrice = count * (product?.discountedPrice || 0);
 
   return (
-    <div className="items-between mb-1 flex h-[50px] w-full min-w-[522px] justify-between bg-[#EDEDED] p-4">
+    <div className="items-between mb-1 flex h-[50px] w-full max-w-[522px] justify-between bg-[#EDEDED] p-4">
       <p className="w-[174px]">{selectedSize}</p> {/* 사이즈 표시 */}
       <div className="flex h-[20px] w-fit items-center justify-between gap-3 rounded-[12px] border-[1px] border-black px-4">
         <button onClick={() => decreaseSizeCount(selectedSize)}>
