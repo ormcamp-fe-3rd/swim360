@@ -37,7 +37,7 @@ function ProductDetailPage() {
         />
         <Details {...detailsSectionProps} />
       </div>
-      <DetailsTab />
+      <DetailsTab productId={product.id} />
       <ReviewsTab {...reviewsTabProps} />
       <QnasTab />
       <ExchangeTab />

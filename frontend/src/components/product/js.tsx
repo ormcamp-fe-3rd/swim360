@@ -2,9 +2,31 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useFBX } from "@react-three/drei";
 import { Color, Mesh } from "three";
 
-function Model({ adjustColor }: { adjustColor: boolean }) {
+function Model({
+  adjustColor,
+  productId,
+}: {
+  adjustColor: boolean;
+  productId: number;
+}) {
+  const fbxPath =
+    productId >= 1 && productId <= 16
+      ? "/public/models/womenSwimSuit01.fbx"
+      : 17 <= productId && productId <= 26
+        ? "/public/models/womenSwimSuit02.fbx"
+        : 27 <= productId && productId <= 46
+          ? "/public/models/menSwimSuit01.fbx"
+          : 47 <= productId && productId <= 66
+            ? "/public/models/menSwimSuit02.fbx"
+            : 67 <= productId && productId <= 76
+              ? "/public/models/cap.fbx"
+              : 77 <= productId && productId <= 88
+                ? "/public/models/towel.fbx"
+                : 89 <= productId && productId <= 93
+                  ? "/public/models/fins.fbx"
+                  : "잠시만 기다려주세요!";
   // FBX 파일 로드
-  const fbx = useFBX("/public/models/womenSwimSuit01.fbx"); // FBX 파일 경로
+  const fbx = useFBX(fbxPath);
 
   if (fbx) {
     // 모델이 로드된 후
@@ -13,7 +35,7 @@ function Model({ adjustColor }: { adjustColor: boolean }) {
         if (adjustColor) {
           // 채도를 높이고 명도를 낮춘 색상
           const originalColor = new Color(0.8, 0.8, 0.8); // 기본 색상
-          const adjustedColor = originalColor.offsetHSL(0, 0.3, -0.1); // 채도 높이고 명도 낮춤
+          const adjustedColor = originalColor.offsetHSL(0, 0.3, -0.1); // 채도 높이고 명도 낮춤q
           child.material.color = adjustedColor;
         } else {
           // 기본 색상
@@ -30,7 +52,13 @@ function Model({ adjustColor }: { adjustColor: boolean }) {
   return <primitive object={fbx} scale={0.2} />;
 }
 
-function Js({ adjustColor }: { adjustColor: boolean }) {
+function ModelSection({
+  adjustColor,
+  productId,
+}: {
+  adjustColor: boolean;
+  productId: number;
+}) {
   return (
     <div className="h-[600px] w-full max-w-[1064px]">
       <Canvas
@@ -39,7 +67,7 @@ function Js({ adjustColor }: { adjustColor: boolean }) {
         <ambientLight intensity={4} color="#ffffff" />
 
         {/* FBX 모델 추가 */}
-        <Model adjustColor={adjustColor} />
+        <Model adjustColor={adjustColor} productId={productId} />
         {/* OrbitControls 추가 */}
         <OrbitControls />
       </Canvas>
@@ -47,4 +75,4 @@ function Js({ adjustColor }: { adjustColor: boolean }) {
   );
 }
 
-export default Js;
+export default ModelSection;
