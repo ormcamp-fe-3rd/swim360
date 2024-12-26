@@ -14,7 +14,6 @@ function PossessionPoint() {
         <div className="flex w-full">
           <input
             type="number"
-            value={0}
             max={0}
             className="mr-5 w-3/4 rounded-sm bg-slate-100 p-2.5"
           />
