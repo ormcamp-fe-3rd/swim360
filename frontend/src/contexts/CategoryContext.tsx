@@ -1,5 +1,6 @@
-import { Category } from "@/types/categories";
 import { createContext, useState } from "react";
+
+import { Category } from "@/types/categories";
 
 interface CategoryContextValue {
   categories: Category[];
@@ -23,7 +24,7 @@ export const CategoryContext = createContext<CategoryContextValue | undefined>(
 function CategoryContextProvider({ children }: CategoryProviderProps) {
   const [categories, setCategories] = useState<Category[]>([]);
   const [currentParentCategoryId, setCurrentParentCategoryId] =
-    useState<Category["parent_id"]>(null);
+    useState<Category["parent_id"]>(1);
   const [currentCategoryId, setCurrentCategoryId] = useState<Category["id"]>(4);
 
   const CategoryContextValue = {

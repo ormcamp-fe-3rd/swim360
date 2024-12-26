@@ -1,7 +1,8 @@
+import { useContext, useEffect, useMemo } from "react";
+
 import { CategoryContext } from "@/contexts/CategoryContext";
 import { getCategories } from "@/services/category";
 import { Category } from "@/types/categories";
-import { useContext, useEffect, useMemo } from "react";
 
 function useCategory() {
   const categoryContext = useContext(CategoryContext);

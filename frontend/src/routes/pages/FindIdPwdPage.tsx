@@ -10,7 +10,7 @@ function FindIdPwdPage() {
   const type = searchParams.get("type") || "id";
 
   return (
-    <div className="mx-auto w-[620px]">
+    <div className="mx-auto w-full max-w-[620px]">
       <FindIdPwdTab
         defaultValue={type === "id" ? "find-id" : "find-pw"}
         idContent={

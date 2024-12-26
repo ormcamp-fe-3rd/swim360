@@ -165,18 +165,20 @@ function Details({ product, handleCartUpdate }: DetailsProps) {
 
   return (
     <div className="h-auto w-full max-w-[522px] flex-col">
-      <p className="w-[522px] text-base font-semibold">{product?.brandName}</p>
-      <p className="text- w-[522px] font-semibold">{product?.name}</p>
-      <p className="mb-4 w-[522px] text-[14px] font-medium">
+      <p className="max-w-[522px] text-base font-semibold">
+        {product?.brandName}
+      </p>
+      <p className="max-w-[522px] font-semibold">{product?.name}</p>
+      <p className="mb-4 max-w-[522px] text-[14px] font-medium">
         {product?.description}
       </p>
-      <div className="flex w-[522px] gap-[10px]">
+      <div className="flex max-w-[522px] gap-[10px]">
         <p className="text-base font-bold">정상가</p>
         <p className="text-sm font-extralight line-through">
           {formatPrice(product?.price)}원
         </p>
       </div>
-      <div className="flex w-[522px] gap-[10px]">
+      <div className="flex max-w-[522px] gap-[10px]">
         <p className="text-base font-bold">할인가</p>
         <p className="text-base font-bold text-[#D40022]">
           {formatPrice(product?.discountedPrice)}원
@@ -185,13 +187,13 @@ function Details({ product, handleCartUpdate }: DetailsProps) {
           {product?.Discount.discountPercentage}%
         </p>
       </div>
-      <div className="mb-5 flex w-[522px] gap-[10px]">
+      <div className="mb-5 flex max-w-[522px] gap-[10px]">
         <p className="text-sm text-[#B0B0B0]">무료 배송</p>
       </div>
 
-      <div className="mb-5 h-[88px] w-[522px] flex-col justify-between border-t-[1px] border-black pt-5">
+      <div className="mb-5 h-[88px] max-w-[522px] flex-col justify-between border-t-[1px] border-black pt-5">
         <p className="mb-2 text-base">사이즈</p>
-        <div className="mb-5 flex gap-1">
+        <div className="mb-5 flex max-w-[522px] gap-1">
           {product.size.map((size) => (
             <div
               key={size}
@@ -221,14 +223,14 @@ function Details({ product, handleCartUpdate }: DetailsProps) {
       </div>
 
       <div>
-        <div className="mb-[10px] mt-10 flex w-[522px] justify-end">
+        <div className="mb-[10px] mt-10 flex max-w-[522px] justify-end">
           <p className="text-[16px] font-semibold">총 상품 금액: </p>
           <p className="text-[16px] font-semibold">
             {formatPrice(totalPrice)}원
           </p>
         </div>
 
-        <div className="h-auto w-[522px]">
+        <div className="h-auto max-w-[522px]">
           <div className="w-full max-w-[522px]">
             <button
               onClick={handleCartButtonClick}

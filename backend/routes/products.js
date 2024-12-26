@@ -32,15 +32,7 @@ router.get("/bestProducts", async (req, res) => {
       return res.status(404).json({ message: "BestProducts Not Found" });
     }
 
-    const formattedItems = bestProducts.map((product) => {
-      if (product && Array.isArray(product.imageUrl)) {
-        product.imageUrl =
-          product.imageUrl.length > 0 ? product.imageUrl[0] : null;
-      }
-      return product;
-    });
-
-    res.json(formattedItems);
+    res.json(bestProducts)
   } catch (error) {
     console.error("Error:", error);
     return res.status(500).json({ error: "서버 에러: " + error.message });
@@ -86,15 +78,8 @@ router.get("/category/:categoryId", async (req, res) => {
       return res.status(404).json({ message: "해당하는 상품이 없습니다." });
     }
 
-    const formattedItems = productList.map((product) => {
-      if (product && Array.isArray(product.imageUrl)) {
-        product.imageUrl =
-          product.imageUrl.length > 0 ? product.imageUrl[0] : null;
-      }
-      return product;
-    });
 
-    res.json(formattedItems);
+    res.json(productList)
   } catch (error) {
     console.error("Error:", error);
     return res.status(500).json({ error: "서버 에러: " + error.message });

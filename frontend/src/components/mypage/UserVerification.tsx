@@ -38,7 +38,7 @@ export default function UserVerification() {
   }
 
   return (
-    <div className="mx-auto flex w-[600px] flex-col gap-[42px]">
+    <div className="mx-auto flex w-full tablet:w-[600px] flex-col gap-[42px]">
       <p className="border-b border-black p-2.5 text-center text-xl font-semibold">
         본인확인
       </p>

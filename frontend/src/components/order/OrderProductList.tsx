@@ -28,12 +28,12 @@ function OrderProductList({
           <img
             src={selectedItem.imageUrl}
             alt={selectedItem.name}
-            className="w-1/6"
+            className="w-1/3 tablet:w-1/6"
           />
           {/* 상품 정보 */}
           <div className="w-1/3">
             <p>{selectedItem.name}</p>
-            <p>{selectedItem.description}</p>
+            <p className="hidden tablet:block">{selectedItem.description}</p>
             <p>
               옵션 : <span>{selectedItem.size}</span>
             </p>
