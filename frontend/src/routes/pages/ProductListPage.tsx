@@ -6,7 +6,7 @@ import useCategory from "@/hooks/useCategory";
 import useProductList from "@/hooks/useProductList";
 
 function ProductListPage() {
-  const { childCategories, currentCategoryId, handleCurrentCategoryChange } =
+  const { childCategories, handleCurrentCategoryChange } =
     useCategory();
 
   const { handleSortOptionChange, sortedProducts } = useProductList();
@@ -14,7 +14,6 @@ function ProductListPage() {
   const sideBarProps = {
     childCategories,
     handleCurrentCategoryChange,
-    currentCategoryId,
   };
 
   const sortSelectProps = {
