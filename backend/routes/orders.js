@@ -69,11 +69,6 @@ router.post("/", async (req, res) => {
       products,
     } = req.body;
 
-    // 필수 데이터 검증
-    if (!receiver || !address || !totalPrice || !products) {
-      return res.status(400).json({ error: "필수 정보가 누락되었습니다." });
-    }
-
     // 주문 정보 저장
     const newOrder = await Order.create({
       receiver,
