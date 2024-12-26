@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import PrimaryButton from "@/components/common/PrimaryButton";
 import { Link } from "react-router-dom";
+import CustomButton from "./CustomButton";
 
 export default function Agrees() {
   const [allChecked, setAllChecked] = useState(false);
@@ -540,9 +541,11 @@ export default function Agrees() {
         </div>
       </div>
       <div className="mt-4 flex gap-2.5">
-        <div className="flex w-1/2 items-center justify-center rounded-sm border bg-white text-black">
-          <Link to="/login">취소</Link>
-        </div>
+        <Link to="/login" className="w-1/2">
+          <CustomButton className="border-gray-400 bg-white text-black hover:bg-gray-50">
+            취소
+          </CustomButton>
+        </Link>
         <div className="w-1/2">
           <PrimaryButton
             onClick={handleNext}
