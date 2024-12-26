@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { z } from "zod";
 
 import PrimaryButton from "@/components/common/PrimaryButton";
+import { useUserId } from "@/hooks/useUserId";
+import { getUser } from "@/services/user";
 
 interface ShippingInformationProps {
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -76,6 +78,25 @@ function ShippingInformation({ handleInputChange }: ShippingInformationProps) {
     }).open();
   };
 
+  const { userId } = useUserId();
+
+  useEffect(() => {
+    const loadOrdererName = async () => {
+      try {
+        if (!userId) {
+          throw new Error("로그인이 필요합니다.");
+        }
+        const user = await getUser(userId);
+        console.log("가져온 이름:", user.name); // 반환된 데이터 확인
+        setFormData((prev) => ({ ...prev, ordererName: user.name })); // 주문인 이름 설정
+      } catch (error) {
+        console.error("주문인 이름을 가져오는 중 오류 발생:", error);
+      }
+    };
+
+    loadOrdererName();
+  }, [userId]);
+
   return (
     <div>
       <p className="w-full border-b border-black p-2.5 font-bold">배송정보</p>
@@ -85,6 +106,9 @@ function ShippingInformation({ handleInputChange }: ShippingInformationProps) {
           type="text"
           name="ordererName"
           id="ordererName"
+          readOnly
+          value={formData.ordererName}
+          onChange={handleInputValidation}
           className="w-full rounded-sm border-none bg-slate-100 p-2.5"
         />
       </div>
