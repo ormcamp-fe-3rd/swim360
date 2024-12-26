@@ -30,8 +30,61 @@
 
 ## 🖥️ 미리보기
 
+### PC.ver
+<table>
+  <tr align="center">
+    <td>메인 페이지</td>
+    <td>상품 목록</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/e4254c96-3334-420d-86fe-ef85d2a510a0"/></td>
+    <td><img src="https://github.com/user-attachments/assets/439d8fc0-c62e-47d1-8ae1-2f2af85de7c0"/></td>
+  </tr>
+  <tr align="center">
+    <td>상품 상세 페이지</td>
+    <td>상품 구매</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/86234bb7-2b49-426c-96e5-7edd854acd76"/></td>
+    <td><img src="https://github.com/user-attachments/assets/ed8fe672-8bdb-42b1-86bd-3bce048b4e3b"/></td>
+  </tr>
+  <tr align="center">
+    <td>회원 페이지</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/f5d12e15-5383-40bd-9416-0e9f5c0e5c73"/></td>
+    <td></td>
+  </tr>
+</table>
 
-
+### Mobile.ver
+<table>
+  <tr align="center">
+    <td>메인 페이지</td>
+    <td>상품 목록</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr align="center">
+    <td>상품 상세 페이지</td>
+    <td>상품 구매</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr align="center">
+    <td>회원 페이지</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
 <br/>
 
 ## 🧑‍💻 실행 방법
