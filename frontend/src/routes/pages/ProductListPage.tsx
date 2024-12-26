@@ -32,7 +32,7 @@ function ProductListPage() {
   }
 
   return (
-    <div className="mt-20 p-4">
+    <div className="mt-0 tablet:mt-20 p-4">
       <div className="mx-auto flex max-w-[1440px] flex-col justify-center tablet:flex-row">
         <SideBar {...sideBarProps} />
         <div className="w-full">
