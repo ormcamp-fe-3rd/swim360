@@ -1,5 +1,8 @@
 import { useState } from "react";
 
+import useCategory from "@/hooks/useCategory";
+import { cn } from "@/lib/utils";
+
 import CategoryBox from "../home/CategoryBox";
 import HamburgerMenu from "../home/HamburgerMenu";
 import MainIconButton from "../home/MainIconButton";
@@ -7,16 +10,44 @@ import MainLogo from "../home/MainLogo";
 import ScrollButton from "../home/ScrollButton";
 
 function Header() {
-  const[isOpen, setIsOpen] = useState(false)
-  
-  const toggleMenu = () => setIsOpen(!isOpen)
+  const {
+    currentParentCategoryId,
+    handleCurrentCategoryChange,
+    parentCategories,
+    getFirstChildCategory,
+    getChildCategories,
+  } = useCategory();
+
+  const [isOpen, setIsOpen] = useState(false);
+  const handleUIToggle = () => setIsOpen(!isOpen);
+
+  const hamburgerMenuProps = {
+    isOpen,
+    handleUIToggle,
+    handleCurrentCategoryChange,
+    parentCategories,
+    getFirstChildCategory,
+  };
+
+  const categoryBoxProps = {
+    currentParentCategoryId,
+    handleCurrentCategoryChange,
+    parentCategories,
+    getFirstChildCategory,
+    getChildCategories,
+  };
 
   return (
-    <header className={`w-full justify-center ${isOpen? "bg-white fixed z-10": "bg-none flex"}`}>
-      <nav className="pt-6 flex h-[190px] w-full items-center justify-between px-10 desktop:w-[1440px]">
-        <HamburgerMenu isOpen={isOpen} toggleMenu={toggleMenu}/>
+    <header
+      className={cn(
+        "w-full",
+        isOpen ? "fixed z-10 bg-white" : "flex justify-center bg-none",
+      )}
+    >
+      <nav className="flex h-[190px] w-full items-center justify-between px-10 pt-6 desktop:w-[1440px]">
+        <HamburgerMenu {...hamburgerMenuProps} />
         <MainLogo />
-        <CategoryBox />
+        <CategoryBox {...categoryBoxProps} />
         <MainIconButton />
       </nav>
       <ScrollButton />

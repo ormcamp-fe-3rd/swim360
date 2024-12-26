@@ -1,34 +1,44 @@
-function DetailsTab() {
+import { useState } from "react";
+import ProductTab from "./Tap";
+import ModelSection from "./js";
+
+interface DetailsProp {
+  productId: number;
+}
+
+function DetailsTab({ productId }: DetailsProp) {
+  const [adjustColor, setAdjustColor] = useState(false);
+  const [imageIndex, setImageIndex] = useState(0); // 현재 이미지의 인덱스를 관리
+
+  const handleButtonClick = () => {
+    setAdjustColor((prev) => !prev); // 상태를 토글
+    setImageIndex((prevIndex) => (prevIndex + 1) % images.length); // 다음 이미지로 변경
+  };
+
+  const images = [
+    "/public/images/product/icon-water.png",
+    "/public/images/product/icon-sun.png",
+  ]; // 사용할 이미지 배열
+
   return (
     <div>
-      <div className="mx-auto mb-8 mt-16 flex max-h-[44px] w-full justify-center">
-        <a
-          href="#detailsTab"
-          id="detailsTab"
-          className="flex h-[44px] w-[266px] flex-wrap items-center justify-center border-b-2 border-black text-base font-medium sm:text-[24px]"
-        >
-          상품상세정보
-        </a>
-        <a
-          href="#reviewsTab"
-          className="flex h-[44px] w-[266px] flex-wrap items-center justify-center border-b-2 border-[#CCCCCC] text-sm font-extralight sm:text-[24px]"
-        >
-          상품후기(0)
-        </a>
-        <a
-          href="#qnasTab"
-          className="flex h-[44px] w-[266px] flex-wrap items-center justify-center border-b-2 border-[#CCCCCC] text-sm font-extralight sm:text-[24px]"
-        >
-          자주하는 질문
-        </a>
-        <a
-          href="#exchangeTab"
-          className="flex h-[44px] w-[266px] flex-wrap items-center justify-center border-b-2 border-[#CCCCCC] text-sm font-extralight sm:text-[24px]"
-        >
-          교환/반품
-        </a>
+      <div id="detailsTab">
+        <ProductTab activeCategory="detailsTab" />
       </div>
-      <div className="mx-auto h-[824px] w-full max-w-[1064px] rounded-[20px] bg-black"></div>
+      <div className="bg- relative mx-auto h-[600px] w-full max-w-[1064px] rounded-[20px] bg-slate-100">
+        <ModelSection adjustColor={adjustColor} productId={productId} />
+
+        <button
+          className="absolute bottom-10 right-10 flex h-16 w-16 items-center justify-center rounded-full bg-slate-50 shadow-md shadow-slate-300 hover:bg-slate-200"
+          onClick={handleButtonClick}
+        >
+          <img
+            className="h-8 w-8"
+            src={images[imageIndex]} // 현재 인덱스에 해당하는 이미지 표시
+            alt="Button Icon"
+          />
+        </button>
+      </div>
 
       <div className="mx-auto flex w-full flex-wrap justify-center gap-[12px]">
         <div className="flex w-[1064px] flex-wrap justify-center">

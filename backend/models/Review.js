@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize"); // 시퀄라이즈에 정의됨
-const { sequelize } = require("./db");
+const { sequelize } = require("../db.js");
 // 모델
 
 //내용, 이미지, 별점, 상품_id(fk), 회원_id(fk)
@@ -17,7 +17,7 @@ const Review = sequelize.define(
       allowNull: false,
     },
     imageUrl: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(255),
       allowNull: true,
     },
     rating: {

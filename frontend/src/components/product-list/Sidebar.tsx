@@ -1,37 +1,50 @@
-function SideBar() {
-  //Category
-  const sideMenuArray = [
-    {
-      id: 7,
-      name: "one-piece",
-      parentid: 0,
-    },
-    {
-      id: 8,
-      name: "full-body",
-      parentid: 0,
-    },
-  ];
+import { Category } from "@/types/categories";
 
+interface SideBarProps {
+  childCategories: Category[];
+  handleCurrentCategoryChange: (
+    parentCategoryId: Category["parent_id"],
+    categoryId: Category["id"],
+  ) => void;
+  currentCategoryId: Category["id"];
+}
+
+function SideBar({
+  childCategories,
+  handleCurrentCategoryChange,
+  currentCategoryId,
+}: SideBarProps) {
   return (
-    <div className="">
-      <ul className="top-2 z-10 mb-8 mr-2 mt-10 flex justify-center gap-3 tablet:sticky tablet:flex-col tablet:justify-start">
-        {sideMenuArray.map((sideMenu) => (
-          <li
-            key={sideMenu.name}
-            className="flex flex-col justify-center px-[36.5px] py-[10px]"
+    <ul className="top-2 mb-8 mr-2 mt-10 flex justify-center gap-3 tablet:sticky tablet:flex-col tablet:justify-start">
+      {childCategories.map((childCategory) => (
+        <li
+          key={childCategory.name}
+          className="flex flex-col justify-center px-[36.5px] py-[10px]"
+        >
+          <button
+            onClick={() =>
+              handleCurrentCategoryChange(
+                childCategory.parent_id,
+                childCategory.id,
+              )
+            }
+            className={
+              "peer flex justify-center text-nowrap text-[26px] font-medium first:cursor-pointer hover:font-semibold focus:font-semibold " +
+              `${childCategory.id === currentCategoryId ? "font-semibold" : "font-base"}`
+            }
           >
-            <button className="peer flex justify-center text-nowrap text-[26px] font-medium first:cursor-pointer hover:font-semibold focus:font-semibold">
-              {sideMenu.name}
-            </button>
-            <img
-              className="invisible peer-hover:visible peer-focus:visible"
-              src="/public/images/productlist/underline-menu.png"
-            />
-          </li>
-        ))}
-      </ul>
-    </div>
+            {childCategory.name}
+          </button>
+          <img
+            className={
+              "peer-hover:visible " +
+              `${childCategory.id === currentCategoryId ? "visible" : "invisible"}`
+            }
+            src="/public/images/productlist/underline-menu.png"
+          />
+        </li>
+      ))}
+    </ul>
   );
 }
 

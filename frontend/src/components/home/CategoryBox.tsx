@@ -1,88 +1,61 @@
-// import { useState } from "react";
-
-import { useState } from "react";
-
 import { Category } from "@/types/categories";
-
-import CategoryHoberBox from "./CategoryHoberBox";
-import CategoryList from "./CategoryList";
+import CategoryHoverBox from "./CategoryHoverBox";
 import CategoryUnderLine from "./CategoryUnderline";
+import { Link, useLocation } from "react-router-dom";
 
+interface CategoryBoxProps {
+  currentParentCategoryId: Category["parent_id"];
+  handleCurrentCategoryChange: (
+    parentCategoryId: Category["parent_id"],
+    categoryId: Category["id"],
+  ) => void;
+  parentCategories: Category[];
+  getFirstChildCategory: (parentCategoryId: Category["id"]) => Category;
+  getChildCategories: (parentCategoryId: Category["parent_id"]) => Category[];
+}
 
-const categories: Category[] = [
-  {
-    name: "WOMAN",
-    productId: 1,
-  },
-  {
-    name: "MAN",
-    productId: 2,
-  },
-  {
-    name: "ACC",
-    productId: 3,
-  },
-  {
-    name: "one-piece",
-    productId: 4,
-    parentId: 1,
-  },
-  {
-    name: "full-body",
-    productId: 5,
-    parentId: 1,
-  },
-  {
-    name: "mid-length",
-    productId: 6,
-    parentId: 2,
-  },
-  {
-    name: "square-cut",
-    productId: 7,
-    parentId: 2,
-  },
-  {
-    name: "bag",
-    productId: 8,
-    parentId: 3,
-  },
-  {
-    name: "towel",
-    productId: 9,
-    parentId: 3,
-  },
-  {
-    name: "fins",
-    productId: 10,
-    parentId: 3,
-  },
-];
+export default function CategoryBox({
+  currentParentCategoryId,
+  handleCurrentCategoryChange,
+  parentCategories,
+  getFirstChildCategory,
+  getChildCategories,
+}: CategoryBoxProps) {
+  if (parentCategories.length === 0) return;
 
-export default function CategoryBox() {
-  const[activeCategory, setActiveCategory] = useState("")
+  const location = useLocation();
 
   return (
-    <>
-      <ul className="hidden tablet:flex w-full max-w-[500px] tablet:justify-between">
-        {categories.slice(0, 3).map((category) => (
-          <li key={category.productId} className="group text-3xl font-bold" onClick={()=> setActiveCategory(category.name)}>
-            <CategoryList
-              name={category.name}
-              categories={categories.filter(
-                (sub) => sub.parentId === category.productId,
-              )}
+    <ul className="hidden w-full max-w-[500px] tablet:flex tablet:justify-between">
+      {parentCategories.map((category: Category) => {
+        const firstChildCategory = getFirstChildCategory(category.id);
+        const childCategories = getChildCategories(category.id);
+
+        return (
+          <li key={category.name} className="group text-3xl font-bold">
+            <Link
+              onClick={() =>
+                handleCurrentCategoryChange(category.id, firstChildCategory.id)
+              }
+              to={"/product_list/" + category.name}
+            >
+              <div className="flex justify-center">
+                {category.name.toUpperCase()}
+              </div>
+            </Link>
+            <CategoryUnderLine
+              isVisible={
+                location.pathname.includes("product_list") &&
+                currentParentCategoryId === category.id
+              }
             />
-            <CategoryUnderLine isVisible={activeCategory === category.name} />
-            {/* <CategoryUnderLine isVisible={false} /> */}
-            <CategoryHoberBox
-              categories={categories.filter(
-                (sub) => sub.parentId === category.productId,
-              )}
+            <CategoryHoverBox
+              handleCurrentCategoryChange={handleCurrentCategoryChange}
+              childCategories={childCategories}
             />
           </li>
-        ))}
-      </ul>
-    </>
+        );
+      })}
+    </ul>
   );
 }

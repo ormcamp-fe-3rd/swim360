@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize"); // 시퀄라이즈에 정의됨
-const { sequelize } = require("./db");
+const { sequelize } = require("../db.js");
 // 모델
 
 //이름, 정가, 할인가, 사이즈, 이미지, 판매량, 재고, 카테고리_id(fk), 할인_id(fk)
@@ -12,8 +12,16 @@ const Product = sequelize.define(
       primaryKey: true,
       allowNull: false,
     },
+    brandName: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    description: {
+      type: DataTypes.STRING(255),
       allowNull: false,
     },
     price: {
@@ -25,18 +33,28 @@ const Product = sequelize.define(
       allowNull: false,
     },
     size: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT, // TEXT로 변경
       allowNull: false,
+      get() {
+        const rawValue = this.getDataValue("size");
+        return rawValue ? JSON.parse(rawValue) : [];
+      },
+      set(value) {
+        this.setDataValue("size", JSON.stringify(value));
+      },
     },
     imageUrl: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT, // TEXT로 변경
       allowNull: false,
+      get() {
+        const rawValue = this.getDataValue("imageUrl");
+        return rawValue ? JSON.parse(rawValue) : [];
+      },
+      set(value) {
+        this.setDataValue("imageUrl", JSON.stringify(value));
+      },
     },
     salesVolume: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    stock: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },

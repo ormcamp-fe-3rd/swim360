@@ -1,38 +1,18 @@
 import { useState } from "react";
 import { Textarea } from "../ui/textarea";
-import ReviewStar from "./ReviewsStar";
+import ReviewStar from "./ReviewStar";
 import { Link } from "react-router-dom";
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 
 interface ReviewModalProps {
   onClickToggleModal: () => void;
-}
-
-function InputImg({
-  src,
-  onClickPhotoDelet,
-}: {
-  src: string;
-  onClickPhotoDelet: () => void;
-}) {
-  return (
-    <div className="relative h-[100px] w-[100px]">
-      <img
-        className="h-full w-full object-cover"
-        src={src}
-        alt="uploaded-img"
-      />
-      <button
-        className="absolute right-2 top-2 z-10"
-        onClick={onClickPhotoDelet}
-      >
-        <img
-          className="h-5 w-5"
-          src="/public/images/common/btn-close.png"
-          alt="close"
-        />
-      </button>
-    </div>
-  );
 }
 
 function ReviewWriteModal({ onClickToggleModal }: ReviewModalProps) {
@@ -43,12 +23,8 @@ function ReviewWriteModal({ onClickToggleModal }: ReviewModalProps) {
       const newPhotos = Array.from(event.target.files).map((file) =>
         URL.createObjectURL(file),
       );
-      setPhotos((prevPhotos) => [...prevPhotos, ...newPhotos].slice(0, 5)); // 최대 5개 제한
+      setPhotos((prevPhotos) => [...prevPhotos, ...newPhotos].slice(1, 5)); // 최대 5개 제한
     }
-  };
-
-  const handleDeletePhoto = (index: number) => {
-    setPhotos((prevPhotos) => prevPhotos.filter((_, i) => i !== index));
   };
 
   return (
@@ -73,6 +49,18 @@ function ReviewWriteModal({ onClickToggleModal }: ReviewModalProps) {
             </Link>
           </div>
           <ReviewStar size="large" />
+          <div className="felx justify-end">
+            <Select>
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="select size" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value={"a"}>24</SelectItem>
+                <SelectItem value={"b"}>26</SelectItem>
+                <SelectItem value={"c"}>28</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
           <div className="w-full">
             <Textarea className="mx-auto mt-4 h-[400px] max-h-[400px] w-full" />
           </div>
@@ -87,13 +75,6 @@ function ReviewWriteModal({ onClickToggleModal }: ReviewModalProps) {
                 />
               </label>
             )}
-            {photos.map((photo, index) => (
-              <InputImg
-                key={index}
-                src={photo}
-                onClickPhotoDelet={() => handleDeletePhoto(index)}
-              />
-            ))}
           </div>
 
           <input

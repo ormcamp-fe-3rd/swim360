@@ -1,0 +1,14 @@
+{
+  "categories": [
+    {
+      "id": 7,
+      "name": "one-piece",
+      "parentid": 0
+    },
+    {
+      "id": 8,
+      "name": "full-body",
+      "parentid": 0
+    }
+  ]
+}

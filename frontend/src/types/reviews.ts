@@ -3,6 +3,10 @@ export interface Reviews {
   content: string;
   imageUrl: string;
   rating: number;
-  productId: number;
-  userId: number;
+  product_id: number;
+  user_id: number;
+  updatedAt: string;
+  createdAt: string;
 }
+
+export type Rating = Pick<Reviews, "rating" | "product_id">;

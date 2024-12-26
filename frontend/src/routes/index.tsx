@@ -2,22 +2,24 @@ import { createBrowserRouter } from "react-router-dom";
 
 import App from "@/App";
 
+import AgreesPage from "./pages/AgreesPage";
 import CartPage from "./pages/CartPage";
 import ChangePwdCompletionPage from "./pages/ChangePwdCompletionPage";
 import ErrorPage from "./pages/ErrorPage";
+import FindIdPage from "./pages/FindIdPage";
+import FindIdPwdPage from "./pages/FindIdPwdPage";
 import Home from "./pages/HomePage";
 import JoinCompletionPage from "./pages/JoinCompletionPage";
 import JoinPage from "./pages/JoinPage";
 import LoginPage from "./pages/LoginPage";
 import MyPage from "./pages/MyPage";
-import MyPageAuthPw from "./pages/MyPageAuthPwPage";
-import MyPageEdit from "./pages/MyPageEditPage";
-import PayMentCompletionPage from "./pages/PayMentCompletionPage";
-import PayMentOrderPage from "./pages/PayMentOrderPage";
-import PointAndReview from "./pages/PointAndReviewPage";
+import MyPageEditPage from "./pages/MyPageEditPage";
+import OrderPage from "./pages/OrderPage";
+import OrderThanksPage from "./pages/OrderThanksPage";
+import PointAndReviewPage from "./pages/PointAndReviewPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import ProductListPage from "./pages/ProductListPage";
-
+import UserVerificationPage from "./pages/UserVerificationPage";
 
 const router = createBrowserRouter([
   {
@@ -31,20 +33,25 @@ const router = createBrowserRouter([
         element: <ProductDetailPage />,
       },
       { path: "/review/:id", element: <ProductDetailPage /> },
-      { path: "/loginpage", element: <LoginPage /> },
-      { path: "/joinpage", element: <JoinPage /> },
-      { path: "/joincompletionpage", element: <JoinCompletionPage /> },
+
+      { path: "/find_id_pwd", element: <FindIdPwdPage /> },
+      { path: "/find_id", element: <FindIdPage /> },
+      { path: "/login", element: <LoginPage /> },
+      { path: "/join", element: <JoinPage /> },
+      { path: "/join_completion", element: <JoinCompletionPage /> },
+      { path: "/agrees", element: <AgreesPage /> },
       { path: "/mypage", element: <MyPage /> },
-      { path: "/mypage/auth_pw", element: <MyPageAuthPw /> },
-      { path: "/mypage/edit", element: <MyPageEdit /> },
-      { path: "/mypage/point_and_review", element: <PointAndReview /> },
+      { path: "/mypage/verification", element: <UserVerificationPage /> },
+      { path: "/mypage/edit", element: <MyPageEditPage /> },
+      { path: "/mypage/point_and_review", element: <PointAndReviewPage /> },
+
       {
-        path: "/changepwdcompletionpage",
+        path: "/change_pwd_completion",
         element: <ChangePwdCompletionPage />,
       },
-      { path: "/paymentcompletionpage", element: <PayMentCompletionPage /> },
-      { path: "/paymentorderpage", element: <PayMentOrderPage /> },
-      { path: "/cart", element: <CartPage />},
+      { path: "/orderthanks", element: <OrderThanksPage /> },
+      { path: "/order", element: <OrderPage /> },
+      { path: "/cart", element: <CartPage /> },
       { path: "*", element: <ErrorPage /> },
     ],
   },
