@@ -14,8 +14,8 @@ function ProductItem({
 }: ProductItemData) {
   return (
     <Link to={`/product/${id}`}>
-      <div className="grid h-full w-full grid-rows-[2fr_0.5fr]">
-        <div className="group relative h-full w-full overflow-hidden">
+      <div className="grid h-full w-full grid-rows-[3fr_0.5fr]">
+        <div className="group relative h-full w-full">
           <img
             className="absolute h-full w-full object-cover opacity-100 group-hover:opacity-0"
             src={imageUrl[0]}
