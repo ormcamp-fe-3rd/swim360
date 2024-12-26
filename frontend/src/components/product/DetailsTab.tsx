@@ -1,12 +1,12 @@
 import { useState } from "react";
 import ProductTab from "./Tap";
-import Js from "./js";
+import ModelSection from "./js";
 
 interface DetailsProp {
-  category: number;
+  productId: number;
 }
 
-function DetailsTab({ category }: DetailsProp) {
+function DetailsTab({ productId }: DetailsProp) {
   const [adjustColor, setAdjustColor] = useState(false);
   const [imageIndex, setImageIndex] = useState(0); // 현재 이미지의 인덱스를 관리
 
@@ -26,7 +26,7 @@ function DetailsTab({ category }: DetailsProp) {
         <ProductTab activeCategory="detailsTab" />
       </div>
       <div className="bg- relative mx-auto h-[600px] w-full max-w-[1064px] rounded-[20px] bg-slate-100">
-        <Js adjustColor={adjustColor} category={category} />
+        <ModelSection adjustColor={adjustColor} productId={productId} />
 
         <button
           className="absolute bottom-10 right-10 flex h-16 w-16 items-center justify-center rounded-full bg-slate-50 shadow-md shadow-slate-300 hover:bg-slate-200"

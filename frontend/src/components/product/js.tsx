@@ -4,26 +4,25 @@ import { Color, Mesh } from "three";
 
 function Model({
   adjustColor,
-  category,
+  productId,
 }: {
   adjustColor: boolean;
-  category: number;
+  productId: number;
 }) {
-  // FBX 파일 로드 , product id에 따라서 fbx 로드드
   const fbxPath =
-    category >= 1 && category <= 16
+    productId >= 1 && productId <= 16
       ? "/public/models/womenSwimSuit01.fbx"
-      : 17 <= category && category <= 26
+      : 17 <= productId && productId <= 26
         ? "/public/models/womenSwimSuit02.fbx"
-        : 27 <= category && category <= 46
+        : 27 <= productId && productId <= 46
           ? "/public/models/menSwimSuit01.fbx"
-          : 47 <= category && category <= 66
+          : 47 <= productId && productId <= 66
             ? "/public/models/menSwimSuit02.fbx"
-            : 67 <= category && category <= 76
+            : 67 <= productId && productId <= 76
               ? "/public/models/cap.fbx"
-              : 77 <= category && category <= 88
+              : 77 <= productId && productId <= 88
                 ? "/public/models/towel.fbx"
-                : 89 <= category && category <= 93
+                : 89 <= productId && productId <= 93
                   ? "/public/models/fins.fbx"
                   : "잠시만 기다려주세요!";
   // FBX 파일 로드
@@ -53,12 +52,12 @@ function Model({
   return <primitive object={fbx} scale={0.2} />;
 }
 
-function Js({
+function ModelSection({
   adjustColor,
-  category,
+  productId,
 }: {
   adjustColor: boolean;
-  category: number;
+  productId: number;
 }) {
   return (
     <div className="h-[600px] w-full max-w-[1064px]">
@@ -68,7 +67,7 @@ function Js({
         <ambientLight intensity={4} color="#ffffff" />
 
         {/* FBX 모델 추가 */}
-        <Model adjustColor={adjustColor} category={category} />
+        <Model adjustColor={adjustColor} productId={productId} />
         {/* OrbitControls 추가 */}
         <OrbitControls />
       </Canvas>
@@ -76,4 +75,4 @@ function Js({
   );
 }
 
-export default Js;
+export default ModelSection;
