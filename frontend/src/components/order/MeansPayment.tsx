@@ -93,7 +93,7 @@ function MeansPayment({
   return (
     <div>
       <p className="w-full border-b border-black p-2.5 font-bold">결제 수단</p>
-      <input type="radio" name="deposit" checked />
+      <input type="radio" name="deposit" defaultChecked />
       <span className="inline-block p-2.5"> 무통장 입금</span>
       <div className="flex gap-4">
         <select name="bank" id="bank" className="w-40 p-2.5">

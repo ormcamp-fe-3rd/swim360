@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { z } from "zod";
 
 import PrimaryButton from "@/components/common/PrimaryButton";
-import { useUserId } from "@/hooks/useUserId";
 import { getUser } from "@/services/user";
 
 interface ShippingInformationProps {
@@ -78,16 +77,14 @@ function ShippingInformation({ handleInputChange }: ShippingInformationProps) {
     }).open();
   };
 
-  const { userId } = useUserId();
-
   useEffect(() => {
     const loadOrdererName = async () => {
       try {
+        const userId = sessionStorage.getItem("id");
         if (!userId) {
           throw new Error("로그인이 필요합니다.");
         }
         const user = await getUser(userId);
-        console.log("가져온 이름:", user.name); // 반환된 데이터 확인
         setFormData((prev) => ({ ...prev, ordererName: user.name })); // 주문인 이름 설정
       } catch (error) {
         console.error("주문인 이름을 가져오는 중 오류 발생:", error);
@@ -95,7 +92,7 @@ function ShippingInformation({ handleInputChange }: ShippingInformationProps) {
     };
 
     loadOrdererName();
-  }, [userId]);
+  }, []);
 
   return (
     <div>
