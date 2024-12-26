@@ -31,7 +31,7 @@ function UserInfoPreview() {
     >
       <div className="flex h-[146px] items-center justify-around rounded-lg shadow-md hover:bg-gray-50">
         <div className="text-xl font-semibold tablet:text-xl">
-          {user? user.name: ""}
+          {user?.name?? ""}
         </div>
         <img
           className="h-6 tablet:w-6"
