@@ -6,6 +6,7 @@ const config = {
   port: process.env.DB_PORT,
   dialect: process.env.DB_DIALECT,
   expressPort: process.env.EXPRESS_PORT,
+  frontUrl: process.env.FRONT_URL,
 };
 
 module.exports = config;
