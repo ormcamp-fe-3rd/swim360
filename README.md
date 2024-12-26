@@ -107,6 +107,9 @@
 
 ### [링크 🔗](https://www.figma.com/design/wiSvWBt1ldrdNDoHLvzqGf/%EC%87%BC%ED%95%91%EB%AA%B0%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8?node-id=14-48&node-type=canvas&t=e4X4DnWNPG7ekbZ8-0)
 
+### 🧩 ERD Cloud
+<a href="https://www.erdcloud.com/d/DvWFQhFyzGKrwF8HQ"><img width="1113" alt="스크린샷 2024-12-26 오후 7 40 25" src="https://github.com/user-attachments/assets/e4501cbd-5386-4b00-9821-e3a51fc68790" /></a>
+
 </br>
 
 
@@ -139,7 +142,7 @@
 </div>
 
 
-### 🧩 협업 도구
+### 협업 도구
 
 <div>
   <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white"/>
