@@ -30,6 +30,7 @@
 
 ## 🖥️ 미리보기
 
+### PC.ver
 <table>
   <tr align="center">
     <td>메인 페이지</td>
@@ -57,6 +58,33 @@
   </tr>
 </table>
 
+### Mobile.ver
+<table>
+  <tr align="center">
+    <td>메인 페이지</td>
+    <td>상품 목록</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr align="center">
+    <td>상품 상세 페이지</td>
+    <td>상품 구매</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr align="center">
+    <td>회원 페이지</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
 <br/>
 
 ## 🧑‍💻 실행 방법
