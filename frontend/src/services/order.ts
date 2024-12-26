@@ -19,7 +19,7 @@ export async function createOrderData(orderData: OrderRequest) {
     return response;
   } catch (error) {
     console.error("주문 오류:", error);
-    alert("주문 중 문제가 발생했습니다.");
+    alert("필수 입력 양식에 맞게 수정 부탁드립니다.");
   }
 }
 

@@ -1,13 +1,13 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import PrimaryButton from "@/components/common/PrimaryButton";
+import { CartContext } from "@/contexts/CartContext";
+import { deleteOrderedCart } from "@/services/cart";
 import { createOrderData } from "@/services/order";
 import { OrderFormData } from "@/types/orders";
 
 import PriceRow from "./PriceRow";
-import { deleteOrderedCart } from "@/services/cart";
-import { CartContext } from "@/contexts/CartContext";
-import { useContext } from "react";
 
 interface TotalPriceProps {
   selectedCartIds: Set<number | undefined>;
@@ -15,6 +15,12 @@ interface TotalPriceProps {
   point: number;
   formData: OrderFormData;
   products: { size: string; quantity: number; totalPrice: number }[];
+  meansPaymentData: {
+    depositorName: string;
+    selectedOption: string;
+    businessNumber: string;
+    phoneNumber: string;
+  };
 }
 
 function TotalPrice({
@@ -23,6 +29,7 @@ function TotalPrice({
   point,
   formData,
   products,
+  meansPaymentData,
 }: TotalPriceProps) {
   const context = useContext(CartContext);
 
@@ -56,6 +63,40 @@ function TotalPrice({
       navigate("/login");
       return;
     }
+    if (!formData.address) {
+      alert("배송주소는 필수 항목입니다.");
+      return;
+    }
+    if (!formData.detailAddress) {
+      alert("배송주소는 필수 항목입니다.");
+      return;
+    }
+    if (!formData.phoneNumber) {
+      alert("휴대전화번호는 필수 항목입니다.");
+      return;
+    }
+    if (!formData.receiver) {
+      alert("받으시는분 입력은 필수 항목입니다.");
+      return;
+    }
+    if (!meansPaymentData.depositorName) {
+      alert("입금자 이름은 필수 항목입니다.");
+      return;
+    }
+    if (
+      meansPaymentData.selectedOption === "personal" &&
+      !meansPaymentData.phoneNumber
+    ) {
+      alert("전화번호를 입력해주세요.");
+      return;
+    }
+    if (
+      meansPaymentData.selectedOption === "business" &&
+      !meansPaymentData.businessNumber
+    ) {
+      alert("사업자번호를 입력해주세요.");
+      return;
+    }
 
     const orderData = {
       ...formData,
@@ -67,10 +108,9 @@ function TotalPrice({
 
     const response = await createOrderData(orderData);
     if (response?.status === 200) {
-      if (selectedCartIds) {
-        handleOrderedCartDelete(selectedCartIds);
-      }
-      navigate("/order/thanks");
+      alert("주문이 성공적으로 완료되었습니다!");
+      await handleOrderedCartDelete(selectedCartIds);
+      navigate("/orderthanks");
     } else {
       throw new Error("서버 오류");
     }

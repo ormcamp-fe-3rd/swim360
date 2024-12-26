@@ -23,6 +23,12 @@ function OrderPage() {
     address: "",
     detailAddress: "",
   });
+  const [meansPaymentData, setMeansPaymentData] = useState({
+    depositorName: "",
+    selectedOption: "none",
+    businessNumber: "",
+    phoneNumber: "",
+  });
 
   const location = useLocation();
   const selectedProductInfo = location.state;
@@ -30,6 +36,9 @@ function OrderPage() {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, ...{ [name]: value } }));
+  };
+  const handleMeansPaymentChange = (name: string, value: string) => {
+    setMeansPaymentData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
@@ -58,7 +67,7 @@ function OrderPage() {
           <ShippingInformation handleInputChange={handleInputChange} />
           <OrderProductList {...selectedProductInfo} />
           <PossessionPoint />
-          <MeansPayment />
+          <MeansPayment handleInputChange={handleMeansPaymentChange} />
         </form>
         <TotalPrice
           selectedCartIds={selectedProductInfo.selectedCartIds}
@@ -66,6 +75,7 @@ function OrderPage() {
           point={0}
           formData={{ ...formData }}
           products={selectedProductInfo.selectedItems}
+          meansPaymentData={meansPaymentData}
         />
       </div>
     </div>

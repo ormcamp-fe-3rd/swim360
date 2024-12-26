@@ -70,7 +70,7 @@ router.post("/", async (req, res) => {
     } = req.body;
 
     // 필수 데이터 검증
-    if (!receiver || !phoneNumber || !address || !totalPrice || !products) {
+    if (!receiver || !address || !totalPrice || !products) {
       return res.status(400).json({ error: "필수 정보가 누락되었습니다." });
     }
 
