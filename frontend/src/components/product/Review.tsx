@@ -1,6 +1,7 @@
-import ReviewStar from "./ReviewStar";
 import { Reviews } from "@/types/reviews";
 import getLocalDate from "@/utils/getLocalDate";
+
+import ReviewStar from "./ReviewStar";
 
 export type ReviewsType = {
   review: Reviews | undefined;
@@ -11,7 +12,7 @@ export type ReviewsType = {
 function Review({ size = "large", review, onClickSelecteReview }: ReviewsType) {
   const sizeStyles = {
     small: "w-full min-h-[200px]",
-    large: "w-[1064px] min-h-[196px]",
+    large: "max-w-[1064px] w-full  min-h-[196px]",
   };
 
   if (!review) {
@@ -31,10 +32,10 @@ function Review({ size = "large", review, onClickSelecteReview }: ReviewsType) {
     >
       <div className="flex flex-col">
         <ReviewStar size="small" rating={review?.rating || 0} />
-        <div className="flex justify-between">
-          <div className="flex flex-col gap-2">
+        <div className="flex justify-between w-full">
+          <div className="flex flex-col gap-2 w-full">
             {/* 텍스트 자르기 */}
-            <p className="limit-text font-light">
+            <p className="limit-text font-light w-full">
               {size === "large" && review.content.length > maxLength
                 ? `${truncatedContent}...` // 자르고 '...' 추가
                 : review.content}{" "}
