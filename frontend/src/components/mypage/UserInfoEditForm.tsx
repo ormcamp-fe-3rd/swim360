@@ -24,17 +24,23 @@ import CustomButton from "../join/CustomButton";
 
 const formSchema = z.object({
   username: z.string().min(2).max(10),
-  phoneNumber: z.string().min(10, {message: "10자 이상이어야 합니다."}).max(12),
+  phoneNumber: z
+    .string()
+    .min(10, { message: "10자 이상이어야 합니다." })
+    .max(12),
   emailId: z.string().email(),
-  password: z.string().min(8, {message: "8자 이상이어야 합니다."}).max(16, {message: "16자 이하여야 합니다."}),
+  password: z
+    .string()
+    .min(8, { message: "8자 이상이어야 합니다." })
+    .max(16, { message: "16자 이하여야 합니다." }),
   address: z.string().optional(),
   detailAddress: z.string().optional(),
   passwordCheck: z.string().min(8).max(16),
-})
+});
 
 export default function UserInfoEditForm() {
   const { userId } = useUserId();
-  const [user, setUser] = useState<User>();
+  const [, setUser] = useState<User>();
   const [passwordMessage, setPasswordMessage] = useState("");
   const [passwordCheckMessage, setPasswordCheckMessage] = useState("");
 
@@ -78,7 +84,7 @@ export default function UserInfoEditForm() {
   useEffect(() => {
     if (password) {
       const passwordRegex =
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$/;
+        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$/;
       if (!passwordRegex.test(password)) {
         setPasswordMessage(
           "영문, 숫자, 특수문자 포함 8자~16자 사이로 입력가능합니다.",
@@ -98,7 +104,6 @@ export default function UserInfoEditForm() {
       setPasswordCheckMessage("");
     }
   }, [password, passwordCheck]);
-
 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
@@ -226,15 +231,20 @@ export default function UserInfoEditForm() {
             )}
           />
           <div className="border-b-2"></div>
-          
+
           <div className="mt-10 flex w-full gap-2">
             <Link to="/mypage" className="w-full">
-              <CustomButton className="bg-white text-black hover:bg-gray-50 border-gray-400">
+              <CustomButton className="border-gray-400 bg-white text-black hover:bg-gray-50">
                 취소
               </CustomButton>
             </Link>
-              {/* TODO: 회원정보 수정 기능 추가 */}
-              <PrimaryButton className="w-full" onClick={()=> alert("준비 중인 기능입니다.")}>확인</PrimaryButton>
+            {/* TODO: 회원정보 수정 기능 추가 */}
+            <PrimaryButton
+              className="w-full"
+              onClick={() => alert("준비 중인 기능입니다.")}
+            >
+              확인
+            </PrimaryButton>
           </div>
         </form>
       </Form>

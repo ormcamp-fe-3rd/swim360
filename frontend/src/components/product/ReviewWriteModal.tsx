@@ -48,7 +48,7 @@ function ReviewWriteModal({ onClickToggleModal }: ReviewModalProps) {
               </button>
             </Link>
           </div>
-          <ReviewStar size="large" />
+          <ReviewStar size={"large"} rating={0} />
           <div className="felx justify-end">
             <Select>
               <SelectTrigger className="w-[180px]">
