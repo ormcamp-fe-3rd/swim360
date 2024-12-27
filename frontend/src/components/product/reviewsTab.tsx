@@ -39,7 +39,7 @@ function ReviewsTab({ reviews }: ProductDetail) {
         <Link to="/product/review" className="w-full">
           <div className="mx-auto flex h-auto w-full justify-center"></div>
         </Link>
-        <div onClick={onClickToggleDetailModal}>
+        <div onClick={onClickToggleDetailModal} className="w-full">
           {reviews?.map((review) => (
             <div key={review.id}>
               <Review
