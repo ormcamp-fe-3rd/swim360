@@ -1,14 +1,11 @@
-import { useNavigate } from "react-router-dom";
-
 import PrimaryButton from "@/components/common/PrimaryButton";
 import FindIdPwdTab from "@/components/login/FindIdPwdTab";
 
 function FindPwdPage() {
-  const navigate = useNavigate();
-
   return (
     <div className="mx-auto w-[620px]">
       <FindIdPwdTab
+        defaultValue={"find-pw"}
         idContent={<></>}
         pwContent={
           <div>
@@ -44,7 +41,6 @@ function FindPwdPage() {
             </div>
           </div>
         }
-        onIdClick={() => navigate("/FindIdPwdPage")}
       />
 
       <PrimaryButton className="mt-4 w-full">확인</PrimaryButton>

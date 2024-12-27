@@ -2,7 +2,6 @@ import { useLocation } from "react-router-dom";
 
 import PrimaryButton from "@/components/common/PrimaryButton";
 import FindIdPwdTab from "@/components/login/FindIdPwdTab";
-import { Link } from "react-router-dom";
 
 function FindIdPwdPage() {
   const location = useLocation();

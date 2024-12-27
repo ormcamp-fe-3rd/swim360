@@ -27,7 +27,7 @@ function FindIdPwdTab({
 
   return (
     <Tabs defaultValue={defaultValue} className="mx-auto w-full">
-      <TabsListCustom className="mx-auto h-full w-full px-2.5 tablet:w-[600px]">
+      <TabsListCustom className="mx-auto h-full w-full tablet:w-[600px]">
         <TabsTriggerCustom
           value="find-id"
           className={cn("h-full w-1/2 text-base", {
