@@ -70,7 +70,7 @@
   <tr>
     <td><img src="https://github.com/user-attachments/assets/273f100e-9830-49b7-b0be-e1c8cc199f46"/></td>
     <td><img src="https://github.com/user-attachments/assets/f9fc5c6c-48c7-4520-b57e-25fd88424af5"/></td>
-    <td></td>
+    <td><img src="https://github.com/user-attachments/assets/28defd3c-c66e-45f9-ba98-4f928a874aae"/></td>
     <td><img src="https://github.com/user-attachments/assets/c4e1fb89-3eda-4a07-896b-c6d47444f87e"/></td>
     <td><img src="https://github.com/user-attachments/assets/8501d5bd-bf3a-4b36-bd1a-be4ba3d53d93"/></td>
   </tr>
@@ -131,6 +131,10 @@
   <img src="https://img.shields.io/badge/amazon web services-232F3E?style=for-the-badge&logo=amazonwebservices&logoColor=white" />
 </div>
 
+### 3D Modeling
+<div>
+  <img src="https://img.shields.io/badge/blender-E87D0D?style=for-the-badge&logo=blender&logoColor=white"/>
+</div>
 
 ### 협업 도구
 
@@ -153,17 +157,22 @@
   <tr style="white-space: nowrap; font-size:13px">
     <th>Role</th>
     <td>
-      <p>🎨 주문 페이지 UI <br/>
-         🎨 로그인, 회원가입, 아이디/비밀번호 찾기 UI <br/>
-         🛠️ 주문 페이지 상품 불러오기<br/>
-         🛠️ 주문 등록하기</p>
+      <p>🎨 주문 페이지 UI <br/>
+        🎨 로그인, 회원가입 UI<br/>
+        🎨 아이디/비밀번호 찾기 UI <br/>
+        🛠️ 주문 페이지 상품 불러오기 <br/>
+        🛠️ 주문/결제 내역 DB 등록하기<br/>
+        🛠️ 주소찾기 api<br/>
+        🛠️ 결제 정보 입력 검증 </p>
     </td>
     <td >
-      <p>🎨 상품 상세 페이지, 상품 리뷰 UI <br/>
-         🛠 상품 3D 모델링 <br/>
-         🛠 상품 정보 불러오기<br/>
-         🛠️ 상품 옵션 선택 <br/>
-         🛠 리뷰 상세보기 모달</p>
+      <p>🎨 상품 상세 페이지, 상품 리뷰 UI<br/>
+        🎨 상품 3D 모델링<br/>
+        🛠 상품 3D 텍스처 변경 기능 구현 <br/>
+        🛠 상품 상세정보 불러오기<br/>
+        🛠️ 선택한 상품 사이즈, 수량, 총가격 구현<br/>
+        🛠 상품 리뷰 불러오기<br/>
+        🛠 리뷰 상세보기 모달</p>
     </td>
   </tr>
   <tr>
@@ -179,21 +188,22 @@
   <tr style="white-space: nowrap; font-size:13px;">
     <th>Role</th>
     <td>
-      <p>🎨 메인-헤더, 배너 캐러셀, 베스트 상품<br/>
-         🎨 마이페이지-회원정보 수정, 리뷰/포인트 페이지<br/>
-         🎨 장바구니<br/>
-         🛠️ 마이페이지- 리뷰내역 불러오기<br/>
-         🛠️ 마이페이지- 주문내역 불러오기<br/>
-         🛠️ 로그인, 로그아웃</p>
+      <p>🎨 메인-헤더, 배너 캐러셀, 베스트 상품 UI<br/>
+        🎨 마이페이지-회원정보 수정, 리뷰/포인트 페이지 UI<br/>
+        🎨 장바구니 UI<br/>
+        🛠️ 메인- 베스트상품 불러오기<br/>
+        🛠️ 마이페이지- 리뷰내역 불러오기<br/>
+        🛠️ 마이페이지- 주문내역 불러오기<br/>
+        🛠️ 로그인, 로그아웃</p>
     </td>
     <td>
-      <p>🎨 상품 목록 <br/>
-         🎨 마이페이지-메인, 주문내역<br/>
-         🛠️ 카테고리별 상품목록 불러오기 <br/>
-         🛠️ 장바구니-상품 불러오기 <br/>
-         🛠️ 장바구니-선택상품 삭제<br/>
-         🛠️ 장바구니-선택상품 구매로 연동<br/>
-         🪜 백엔드</p>
+      <p>🎨 상품 목록 UI<br/>
+      🎨 마이페이지-메인, 주문내역 UI<br/>
+      🛠️ 카테고리별 상품목록 불러오기 <br/>
+      🛠️ 장바구니-상품 불러오기 <br/>
+      🛠️ 장바구니-선택상품 삭제<br/>
+      🛠️ 장바구니-선택상품 구매로 연동<br/>
+      🪜 백엔드 환경설정</p>
     </td>
   </tr>
   <tr>
