@@ -150,12 +150,18 @@ function Details({ product, handleCartUpdate }: DetailsProps) {
   };
 
   const handleOrderButtonClick = () => {
+    const userId = sessionStorage.getItem("id");
+
     if (selectedItems.length === 0) {
       alert("사이즈를 선택해주세요.");
       return;
     }
 
-    navigate("/order", { state: selectedProductData });
+    if (!userId) {
+      navigate("/login");
+    } else {
+      navigate("/order", { state: selectedProductData });
+    }
   };
 
   if (!product) {
