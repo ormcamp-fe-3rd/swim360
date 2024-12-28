@@ -79,12 +79,12 @@
 
 ## 🧑‍💻 실행 방법
 
-### 🌎 페이지 방문 [🔗](http://swim360-bucket.s3-website.ap-northeast-2.amazonaws.com/)
+### [🌎 페이지 방문 🔗](http://swim360-bucket.s3-website.ap-northeast-2.amazonaws.com/)
 
 
-### 🎨 피그마 작업 [🔗](https://www.figma.com/design/wiSvWBt1ldrdNDoHLvzqGf/%EC%87%BC%ED%95%91%EB%AA%B0%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8?node-id=14-48&node-type=canvas&t=e4X4DnWNPG7ekbZ8-0)
+### [🎨 피그마 작업 🔗](https://www.figma.com/design/wiSvWBt1ldrdNDoHLvzqGf/%EC%87%BC%ED%95%91%EB%AA%B0%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8?node-id=14-48&node-type=canvas&t=e4X4DnWNPG7ekbZ8-0)
 
-### 🧩 ERD Cloud
+### [🧩 ERD Cloud 🔗](https://www.erdcloud.com/d/DvWFQhFyzGKrwF8HQ)
 <a href="https://www.erdcloud.com/d/DvWFQhFyzGKrwF8HQ"><img width="1113" alt="스크린샷 2024-12-26 오후 7 40 25" src="https://github.com/user-attachments/assets/e4501cbd-5386-4b00-9821-e3a51fc68790" /></a>
 
 </br>
@@ -104,6 +104,7 @@
   <img src="https://img.shields.io/badge/React Three Fiber-000000?style=for-the-badge&logo=Three.js&logoColor=white"/>
   <img src="https://img.shields.io/badge/Tailwind CSS-06B6D4?style=for-the-badge&logo=Tailwind CSS&logoColor=white"/>
   <img src="https://img.shields.io/badge/shadcn/ui-000000?style=for-the-badge&logo=shadcn/ui&logoColor=white"/>
+  <img src="https://img.shields.io/badge/amazons3-569A31?style=for-the-badge&logo=amazones3&logoColor=white" />
 </div>
 
 ### Backend
@@ -115,7 +116,7 @@
   <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white" /><br/>
   <img src="https://img.shields.io/badge/dbeaver-382923?style=for-the-badge&logo=dbeaver&logoColor=white" />
   <img src="https://img.shields.io/badge/axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white" />
-  <img src="https://img.shields.io/badge/amazon web services-232F3E?style=for-the-badge&logo=amazonwebservices&logoColor=white" />
+  <img src="https://img.shields.io/badge/amazonec2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white" />
 </div>
 
 ### 3D Modeling
