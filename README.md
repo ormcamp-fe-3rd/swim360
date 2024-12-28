@@ -80,8 +80,34 @@
 ## 🧑‍💻 실행 방법
 
 ### [🌎 페이지 방문 🔗](http://swim360-bucket.s3-website.ap-northeast-2.amazonaws.com/)
+#### 로컬에서 실행하기
+`backend`
+```
+//.env 파일 작성
+DB_DATABASE="" //local database 이름
+DB_USERNAME="root"
+DB_PASSWORD="" //설정한 비밀번호
+DB_HOSTNAME="localhost"
+DB_DIALECT="mysql"
+DB_PORT="mysql=3306"
 
+# Express 서버 설정
+EXPRESS_PORT=3000
+FRONT_URL="http://localhost:5173"
 
+//실행
+cd backend
+npm run start
+```
+`frontend`
+```
+//.env 파일 작성
+VITE_BASE_URL=http://localhost:3000
+
+//실행
+cd frontend
+npm run start
+```
 ### [🎨 피그마 작업 🔗](https://www.figma.com/design/wiSvWBt1ldrdNDoHLvzqGf/%EC%87%BC%ED%95%91%EB%AA%B0%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8?node-id=14-48&node-type=canvas&t=e4X4DnWNPG7ekbZ8-0)
 
 ### [🧩 ERD Cloud 🔗](https://www.erdcloud.com/d/DvWFQhFyzGKrwF8HQ)
