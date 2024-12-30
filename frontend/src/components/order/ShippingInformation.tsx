@@ -106,7 +106,7 @@ function ShippingInformation({ handleInputChange }: ShippingInformationProps) {
           readOnly
           value={formData.ordererName}
           onChange={handleInputValidation}
-          className="w-full rounded-sm border-none bg-slate-100 p-2.5"
+          className="w-full rounded-sm border-none bg-[#e8f0fe] p-2.5"
         />
       </div>
       <div className="h-22 mb-1 flex w-full border-b border-black p-2.5">
@@ -118,7 +118,9 @@ function ShippingInformation({ handleInputChange }: ShippingInformationProps) {
             id="receiver"
             onChange={handleInputValidation}
             className={`w-full rounded-sm bg-slate-100 p-2.5 ${
-              errors.receiver ? "border border-red-500" : "border-none"
+              errors.receiver
+                ? "border border-red-500 bg-slate-100"
+                : "border-none bg-[#e8f0fe]"
             }`}
           />
           {errors.receiver && (
@@ -141,7 +143,9 @@ function ShippingInformation({ handleInputChange }: ShippingInformationProps) {
                 readOnly
                 onChange={handleInputValidation}
                 className={`w-full rounded-sm bg-slate-100 p-2.5 ${
-                  errors.address ? "border border-red-500" : "border-none"
+                  errors.address
+                    ? "border border-red-500 bg-slate-100"
+                    : "border-none bg-[#e8f0fe]"
                 }`}
               />
               {errors.address && (
@@ -164,7 +168,9 @@ function ShippingInformation({ handleInputChange }: ShippingInformationProps) {
               value={formData.detailAddress}
               onChange={handleInputValidation}
               className={`w-full rounded-sm bg-slate-100 p-2.5 ${
-                errors.detailAddress ? "border border-red-500" : "border-none"
+                errors.detailAddress
+                  ? "border border-red-500 bg-slate-100"
+                  : "border-none bg-[#e8f0fe]"
               }`}
             />
             {errors.detailAddress && (
@@ -186,7 +192,9 @@ function ShippingInformation({ handleInputChange }: ShippingInformationProps) {
             value={formData.phoneNumber}
             onChange={handleInputValidation}
             className={`w-full rounded-sm bg-slate-100 p-2.5 ${
-              errors.phoneNumber ? "border border-red-500" : "border-none"
+              errors.phoneNumber
+                ? "border border-red-500 bg-slate-100"
+                : "border-none bg-[#e8f0fe]"
             }`}
           />
           {errors.phoneNumber && (
