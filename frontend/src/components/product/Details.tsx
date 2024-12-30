@@ -141,7 +141,7 @@ function Details({ product, handleCartUpdate }: DetailsProps) {
   };
 
   const handleCartButtonClick = () => {
-    if (cartItems.length === 0) {
+    if (totalQuantity === 0) {
       alert("사이즈를 선택해주세요.");
       return;
     }
@@ -152,7 +152,7 @@ function Details({ product, handleCartUpdate }: DetailsProps) {
   const handleOrderButtonClick = () => {
     const userId = sessionStorage.getItem("id");
 
-    if (selectedItems.length === 0) {
+    if (totalQuantity === 0) {
       alert("사이즈를 선택해주세요.");
       return;
     }
