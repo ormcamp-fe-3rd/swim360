@@ -33,9 +33,14 @@ export function CarouselBestPick({ products }: Props) {
             key={product.id}
             className="flex items-center justify-center"
           >
-            <Link to={`/product/${product.id}`}>
-              <div className="rounded-none border-none shadow-none">
-                <img src={product.imageUrl[0]} alt={product.name} />
+            <Link to={`/product/${product.id}`} tabIndex={-1}>
+              <div
+                className="rounded-none border-none shadow-none"
+              >
+                <img
+                  src={product.imageUrl[0]}
+                  alt={product.name}
+                />
               </div>
             </Link>
           </CarouselItem>
