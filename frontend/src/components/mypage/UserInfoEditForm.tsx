@@ -47,7 +47,6 @@ export default function UserInfoEditForm() {
   const { userId } = useUserId();
   const [, setUser] = useState<User>();
 
-  // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -83,16 +82,12 @@ export default function UserInfoEditForm() {
     fetchUserInfo();
   }, [form, userId]);
 
+  //회원정보 수정
   const navigate = useNavigate();
-  // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
     try{
       const updateData = {phoneNumber: values.phoneNumber, password: values.password};
-      console.log(values);
-      const updatedUser = await updateUser(parseInt(userId), updateData)
-      console.log(updatedUser);
+      await updateUser(parseInt(userId), updateData);
       alert("수정 완료");
       navigate("/mypage");
     } catch(error){
@@ -223,10 +218,8 @@ export default function UserInfoEditForm() {
                 취소
               </CustomButton>
             </Link>
-            {/* TODO: 회원정보 수정 기능 추가 */}
             <PrimaryButton
               className="w-full"
-              // onClick={() => alert("준비 중인 기능입니다.")}
               type="submit"
             >
               확인
