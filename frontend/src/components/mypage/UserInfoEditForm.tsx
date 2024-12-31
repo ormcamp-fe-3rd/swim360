@@ -31,19 +31,23 @@ const formSchema = z.object({
   emailId: z.string().email(),
   password: z
     .string()
-    .min(8, { message: "8자 이상이어야 합니다." })
-    .max(16, { message: "16자 이하여야 합니다." }),
-  passwordCheck: z
-    .string()
-    .min(8, { message: "비밀번호가 동일하지 않습니다." })
-    .max(16, { message: "비밀번호가 동일하지 않습니다." }),
+    .regex(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$/, {
+      message: "영문, 숫자, 특수문자 포함 8자~16자 사이로 입력가능합니다.",
+    }),
+  passwordCheck: z.string()
+}).superRefine(({password, passwordCheck}, ctx) => {
+  if(password !== passwordCheck){
+    ctx.addIssue({
+      code: "custom",
+      message: "비밀번호가 일치하지 않습니다.",
+      path: ["passwordCheck"]
+    })
+  }
 });
 
 export default function UserInfoEditForm() {
   const { userId } = useUserId();
   const [, setUser] = useState<User>();
-  const [passwordMessage, setPasswordMessage] = useState("");
-  const [passwordCheckMessage, setPasswordCheckMessage] = useState("");
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
@@ -77,32 +81,6 @@ export default function UserInfoEditForm() {
     fetchUserInfo();
   }, [form, userId]);
 
-  //비밀번호 검증
-  const password = form.watch("password");
-  const passwordCheck = form.watch("passwordCheck");
-  useEffect(() => {
-    if (password) {
-      const passwordRegex =
-        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$/;
-      if (!passwordRegex.test(password)) {
-        setPasswordMessage(
-          "영문, 숫자, 특수문자 포함 8자~16자 사이로 입력가능합니다.",
-        );
-      } else {
-        setPasswordMessage("");
-      }
-    } else {
-      setPasswordMessage(
-        "영문, 숫자, 특수문자 포함 8자~16자 사이로 입력가능합니다.",
-      );
-    }
-
-    if (passwordCheck && password !== passwordCheck) {
-      setPasswordCheckMessage("비밀번호가 동일하지 않습니다.");
-    } else {
-      setPasswordCheckMessage("");
-    }
-  }, [password, passwordCheck]);
 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
@@ -189,13 +167,10 @@ export default function UserInfoEditForm() {
                     <FormControl className="h-12 border-none bg-[#F0F0F0]">
                       <Input
                         type="password"
-                        placeholder="password"
+                        placeholder="영문, 숫자, 특수문자 포함 8자~16자 사이로 입력가능합니다."
                         {...field}
                       />
                     </FormControl>
-                    <FormDescription className="pt-1">
-                      {passwordMessage}
-                    </FormDescription>
                     <FormMessage />
                   </div>
                 </div>
@@ -216,13 +191,10 @@ export default function UserInfoEditForm() {
                     <FormControl className="h-12 border-none bg-[#F0F0F0]">
                       <Input
                         type="password"
-                        placeholder="password"
+                        placeholder="영문, 숫자, 특수문자 포함 8자~16자 사이로 입력가능합니다."
                         {...field}
                       />
                     </FormControl>
-                    <FormDescription className="pt-1">
-                      {passwordCheckMessage}
-                    </FormDescription>
                     <FormMessage />
                   </div>
                 </div>
