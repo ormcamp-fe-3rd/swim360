@@ -28,7 +28,7 @@ export default function UserVerification() {
 
       if (!user) return;
       if (user.password === password) {
-        navigate("/mypage/edit");
+        navigate("/mypage/edit", {state: "success"});
       } else {
         alert("비밀번호가 올바르지 않습니다.");
       }

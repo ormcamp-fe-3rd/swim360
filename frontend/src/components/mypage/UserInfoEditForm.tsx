@@ -2,7 +2,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { z } from "zod";
 
 import {
@@ -46,6 +46,9 @@ const formSchema = z.object({
 export default function UserInfoEditForm() {
   const { userId } = useUserId();
   const [, setUser] = useState<User>();
+  const location = useLocation();
+  const navigate = useNavigate();
+
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -57,10 +60,24 @@ export default function UserInfoEditForm() {
       passwordCheck: "",
     },
   });
+  
+  useEffect(()=> {
+    if (location.state !== "success") {
+      alert("잘못된 접근입니다.");
+      navigate("/mypage/verification");
+      return;
+    }
+    if (!userId) {
+      alert("잘못된 접근입니다.");
+      navigate("/login");
+      return;
+    }
+  }, [userId, location.state, navigate])
 
   //회원정보 불러오기
   useEffect(() => {
     const fetchUserInfo = async () => {
+      if(!userId) return;
       try {
         const user = await getUser(userId);
         setUser(user);
@@ -83,7 +100,6 @@ export default function UserInfoEditForm() {
   }, [form, userId]);
 
   //회원정보 수정
-  const navigate = useNavigate();
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try{
       const updateData = {phoneNumber: values.phoneNumber, password: values.password};
@@ -92,6 +108,7 @@ export default function UserInfoEditForm() {
       navigate("/mypage");
     } catch(error){
       console.log(error)
+      alert("수정 중 오류가 발생했습니다.")
     }
     
   }
