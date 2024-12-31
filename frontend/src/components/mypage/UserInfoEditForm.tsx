@@ -72,9 +72,13 @@ export default function UserInfoEditForm() {
           phoneNumber: user.phoneNumber || "",
           emailId: user.emailId || "",
         });
-      } catch (error: any) {
-        console.log("User Edit error: ", error);
-        alert(error.message);
+      } catch (error: unknown) {
+        if(error instanceof Error){
+          console.log("User Edit error: ", error);
+          alert(error.message);
+        }else{
+          alert("unexpected error")
+        }
       }
     };
     fetchUserInfo();
