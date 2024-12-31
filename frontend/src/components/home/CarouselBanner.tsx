@@ -61,6 +61,7 @@ export function CarouselBanner() {
       plugins={[plugin.current]}
       className="relative my-[86px] w-full desktop:w-[1440px]"
       onClick={plugin.current.stop}
+      tabIndex={0}
     >
       <CarouselContent>
         {banners.map((banner) => (

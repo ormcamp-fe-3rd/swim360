@@ -26,6 +26,7 @@ export function CarouselBestPick({ products }: Props) {
       plugins={[plugin.current]}
       className="relative h-full w-full"
       onClick={plugin.current.stop}
+      tabIndex={0}
     >
       <CarouselContent>
         {products.map((product) => (
