@@ -1,20 +1,23 @@
-import { useContext } from "react";
-import { Navigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import LogoutButton from "@/components/mypage/LogoutButton";
 import OrderStatusPreview from "@/components/mypage/OrderStatusPreview";
 import RecentOrderPreview from "@/components/mypage/RecentOrderPreview";
 import UserDetailPreview from "@/components/mypage/UserDetailPreview";
 import UserInfoPreview from "@/components/mypage/UserInfoPreview";
-import { UserIdContext } from "@/contexts/UserIdContext";
+import { useUserId } from "@/hooks/useUserId";
 
 function MyPage() {
-  const userId = useContext(UserIdContext);
+  const { userId } = useUserId();
+  const navigate = useNavigate();
 
-  if (!userId) {
-    alert("로그인 정보가 정확하지 않습니다.");
-    return <Navigate to={"/login"} replace />;
-  }
+  useEffect(()=> {
+    if (!userId) {
+      alert("잘못된 접근입니다.");
+      navigate("/login");
+    }
+  }, [userId, navigate])
 
   return (
     <div className="mx-auto w-[90%] max-w-[1440px]">
