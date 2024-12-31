@@ -8,7 +8,6 @@ import { z } from "zod";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -26,8 +25,8 @@ const formSchema = z.object({
   username: z.string().min(2).max(10),
   phoneNumber: z
     .string()
-    .min(10, { message: "10자 이상이어야 합니다." })
-    .max(12),
+    .regex(/^(\d)$/, {message: "연락처는 숫자만 입력가능합니다."})
+    .regex(/^(\d{10,11})$/, {message: "연락처는 10자~11자 사이로 입력가능합니다."}),
   emailId: z.string().email(),
   password: z
     .string()
@@ -123,10 +122,12 @@ export default function UserInfoEditForm() {
                   <FormLabel className="flex w-1/3 items-center justify-start text-lg font-normal text-[#5E5E5E]">
                     연락처
                   </FormLabel>
-                  <FormControl className="h-12 w-2/3 border-none bg-[#F0F0F0]">
-                    <Input placeholder="010-1234-1234" {...field} />
-                  </FormControl>
-                  <FormMessage />
+                  <div className="w-2/3">
+                    <FormControl className="h-12 border-none bg-[#F0F0F0]">
+                      <Input placeholder="010-1234-1234" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </div>
                 </div>
               </FormItem>
             )}
