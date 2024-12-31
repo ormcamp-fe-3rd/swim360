@@ -79,3 +79,15 @@ export async function getUserByEmail(userEmail: string): Promise<User> {
     throw new Error("로그인 중 에러가 발생했습니다. 잠시후 다시 시도해주세요.");
   }
 }
+
+export async function updateUser(userId: User['id'], updateData: {phoneNumber?: string, password: string}){
+  try{
+    const response = await axios.patch(`/users/${userId}`, updateData);
+    if(response.status === 400){
+      alert("회원정보를 수정하는데 실패했습니다.")
+    }
+    return response.data;
+  }catch(error){
+    console.log(error);
+  }
+}

@@ -2,7 +2,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
 
 import {
@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useUserId } from "@/hooks/useUserId";
-import { getUser } from "@/services/user";
+import { getUser, updateUser } from "@/services/user";
 import { User } from "@/types/users";
 
 import PrimaryButton from "../common/PrimaryButton";
@@ -83,12 +83,22 @@ export default function UserInfoEditForm() {
     fetchUserInfo();
   }, [form, userId]);
 
-
+  const navigate = useNavigate();
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values);
+    try{
+      const updateData = {phoneNumber: values.phoneNumber, password: values.password};
+      console.log(values);
+      const updatedUser = await updateUser(parseInt(userId), updateData)
+      console.log(updatedUser);
+      alert("수정 완료");
+      navigate("/mypage");
+    } catch(error){
+      console.log(error)
+    }
+    
   }
 
   return (
