@@ -2,13 +2,12 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { z } from "zod";
 
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -16,7 +15,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useUserId } from "@/hooks/useUserId";
-import { getUser } from "@/services/user";
+import { getUser, updateUser } from "@/services/user";
 import { User } from "@/types/users";
 
 import PrimaryButton from "../common/PrimaryButton";
@@ -26,25 +25,31 @@ const formSchema = z.object({
   username: z.string().min(2).max(10),
   phoneNumber: z
     .string()
-    .min(10, { message: "10자 이상이어야 합니다." })
-    .max(12),
+    .regex(/^(\d{10,11})$/, {message: "연락처는 10자~11자 사이로 입력가능합니다."}),
   emailId: z.string().email(),
   password: z
     .string()
-    .min(8, { message: "8자 이상이어야 합니다." })
-    .max(16, { message: "16자 이하여야 합니다." }),
-  address: z.string().optional(),
-  detailAddress: z.string().optional(),
-  passwordCheck: z.string().min(8).max(16),
+    .regex(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$/, {
+      message: "영문, 숫자, 특수문자 포함 8자~16자 사이로 입력가능합니다.",
+    }),
+  passwordCheck: z.string()
+}).superRefine(({password, passwordCheck}, ctx) => {
+  if(password !== passwordCheck){
+    ctx.addIssue({
+      code: "custom",
+      message: "비밀번호가 일치하지 않습니다.",
+      path: ["passwordCheck"]
+    })
+  }
 });
 
 export default function UserInfoEditForm() {
   const { userId } = useUserId();
   const [, setUser] = useState<User>();
-  const [passwordMessage, setPasswordMessage] = useState("");
-  const [passwordCheckMessage, setPasswordCheckMessage] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  // 1. Define your form.
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -52,15 +57,27 @@ export default function UserInfoEditForm() {
       phoneNumber: "",
       emailId: "",
       password: "",
-      address: "",
-      detailAddress: "",
       passwordCheck: "",
     },
   });
+  
+  useEffect(()=> {
+    if (location.state !== "success") {
+      alert("잘못된 접근입니다.");
+      navigate("/mypage/verification");
+      return;
+    }
+    if (!userId) {
+      alert("잘못된 접근입니다.");
+      navigate("/login");
+      return;
+    }
+  }, [userId, location.state, navigate])
 
   //회원정보 불러오기
   useEffect(() => {
     const fetchUserInfo = async () => {
+      if(!userId) return;
       try {
         const user = await getUser(userId);
         setUser(user);
@@ -70,46 +87,30 @@ export default function UserInfoEditForm() {
           phoneNumber: user.phoneNumber || "",
           emailId: user.emailId || "",
         });
-      } catch (error: any) {
-        console.log("User Edit error: ", error);
-        alert(error.message);
+      } catch (error: unknown) {
+        if(error instanceof Error){
+          console.log("User Edit error: ", error);
+          alert(error.message);
+        }else{
+          alert("unexpected error")
+        }
       }
     };
     fetchUserInfo();
   }, [form, userId]);
 
-  //비밀번호 검증
-  const password = form.watch("password");
-  const passwordCheck = form.watch("passwordCheck");
-  useEffect(() => {
-    if (password) {
-      const passwordRegex =
-        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$/;
-      if (!passwordRegex.test(password)) {
-        setPasswordMessage(
-          "영문, 숫자, 특수문자 포함 8자~16자 사이로 입력가능합니다.",
-        );
-      } else {
-        setPasswordMessage("");
-      }
-    } else {
-      setPasswordMessage(
-        "영문, 숫자, 특수문자 포함 8자~16자 사이로 입력가능합니다.",
-      );
+  //회원정보 수정
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try{
+      const updateData = {phoneNumber: values.phoneNumber, password: values.password};
+      await updateUser(parseInt(userId), updateData);
+      alert("수정 완료");
+      navigate("/mypage");
+    } catch(error){
+      console.log(error)
+      alert("수정 중 오류가 발생했습니다.")
     }
-
-    if (passwordCheck && password !== passwordCheck) {
-      setPasswordCheckMessage("비밀번호가 동일하지 않습니다.");
-    } else {
-      setPasswordCheckMessage("");
-    }
-  }, [password, passwordCheck]);
-
-  // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+    
   }
 
   return (
@@ -128,7 +129,7 @@ export default function UserInfoEditForm() {
                   <FormLabel className="flex w-1/3 items-center justify-start text-lg font-normal text-[#5E5E5E]">
                     이름
                   </FormLabel>
-                  <FormControl className="h-12 w-2/3 border-none bg-[#F0F0F0]">
+                  <FormControl className="h-12 w-2/3 border-none bg-[#F0F0F0] text-gray-500">
                     <Input placeholder="name" {...field} readOnly />
                   </FormControl>
                   <FormMessage />
@@ -146,10 +147,12 @@ export default function UserInfoEditForm() {
                   <FormLabel className="flex w-1/3 items-center justify-start text-lg font-normal text-[#5E5E5E]">
                     연락처
                   </FormLabel>
-                  <FormControl className="h-12 w-2/3 border-none bg-[#F0F0F0]">
-                    <Input placeholder="010-1234-1234" {...field} />
-                  </FormControl>
-                  <FormMessage />
+                  <div className="w-2/3">
+                    <FormControl className="h-12 border-none bg-[#F0F0F0]">
+                      <Input placeholder="010-1234-1234" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </div>
                 </div>
               </FormItem>
             )}
@@ -164,7 +167,7 @@ export default function UserInfoEditForm() {
                   <FormLabel className="flex w-1/3 items-center justify-start text-lg font-normal text-[#5E5E5E]">
                     이메일 아이디
                   </FormLabel>
-                  <FormControl className="h-12 w-2/3 border-none bg-[#F0F0F0]">
+                  <FormControl className="h-12 w-2/3 border-none bg-[#F0F0F0] text-gray-500">
                     <Input
                       placeholder="swim360@google.com"
                       {...field}
@@ -190,15 +193,12 @@ export default function UserInfoEditForm() {
                     <FormControl className="h-12 border-none bg-[#F0F0F0]">
                       <Input
                         type="password"
-                        placeholder="password"
+                        placeholder="영문, 숫자, 특수문자 포함 8자~16자 사이로 입력가능합니다."
                         {...field}
                       />
                     </FormControl>
-                    <FormDescription className="pt-1">
-                      {passwordMessage}
-                    </FormDescription>
+                    <FormMessage />
                   </div>
-                  <FormMessage />
                 </div>
               </FormItem>
             )}
@@ -217,15 +217,12 @@ export default function UserInfoEditForm() {
                     <FormControl className="h-12 border-none bg-[#F0F0F0]">
                       <Input
                         type="password"
-                        placeholder="password"
+                        placeholder="영문, 숫자, 특수문자 포함 8자~16자 사이로 입력가능합니다."
                         {...field}
                       />
                     </FormControl>
-                    <FormDescription className="pt-1">
-                      {passwordCheckMessage}
-                    </FormDescription>
+                    <FormMessage />
                   </div>
-                  <FormMessage />
                 </div>
               </FormItem>
             )}
@@ -238,10 +235,9 @@ export default function UserInfoEditForm() {
                 취소
               </CustomButton>
             </Link>
-            {/* TODO: 회원정보 수정 기능 추가 */}
             <PrimaryButton
               className="w-full"
-              onClick={() => alert("준비 중인 기능입니다.")}
+              type="submit"
             >
               확인
             </PrimaryButton>

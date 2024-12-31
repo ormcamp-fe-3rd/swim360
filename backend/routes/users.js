@@ -73,13 +73,11 @@ router.get('/email/:email', async (req, res) => {
 })
 
 // 특정 유저 수정
-router.put("/:id", async (req, res) => {
+router.patch("/:id", async (req, res) => {
   try {
-    const { name, nickname, age, id } = req.body;
-    // 요청 파라미터 검증
-    if (!name || !nickname || !age) {
-      next(Error(`missing required parameters`));
-    }
+    const id = req.params.id;
+    const { phoneNumber, password } = req.body;
+
 
     // 유저 존재 여부 확인
     const user = await User.findOne({ where: { id: id } });
@@ -88,8 +86,9 @@ router.put("/:id", async (req, res) => {
     }
 
     // 유저 있으면 수정
-    await User.update(
-      { name, nickname, age },
+    // update 성공시 1 반환, 실패시 0 반환
+    const result = await User.update(
+      { phoneNumber, password },
       {
         where: {
           id: id,
@@ -97,8 +96,12 @@ router.put("/:id", async (req, res) => {
       }
     );
 
-    const updatedUser = await User.findOne({ where: { id: id } });
-    res.json(updatedUser);
+    if(result[0] > 0){
+      const updatedUser = await User.findOne({where: {id: id}});
+      return res.json(updatedUser);
+    }else{
+      return res.status(400).json({ message: 'Update failed' })
+    }
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: error.message });
