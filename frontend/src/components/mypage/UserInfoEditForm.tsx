@@ -105,7 +105,7 @@ export default function UserInfoEditForm() {
                   <FormLabel className="flex w-1/3 items-center justify-start text-lg font-normal text-[#5E5E5E]">
                     이름
                   </FormLabel>
-                  <FormControl className="h-12 w-2/3 border-none bg-[#F0F0F0]">
+                  <FormControl className="h-12 w-2/3 border-none bg-[#F0F0F0] text-gray-500">
                     <Input placeholder="name" {...field} readOnly />
                   </FormControl>
                   <FormMessage />
@@ -141,7 +141,7 @@ export default function UserInfoEditForm() {
                   <FormLabel className="flex w-1/3 items-center justify-start text-lg font-normal text-[#5E5E5E]">
                     이메일 아이디
                   </FormLabel>
-                  <FormControl className="h-12 w-2/3 border-none bg-[#F0F0F0]">
+                  <FormControl className="h-12 w-2/3 border-none bg-[#F0F0F0] text-gray-500">
                     <Input
                       placeholder="swim360@google.com"
                       {...field}
