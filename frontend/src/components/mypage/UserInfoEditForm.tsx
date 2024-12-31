@@ -33,9 +33,10 @@ const formSchema = z.object({
     .string()
     .min(8, { message: "8자 이상이어야 합니다." })
     .max(16, { message: "16자 이하여야 합니다." }),
-  address: z.string().optional(),
-  detailAddress: z.string().optional(),
-  passwordCheck: z.string().min(8).max(16),
+  passwordCheck: z
+    .string()
+    .min(8, { message: "비밀번호가 동일하지 않습니다." })
+    .max(16, { message: "비밀번호가 동일하지 않습니다." }),
 });
 
 export default function UserInfoEditForm() {
@@ -52,8 +53,6 @@ export default function UserInfoEditForm() {
       phoneNumber: "",
       emailId: "",
       password: "",
-      address: "",
-      detailAddress: "",
       passwordCheck: "",
     },
   });
@@ -197,8 +196,8 @@ export default function UserInfoEditForm() {
                     <FormDescription className="pt-1">
                       {passwordMessage}
                     </FormDescription>
+                    <FormMessage />
                   </div>
-                  <FormMessage />
                 </div>
               </FormItem>
             )}
@@ -224,8 +223,8 @@ export default function UserInfoEditForm() {
                     <FormDescription className="pt-1">
                       {passwordCheckMessage}
                     </FormDescription>
+                    <FormMessage />
                   </div>
-                  <FormMessage />
                 </div>
               </FormItem>
             )}
@@ -241,7 +240,8 @@ export default function UserInfoEditForm() {
             {/* TODO: 회원정보 수정 기능 추가 */}
             <PrimaryButton
               className="w-full"
-              onClick={() => alert("준비 중인 기능입니다.")}
+              // onClick={() => alert("준비 중인 기능입니다.")}
+              type="submit"
             >
               확인
             </PrimaryButton>
