@@ -25,7 +25,6 @@ const formSchema = z.object({
   username: z.string().min(2).max(10),
   phoneNumber: z
     .string()
-    .regex(/^(\d)$/, {message: "연락처는 숫자만 입력가능합니다."})
     .regex(/^(\d{10,11})$/, {message: "연락처는 10자~11자 사이로 입력가능합니다."}),
   emailId: z.string().email(),
   password: z
