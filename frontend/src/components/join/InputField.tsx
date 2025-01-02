@@ -4,7 +4,9 @@ interface InputFieldProps {
   name: string;
   id: string;
   placeholder?: string;
+  className?: string;
   helperText?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 function InputField({
@@ -14,9 +16,11 @@ function InputField({
   id,
   placeholder,
   helperText,
+  className,
+  onChange,
 }: InputFieldProps) {
   return (
-    <div className="h-16 flex w-full items-center justify-between py-4">
+    <div className="flex h-16 w-full items-center justify-between py-4">
       <span className="block w-1/3 px-10 text-lg font-normal text-[#5E5E5E]">
         {label}
       </span>
@@ -26,7 +30,8 @@ function InputField({
           name={name}
           id={id}
           placeholder={placeholder}
-          className="w-full rounded-md border-none bg-[#F0F0F0] py-2.5"
+          className={`w-full rounded-md border-none bg-[#F0F0F0] py-2.5 ${className}`}
+          onChange={onChange}
         />
         {helperText && (
           <span className="mt-2 block text-sm text-gray-500">{helperText}</span>

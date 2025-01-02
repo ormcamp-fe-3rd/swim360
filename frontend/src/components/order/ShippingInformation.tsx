@@ -19,7 +19,17 @@ const formSchema = z.object({
   phoneNumber: z
     .string()
     .nonempty("필수 입력 항목입니다.")
-    .regex(/^[0-9-]+$/, "숫자와 하이픈(-)만 입력 가능합니다."),
+    .refine((value) => value.replace(/-/g, "").length <= 11, {
+      message: "11자리까지 입력이 가능합니다.",
+    })
+    .refine((value) => /^\d{0,11}$/.test(value.replace(/-/g, "")), {
+      message: "숫자와 하이픈(-)만 입력 가능합니다.",
+    })
+    .transform((value) =>
+      value
+        .replace(/-/g, "")
+        .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, "$1-$2-$3"),
+    ),
 });
 
 function ShippingInformation({ handleInputChange }: ShippingInformationProps) {
@@ -43,11 +53,19 @@ function ShippingInformation({ handleInputChange }: ShippingInformationProps) {
   ): void => {
     const { name, value } = e.target;
 
-    // 실시간 유효성 검사
-    const validationResult = formSchema.safeParse({
+    let transformedValue = value;
+
+    if (name === "phoneNumber") {
+      transformedValue = value
+        .replace(/-/g, "") // 기존 하이픈 제거
+        .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, "$1-$2-$3"); // 하이픈 추가
+    }
+
+    const updatedFormData = {
       ...formData,
-      [name]: value,
-    });
+      [name]: transformedValue,
+    };
+    const validationResult = formSchema.safeParse(updatedFormData);
 
     if (validationResult.success) {
       setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
@@ -62,7 +80,7 @@ function ShippingInformation({ handleInputChange }: ShippingInformationProps) {
       }));
     }
 
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
+    setFormData((prevData) => ({ ...prevData, [name]: transformedValue }));
     handleInputChange(e); // 부모 컴포넌트로 데이터 전달
   };
 
@@ -106,7 +124,7 @@ function ShippingInformation({ handleInputChange }: ShippingInformationProps) {
           readOnly
           value={formData.ordererName}
           onChange={handleInputValidation}
-          className="w-full rounded-sm border-none bg-slate-100 p-2.5"
+          className="w-full rounded-sm border-none bg-[#e8f0fe] p-2.5"
         />
       </div>
       <div className="h-22 mb-1 flex w-full border-b border-black p-2.5">
@@ -117,8 +135,12 @@ function ShippingInformation({ handleInputChange }: ShippingInformationProps) {
             name="receiver"
             id="receiver"
             onChange={handleInputValidation}
-            className={`w-full rounded-sm bg-slate-100 p-2.5 ${
-              errors.receiver ? "border border-red-500" : "border-none"
+            className={`w-full rounded-sm p-2.5 ${
+              errors.receiver
+                ? "border border-red-500 bg-slate-100"
+                : formData.receiver
+                  ? "border-none bg-[#e8f0fe]"
+                  : "bg-slate-100"
             }`}
           />
           {errors.receiver && (
@@ -140,17 +162,12 @@ function ShippingInformation({ handleInputChange }: ShippingInformationProps) {
                 value={formData.address}
                 readOnly
                 onChange={handleInputValidation}
-                className={`w-full rounded-sm bg-slate-100 p-2.5 ${
-                  errors.address ? "border border-red-500" : "border-none"
+                className={`w-full rounded-sm p-2.5 ${
+                  formData.address ? "border-none bg-[#e8f0fe]" : "bg-slate-100"
                 }`}
               />
-              {errors.address && (
-                <span className="absolute right-1 top-1/2 -translate-y-1/2 transform rounded text-[10px] text-red-500">
-                  {errors.address}
-                </span>
-              )}
             </div>
-            <div className="w-1/5">
+            <div className="ml-1 w-1/5">
               <PrimaryButton onClick={handleAddressSearch}>
                 주소검색
               </PrimaryButton>
@@ -163,8 +180,12 @@ function ShippingInformation({ handleInputChange }: ShippingInformationProps) {
               id="detailAddress"
               value={formData.detailAddress}
               onChange={handleInputValidation}
-              className={`w-full rounded-sm bg-slate-100 p-2.5 ${
-                errors.detailAddress ? "border border-red-500" : "border-none"
+              className={`w-full rounded-sm p-2.5 ${
+                errors.detailAddress
+                  ? "border border-red-500 bg-slate-100"
+                  : formData.detailAddress
+                    ? "border-none bg-[#e8f0fe]"
+                    : "bg-slate-100"
               }`}
             />
             {errors.detailAddress && (
@@ -185,8 +206,12 @@ function ShippingInformation({ handleInputChange }: ShippingInformationProps) {
             id="phoneNumber"
             value={formData.phoneNumber}
             onChange={handleInputValidation}
-            className={`w-full rounded-sm bg-slate-100 p-2.5 ${
-              errors.phoneNumber ? "border border-red-500" : "border-none"
+            className={`w-full rounded-sm p-2.5 ${
+              errors.phoneNumber
+                ? "border border-red-500 bg-slate-100"
+                : formData.phoneNumber
+                  ? "border-none bg-[#e8f0fe]"
+                  : "bg-slate-100"
             }`}
           />
           {errors.phoneNumber && (
