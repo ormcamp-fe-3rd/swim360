@@ -11,6 +11,11 @@
 > 팀명: KBS-WIN <br/>
 > 팀원: 김지균, 김혜빈, 반재영, 신명희
 
+### [🌎 페이지 방문 🔗](http://swim360-bucket.s3-website.ap-northeast-2.amazonaws.com/)
+- 25.01.11. 오류 수정(입력 검증, 직접 접근 방지) & 회원정보수정 기능 추가
+- 24.12.27. 서비스 오픈
+
+
 </br>
 
 ## 👙 서비스 소개
@@ -79,7 +84,6 @@
 
 ## 🧑‍💻 실행 방법
 
-### [🌎 페이지 방문 🔗](http://swim360-bucket.s3-website.ap-northeast-2.amazonaws.com/)
 #### 로컬에서 실행하기
 `backend`
 ```
