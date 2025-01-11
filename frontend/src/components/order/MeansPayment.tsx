@@ -108,7 +108,7 @@ function MeansPayment({
             type="text"
             name="depositorName"
             className={`w-full rounded-sm bg-slate-100 p-2 pl-4 ${
-              errors.depositorName ? "border border-red-500" : ""
+              errors.depositorName ? "border border-red-500" : "bg-[#e8f0fe]"
             }`}
             placeholder="입금자 이름 *"
             onChange={handleInputValidation}
@@ -141,7 +141,9 @@ function MeansPayment({
             type="tel"
             name="phoneNumber"
             className={`w-full rounded-sm bg-slate-100 p-2.5 ${
-              errors.phoneNumber ? "border border-red-500" : ""
+              errors.phoneNumber
+                ? "border border-red-500 bg-slate-100"
+                : "bg-[#e8f0fe]"
             }`}
             placeholder="전화번호를 입력해주세요."
             onChange={handleInputValidation}
@@ -159,7 +161,9 @@ function MeansPayment({
             type="text"
             name="businessNumber"
             className={`w-full rounded-sm bg-slate-100 p-2.5 ${
-              errors.businessNumber ? "border border-red-500" : ""
+              errors.businessNumber
+                ? "border border-red-500 bg-slate-100"
+                : "bg-[#e8f0fe]"
             }`}
             placeholder="사업자번호를 입력해주세요."
             onChange={handleInputValidation}
