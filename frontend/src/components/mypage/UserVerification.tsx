@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useUserId } from "@/hooks/useUserId";
@@ -10,6 +10,13 @@ export default function UserVerification() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const { userId } = useUserId();
+
+  useEffect(()=> {
+    if(!userId){
+      alert("잘못된 접근입니다.")
+      navigate("/login")
+    }
+  },[userId, navigate])
 
   const handlePassword = (event:React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
@@ -28,7 +35,7 @@ export default function UserVerification() {
 
       if (!user) return;
       if (user.password === password) {
-        navigate("/mypage/edit");
+        navigate("/mypage/edit", {state: "success"});
       } else {
         alert("비밀번호가 올바르지 않습니다.");
       }
