@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer>
       <div className="h-96 w-full bg-white pt-[268px]">
-        <div className={footerClass}>
+        <div className={footerClass} tabIndex={0}>
           <ul className="flex w-full max-w-[565px] justify-between px-10">
             <li className="font-semibold">회사소개</li>
             <li className="font-semibold">이용약관</li>

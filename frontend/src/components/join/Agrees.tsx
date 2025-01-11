@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import PrimaryButton from "@/components/common/PrimaryButton";
-import { Link } from "react-router-dom";
+
 import CustomButton from "./CustomButton";
 
 export default function Agrees() {
@@ -10,25 +11,38 @@ export default function Agrees() {
   const [privacyChecked, setPrivacyChecked] = useState(false);
   const [marketingChecked, setMarketingChecked] = useState(false);
 
+  const updateAllChecked = (
+    terms: boolean,
+    privacy: boolean,
+    marketing: boolean,
+  ) => {
+    setAllChecked(terms && privacy && marketing);
+  };
+
   const handleAllCheckbox = () => {
-    setAllChecked(!allChecked);
-    setTermsChecked(!allChecked);
-    setPrivacyChecked(!allChecked);
-    setMarketingChecked(!allChecked);
+    const newAllChecked = !allChecked;
+    setAllChecked(newAllChecked);
+    setTermsChecked(newAllChecked);
+    setPrivacyChecked(newAllChecked);
+    setMarketingChecked(newAllChecked);
   };
 
   const handleTermsCheckbox = () => {
-    setTermsChecked(!termsChecked);
-    setAllChecked(termsChecked && privacyChecked);
+    const newTermsChecked = !termsChecked;
+    setTermsChecked(newTermsChecked);
+    updateAllChecked(newTermsChecked, privacyChecked, marketingChecked);
   };
 
   const handlePrivacyCheckbox = () => {
-    setPrivacyChecked(!privacyChecked);
-    setAllChecked(termsChecked && privacyChecked);
+    const newPrivacyChecked = !privacyChecked;
+    setPrivacyChecked(newPrivacyChecked);
+    updateAllChecked(termsChecked, newPrivacyChecked, marketingChecked);
   };
 
   const handleMarketingCheckbox = () => {
-    setMarketingChecked(!marketingChecked);
+    const newMarketingChecked = !marketingChecked;
+    setMarketingChecked(newMarketingChecked);
+    updateAllChecked(termsChecked, privacyChecked, newMarketingChecked);
   };
 
   const handleNext = () => {
