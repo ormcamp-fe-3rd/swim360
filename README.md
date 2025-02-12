@@ -13,8 +13,10 @@
 
 ### [🌎 페이지 방문 🔗](http://swim360-bucket.s3-website.ap-northeast-2.amazonaws.com/)
 - 25.01.11. 오류 수정(입력 검증, 직접 접근 방지) & 회원정보수정 기능 추가
-- 24.12.27. 서비스 오픈
+- 24.12.27. 서비스 오픈 <br/>
 
+`id: hong@example.com, kim@example.com, sin@example.com, choi@example.com`
+`pw: 123`
 
 </br>
 
